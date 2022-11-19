@@ -41,12 +41,16 @@ export const WeekdayBar: React.FC<{
 	}, [actualHeight, isMostProductive, frame]);
 
 	return (
-		<svg
-			style={{
-				overflow: 'visible',
-				filter: isMostProductive ? 'drop-shadow(0 0 10px #9E2600)' : undefined,
-			}}
-			ref={ref}
-		></svg>
+		<>
+			<svg
+				style={{
+					overflow: 'visible',
+					filter: isMostProductive
+						? 'drop-shadow(0 0 10px #9E2600)'
+						: undefined,
+				}}
+				ref={ref}
+			></svg>
+		</>
 	);
 };

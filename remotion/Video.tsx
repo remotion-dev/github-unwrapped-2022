@@ -15,6 +15,7 @@ import {TransitionDemo} from './TransitionDemo';
 import {WaterColour} from './WaterColour';
 import {Snow} from './Snow';
 import {Title} from './Title2022';
+import {AvgCommits} from './AvgCommits';
 
 export const Root: React.FC = () => {
 	return (
@@ -110,6 +111,17 @@ export const Root: React.FC = () => {
 				height={1080}
 				width={1080}
 				id="water"
+				defaultProps={{
+					stats: mapResponseToStats(all),
+				}}
+			></Composition>
+			<Composition
+				component={AvgCommits}
+				durationInFrames={300}
+				fps={30}
+				height={1080}
+				width={1080}
+				id="commits"
 				defaultProps={{
 					stats: mapResponseToStats(all),
 				}}

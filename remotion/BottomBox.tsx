@@ -29,8 +29,6 @@ export const BottomBox: React.FC = () => {
 	const paths = path.toPaths(drawable);
 	const paths2 = path.toPaths(drawable2);
 
-	console.log({paths, paths2});
-
 	const progress = spring({
 		fps,
 		frame,
