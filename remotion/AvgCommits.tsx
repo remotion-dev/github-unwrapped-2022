@@ -1,10 +1,12 @@
 import React from 'react';
 import {AbsoluteFill, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Arc} from './Arc';
+import {AvgCommitsTitle} from './AvgCommitsTitle';
 import {CommitBar} from './CommitBar';
 import {commits} from './commits';
 import {MiddleLine} from './MiddleLine';
 import {Snow} from './Snow';
+import {WaterColour} from './WaterColour';
 
 type Hour =
 	| 0
@@ -72,7 +74,7 @@ export const AvgCommits: React.FC = () => {
 	const values = Object.entries(hours);
 	for (let i = 0; i < 4; i++) {
 		const hi = values.shift();
-		values.push(hi);
+		values.push(hi as [string, number]);
 	}
 
 	const most = Math.max(...values.map((v) => v[1]));
@@ -83,6 +85,7 @@ export const AvgCommits: React.FC = () => {
 				backgroundColor: '#FFE3CA',
 			}}
 		>
+			<WaterColour></WaterColour>
 			<AbsoluteFill
 				style={{
 					opacity: 0.3,
@@ -92,10 +95,10 @@ export const AvgCommits: React.FC = () => {
 			</AbsoluteFill>
 			<AbsoluteFill
 				style={{
-					marginTop: 340,
+					marginTop: 440,
 				}}
 			>
-				<AbsoluteFill style={{}}>
+				<AbsoluteFill>
 					<Arc></Arc>
 				</AbsoluteFill>
 				<AbsoluteFill
@@ -135,6 +138,7 @@ export const AvgCommits: React.FC = () => {
 					})}
 				</AbsoluteFill>
 			</AbsoluteFill>
+			<AvgCommitsTitle></AvgCommitsTitle>
 		</AbsoluteFill>
 	);
 };

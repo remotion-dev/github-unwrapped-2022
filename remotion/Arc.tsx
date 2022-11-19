@@ -1,4 +1,4 @@
-import {getLength} from '@remotion/paths';
+import {evolvePath, getLength} from '@remotion/paths';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, useCurrentFrame} from 'remotion';
 
@@ -13,13 +13,13 @@ export const Arc: React.FC = () => {
 	const drawable = path.path(d, {
 		strokeWidth: 6,
 		roughness: 4,
-		stroke: '#8A3629',
+		stroke: '#DBAB96',
 		seed: 2,
 	});
 
 	const frame = useCurrentFrame();
 
-	const progress = interpolate(frame, [20, 120], [0.02, 0.98], {
+	const progress = interpolate(frame, [20, 120], [0.02, 0.99], {
 		easing: Easing.out(Easing.ease),
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp',
@@ -41,11 +41,7 @@ export const Arc: React.FC = () => {
 				transform: 'scale(0.9) translateY(-50px)',
 			}}
 		>
-			<AbsoluteFill
-				style={{
-					opacity: 0.3,
-				}}
-			>
+			<AbsoluteFill>
 				<svg
 					viewBox={`0 0 1080 1080`}
 					style={{
@@ -53,8 +49,14 @@ export const Arc: React.FC = () => {
 					}}
 				>
 					{paths.map((p, i) => {
+						const {strokeDasharray, strokeDashoffset} = evolvePath(
+							progress / 2,
+							p.d
+						);
 						return (
 							<path
+								strokeDashoffset={strokeDashoffset}
+								strokeDasharray={strokeDasharray}
 								key={p.d}
 								d={p.d}
 								fill={p.fill}
