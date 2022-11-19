@@ -5,10 +5,10 @@ export type All = typeof all;
 const query = (username: string) =>
   `{
   user(login: "${username}") {
-    openIssues: issues (first: 100, orderBy: {field:CREATED_AT, direction: ASC} filterBy: {since: "2021-01-01T00:00:00.000Z"}, states: OPEN) {
+    openIssues: issues (first: 100, orderBy: {field:CREATED_AT, direction: ASC} filterBy: {since: "2022-01-01T00:00:00.000Z"}, states: OPEN) {
       totalCount
     }
-    closedIssues: issues (first: 100, orderBy: {field:CREATED_AT, direction: ASC} filterBy: {since: "2021-01-01T00:00:00.000Z"}, states: CLOSED) {
+    closedIssues: issues (first: 100, orderBy: {field:CREATED_AT, direction: ASC} filterBy: {since: "2022-01-01T00:00:00.000Z"}, states: CLOSED) {
       totalCount
     }
     repositories(last: 50, isFork: false) {
