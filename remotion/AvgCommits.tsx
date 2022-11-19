@@ -78,6 +78,7 @@ export const AvgCommits: React.FC = () => {
 	}
 
 	const most = Math.max(...values.map((v) => v[1]));
+	const mostIndex = values.findIndex(([a, b]) => b === most);
 
 	return (
 		<AbsoluteFill
@@ -122,6 +123,7 @@ export const AvgCommits: React.FC = () => {
 					{values.map(([hour, keys], i) => {
 						return (
 							<CommitBar
+								most={mostIndex === i}
 								hour={hour}
 								key={hour}
 								height={(keys / most) * 400}
@@ -138,7 +140,7 @@ export const AvgCommits: React.FC = () => {
 					})}
 				</AbsoluteFill>
 			</AbsoluteFill>
-			<AvgCommitsTitle></AvgCommitsTitle>
+			<AvgCommitsTitle />
 		</AbsoluteFill>
 	);
 };

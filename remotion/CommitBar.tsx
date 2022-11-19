@@ -7,7 +7,8 @@ export const CommitBar: React.FC<{
 	height: number;
 	hour: string;
 	progress: number;
-}> = ({height, hour, progress}) => {
+	most: boolean;
+}> = ({height, hour, progress, most}) => {
 	const width = 35;
 
 	const actualHeight = progress * height;
@@ -20,7 +21,7 @@ export const CommitBar: React.FC<{
 		stroke: 'transparent',
 		seed: Number(hour),
 		maxRandomnessOffset: 5,
-		fill: 'white',
+		fill: most ? '#E09A00' : 'white',
 		fillStyle: 'solid',
 	});
 

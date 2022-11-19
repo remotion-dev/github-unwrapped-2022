@@ -13,7 +13,7 @@ export const AvgCommitsTitle: React.FC = () => {
 				alignItems: 'center',
 				fontFamily: 'Wintry',
 				fontSize: 70,
-				marginTop: -350,
+				marginTop: -320,
 				color: '#8A3629',
 			}}
 		>
@@ -27,7 +27,7 @@ export const AvgCommitsTitle: React.FC = () => {
 						<>
 							<span
 								style={{
-									opacity: interpolate(frame - i * 5, [0, 40], [0, 1], {
+									opacity: interpolate(frame - i * 5 - 10, [0, 40], [0, 1], {
 										extrapolateRight: 'clamp',
 									}),
 									display: 'inline-block',
