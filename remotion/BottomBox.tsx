@@ -1,16 +1,15 @@
-import {evolvePath} from '@remotion/paths';
 import React from 'react';
-import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import {Img} from 'remotion';
 import rough from 'roughjs/bin/rough.js';
 import {roundSvg} from './round-svg';
 const r = rough as typeof import('roughjs').default;
 
-export const BottomBox: React.FC = () => {
-	const {fps} = useVideoConfig();
-	const frame = useCurrentFrame();
-
+export const BottomBox: React.FC<{
+	squash: number;
+	avatar: string;
+}> = ({squash, avatar}) => {
 	const path = r.generator();
-	const drawable = path.path(roundSvg('M 0 0 L 0 90 L 100 90 L 100 0', 5), {
+	const drawable = path.path(roundSvg('M 0 0 L 0 100 L 100 100 L 100 0', 5), {
 		strokeWidth: 10,
 		roughness: 0.3,
 		stroke: '#8A3629',
@@ -18,59 +17,65 @@ export const BottomBox: React.FC = () => {
 		maxRandomnessOffset: 4,
 	});
 
-	const drawable2 = path.path('M 0 45 L 100 45 M 50 0 L 50 90', {
-		strokeWidth: 5,
-		roughness: 1,
-		stroke: '#8A3629',
-		seed: 3,
-		maxRandomnessOffset: 4,
-	});
+	const drawable2 = 'M 0 50 L 100 50';
+	const drawable3 = 'M 50 0 L 50 100';
 
 	const paths = path.toPaths(drawable);
-	const paths2 = path.toPaths(drawable2);
-
-	const progress = spring({
-		fps,
-		frame,
-		config: {
-			damping: 200,
-		},
-		durationInFrames: 100,
-	});
 
 	return (
-		<svg
-			viewBox="0 0 100 100"
+		<div
 			style={{
-				width: 400,
-				overflow: 'visible',
+				transformOrigin: 'center bottom',
+				position: 'relative',
+				transform: `scaleY(${1 - squash}) scaleX(${1 + squash})`,
 			}}
 		>
-			{paths2.map((p) => {
-				const {strokeDasharray, strokeDashoffset} = evolvePath(progress, p.d);
-				return (
-					<path
-						key={p.d}
-						d={p.d}
-						fill={p.fill}
-						stroke={p.stroke}
-						strokeWidth={p.strokeWidth}
-						strokeDasharray={strokeDasharray}
-						strokeDashoffset={strokeDashoffset}
-					></path>
-				);
-			})}
-			{paths.map((p, i) => {
-				return (
-					<path
-						key={p.d}
-						d={p.d}
-						fill={p.fill}
-						stroke={p.stroke}
-						strokeWidth={p.strokeWidth}
-					></path>
-				);
-			})}
-		</svg>
+			<div
+				style={{
+					position: 'absolute',
+					left: 0,
+					height: '100%',
+					width: '100%',
+				}}
+			>
+				<Img
+					style={{
+						opacity: 0.6,
+						position: 'absolute',
+						left: 0,
+						height: '50%',
+						width: '50%',
+					}}
+					src={avatar}
+				></Img>
+			</div>
+			<div
+				style={{
+					position: 'relative',
+				}}
+			>
+				<svg
+					viewBox="0 0 100 100"
+					style={{
+						width: 400,
+						overflow: 'visible',
+					}}
+				>
+					<path d={drawable2} stroke="#8A3629" strokeWidth={8}></path>
+					<path d={drawable3} stroke="#8A3629" strokeWidth={8}></path>
+					{paths.map((p, i) => {
+						return (
+							<path
+								key={p.d}
+								d={p.d}
+								fill={p.fill}
+								stroke={p.stroke}
+								strokeWidth={p.strokeWidth}
+							></path>
+						);
+					})}
+				</svg>
+			</div>
+		</div>
 	);
 };

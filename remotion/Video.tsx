@@ -1,16 +1,13 @@
 import {Composition, Still} from 'remotion';
 import {COMP_NAME} from '../src/config';
 import {all} from './all';
-import {Contributions} from './Contrib';
-import {DecorativeLines} from './DecorativeLines';
 import {Flashcard} from './Flashcard';
 import {Issues} from './Issues';
 import {Main} from './Main';
 import {ManyLanguages} from './ManyLanguages';
 import {mapResponseToStats} from './map-response-to-stats';
-import {StoriesChart, TopWeekdays2022} from './Weekday2022';
+import {TopWeekdays2022} from './Weekday2022';
 import {TitleCard} from './TitleCard';
-import {TopWeekDays} from './TopWeekday';
 import {TransitionDemo} from './TransitionDemo';
 import {WaterColour} from './WaterColour';
 import {Snow} from './Snow';
@@ -29,17 +26,6 @@ export const Root: React.FC = () => {
 				id={COMP_NAME}
 				defaultProps={{
 					enableDecoration: true,
-					stats: mapResponseToStats(all),
-				}}
-			></Composition>
-			<Composition
-				component={Contributions}
-				durationInFrames={400}
-				fps={30}
-				height={1080}
-				width={1080}
-				id={'contributions'}
-				defaultProps={{
 					stats: mapResponseToStats(all),
 				}}
 			></Composition>
@@ -70,17 +56,6 @@ export const Root: React.FC = () => {
 				height={1080}
 				width={1080}
 				id="transition"
-			></Composition>
-			<Composition
-				component={TopWeekDays}
-				durationInFrames={300}
-				fps={30}
-				height={1080}
-				width={1080}
-				id="weekdays"
-				defaultProps={{
-					stats: mapResponseToStats(all),
-				}}
 			></Composition>
 			<Composition
 				component={Issues}
@@ -145,7 +120,7 @@ export const Root: React.FC = () => {
 				width={1080}
 				id="title"
 				defaultProps={{
-					stats: mapResponseToStats(all),
+					avatar: mapResponseToStats(all).avatar,
 				}}
 			></Composition>
 			<Still
