@@ -23,10 +23,7 @@ export const Main: React.FC<{
 			<Audio src="https://jonnyburger.s3.eu-central-1.amazonaws.com/the-librarian.mp3"></Audio>
 			<Series>
 				<Series.Sequence durationInFrames={130}>
-					<TitleCard
-						enableDecoration={enableDecoration}
-						stats={stats}
-					></TitleCard>
+					<TitleCard></TitleCard>
 				</Series.Sequence>
 				<Series.Sequence durationInFrames={120} offset={-25}>
 					<Transition>

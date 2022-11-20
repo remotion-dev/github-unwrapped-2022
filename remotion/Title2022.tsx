@@ -1,16 +1,28 @@
 import React from 'react';
-import {AbsoluteFill} from 'remotion';
+import {AbsoluteFill, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {GiftBox} from './GiftBox';
 import {Snow} from './Snow';
+import {TitleCard} from './TitleCard';
 import {WaterColour} from './WaterColour';
 
 export const Title: React.FC<{
 	avatar: string;
 }> = ({avatar}) => {
+	const {fps} = useVideoConfig();
+	const frame = useCurrentFrame();
+	const turn = spring({
+		fps,
+		frame: frame - 40,
+		config: {
+			damping: 200,
+		},
+	});
+
 	return (
 		<AbsoluteFill
 			style={{
 				backgroundColor: '#FFE3CA',
+				perspective: 1000,
 			}}
 		>
 			<WaterColour></WaterColour>
@@ -21,7 +33,22 @@ export const Title: React.FC<{
 			>
 				<Snow></Snow>
 			</AbsoluteFill>
-			<GiftBox avatar={avatar}></GiftBox>
+			<AbsoluteFill
+				style={{
+					transform: `rotateY(${turn * Math.PI}rad)`,
+					backfaceVisibility: 'hidden',
+				}}
+			>
+				<GiftBox avatar={avatar}></GiftBox>
+			</AbsoluteFill>
+			<AbsoluteFill
+				style={{
+					transform: `rotateY(${(1 - turn) * -Math.PI}rad)`,
+					backfaceVisibility: 'hidden',
+				}}
+			>
+				<TitleCard></TitleCard>
+			</AbsoluteFill>
 		</AbsoluteFill>
 	);
 };

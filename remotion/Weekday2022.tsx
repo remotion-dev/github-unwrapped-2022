@@ -3,6 +3,7 @@ import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {CompactStats, Weekday} from './map-response-to-stats';
 import {Snow} from './Snow';
+import {WaterColour} from './WaterColour';
 import {WeekdayBar} from './WeekdayBar';
 
 const weekdayToName = (weekday: Weekday) => {
@@ -56,6 +57,7 @@ export const TopWeekdays2022: React.FC<{
 			<AbsoluteFill>
 				<Snow></Snow>
 			</AbsoluteFill>
+			<WaterColour></WaterColour>
 			<AbsoluteFill
 				style={{
 					justifyContent: 'center',
