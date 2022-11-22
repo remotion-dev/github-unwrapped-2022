@@ -1,4 +1,5 @@
 import groupBy from 'lodash.groupby';
+import {Internals} from 'remotion';
 import {All} from '../src/get-all';
 
 // Space saving format for contributions to not run into 256KB payload format
@@ -28,7 +29,7 @@ export type CompactStats = {
 	contributionCount: number;
 	contributions: {[key: string]: SpaceSavingContribution[]};
 	avatar: string;
-	topLanguage: TopLanguage | null;
+	topLanguages: TopLanguage[] | null;
 	weekdays: Weekdays;
 	issues: Issues;
 	fixedDec18Issues: boolean | undefined;
@@ -103,7 +104,7 @@ export const remapWeekdays = (weekday: number): Weekday => {
 	throw new Error('unknown weekday' + weekday);
 };
 
-export const getTopLanguage = (response: All): TopLanguage | null => {
+export const getTopLanguages = (response: All): TopLanguage[] | null => {
 	const langs: {[key: string]: number} = {};
 	const languages = response.data.user.repositories.nodes
 		.filter((n) => n.languages.edges?.[0])
@@ -120,15 +121,23 @@ export const getTopLanguage = (response: All): TopLanguage | null => {
 		.sort((a, b) => a[1] - b[1])
 		.reverse();
 
-	const lang = languages.find((l) => l.id === topEntries[0][0]);
-
-	if (!lang) {
+	if (topEntries.length === 0) {
 		return null;
 	}
-	return {
-		color: lang.color,
-		name: lang.name,
-	};
+
+	return topEntries
+		.map((entry) => {
+			const lang = languages.find((l) => l.id === entry[0]);
+			if (!lang) {
+				return null;
+			}
+
+			return {
+				color: lang?.color,
+				name: lang?.name,
+			};
+		})
+		.filter(Internals.truthy);
 };
 
 export const mapResponseToStats = (response: All): CompactStats => {
@@ -155,7 +164,7 @@ export const mapResponseToStats = (response: All): CompactStats => {
 		contributionCount: allDays.reduce((a, b) => a + b.contributionCount, 0),
 		contributions: groupedByMonth,
 		avatar: response.data.user.avatarUrl,
-		topLanguage: getTopLanguage(response),
+		topLanguages: getTopLanguages(response),
 		weekdays: getMostProductive(response),
 		issues: getIssues(response),
 		fixedDec18Issues: true,

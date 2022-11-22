@@ -3,10 +3,9 @@ import {AbsoluteFill, Audio, Series} from 'remotion';
 import {EndCard} from './EndCard';
 import {EndCard2} from './EndCard2';
 import {Issues} from './Issues';
-import {Lang} from './Lang';
 import {ManyLanguages} from './ManyLanguages';
 import {CompactStats} from './map-response-to-stats';
-import {TitleCard} from './TitleCard';
+import {Title} from './Title2022';
 import {Transition} from './Transition';
 import {TopWeekdays2022} from './Weekday2022';
 
@@ -23,7 +22,7 @@ export const Main: React.FC<{
 			<Audio src="https://jonnyburger.s3.eu-central-1.amazonaws.com/the-librarian.mp3"></Audio>
 			<Series>
 				<Series.Sequence durationInFrames={130}>
-					<TitleCard></TitleCard>
+					<Title avatar={stats.avatar}></Title>
 				</Series.Sequence>
 				<Series.Sequence durationInFrames={120} offset={-25}>
 					<Transition>
@@ -31,9 +30,7 @@ export const Main: React.FC<{
 					</Transition>
 				</Series.Sequence>
 				<Series.Sequence durationInFrames={120} offset={-25}>
-					<Transition>
-						<Lang stats={stats}></Lang>
-					</Transition>
+					<Transition></Transition>
 				</Series.Sequence>
 				<Series.Sequence durationInFrames={220} offset={-25}>
 					<Transition>

@@ -13,6 +13,7 @@ import {WaterColour} from './WaterColour';
 import {Snow} from './Snow';
 import {Title} from './Title2022';
 import {AvgCommits} from './AvgCommits';
+import {TopLang} from './TopLang';
 
 export const Root: React.FC = () => {
 	return (
@@ -121,6 +122,17 @@ export const Root: React.FC = () => {
 				id="title"
 				defaultProps={{
 					avatar: mapResponseToStats(all).avatar,
+				}}
+			></Composition>
+			<Composition
+				component={TopLang}
+				durationInFrames={300}
+				fps={30}
+				height={1080}
+				width={1080}
+				id="languages"
+				defaultProps={{
+					stats: mapResponseToStats(all),
 				}}
 			></Composition>
 			<Still
