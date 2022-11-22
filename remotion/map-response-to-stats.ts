@@ -108,7 +108,9 @@ export const getTopLanguages = (response: All): TopLanguage[] | null => {
 	const langs: {[key: string]: number} = {};
 	const languages = response.data.user.repositories.nodes
 		.filter((n) => n.languages.edges?.[0])
-		.map((n) => n.languages.edges[0].node);
+		.map((n) => n.languages.edges)
+		.flat(1)
+		.map((n) => n.node);
 
 	for (const lang of languages) {
 		if (!langs[lang.id]) {

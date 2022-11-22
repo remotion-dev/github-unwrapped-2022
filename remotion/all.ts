@@ -2,8 +2,8 @@
 export const all = {
 	data: {
 		user: {
-			openIssues: {totalCount: 24},
-			closedIssues: {totalCount: 134},
+			openIssues: {totalCount: 20},
+			closedIssues: {totalCount: 138},
 			repositories: {
 				nodes: [
 					{
@@ -17,6 +17,14 @@ export const all = {
 										id: 'MDg6TGFuZ3VhZ2UxNDA=',
 										color: '#f1e05a',
 										name: 'JavaScript',
+									},
+								},
+								{
+									size: 174,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxMzk=',
+										color: '#89e051',
+										name: 'Shell',
 									},
 								},
 							],
@@ -35,6 +43,14 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 42,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxNDA=',
+										color: '#f1e05a',
+										name: 'JavaScript',
+									},
+								},
 							],
 						},
 					},
@@ -49,6 +65,14 @@ export const all = {
 										id: 'MDg6TGFuZ3VhZ2UyODc=',
 										color: '#3178c6',
 										name: 'TypeScript',
+									},
+								},
+								{
+									size: 44,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxNDA=',
+										color: '#f1e05a',
+										name: 'JavaScript',
 									},
 								},
 							],
@@ -83,6 +107,22 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 2962,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UzMDg=',
+										color: '#563d7c',
+										name: 'CSS',
+									},
+								},
+								{
+									size: 1927,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U0MTc=',
+										color: '#e34c26',
+										name: 'HTML',
+									},
+								},
 							],
 						},
 					},
@@ -97,6 +137,22 @@ export const all = {
 										id: 'MDg6TGFuZ3VhZ2UyODc=',
 										color: '#3178c6',
 										name: 'TypeScript',
+									},
+								},
+								{
+									size: 54,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxMzk=',
+										color: '#89e051',
+										name: 'Shell',
+									},
+								},
+								{
+									size: 44,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxNDA=',
+										color: '#f1e05a',
+										name: 'JavaScript',
 									},
 								},
 							],
@@ -115,6 +171,14 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 66,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxMzk=',
+										color: '#89e051',
+										name: 'Shell',
+									},
+								},
 							],
 						},
 					},
@@ -124,11 +188,27 @@ export const all = {
 						languages: {
 							edges: [
 								{
-									size: 3228705,
+									size: 3231088,
 									node: {
 										id: 'MDg6TGFuZ3VhZ2UyODc=',
 										color: '#3178c6',
 										name: 'TypeScript',
+									},
+								},
+								{
+									size: 67749,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxNDA=',
+										color: '#f1e05a',
+										name: 'JavaScript',
+									},
+								},
+								{
+									size: 23316,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UzMDg=',
+										color: '#563d7c',
+										name: 'CSS',
 									},
 								},
 							],
@@ -147,6 +227,14 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 77,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxNDA=',
+										color: '#f1e05a',
+										name: 'JavaScript',
+									},
+								},
 							],
 						},
 					},
@@ -161,6 +249,22 @@ export const all = {
 										id: 'MDg6TGFuZ3VhZ2UxNTg=',
 										color: '#b07219',
 										name: 'Java',
+									},
+								},
+								{
+									size: 45869,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxNTY=',
+										color: '#438eff',
+										name: 'Objective-C',
+									},
+								},
+								{
+									size: 11737,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UyODc=',
+										color: '#3178c6',
+										name: 'TypeScript',
 									},
 								},
 							],
@@ -211,6 +315,22 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 3203,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UzMDg=',
+										color: '#563d7c',
+										name: 'CSS',
+									},
+								},
+								{
+									size: 964,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
+									},
+								},
 							],
 						},
 					},
@@ -225,6 +345,14 @@ export const all = {
 										id: 'MDg6TGFuZ3VhZ2UyODc=',
 										color: '#3178c6',
 										name: 'TypeScript',
+									},
+								},
+								{
+									size: 964,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
 									},
 								},
 							],
@@ -243,6 +371,22 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 964,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
+									},
+								},
+								{
+									size: 78,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UzMDg=',
+										color: '#563d7c',
+										name: 'CSS',
+									},
+								},
 							],
 						},
 					},
@@ -257,6 +401,14 @@ export const all = {
 										id: 'MDg6TGFuZ3VhZ2UyODc=',
 										color: '#3178c6',
 										name: 'TypeScript',
+									},
+								},
+								{
+									size: 964,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
 									},
 								},
 							],
@@ -275,6 +427,14 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 922,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
+									},
+								},
 							],
 						},
 					},
@@ -289,6 +449,14 @@ export const all = {
 										id: 'MDg6TGFuZ3VhZ2UyODc=',
 										color: '#3178c6',
 										name: 'TypeScript',
+									},
+								},
+								{
+									size: 922,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
 									},
 								},
 							],
@@ -307,6 +475,22 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 922,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
+									},
+								},
+								{
+									size: 62,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UzMDg=',
+										color: '#563d7c',
+										name: 'CSS',
+									},
+								},
 							],
 						},
 					},
@@ -321,6 +505,14 @@ export const all = {
 										id: 'MDg6TGFuZ3VhZ2UyODc=',
 										color: '#3178c6',
 										name: 'TypeScript',
+									},
+								},
+								{
+									size: 922,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
 									},
 								},
 							],
@@ -339,6 +531,14 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 922,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
+									},
+								},
 							],
 						},
 					},
@@ -353,6 +553,22 @@ export const all = {
 										id: 'MDg6TGFuZ3VhZ2UyODc=',
 										color: '#3178c6',
 										name: 'TypeScript',
+									},
+								},
+								{
+									size: 922,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
+									},
+								},
+								{
+									size: 871,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UzMDg=',
+										color: '#563d7c',
+										name: 'CSS',
 									},
 								},
 							],
@@ -371,6 +587,22 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 3060,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UzMDg=',
+										color: '#563d7c',
+										name: 'CSS',
+									},
+								},
+								{
+									size: 922,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
+									},
+								},
 							],
 						},
 					},
@@ -385,6 +617,22 @@ export const all = {
 										id: 'MDg6TGFuZ3VhZ2UyODc=',
 										color: '#3178c6',
 										name: 'TypeScript',
+									},
+								},
+								{
+									size: 922,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
+									},
+								},
+								{
+									size: 182,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UzMDg=',
+										color: '#563d7c',
+										name: 'CSS',
 									},
 								},
 							],
@@ -403,6 +651,14 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 964,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
+									},
+								},
 							],
 						},
 					},
@@ -419,6 +675,22 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 964,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
+									},
+								},
+								{
+									size: 223,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UzMDg=',
+										color: '#563d7c',
+										name: 'CSS',
+									},
+								},
 							],
 						},
 					},
@@ -433,6 +705,14 @@ export const all = {
 										id: 'MDg6TGFuZ3VhZ2UyODc=',
 										color: '#3178c6',
 										name: 'TypeScript',
+									},
+								},
+								{
+									size: 964,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
 									},
 								},
 							],
@@ -467,6 +747,14 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 109,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxMzk=',
+										color: '#89e051',
+										name: 'Shell',
+									},
+								},
 							],
 						},
 					},
@@ -481,6 +769,14 @@ export const all = {
 										id: 'MDg6TGFuZ3VhZ2UyODc=',
 										color: '#3178c6',
 										name: 'TypeScript',
+									},
+								},
+								{
+									size: 231,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxMzk=',
+										color: '#89e051',
+										name: 'Shell',
 									},
 								},
 							],
@@ -563,6 +859,14 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 2693,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UzMDg=',
+										color: '#563d7c',
+										name: 'CSS',
+									},
+								},
 							],
 						},
 					},
@@ -595,6 +899,14 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 655,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UzMDg=',
+										color: '#563d7c',
+										name: 'CSS',
+									},
+								},
 							],
 						},
 					},
@@ -609,6 +921,22 @@ export const all = {
 										id: 'MDg6TGFuZ3VhZ2UyODc=',
 										color: '#3178c6',
 										name: 'TypeScript',
+									},
+								},
+								{
+									size: 591,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxNDA=',
+										color: '#f1e05a',
+										name: 'JavaScript',
+									},
+								},
+								{
+									size: 425,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UzMDg=',
+										color: '#563d7c',
+										name: 'CSS',
 									},
 								},
 							],
@@ -657,6 +985,22 @@ export const all = {
 										id: 'MDg6TGFuZ3VhZ2UyODc=',
 										color: '#3178c6',
 										name: 'TypeScript',
+									},
+								},
+								{
+									size: 964,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2U1MzU=',
+										color: '#384d54',
+										name: 'Dockerfile',
+									},
+								},
+								{
+									size: 63,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UzMDg=',
+										color: '#563d7c',
+										name: 'CSS',
 									},
 								},
 							],
@@ -712,6 +1056,22 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 99,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxNDA=',
+										color: '#f1e05a',
+										name: 'JavaScript',
+									},
+								},
+								{
+									size: 59,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UzMDg=',
+										color: '#563d7c',
+										name: 'CSS',
+									},
+								},
 							],
 						},
 					},
@@ -765,6 +1125,22 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 409,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxNDA=',
+										color: '#f1e05a',
+										name: 'JavaScript',
+									},
+								},
+								{
+									size: 156,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxMzk=',
+										color: '#89e051',
+										name: 'Shell',
+									},
+								},
 							],
 						},
 					},
@@ -781,6 +1157,22 @@ export const all = {
 										name: 'TypeScript',
 									},
 								},
+								{
+									size: 144,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UzMDg=',
+										color: '#563d7c',
+										name: 'CSS',
+									},
+								},
+								{
+									size: 133,
+									node: {
+										id: 'MDg6TGFuZ3VhZ2UxMzk=',
+										color: '#89e051',
+										name: 'Shell',
+									},
+								},
 							],
 						},
 					},
@@ -791,52 +1183,6 @@ export const all = {
 			contributionsCollection: {
 				contributionCalendar: {
 					weeks: [
-						{
-							contributionDays: [
-								{
-									contributionCount: 13,
-									weekday: 0,
-									date: '2021-11-14',
-									color: '#9be9a8',
-								},
-								{
-									contributionCount: 12,
-									weekday: 1,
-									date: '2021-11-15',
-									color: '#9be9a8',
-								},
-								{
-									contributionCount: 56,
-									weekday: 2,
-									date: '2021-11-16',
-									color: '#30a14e',
-								},
-								{
-									contributionCount: 13,
-									weekday: 3,
-									date: '2021-11-17',
-									color: '#9be9a8',
-								},
-								{
-									contributionCount: 57,
-									weekday: 4,
-									date: '2021-11-18',
-									color: '#30a14e',
-								},
-								{
-									contributionCount: 41,
-									weekday: 5,
-									date: '2021-11-19',
-									color: '#40c463',
-								},
-								{
-									contributionCount: 0,
-									weekday: 6,
-									date: '2021-11-20',
-									color: '#ebedf0',
-								},
-							],
-						},
 						{
 							contributionDays: [
 								{
@@ -3204,7 +3550,7 @@ export const all = {
 									color: '#9be9a8',
 								},
 								{
-									contributionCount: 26,
+									contributionCount: 27,
 									weekday: 3,
 									date: '2022-11-16',
 									color: '#40c463',
@@ -3222,9 +3568,31 @@ export const all = {
 									color: '#9be9a8',
 								},
 								{
-									contributionCount: 1,
+									contributionCount: 6,
 									weekday: 6,
 									date: '2022-11-19',
+									color: '#9be9a8',
+								},
+							],
+						},
+						{
+							contributionDays: [
+								{
+									contributionCount: 11,
+									weekday: 0,
+									date: '2022-11-20',
+									color: '#9be9a8',
+								},
+								{
+									contributionCount: 14,
+									weekday: 1,
+									date: '2022-11-21',
+									color: '#9be9a8',
+								},
+								{
+									contributionCount: 12,
+									weekday: 2,
+									date: '2022-11-22',
 									color: '#9be9a8',
 								},
 							],

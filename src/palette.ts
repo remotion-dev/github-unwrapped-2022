@@ -12,3 +12,5 @@ export const BLUE_BACKGROUND = lighten(0.72, BLUE);
 
 export const PINK = '#D980FA';
 export const PINK_BACKGROUND = lighten(0.21, PINK);
+
+export const BG_2022 = '#FFE3CA';

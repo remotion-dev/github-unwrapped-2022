@@ -3,7 +3,6 @@ import {AbsoluteFill, Audio, Series} from 'remotion';
 import {EndCard} from './EndCard';
 import {EndCard2} from './EndCard2';
 import {Issues} from './Issues';
-import {ManyLanguages} from './ManyLanguages';
 import {CompactStats} from './map-response-to-stats';
 import {Title} from './Title2022';
 import {Transition} from './Transition';
@@ -25,9 +24,7 @@ export const Main: React.FC<{
 					<Title avatar={stats.avatar}></Title>
 				</Series.Sequence>
 				<Series.Sequence durationInFrames={120} offset={-25}>
-					<Transition>
-						<ManyLanguages></ManyLanguages>
-					</Transition>
+					<Transition></Transition>
 				</Series.Sequence>
 				<Series.Sequence durationInFrames={120} offset={-25}>
 					<Transition></Transition>

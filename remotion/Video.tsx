@@ -4,7 +4,6 @@ import {all} from './all';
 import {Flashcard} from './Flashcard';
 import {Issues} from './Issues';
 import {Main} from './Main';
-import {ManyLanguages} from './ManyLanguages';
 import {mapResponseToStats} from './map-response-to-stats';
 import {TopWeekdays2022} from './Weekday2022';
 import {TitleCard} from './TitleCard';
@@ -29,14 +28,6 @@ export const Root: React.FC = () => {
 					enableDecoration: true,
 					stats: mapResponseToStats(all),
 				}}
-			></Composition>
-			<Composition
-				component={ManyLanguages}
-				durationInFrames={300}
-				fps={30}
-				height={1080}
-				width={1080}
-				id="many-languages"
 			></Composition>
 			<Composition
 				component={TitleCard}
