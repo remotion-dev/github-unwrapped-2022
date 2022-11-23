@@ -27,6 +27,16 @@ import {Flutter} from './Languages/Flutter';
 import {SQL} from './Languages/SQL';
 import {Haskell} from './Languages/Haskell';
 import {Lua} from './Languages/Lua';
+import {Python} from './Languages/Python';
+import {PowerShell} from './Languages/PowerShell';
+import {Ruby} from './Languages/Ruby';
+import {Html} from './Languages/HTML';
+import {Scala} from './Languages/Scala';
+import {Php} from './Languages/Php';
+import {Swift} from './Languages/Swift';
+import {Css} from './Languages/Css';
+import {GraphQL} from './Languages/GraphQl';
+import {RLang} from './Languages/RLang';
 
 export const Root: React.FC = () => {
 	return (
@@ -258,6 +268,86 @@ export const Root: React.FC = () => {
 					durationInFrames={50}
 					fps={30}
 					id="lua"
+				></Composition>
+				<Composition
+					component={Python}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="python"
+				></Composition>
+				<Composition
+					component={PowerShell}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="powershell"
+				></Composition>
+				<Composition
+					component={Ruby}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="ruby"
+				></Composition>
+				<Composition
+					component={Html}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="html"
+				></Composition>
+				<Composition
+					component={Scala}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="scala"
+				></Composition>
+				<Composition
+					component={Php}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="php"
+				></Composition>
+				<Composition
+					component={Swift}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="swift"
+				></Composition>
+				<Composition
+					component={Css}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="css"
+				></Composition>
+				<Composition
+					component={GraphQL}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="graphql"
+				></Composition>
+				<Composition
+					component={RLang}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="r"
 				></Composition>
 			</Folder>
 		</>

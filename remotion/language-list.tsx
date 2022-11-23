@@ -9,6 +9,9 @@ export type LangMapping = {
 	Component?: React.FC<SVGProps<SVGSVGElement>>;
 };
 
+// TODO: Use it
+const NotLanguages = ['Markdown', 'Dockerfile'];
+
 export const languageList: LangMapping[] = [
 	{
 		icon: 'clojure.svg',
