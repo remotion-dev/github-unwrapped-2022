@@ -1,6 +1,8 @@
 import React from 'react';
 import {AbsoluteFill, Img, staticFile} from 'remotion';
 import {BG_2022} from '../src/palette';
+import {getFont} from './font';
+import {LangPlaceholder} from './LangPlaceholder';
 import {languageList} from './language-list';
 import {CompactStats, TopLanguage} from './map-response-to-stats';
 import {Snow} from './Snow';
@@ -16,14 +18,32 @@ export const TopLang: React.FC<{
 		<AbsoluteFill
 			style={{
 				backgroundColor: BG_2022,
+				fontFamily: 'Wintry',
 			}}
 		>
 			<Snow></Snow>
-			{stats.topLanguages.map((l) => {
-				return <Lang key={l.name} lang={l}></Lang>;
-			})}
+			<AbsoluteFill
+				style={{
+					justifyContent: 'center',
+					alignItems: 'center',
+					flexDirection: 'row',
+					flexWrap: 'wrap',
+				}}
+			>
+				{stats.topLanguages.slice(0, 5).map((l) => {
+					return <Lang key={l.name} lang={l}></Lang>;
+				})}
+			</AbsoluteFill>
 		</AbsoluteFill>
 	);
+};
+
+const style: React.CSSProperties = {
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+	flexDirection: 'column',
+	flexShrink: 0,
 };
 
 const Lang: React.FC<{
@@ -34,16 +54,28 @@ const Lang: React.FC<{
 	});
 
 	return (
-		<div key={lang.name}>
-			{icon ? (
-				<Img
-					style={{
-						height: 100,
-					}}
-					src={staticFile('languages/' + icon.icon)}
-				></Img>
-			) : null}
-			{lang.name}
+		<div style={style} key={lang.name}>
+			<div
+				style={{
+					margin: 20,
+				}}
+			>
+				{icon ? (
+					<Img
+						style={{
+							height: 150,
+						}}
+						src={staticFile('languages/' + icon.icon)}
+					></Img>
+				) : (
+					<LangPlaceholder
+						color={lang.color}
+						name={lang.name}
+					></LangPlaceholder>
+				)}
+			</div>
 		</div>
 	);
 };
+
+getFont();
