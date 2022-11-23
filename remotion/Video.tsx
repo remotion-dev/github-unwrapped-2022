@@ -17,6 +17,15 @@ import {TypeScript} from './Languages/Typescript';
 import {JavaScript} from './Languages/JavaScript';
 import {Java} from './Languages/Java';
 import {Clojure} from './Languages/Clojure';
+import {CMake} from './Languages/CMake';
+import {Vue} from './Languages/Vue';
+import {CoffeeScript} from './Languages/CoffeeScript';
+import {Kotlin} from './Languages/Kotlin';
+import {CPlusPlus} from './Languages/CPlusPlus';
+import {Solidity} from './Languages/Solidity';
+import {Flutter} from './Languages/Flutter';
+import {SQL} from './Languages/SQL';
+import {Haskell} from './Languages/Haskell';
 
 export const Root: React.FC = () => {
 	return (
@@ -168,6 +177,78 @@ export const Root: React.FC = () => {
 					durationInFrames={50}
 					fps={30}
 					id="clojure"
+				></Composition>
+				<Composition
+					component={CMake}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="cmake"
+				></Composition>
+				<Composition
+					component={Vue}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="vue"
+				></Composition>
+				<Composition
+					component={CoffeeScript}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="coffeescript"
+				></Composition>
+				<Composition
+					component={Kotlin}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="kotlin"
+				></Composition>
+				<Composition
+					component={CPlusPlus}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="cplusplus"
+				></Composition>
+				<Composition
+					component={Solidity}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="solidity"
+				></Composition>
+				<Composition
+					component={Flutter}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="flutter"
+				></Composition>
+				<Composition
+					component={SQL}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="mysql"
+				></Composition>
+				<Composition
+					component={Haskell}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="haskell"
 				></Composition>
 			</Folder>
 		</>
