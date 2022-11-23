@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, Img, staticFile} from 'remotion';
+import {AbsoluteFill} from 'remotion';
 import {BG_2022} from '../src/palette';
 import {getFont} from './font';
 import {LangPlaceholder} from './LangPlaceholder';
@@ -7,6 +7,7 @@ import {languageList} from './language-list';
 import {LanguageIcon} from './Languages/LanguageIcon';
 import {CompactStats, TopLanguage} from './map-response-to-stats';
 import {Snow} from './Snow';
+import {TopLangTitle} from './TopLangTitle';
 
 export const TopLang: React.FC<{
 	stats: CompactStats;
@@ -23,6 +24,9 @@ export const TopLang: React.FC<{
 			}}
 		>
 			<Snow></Snow>
+			<TopLangTitle
+				numberOfLanguages={stats.topLanguages.length}
+			></TopLangTitle>
 			<AbsoluteFill
 				style={{
 					justifyContent: 'center',
@@ -30,6 +34,7 @@ export const TopLang: React.FC<{
 					flexDirection: 'row',
 					flexWrap: 'wrap',
 					alignContent: 'center',
+					marginTop: 200,
 				}}
 			>
 				{stats.topLanguages.map((l) => {

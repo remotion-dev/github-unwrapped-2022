@@ -39,6 +39,7 @@ import {GraphQL} from './Languages/GraphQl';
 import {RLang} from './Languages/RLang';
 import {Rust} from './Languages/Rust';
 import {Sass} from './Languages/Sass';
+import {IssuesOpened2022} from './Languages/IssuesOpened';
 
 export const Root: React.FC = () => {
 	return (
@@ -368,6 +369,14 @@ export const Root: React.FC = () => {
 					id="sass"
 				></Composition>
 			</Folder>
+			<Composition
+				component={IssuesOpened2022}
+				height={1000}
+				width={1000}
+				durationInFrames={150}
+				fps={30}
+				id="Issues2022"
+			></Composition>
 		</>
 	);
 };

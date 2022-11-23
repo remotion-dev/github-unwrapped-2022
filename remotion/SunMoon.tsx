@@ -5,7 +5,7 @@ const Moon: React.FC = () => {
 	return (
 		<Img
 			style={{
-				height: 50,
+				height: 100,
 			}}
 			src={staticFile('moon.png')}
 		></Img>
@@ -16,7 +16,7 @@ const Sun: React.FC = () => {
 	return (
 		<Img
 			style={{
-				height: 50,
+				height: 100,
 			}}
 			src={staticFile('sun.png')}
 		></Img>
@@ -47,8 +47,8 @@ export const SunMoon: React.FC<{
 				style={{
 					backgroundColor: '#ffe3ca',
 					borderRadius: '50%',
-					height: 60,
-					width: 60,
+					height: 120,
+					width: 120,
 					boxShadow:
 						'0px -15px 15px #ffe3ca, 0px 15px 15px #ffe3ca, -15px 0 15px #ffe3ca, 15px 0 15px #ffe3ca',
 					position: 'relative',
