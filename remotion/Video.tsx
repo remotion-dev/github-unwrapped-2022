@@ -26,6 +26,7 @@ import {Solidity} from './Languages/Solidity';
 import {Flutter} from './Languages/Flutter';
 import {SQL} from './Languages/SQL';
 import {Haskell} from './Languages/Haskell';
+import {Lua} from './Languages/Lua';
 
 export const Root: React.FC = () => {
 	return (
@@ -249,6 +250,14 @@ export const Root: React.FC = () => {
 					durationInFrames={50}
 					fps={30}
 					id="haskell"
+				></Composition>
+				<Composition
+					component={Lua}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="lua"
 				></Composition>
 			</Folder>
 		</>
