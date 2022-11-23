@@ -1,12 +1,35 @@
 import React, {SVGProps} from 'react';
+import {Clojure} from './Languages/Clojure';
+import {CMake} from './Languages/CMake';
+import {CoffeeScript} from './Languages/CoffeeScript';
+import {CPlusPlus} from './Languages/CPlusPlus';
+import {Css} from './Languages/Css';
+import {Flutter} from './Languages/Flutter';
+import {GraphQL} from './Languages/GraphQl';
+import {Haskell} from './Languages/Haskell';
+import {Html} from './Languages/HTML';
 import {Java} from './Languages/Java';
 import {JavaScript} from './Languages/JavaScript';
+import {Kotlin} from './Languages/Kotlin';
+import {Lua} from './Languages/Lua';
+import {Php} from './Languages/Php';
+import {PowerShell} from './Languages/PowerShell';
+import {Python} from './Languages/Python';
+import {Reason} from './Languages/Reason';
+import {RLang} from './Languages/RLang';
+import {Ruby} from './Languages/Ruby';
+import {Rust} from './Languages/Rust';
+import {Sass} from './Languages/Sass';
+import {Scala} from './Languages/Scala';
+import {Solidity} from './Languages/Solidity';
+import {SQL} from './Languages/SQL';
+import {Swift} from './Languages/Swift';
 import {TypeScript} from './Languages/Typescript';
+import {Vue} from './Languages/Vue';
 
 export type LangMapping = {
 	name: string;
-	icon: string;
-	Component?: React.FC<SVGProps<SVGSVGElement>>;
+	Component: React.FC<SVGProps<SVGSVGElement>>;
 };
 
 // TODO: Use it
@@ -14,118 +37,111 @@ const NotLanguages = ['Markdown', 'Dockerfile'];
 
 export const languageList: LangMapping[] = [
 	{
-		icon: 'clojure.svg',
 		name: 'Clojure',
+		Component: Clojure,
 	},
 	{
-		icon: 'cmake.svg',
 		name: 'CMake',
+		Component: CMake,
 	},
 	{
-		icon: 'coffee-script.svg',
 		name: 'CoffeeScript',
+		Component: CoffeeScript,
 	},
 	{
-		icon: 'cplusplus.svg',
 		name: 'C++',
+		Component: CPlusPlus,
 	},
 	{
-		icon: 'css-alt.svg',
 		name: 'CSS',
+		Component: Css,
 	},
 	{
-		icon: 'ethereum.svg',
 		name: 'Solidity',
+		Component: Solidity,
 	},
 	{
-		icon: 'flutter.svg',
 		name: 'Dart',
+		Component: Flutter,
 	},
 	{
-		icon: 'graphql.svg',
 		name: 'GraphQL',
+		Component: GraphQL,
 	},
 	{
-		icon: 'haskell.svg',
 		name: 'Haskell',
+		Component: Haskell,
 	},
 	{
-		icon: 'html.svg',
 		name: 'HTML',
+		Component: Html,
 	},
 	{
-		icon: 'java.svg',
 		name: 'Java',
 		Component: Java,
 	},
 	{
-		icon: 'javascript.svg',
 		name: 'JavaScript',
 		Component: JavaScript,
 	},
 	{
-		icon: 'kotlin.svg',
 		name: 'Kotlin',
+		Component: Kotlin,
 	},
 	{
-		icon: 'lua.svg',
 		name: 'Lua',
+		Component: Lua,
 	},
 	{
-		icon: 'markdown.svg',
-		name: 'Markdown',
-	},
-	{
-		icon: 'mysql.svg',
 		name: 'SQL',
+		Component: SQL,
 	},
 	{
-		icon: 'php.svg',
 		name: 'PHP',
+		Component: Php,
 	},
 	{
-		icon: 'powershell.svg',
 		name: 'PowerShell',
+		Component: PowerShell,
 	},
 	{
-		icon: 'python.svg',
 		name: 'Python',
+		Component: Python,
 	},
 	{
-		icon: 'r-project.svg',
 		name: 'R',
+		Component: RLang,
 	},
 	{
-		icon: 'reason.svg',
 		name: 'Reason',
+		Component: Reason,
 	},
 	{
-		icon: 'ruby.svg',
 		name: 'Ruby',
+		Component: Ruby,
 	},
 	{
-		icon: 'rust.svg',
 		name: 'Rust',
+		Component: Rust,
 	},
 	{
-		icon: 'sass.svg',
 		name: 'Sass',
+		Component: Sass,
 	},
 	{
-		icon: 'scala.svg',
-		name: 'Scale',
+		name: 'Scala',
+		Component: Scala,
 	},
 	{
-		icon: 'swift.svg',
 		name: 'Swift',
+		Component: Swift,
 	},
 	{
-		icon: 'typescript.svg',
 		name: 'TypeScript',
 		Component: TypeScript,
 	},
 	{
-		icon: 'vue.svg',
 		name: 'Vue',
+		Component: Vue,
 	},
 ];

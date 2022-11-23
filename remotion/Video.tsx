@@ -37,6 +37,8 @@ import {Swift} from './Languages/Swift';
 import {Css} from './Languages/Css';
 import {GraphQL} from './Languages/GraphQl';
 import {RLang} from './Languages/RLang';
+import {Rust} from './Languages/Rust';
+import {Sass} from './Languages/Sass';
 
 export const Root: React.FC = () => {
 	return (
@@ -348,6 +350,22 @@ export const Root: React.FC = () => {
 					durationInFrames={50}
 					fps={30}
 					id="r"
+				></Composition>
+				<Composition
+					component={Rust}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="rust"
+				></Composition>
+				<Composition
+					component={Sass}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="sass"
 				></Composition>
 			</Folder>
 		</>

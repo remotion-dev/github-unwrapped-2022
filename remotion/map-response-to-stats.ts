@@ -1,6 +1,7 @@
 import groupBy from 'lodash.groupby';
 import {Internals} from 'remotion';
 import {All} from '../src/get-all';
+import {languageList} from './language-list';
 
 // Space saving format for contributions to not run into 256KB payload format
 // weekday, contributions, date, color
@@ -139,7 +140,14 @@ export const getTopLanguages = (response: All): TopLanguage[] | null => {
 				name: lang?.name,
 			};
 		})
-		.filter(Internals.truthy);
+		.filter(Internals.truthy)
+		.sort((a) => {
+			const hasIconA = languageList.find((f) => {
+				return f.name === a.name;
+			});
+
+			return hasIconA ? -1 : 1;
+		});
 };
 
 export const mapResponseToStats = (response: All): CompactStats => {

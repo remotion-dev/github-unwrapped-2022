@@ -1,4 +1,5 @@
 import React, {SVGProps} from 'react';
+import {RoughPath} from './RoughPath';
 
 export const Solidity: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 	return (
@@ -8,8 +9,8 @@ export const Solidity: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 			enable-background="new 0 0 28 28"
 			viewBox="0 0 28 28"
 		>
-			<path
-				fill="#FFAB66"
+			<RoughPath
+				fill="#676767"
 				d="M13.583,2.5L7.827,14c0,0,3.256,6.446,6.173,6.473c2.917,0.027,7.333-7.39,7.333-7.39L13.583,2.5z"
 			/>
 			<path d="M14,18.384c-0.092,0-0.185-0.025-0.266-0.077l-6.625-4.168c-0.229-0.145-0.302-0.444-0.165-0.678l6.625-11.216C13.66,2.093,13.823,2,14,2l0,0c0.177,0,0.341,0.094,0.431,0.246l6.62,11.216c0.137,0.233,0.065,0.533-0.164,0.678l-6.62,4.168C14.185,18.358,14.092,18.384,14,18.384z M8.053,13.552L14,17.293l5.942-3.742L14,3.483L8.053,13.552z" />

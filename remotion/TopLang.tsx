@@ -29,9 +29,10 @@ export const TopLang: React.FC<{
 					alignItems: 'center',
 					flexDirection: 'row',
 					flexWrap: 'wrap',
+					alignContent: 'center',
 				}}
 			>
-				{stats.topLanguages.slice(0, 5).map((l) => {
+				{stats.topLanguages.map((l) => {
 					return <Lang key={l.name} lang={l}></Lang>;
 				})}
 			</AbsoluteFill>
@@ -40,11 +41,7 @@ export const TopLang: React.FC<{
 };
 
 const style: React.CSSProperties = {
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
-	flexDirection: 'column',
-	flexShrink: 0,
+	display: 'inline-block',
 };
 
 const Lang: React.FC<{
