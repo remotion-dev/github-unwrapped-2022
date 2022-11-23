@@ -4,6 +4,7 @@ import {BG_2022} from '../src/palette';
 import {getFont} from './font';
 import {LangPlaceholder} from './LangPlaceholder';
 import {languageList} from './language-list';
+import {LanguageIcon} from './Languages/LanguageIcon';
 import {CompactStats, TopLanguage} from './map-response-to-stats';
 import {Snow} from './Snow';
 
@@ -61,12 +62,7 @@ const Lang: React.FC<{
 				}}
 			>
 				{icon ? (
-					<Img
-						style={{
-							height: 150,
-						}}
-						src={staticFile('languages/' + icon.icon)}
-					></Img>
+					<LanguageIcon icon={icon}></LanguageIcon>
 				) : (
 					<LangPlaceholder
 						color={lang.color}

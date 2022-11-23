@@ -1,6 +1,12 @@
-type LangMapping = {
+import React, {SVGProps} from 'react';
+import {Java} from './Languages/Java';
+import {JavaScript} from './Languages/JavaScript';
+import {TypeScript} from './Languages/Typescript';
+
+export type LangMapping = {
 	name: string;
 	icon: string;
+	Component?: React.FC<SVGProps<SVGSVGElement>>;
 };
 
 export const languageList: LangMapping[] = [
@@ -47,10 +53,12 @@ export const languageList: LangMapping[] = [
 	{
 		icon: 'java.svg',
 		name: 'Java',
+		Component: Java,
 	},
 	{
 		icon: 'javascript.svg',
 		name: 'JavaScript',
+		Component: JavaScript,
 	},
 	{
 		icon: 'kotlin.svg',
@@ -111,6 +119,7 @@ export const languageList: LangMapping[] = [
 	{
 		icon: 'typescript.svg',
 		name: 'TypeScript',
+		Component: TypeScript,
 	},
 	{
 		icon: 'vue.svg',

@@ -1,4 +1,4 @@
-import {Composition, Still} from 'remotion';
+import {Composition, Folder, Still} from 'remotion';
 import {COMP_NAME} from '../src/config';
 import {all} from './all';
 import {Flashcard} from './Flashcard';
@@ -13,6 +13,10 @@ import {Snow} from './Snow';
 import {Title} from './Title2022';
 import {AvgCommits} from './AvgCommits';
 import {TopLang} from './TopLang';
+import {TypeScript} from './Languages/Typescript';
+import {JavaScript} from './Languages/JavaScript';
+import {Java} from './Languages/Java';
+import {Clojure} from './Languages/Clojure';
 
 export const Root: React.FC = () => {
 	return (
@@ -132,6 +136,40 @@ export const Root: React.FC = () => {
 				width={1200}
 				id="flashcard"
 			></Still>
+			<Folder name="languages">
+				<Composition
+					component={TypeScript}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="typescript"
+				></Composition>
+				<Composition
+					component={JavaScript}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="javascript"
+				></Composition>
+				<Composition
+					component={Java}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="java"
+				></Composition>
+				<Composition
+					component={Clojure}
+					height={1000}
+					width={1000}
+					durationInFrames={50}
+					fps={30}
+					id="clojure"
+				></Composition>
+			</Folder>
 		</>
 	);
 };
