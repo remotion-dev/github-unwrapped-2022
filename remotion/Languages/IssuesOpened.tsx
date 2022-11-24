@@ -12,8 +12,8 @@ import chunk from 'lodash.chunk';
 import {IssueCircle} from './IssueCircle';
 import {getIndicesToClose, makeIndicesAccurate} from './tree/indices-to-close';
 
-const issuesOpen = 10;
-const issuesClosed = 10;
+const issuesOpen = 100;
+const issuesClosed = 50;
 const padding = 30;
 const bottomSpace = 130;
 
@@ -33,6 +33,27 @@ const getColor = (
 		progress,
 		[Math.max(0.0001, position - 0.1), position + 0.0002],
 		['#2da44e', '#986ee2']
+	);
+};
+
+const getScale = (
+	indicesToClose: number[],
+	index: number,
+	progress: number
+) => {
+	const indexOfIndex = indicesToClose.indexOf(index);
+	if (indexOfIndex === -1) {
+		return 1;
+	}
+	const position = indexOfIndex / (indicesToClose.length - 1);
+	return interpolate(
+		progress,
+		[Math.max(0.0001, position - 0.1), position + 0.0002],
+		[1, 0.75],
+		{
+			extrapolateLeft: 'clamp',
+			extrapolateRight: 'clamp',
+		}
 	);
 };
 
@@ -142,6 +163,11 @@ export const IssuesOpened2022: React.FC = () => {
 									actualIndex,
 									closedDotsProgress
 								);
+								const scale2 = getScale(
+									indicesToClose,
+									actualIndex,
+									closedDotsProgress
+								);
 								return (
 									<svg
 										key={i}
@@ -149,7 +175,7 @@ export const IssuesOpened2022: React.FC = () => {
 										height={dotSize - dotPadding}
 										style={{
 											margin: dotPadding / 2,
-											scale: String(scale),
+											scale: String(scale * scale2),
 										}}
 										viewBox={`0 0 100 100`}
 									>
