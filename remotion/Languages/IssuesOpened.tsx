@@ -7,17 +7,17 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {BG_2022} from '../../src/palette';
+import {BASE_COLOR, BG_2022} from '../../src/palette';
 import chunk from 'lodash.chunk';
 import {IssueCircle} from './IssueCircle';
 import {getIndicesToClose, makeIndicesAccurate} from './tree/indices-to-close';
 
-const issuesOpen = 100;
-const issuesClosed = 50;
+const issuesOpen = 50;
+const issuesClosed = 100;
 const padding = 30;
 const bottomSpace = 130;
 
-const duration = 100;
+const duration = 70;
 
 const getColor = (
 	indicesToClose: number[],
@@ -62,15 +62,15 @@ export const IssuesOpened2022: React.FC = () => {
 	const {fps} = useVideoConfig();
 
 	const totalIssues = issuesOpen + issuesClosed;
-	const dotsShown =
-		spring({
-			fps,
-			frame,
-			config: {
-				damping: 200,
-			},
-			durationInFrames: duration,
-		}) * totalIssues;
+	const openProgress = spring({
+		fps,
+		frame,
+		config: {
+			damping: 200,
+		},
+		durationInFrames: duration,
+	});
+	const dotsShown = openProgress * totalIssues;
 
 	const closedDotsProgress = spring({
 		fps,
@@ -78,7 +78,7 @@ export const IssuesOpened2022: React.FC = () => {
 		config: {
 			damping: 200,
 		},
-		durationInFrames: duration,
+		durationInFrames: 50,
 	});
 
 	const {height, width} = useVideoConfig();
@@ -203,6 +203,44 @@ export const IssuesOpened2022: React.FC = () => {
 						</div>
 					);
 				})}
+			</AbsoluteFill>
+			<AbsoluteFill
+				style={{
+					justifyContent: 'center',
+					alignItems: 'center',
+					fontFamily: 'Wintry',
+					fontSize: 130,
+					color: BASE_COLOR,
+					marginTop: 300,
+				}}
+			>
+				{Math.ceil(dotsShown) - Math.ceil(closedDotsProgress * issuesClosed)}
+			</AbsoluteFill>
+			<AbsoluteFill
+				style={{
+					justifyContent: 'center',
+					alignItems: 'center',
+					fontFamily: 'Wintry',
+					fontSize: 40,
+					color: BASE_COLOR,
+					marginTop: 390,
+					opacity: interpolate(closedDotsProgress, [0, 0.4], [1, 0]),
+				}}
+			>
+				Issues opened
+			</AbsoluteFill>
+			<AbsoluteFill
+				style={{
+					justifyContent: 'center',
+					alignItems: 'center',
+					fontFamily: 'Wintry',
+					fontSize: 40,
+					color: BASE_COLOR,
+					marginTop: 390,
+					opacity: interpolate(closedDotsProgress, [0.4, 0.8], [0, 1]),
+				}}
+			>
+				Issues still open
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);
