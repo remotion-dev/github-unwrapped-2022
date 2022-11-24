@@ -11,58 +11,12 @@ import {BG_2022} from '../../src/palette';
 import chunk from 'lodash.chunk';
 import {IssueCircle} from './IssueCircle';
 
-const issuesOpen = 400;
-const issuesClosed = 1000;
+const issuesOpen = 20;
+const issuesClosed = 30;
 const padding = 30;
 const bottomSpace = 130;
 
 const duration = 100;
-
-const coordinateToAbsoluteIndex = (
-	coord: [number, number],
-	dotsPerRow: number
-) => {
-	return coord[1] * dotsPerRow + coord[0];
-};
-
-type Direction = 'left' | 'right';
-
-const getNextCoordLeft = (coord: [number, number]): [number, number] => {
-	if (coord[0] === 0 && coord[1] === 0) {
-		return [1, 0];
-	}
-	if (coord[0] === 0) {
-		return [coord[1] + 1, 0];
-	}
-
-	return [coord[0] - 1, coord[1] + 1];
-};
-
-const getNextCoordRight = (
-	coord: [number, number],
-	dotsPerRow: number
-): [number, number] => {
-	if (coord[0] === dotsPerRow - 1 && coord[1] === 0) {
-		return [dotsPerRow - 2, 0];
-	}
-	if (coord[0] === dotsPerRow - 1) {
-		return [dotsPerRow - coord[1] - 2, 0];
-	}
-
-	return [coord[0] + 1, coord[1] + 1];
-};
-
-const getNextCoord = (
-	coord: [number, number],
-	dotsPerRow: number,
-	direction: Direction
-) => {
-	if (direction === 'left') {
-		return getNextCoordLeft(coord);
-	}
-
-	return getNextCoordRight(coord, dotsPerRow);
-};
 
 const getColor = (
 	indicesToClose: number[],
@@ -116,7 +70,10 @@ export const IssuesOpened2022: React.FC = () => {
 
 	const area = totalHeight * totalWidth;
 	const sizePerDot = Math.sqrt(area / totalIssues);
-	const dotsPerRow = Math.max(4, Math.floor((totalWidth / sizePerDot) * ratio));
+	let dotsPerRow = Math.max(4, Math.floor((totalWidth / sizePerDot) * ratio));
+	if (dotsPerRow % 2 === 0) {
+		dotsPerRow++;
+	}
 	const dotSize = totalWidth / dotsPerRow;
 	const dotPadding = dotSize / 5;
 
@@ -127,24 +84,33 @@ export const IssuesOpened2022: React.FC = () => {
 		dotsPerRow
 	);
 
+	const openRatio = issuesOpen / (issuesClosed + issuesOpen);
+	const avgRotsPerRow = openRatio * dotsPerRow;
+
+	const rows = Math.ceil(totalIssues / dotsPerRow);
+
 	// first to close from left: 0,
 	const indicesToClose = useMemo(() => {
 		let indices: number[] = [];
+		for (let i = 0; i < totalIssues; i++) {
+			const row = Math.floor(i / dotsPerRow);
+			const threshold = Math.ceil(rows);
+			const adjustedDotsPerRow = Math.max(
+				0,
+				avgRotsPerRow - threshold / 2 + (row % threshold)
+			);
 
-		for (let i = 0; i < issuesClosed; i++) {
-			const direction = i % 2 === 0 ? 'left' : 'right';
-			let nextIndex: [number, number] =
-				direction === 'left' ? [0, 0] : [dotsPerRow - 1, 0];
-			let index = coordinateToAbsoluteIndex(nextIndex, dotsPerRow);
+			const column = i % dotsPerRow;
 
-			while (indices.includes(index)) {
-				nextIndex = getNextCoord(nextIndex, dotsPerRow, direction);
-				index = coordinateToAbsoluteIndex(nextIndex, dotsPerRow);
+			const middle = (dotsPerRow - 1) / 2;
+			const isInMiddleN = Math.abs(column - middle) < adjustedDotsPerRow / 2;
+			if (!isInMiddleN) {
+				indices.push(i);
 			}
-			indices.push(index);
 		}
 		return indices;
-	}, [dotsPerRow]);
+	}, [avgRotsPerRow, dotsPerRow, rows, totalIssues]);
+	console.log({indicesToClose});
 
 	return (
 		<AbsoluteFill

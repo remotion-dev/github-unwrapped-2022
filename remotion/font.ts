@@ -6,7 +6,6 @@ if (typeof window !== 'undefined' && 'FontFace' in window) {
 	font.load().then(() => {
 		document.fonts.add(font);
 		continueRender(handle);
-		console.log('font added');
 	});
 }
 

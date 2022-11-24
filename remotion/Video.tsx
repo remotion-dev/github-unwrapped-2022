@@ -361,7 +361,7 @@ export const Root: React.FC = () => {
 				component={IssuesOpened2022}
 				height={1000}
 				width={1000}
-				durationInFrames={150}
+				durationInFrames={250}
 				fps={30}
 				id="Issues2022"
 			></Composition>
