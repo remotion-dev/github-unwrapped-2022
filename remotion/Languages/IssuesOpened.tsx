@@ -11,7 +11,7 @@ import {BG_2022} from '../../src/palette';
 import chunk from 'lodash.chunk';
 import {IssueCircle} from './IssueCircle';
 
-const issuesOpen = 500;
+const issuesOpen = 400;
 const issuesClosed = 1000;
 const padding = 30;
 const bottomSpace = 130;
@@ -76,7 +76,7 @@ const getColor = (
 	const position = indexOfIndex / (indicesToClose.length - 1);
 	return interpolateColors(
 		progress,
-		[position - 0.1, position],
+		[Math.max(0.0001, position - 0.1), position + 0.0002],
 		['#2da44e', '#986ee2']
 	);
 };
