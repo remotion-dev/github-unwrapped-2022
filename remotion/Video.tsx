@@ -2,7 +2,6 @@ import {Composition, Folder, Still} from 'remotion';
 import {COMP_NAME} from '../src/config';
 import {all} from './all';
 import {Flashcard} from './Flashcard';
-import {Issues} from './Issues';
 import {Main} from './Main';
 import {mapResponseToStats} from './map-response-to-stats';
 import {TopWeekdays2022} from './Weekday2022';
@@ -75,17 +74,6 @@ export const Root: React.FC = () => {
 				height={1080}
 				width={1080}
 				id="transition"
-			></Composition>
-			<Composition
-				component={Issues}
-				durationInFrames={300}
-				fps={30}
-				height={1080}
-				width={1080}
-				id="issues"
-				defaultProps={{
-					stats: mapResponseToStats(all),
-				}}
 			></Composition>
 			<Composition
 				component={TopWeekdays2022}

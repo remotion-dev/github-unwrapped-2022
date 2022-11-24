@@ -140,14 +140,11 @@ export const IssuesOpened2022: React.FC = () => {
 			while (indices.includes(index)) {
 				nextIndex = getNextCoord(nextIndex, dotsPerRow, direction);
 				index = coordinateToAbsoluteIndex(nextIndex, dotsPerRow);
-				console.log({nextIndex, index});
 			}
 			indices.push(index);
 		}
 		return indices;
 	}, [dotsPerRow]);
-
-	console.log(indicesToClose);
 
 	return (
 		<AbsoluteFill

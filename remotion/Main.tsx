@@ -2,7 +2,7 @@ import React from 'react';
 import {AbsoluteFill, Audio, Series} from 'remotion';
 import {EndCard} from './EndCard';
 import {EndCard2} from './EndCard2';
-import {Issues} from './Issues';
+import {IssuesOpened2022} from './Languages/IssuesOpened';
 import {CompactStats} from './map-response-to-stats';
 import {Title} from './Title2022';
 import {Transition} from './Transition';
@@ -31,7 +31,7 @@ export const Main: React.FC<{
 				</Series.Sequence>
 				<Series.Sequence durationInFrames={220} offset={-25}>
 					<Transition>
-						<Issues stats={stats}></Issues>
+						<IssuesOpened2022></IssuesOpened2022>
 					</Transition>
 				</Series.Sequence>
 				<Series.Sequence durationInFrames={120} offset={-25}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Img} from 'remotion';
+import {Img, staticFile} from 'remotion';
 import rough from 'roughjs/bin/rough.js';
 import {roundSvg} from './round-svg';
 const r = rough as typeof import('roughjs').default;
@@ -40,13 +40,23 @@ export const BottomBox: React.FC<{
 			>
 				<Img
 					style={{
-						opacity: 0.6,
 						position: 'absolute',
-						left: 0,
-						height: '50%',
-						width: '50%',
+						left: '5%',
+						top: '0%',
+						height: '45%',
+						width: '45%',
 					}}
 					src={avatar}
+				></Img>
+				<Img
+					style={{
+						position: 'absolute',
+						left: '58%',
+						top: '56%',
+						height: '30%',
+						width: '30%',
+					}}
+					src={staticFile('icons/tree.svg')}
 				></Img>
 			</div>
 			<div
