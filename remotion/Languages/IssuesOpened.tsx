@@ -10,9 +10,10 @@ import {
 import {BG_2022} from '../../src/palette';
 import chunk from 'lodash.chunk';
 import {IssueCircle} from './IssueCircle';
+import {getIndicesToClose, makeIndicesAccurate} from './tree/indices-to-close';
 
-const issuesOpen = 20;
-const issuesClosed = 30;
+const issuesOpen = 10;
+const issuesClosed = 10;
 const padding = 30;
 const bottomSpace = 130;
 
@@ -91,26 +92,17 @@ export const IssuesOpened2022: React.FC = () => {
 
 	// first to close from left: 0,
 	const indicesToClose = useMemo(() => {
-		let indices: number[] = [];
-		for (let i = 0; i < totalIssues; i++) {
-			const row = Math.floor(i / dotsPerRow);
-			const threshold = Math.ceil(rows);
-			const adjustedDotsPerRow = Math.max(
-				0,
-				avgRotsPerRow - threshold / 2 + (row % threshold)
-			);
-
-			const column = i % dotsPerRow;
-
-			const middle = (dotsPerRow - 1) / 2;
-			const isInMiddleN = Math.abs(column - middle) < adjustedDotsPerRow / 2;
-			if (!isInMiddleN) {
-				indices.push(i);
-			}
-		}
-		return indices;
+		return makeIndicesAccurate(
+			getIndicesToClose({
+				avgRotsPerRow,
+				dotsPerRow,
+				rows,
+				totalIssues,
+			}),
+			issuesClosed,
+			totalIssues
+		);
 	}, [avgRotsPerRow, dotsPerRow, rows, totalIssues]);
-	console.log({indicesToClose});
 
 	return (
 		<AbsoluteFill
@@ -131,6 +123,7 @@ export const IssuesOpened2022: React.FC = () => {
 							style={{
 								display: 'flex',
 								flexDirection: 'row',
+								justifyContent: 'center',
 							}}
 						>
 							{ch.map((_, i) => {
