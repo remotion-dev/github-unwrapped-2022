@@ -3,6 +3,7 @@ import {useRouter} from 'next/router';
 import {lighten} from 'polished';
 import React, {useCallback, useRef, useState} from 'react';
 import {getFont} from '../remotion/font';
+import {WaterColour} from '../remotion/WaterColour';
 import {button} from '../src/components/button';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
 import {BACKGROUND_COLOR, BASE_COLOR} from '../src/palette';
@@ -11,7 +12,7 @@ const input = (): React.CSSProperties => ({
 	padding: 14,
 	borderRadius: 8,
 	fontSize: 22,
-	fontFamily: 'Jelle',
+	fontFamily: 'Wintry',
 	textAlign: 'center',
 });
 
@@ -46,14 +47,14 @@ const h1: React.CSSProperties = {
 	fontWeight: 'bold',
 	fontSize: 40,
 	color: BASE_COLOR,
-	fontFamily: 'Jelle',
+	fontFamily: 'Wintry',
 };
 
 const paragraph: React.CSSProperties = {
 	color: BASE_COLOR,
 	lineHeight: 1.5,
 	fontSize: 15,
-	fontFamily: 'Jelle',
+	fontFamily: 'Wintry',
 };
 
 getFont();
@@ -97,19 +98,21 @@ export default function Home() {
 	return (
 		<>
 			<Head>
-				<title>#GitHubUnwrapped 2021</title>
+				<title>#GitHubUnwrapped 2022</title>
 				<meta
 					name="description"
-					content="Get your personalized video review of your coding 2021."
+					content="Get your personalized video review of your coding 2022."
 				/>
 				<link rel="icon" href="/fav.png" />
 			</Head>
 			<div style={abs} ref={ref}>
+				<WaterColour></WaterColour>
+
 				<div style={container}>
 					<header style={headerStyle}>
 						<div style={h1}>Your coding year in review</div>
 						<p style={paragraph}>
-							Get a personalized video of your GitHub activity in 2021. Type
+							Get a personalized video of your GitHub activity in 2022. Type
 							your username to get started!
 						</p>
 						<br />

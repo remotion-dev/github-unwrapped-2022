@@ -8,6 +8,7 @@ import {AbsoluteFill} from 'remotion';
 import {getFont} from '../remotion/font';
 import {Main} from '../remotion/Main';
 import {CompactStats} from '../remotion/map-response-to-stats';
+import {WaterColour} from '../remotion/WaterColour';
 import {backButton} from '../src/components/button';
 import Download from '../src/components/Download';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
@@ -86,17 +87,16 @@ const container: React.CSSProperties = {
 };
 
 const title: React.CSSProperties = {
-	fontFamily: 'Jelle',
+	fontFamily: 'Wintry',
 	textAlign: 'center',
 	color: BASE_COLOR,
 	marginBottom: 0,
 };
 
 const subtitle: React.CSSProperties = {
-	fontFamily: 'Jelle',
+	fontFamily: 'Wintry',
 	textAlign: 'center',
 	fontSize: 20,
-	color: 'red',
 	marginTop: 14,
 	marginBottom: 0,
 };
@@ -120,14 +120,10 @@ export default function User(props: {user: CompactStats | null}) {
 	const router = useRouter();
 	const username = ([] as string[]).concat(router.query.user ?? '')[0];
 
-	console.log('PROPS ', {user});
-	console.log('TOP LANGUAGES: ' + user?.topLanguages);
-
 	useEffect(() => {
 		if (!ready || !user || !player.current) {
 			return;
 		}
-		console.log('TOP LANGUAGES' + user?.topLanguages);
 
 		if (!user.topLanguages || user.topLanguages.length < 1) {
 			router.push('/notEnoughInfo');
@@ -241,6 +237,7 @@ export default function User(props: {user: CompactStats | null}) {
 					/>
 					<link rel="icon" href="/fav.png" />
 				</Head>
+
 				<div style={abs}>
 					<div style={container}>
 						<header style={style}>
@@ -342,7 +339,7 @@ export default function User(props: {user: CompactStats | null}) {
 								<p
 									style={{
 										color: BASE_COLOR,
-										fontFamily: 'Jelle',
+										fontFamily: 'Wintry',
 										textAlign: 'center',
 									}}
 								>
