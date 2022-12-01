@@ -8,7 +8,6 @@ import {AbsoluteFill} from 'remotion';
 import {getFont} from '../remotion/font';
 import {Main} from '../remotion/Main';
 import {CompactStats} from '../remotion/map-response-to-stats';
-import {WaterColour} from '../remotion/WaterColour';
 import {backButton} from '../src/components/button';
 import Download from '../src/components/Download';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
