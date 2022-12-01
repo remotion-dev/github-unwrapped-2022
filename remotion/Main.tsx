@@ -1,10 +1,8 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Series} from 'remotion';
 import {AvgCommits} from './AvgCommits';
-import {CommitBar} from './CommitBar';
 import {EndCard} from './EndCard';
 import {EndCard2} from './EndCard2';
-import {LangPlaceholder} from './LangPlaceholder';
 import {IssuesOpened2022} from './Languages/IssuesOpened';
 import {CompactStats} from './map-response-to-stats';
 import {Title} from './Title2022';

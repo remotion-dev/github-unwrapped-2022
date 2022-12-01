@@ -1,4 +1,3 @@
-import {lighten} from 'polished';
 import React from 'react';
 import {
 	AbsoluteFill,
@@ -7,7 +6,7 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {BACKGROUND_COLOR, BASE_COLOR} from '../src/palette';
+import {BASE_COLOR} from '../src/palette';
 import {Snow} from './Snow';
 import {WaterColour} from './WaterColour';
 
