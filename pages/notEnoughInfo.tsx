@@ -10,7 +10,7 @@ const notEnoughInfos: React.FC = () => {
 				backgroundColor: BACKGROUND_COLOR,
 				justifyContent: 'center',
 				alignItems: 'center',
-				fontFamily: 'Jelle',
+				fontFamily: 'Wintry',
 				color: BASE_COLOR,
 			}}
 		>

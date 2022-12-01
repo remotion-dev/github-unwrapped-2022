@@ -1,7 +1,7 @@
 import {lighten} from 'polished';
 
 export const BASE_COLOR = '#8A3629';
-export const BACKGROUND_COLOR = lighten(0.75, BASE_COLOR);
+export const BACKGROUND_COLOR = lighten(0.58, BASE_COLOR);
 export const LINE_COLOR = lighten(0.82, BASE_COLOR);
 
 export const ORANGE = '#EA2027';
