@@ -4,9 +4,11 @@ import {AvgCommits} from './AvgCommits';
 import {CommitBar} from './CommitBar';
 import {EndCard} from './EndCard';
 import {EndCard2} from './EndCard2';
+import {LangPlaceholder} from './LangPlaceholder';
 import {IssuesOpened2022} from './Languages/IssuesOpened';
 import {CompactStats} from './map-response-to-stats';
 import {Title} from './Title2022';
+import {TopLang} from './TopLang';
 import {Transition} from './Transition';
 import {TopWeekdays2022} from './Weekday2022';
 
@@ -25,6 +27,13 @@ export const Main: React.FC<{
 				<Series.Sequence durationInFrames={130}>
 					<Title avatar={stats.avatar}></Title>
 				</Series.Sequence>
+
+				<Series.Sequence durationInFrames={150} offset={-25}>
+					<Transition>
+						<TopLang stats={stats}></TopLang>
+					</Transition>
+				</Series.Sequence>
+
 				<Series.Sequence durationInFrames={120} offset={-25}>
 					<AvgCommits></AvgCommits>
 				</Series.Sequence>
