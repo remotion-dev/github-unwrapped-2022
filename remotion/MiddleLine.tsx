@@ -1,12 +1,10 @@
 import React from 'react';
-
-import rough from 'roughjs/bin/rough.js';
-const r = rough as typeof import('roughjs').default;
+import {getRough} from './get-rough';
 
 export const MiddleLine: React.FC = () => {
 	const d = 'M 0 5 L 1000 5';
 
-	const path = r.generator();
+	const path = getRough().generator();
 	const drawable = path.path(d, {
 		strokeWidth: 5,
 		roughness: 0.9,

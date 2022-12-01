@@ -1,8 +1,6 @@
 import React, {SVGProps} from 'react';
-import {random, useCurrentFrame} from 'remotion';
-
-import rough from 'roughjs/bin/rough.js';
-const r = rough as typeof import('roughjs').default;
+import {random} from 'remotion';
+import {getRough} from '../get-rough';
 
 export const IssueCircle: React.FC<
 	SVGProps<SVGEllipseElement> & {
@@ -10,7 +8,7 @@ export const IssueCircle: React.FC<
 		seed: number;
 	}
 > = ({size, seed, ...props}) => {
-	const path = r.generator();
+	const path = getRough().generator();
 	const drawable = path.circle(
 		Number(props.cx),
 		Number(props.cy),

@@ -1,17 +1,16 @@
 import {random, useCurrentFrame} from 'remotion';
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
-import rough from 'roughjs/bin/rough.js';
 import {transparentize} from 'polished';
 import {useNoiseTranslate} from './Languages/use-noise-translate';
-const r = rough as typeof import('roughjs').default;
+import {getRough} from './get-rough';
 
 export const LangPlaceholder: React.FC<{
 	name: string;
 	color: string | null;
 }> = ({name, color}) => {
 	const frame = Math.round(useCurrentFrame() / 4);
-	const path = r.generator();
+	const path = getRough().generator();
 	const drawable = path.circle(50, 50, 100, {
 		roughness: 1,
 		fill: transparentize(0.3, color ?? '#ffe577'),

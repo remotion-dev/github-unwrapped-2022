@@ -1,14 +1,13 @@
 import React from 'react';
 import {Img, staticFile} from 'remotion';
-import rough from 'roughjs/bin/rough.js';
+import {getRough} from './get-rough';
 import {roundSvg} from './round-svg';
-const r = rough as typeof import('roughjs').default;
 
 export const BottomBox: React.FC<{
 	squash: number;
 	avatar: string;
 }> = ({squash, avatar}) => {
-	const path = r.generator();
+	const path = getRough().generator();
 	const drawable = path.path(roundSvg('M 0 0 L 0 100 L 100 100 L 100 0', 5), {
 		strokeWidth: 10,
 		roughness: 0.3,

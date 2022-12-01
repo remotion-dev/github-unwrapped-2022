@@ -1,15 +1,14 @@
 import {evolvePath, getLength} from '@remotion/paths';
 import React from 'react';
 import {AbsoluteFill, Easing, interpolate, useCurrentFrame} from 'remotion';
+import {getRough} from './get-rough';
 
-import rough from 'roughjs/bin/rough.js';
 import {SunMoon} from './SunMoon';
-const r = rough as typeof import('roughjs').default;
 
 export const Arc: React.FC = () => {
 	const d = 'M 0 540 C 0 -200 1080 -200 1080 540';
 
-	const path = r.generator();
+	const path = getRough().generator();
 	const drawable = path.path(d, {
 		strokeWidth: 6,
 		roughness: 4,

@@ -1,8 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import {useCurrentFrame} from 'remotion';
-import rough from 'roughjs/bin/rough.js';
 import {parsePath, roundCommands} from 'svg-round-corners';
-const r = rough as typeof import('roughjs').default;
+import {getRough} from './get-rough';
 
 export const WeekdayBar: React.FC<{
 	lower: number;
@@ -19,7 +18,7 @@ export const WeekdayBar: React.FC<{
 		if (!ref.current) {
 			return;
 		}
-		const rc = r.svg(ref.current as SVGSVGElement, {});
+		const rc = getRough().svg(ref.current as SVGSVGElement, {});
 		const path = `M 0 0 L 0 ${actualHeight} L ${width} ${actualHeight} L ${width} 0 z`;
 
 		const parsed = parsePath(path);
