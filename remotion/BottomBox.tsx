@@ -8,13 +8,16 @@ export const BottomBox: React.FC<{
 	avatar: string;
 }> = ({squash, avatar}) => {
 	const path = getRough().generator();
-	const drawable = path.path(roundSvg('M 0 0 L 0 100 L 100 100 L 100 0', 5), {
-		strokeWidth: 10,
-		roughness: 0.3,
-		stroke: '#8A3629',
-		seed: 5,
-		maxRandomnessOffset: 4,
-	});
+	const drawable = path.path(
+		roundSvg('M 0 0 L 0 100 L 100 100 L 100 0 Z', -1),
+		{
+			strokeWidth: 10,
+			roughness: 0.3,
+			stroke: '#8A3629',
+			seed: 5,
+			maxRandomnessOffset: 4,
+		}
+	);
 
 	const drawable2 = 'M 0 50 L 100 50';
 	const drawable3 = 'M 50 0 L 50 100';
@@ -27,6 +30,7 @@ export const BottomBox: React.FC<{
 				transformOrigin: 'center bottom',
 				position: 'relative',
 				transform: `scaleY(${1 - squash}) scaleX(${1 + squash})`,
+				marginTop: '10px',
 			}}
 		>
 			<div

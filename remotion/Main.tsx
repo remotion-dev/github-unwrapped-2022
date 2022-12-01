@@ -1,5 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Series} from 'remotion';
+import {AvgCommits} from './AvgCommits';
+import {CommitBar} from './CommitBar';
 import {EndCard} from './EndCard';
 import {EndCard2} from './EndCard2';
 import {IssuesOpened2022} from './Languages/IssuesOpened';
@@ -24,11 +26,9 @@ export const Main: React.FC<{
 					<Title avatar={stats.avatar}></Title>
 				</Series.Sequence>
 				<Series.Sequence durationInFrames={120} offset={-25}>
-					<Transition></Transition>
+					<AvgCommits></AvgCommits>
 				</Series.Sequence>
-				<Series.Sequence durationInFrames={120} offset={-25}>
-					<Transition></Transition>
-				</Series.Sequence>
+
 				<Series.Sequence durationInFrames={220} offset={-25}>
 					<Transition>
 						<IssuesOpened2022></IssuesOpened2022>
