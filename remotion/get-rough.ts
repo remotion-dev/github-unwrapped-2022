@@ -1,3 +1,4 @@
+// @ts-expect-error
 import rough from 'roughjs/bundled/rough.cjs';
 
 export const getRough = () => {
