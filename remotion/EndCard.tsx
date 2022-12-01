@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
-import {BACKGROUND_COLOR, BASE_COLOR} from '../src/palette';
+import {BASE_COLOR} from '../src/palette';
 import {CompactStats} from './map-response-to-stats';
 import {Snow} from './Snow';
 import {WaterColour} from './WaterColour';
