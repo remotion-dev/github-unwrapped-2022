@@ -1,15 +1,14 @@
 import React, {SVGProps} from 'react';
 import {random, useCurrentFrame} from 'remotion';
+import {getRough} from '../get-rough';
 
-import rough from 'roughjs/bin/rough.js';
 import {useNoiseTranslate} from './use-noise-translate';
-const r = rough as typeof import('roughjs').default;
 
 export const RoughPath: React.FC<SVGProps<SVGPathElement>> = (props) => {
 	const [noiseX, noiseY] = useNoiseTranslate(props.d ?? '');
 
 	const frame = Math.floor(useCurrentFrame() / 3);
-	const path = r.generator();
+	const path = getRough().generator();
 	const drawable = path.path(props.d as string, {
 		roughness: 0.3,
 		fill: props.fill,

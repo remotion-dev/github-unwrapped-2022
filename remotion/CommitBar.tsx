@@ -1,7 +1,6 @@
 import React from 'react';
-import rough from 'roughjs/bin/rough.js';
+import {getRough} from './get-rough';
 import {roundSvg} from './round-svg';
-const r = rough as typeof import('roughjs').default;
 
 export const CommitBar: React.FC<{
 	height: number;
@@ -15,7 +14,7 @@ export const CommitBar: React.FC<{
 
 	const d = `M 0 0 L 0 ${actualHeight} L ${width} ${actualHeight} L ${width} 0 z`;
 
-	const path = r.generator();
+	const path = getRough().generator();
 	const drawable = path.path(roundSvg(d, 5), {
 		roughness: 0.4,
 		stroke: 'transparent',

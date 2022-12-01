@@ -1,13 +1,12 @@
 import React, {SVGProps} from 'react';
 import {useCurrentFrame} from 'remotion';
+import {getRough} from '../get-rough';
 
-import rough from 'roughjs/bin/rough.js';
 import {useNoiseTranslate} from './use-noise-translate';
-const r = rough as typeof import('roughjs').default;
 
 export const RoughEllipse: React.FC<SVGProps<SVGEllipseElement>> = (props) => {
 	const frame = Math.floor(useCurrentFrame() / 3);
-	const path = r.generator();
+	const path = getRough().generator();
 	const drawable = path.ellipse(
 		Number(props.cx),
 		Number(props.cy),
