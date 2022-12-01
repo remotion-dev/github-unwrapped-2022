@@ -10,7 +10,7 @@ export const BottomBox: React.FC<{
 }> = ({squash, avatar}) => {
 	const path = r.generator();
 	const drawable = path.path(
-		roundSvg('M 0 0 L 0 100 L 100 100 L 100 0 L 0 0 L 100 0', 5),
+		roundSvg('M 0 0 L 0 100 L 100 100 L 100 0 Z', -1),
 		{
 			strokeWidth: 10,
 			roughness: 0.3,
