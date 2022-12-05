@@ -3,20 +3,25 @@ import {random, useCurrentFrame} from 'remotion';
 import {getRough} from './get-rough';
 import {useNoiseTranslate} from './use-noise-translate';
 
-export const RoughPath: React.FC<SVGProps<SVGPathElement>> = (props) => {
+export const RoughPath: React.FC<
+	SVGProps<SVGPathElement> & {
+		roughness?: number;
+		strokeWidth?: number;
+	}
+> = ({roughness, strokeWidth, ...props}) => {
 	const [noiseX, noiseY] = useNoiseTranslate(props.d ?? '');
 
 	const frame = Math.floor(useCurrentFrame() / 3);
 	const path = getRough().generator();
 	const drawable = path.path(props.d as string, {
-		roughness: 0.3,
+		roughness: roughness ?? 0.3,
 		fill: props.fill,
 		seed: frame,
 		maxRandomnessOffset: 4,
 		hachureGap: 1,
 		hachureAngle: random(props.d ?? '') * 360,
-		strokeWidth: 2,
-		stroke: 'none',
+		strokeWidth: strokeWidth ?? 2,
+		stroke: props.stroke ?? undefined,
 	});
 
 	const paths = path.toPaths(drawable);
