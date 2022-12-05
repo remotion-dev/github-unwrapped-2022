@@ -43,6 +43,7 @@ import {TreeComp} from './TreeComp';
 import {LogoComp} from './LogoComp';
 import {GithubComp} from './GithubComp';
 import {TreeGithub} from './TreeGithub';
+import {SockComp} from './SockComp';
 
 export const Root: React.FC = () => {
 	return (
@@ -400,6 +401,14 @@ export const Root: React.FC = () => {
 				durationInFrames={250}
 				fps={30}
 				id="TreeGithub"
+			></Composition>
+			<Composition
+				component={SockComp}
+				height={1000}
+				width={1000}
+				durationInFrames={250}
+				fps={30}
+				id="SockComp"
 			></Composition>
 		</>
 	);
