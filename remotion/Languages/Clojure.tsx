@@ -1,5 +1,5 @@
 import React, {SVGProps} from 'react';
-import {RoughEllipse} from './RoughEllipse';
+import {RoughEllipse} from '../RoughEllipse';
 
 export const Clojure: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 	return (

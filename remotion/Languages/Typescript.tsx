@@ -1,5 +1,5 @@
 import React, {SVGProps} from 'react';
-import {RoughPath} from './RoughPath';
+import {RoughPath} from '../RoughPath';
 
 export const TypeScript: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 	return (

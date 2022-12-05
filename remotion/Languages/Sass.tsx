@@ -1,5 +1,5 @@
 import React, {SVGProps} from 'react';
-import {RoughCircle} from './RoughCircle';
+import {RoughCircle} from '../RoughCircle';
 
 export const Sass: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 	return (

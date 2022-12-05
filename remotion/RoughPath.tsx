@@ -1,8 +1,7 @@
 import React, {SVGProps} from 'react';
 import {random, useCurrentFrame} from 'remotion';
-import {getRough} from '../get-rough';
-
-import {useNoiseTranslate} from '../use-noise-translate';
+import {getRough} from './get-rough';
+import {useNoiseTranslate} from './use-noise-translate';
 
 export const RoughPath: React.FC<SVGProps<SVGPathElement>> = (props) => {
 	const [noiseX, noiseY] = useNoiseTranslate(props.d ?? '');

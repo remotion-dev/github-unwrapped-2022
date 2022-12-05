@@ -1,8 +1,8 @@
 import React, {SVGProps} from 'react';
 import {useCurrentFrame} from 'remotion';
-import {getRough} from '../get-rough';
+import {getRough} from './get-rough';
 
-import {useNoiseTranslate} from '../use-noise-translate';
+import {useNoiseTranslate} from './use-noise-translate';
 
 export const RoughCircle: React.FC<SVGProps<SVGEllipseElement>> = (props) => {
 	const frame = Math.floor(useCurrentFrame() / 3);
