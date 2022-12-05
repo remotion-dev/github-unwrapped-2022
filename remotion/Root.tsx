@@ -42,6 +42,7 @@ import {IssuesOpened2022} from './IssuesOpened';
 import {TreeComp} from './TreeComp';
 import {LogoComp} from './LogoComp';
 import {GithubComp} from './GithubComp';
+import {TreeGithub} from './TreeGithub';
 
 export const Root: React.FC = () => {
 	return (
@@ -391,6 +392,14 @@ export const Root: React.FC = () => {
 				durationInFrames={250}
 				fps={30}
 				id="Github"
+			></Composition>
+			<Composition
+				component={TreeGithub}
+				height={1000}
+				width={1000}
+				durationInFrames={250}
+				fps={30}
+				id="TreeGithub"
 			></Composition>
 		</>
 	);

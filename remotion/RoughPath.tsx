@@ -7,8 +7,9 @@ export const RoughPath: React.FC<
 	SVGProps<SVGPathElement> & {
 		roughness?: number;
 		strokeWidth?: number;
+		hachureGap?: number;
 	}
-> = ({roughness, strokeWidth, ...props}) => {
+> = ({roughness, strokeWidth, hachureGap, ...props}) => {
 	const [noiseX, noiseY] = useNoiseTranslate(props.d ?? '');
 
 	const frame = Math.floor(useCurrentFrame() / 3);
@@ -18,7 +19,7 @@ export const RoughPath: React.FC<
 		fill: props.fill,
 		seed: frame,
 		maxRandomnessOffset: 4,
-		hachureGap: 1,
+		hachureGap: hachureGap ?? 1,
 		hachureAngle: random(props.d ?? '') * 360,
 		strokeWidth: strokeWidth ?? 2,
 		stroke: props.stroke ?? undefined,
