@@ -41,6 +41,7 @@ import {Sass} from './Languages/Sass';
 import {IssuesOpened2022} from './IssuesOpened';
 import {TreeComp} from './TreeComp';
 import {LogoComp} from './LogoComp';
+import {GithubComp} from './GithubComp';
 
 export const Root: React.FC = () => {
 	return (
@@ -382,6 +383,14 @@ export const Root: React.FC = () => {
 				durationInFrames={250}
 				fps={30}
 				id="Logo"
+			></Composition>
+			<Composition
+				component={GithubComp}
+				height={1000}
+				width={1000}
+				durationInFrames={250}
+				fps={30}
+				id="Github"
 			></Composition>
 		</>
 	);
