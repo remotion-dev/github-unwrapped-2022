@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {SVGProps} from 'react';
-import {BASE_COLOR} from '../../src/palette';
 import {RoughPath} from '../RoughPath';
 
 export const Tree = (props: SVGProps<SVGSVGElement>) => (
