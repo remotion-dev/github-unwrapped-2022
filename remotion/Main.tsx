@@ -3,7 +3,7 @@ import {AbsoluteFill, Audio, Series} from 'remotion';
 import {AvgCommits} from './AvgCommits';
 import {EndCard} from './EndCard';
 import {EndCard2} from './EndCard2';
-import {IssuesOpened2022} from './Languages/IssuesOpened';
+import {IssuesOpened2022} from './IssuesOpened';
 import {CompactStats} from './map-response-to-stats';
 import {Title} from './Title2022';
 import {TopLang} from './TopLang';

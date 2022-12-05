@@ -1,6 +1,6 @@
 import React, {SVGProps} from 'react';
 import {random} from 'remotion';
-import {getRough} from '../get-rough';
+import {getRough} from './get-rough';
 
 export const IssueCircle: React.FC<
 	SVGProps<SVGEllipseElement> & {

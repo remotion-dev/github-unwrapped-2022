@@ -38,7 +38,7 @@ import {GraphQL} from './Languages/GraphQl';
 import {RLang} from './Languages/RLang';
 import {Rust} from './Languages/Rust';
 import {Sass} from './Languages/Sass';
-import {IssuesOpened2022} from './Languages/IssuesOpened';
+import {IssuesOpened2022} from './IssuesOpened';
 
 export const Root: React.FC = () => {
 	return (

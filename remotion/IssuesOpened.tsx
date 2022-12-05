@@ -7,10 +7,10 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {BASE_COLOR, BG_2022} from '../../src/palette';
 import chunk from 'lodash.chunk';
 import {IssueCircle} from './IssueCircle';
-import {getIndicesToClose, makeIndicesAccurate} from '../tree/indices-to-close';
+import {getIndicesToClose, makeIndicesAccurate} from './tree/indices-to-close';
+import {BASE_COLOR, BG_2022} from '../src/palette';
 
 const issuesOpen = 50;
 const issuesClosed = 100;
