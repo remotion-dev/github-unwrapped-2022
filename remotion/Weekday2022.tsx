@@ -1,6 +1,7 @@
 import {lighten} from 'polished';
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
+import {BASE_COLOR} from '../src/palette';
 import {CompactStats, Weekday} from './map-response-to-stats';
 import {Snow} from './Snow';
 import {WaterColour} from './WaterColour';
@@ -27,7 +28,7 @@ const label: React.CSSProperties = {
 };
 
 const bigTitle: React.CSSProperties = {
-	color: '#9E2600',
+	color: BASE_COLOR,
 	fontWeight: 'bold',
 	fontSize: 100,
 	fontFamily: 'Wintry',
@@ -35,7 +36,7 @@ const bigTitle: React.CSSProperties = {
 };
 
 const title: React.CSSProperties = {
-	color: '#9E2600',
+	color: BASE_COLOR,
 	fontWeight: 'bold',
 	fontSize: 50,
 	fontFamily: 'Wintry',
@@ -101,8 +102,8 @@ export const TopWeekdays2022: React.FC<{
 											style={{
 												...label,
 												color: isMostProductive
-													? '#8A3629'
-													: lighten(0.15, '#8A3629'),
+													? BASE_COLOR
+													: lighten(0.15, BASE_COLOR),
 											}}
 										>
 											{['M', 'T', 'W', 'T', 'F', 'S', 'S'][i]}

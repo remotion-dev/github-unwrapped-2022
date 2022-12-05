@@ -1,5 +1,6 @@
 import React from 'react';
 import {Img, staticFile} from 'remotion';
+import {BASE_COLOR} from '../src/palette';
 import {getRough} from './get-rough';
 import {roundSvg} from './round-svg';
 
@@ -13,7 +14,7 @@ export const BottomBox: React.FC<{
 		{
 			strokeWidth: 10,
 			roughness: 0.3,
-			stroke: '#8A3629',
+			stroke: BASE_COLOR,
 			seed: 5,
 			maxRandomnessOffset: 4,
 		}
@@ -74,8 +75,8 @@ export const BottomBox: React.FC<{
 						overflow: 'visible',
 					}}
 				>
-					<path d={drawable2} stroke="#8A3629" strokeWidth={8}></path>
-					<path d={drawable3} stroke="#8A3629" strokeWidth={8}></path>
+					<path d={drawable2} stroke={BASE_COLOR} strokeWidth={8}></path>
+					<path d={drawable3} stroke={BASE_COLOR} strokeWidth={8}></path>
 					{paths.map((p, i) => {
 						return (
 							<path

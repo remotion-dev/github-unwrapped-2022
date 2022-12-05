@@ -1,6 +1,7 @@
 import React, {useEffect, useRef} from 'react';
 import {useCurrentFrame} from 'remotion';
 import {parsePath, roundCommands} from 'svg-round-corners';
+import {BASE_COLOR} from '../src/palette';
 import {getRough} from './get-rough';
 
 export const WeekdayBar: React.FC<{
@@ -28,8 +29,8 @@ export const WeekdayBar: React.FC<{
 		const p = rc.path(rounded, {
 			strokeWidth: 2,
 			bowing: isMostProductive ? 20 : 0,
-			stroke: isMostProductive ? '#8A3629' : '#DCB09B',
-			fill: isMostProductive ? '#8A3629' : '#DCB09B',
+			stroke: isMostProductive ? BASE_COLOR : '#DCB09B',
+			fill: isMostProductive ? BASE_COLOR : '#DCB09B',
 			fillStyle: 'solid',
 			seed: frame,
 		});

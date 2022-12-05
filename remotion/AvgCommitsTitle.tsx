@@ -1,5 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
+import {BASE_COLOR} from '../src/palette';
 
 export const AvgCommitsTitle: React.FC = () => {
 	const frame = useCurrentFrame();
@@ -14,7 +15,7 @@ export const AvgCommitsTitle: React.FC = () => {
 				fontFamily: 'Wintry',
 				fontSize: 70,
 				marginTop: -320,
-				color: '#8A3629',
+				color: BASE_COLOR,
 			}}
 		>
 			<div

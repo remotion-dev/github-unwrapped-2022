@@ -1,4 +1,5 @@
 import React from 'react';
+import {BASE_COLOR} from '../src/palette';
 import {getRough} from './get-rough';
 import {roundSvg} from './round-svg';
 
@@ -57,7 +58,7 @@ export const CommitBar: React.FC<{
 					width,
 					marginTop: 20,
 					fontFamily: 'Wintry',
-					color: '#8A3629',
+					color: BASE_COLOR,
 					fontSize: 24,
 				}}
 			>

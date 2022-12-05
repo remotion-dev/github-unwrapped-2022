@@ -1,4 +1,5 @@
 import React from 'react';
+import {BASE_COLOR} from '../src/palette';
 import {getRough} from './get-rough';
 
 export const MiddleLine: React.FC = () => {
@@ -8,7 +9,7 @@ export const MiddleLine: React.FC = () => {
 	const drawable = path.path(d, {
 		strokeWidth: 5,
 		roughness: 0.9,
-		stroke: '#8A3629',
+		stroke: BASE_COLOR,
 		seed: 5,
 		maxRandomnessOffset: 4,
 	});

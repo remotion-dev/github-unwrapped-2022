@@ -2,7 +2,7 @@ import {random, useCurrentFrame} from 'remotion';
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {transparentize} from 'polished';
-import {useNoiseTranslate} from './Languages/use-noise-translate';
+import {useNoiseTranslate} from './use-noise-translate';
 import {getRough} from './get-rough';
 
 export const LangPlaceholder: React.FC<{

@@ -1,5 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
+import {BASE_COLOR} from '../src/palette';
 
 export const TopLangTitle: React.FC<{
 	numberOfLanguages: number;
@@ -16,7 +17,7 @@ export const TopLangTitle: React.FC<{
 				fontFamily: 'Wintry',
 				fontSize: 100,
 				marginTop: -270,
-				color: '#8A3629',
+				color: BASE_COLOR,
 			}}
 		>
 			<div

@@ -6,11 +6,12 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
+import {BASE_COLOR} from '../src/palette';
 import {BottomBox} from './BottomBox';
 import {Bow} from './Bow';
 
 const title: React.CSSProperties = {
-	color: '#8A3629',
+	color: BASE_COLOR,
 	fontFamily: 'Wintry',
 	marginBottom: 0,
 	marginTop: 0,
