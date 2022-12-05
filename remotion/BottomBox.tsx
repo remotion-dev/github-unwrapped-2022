@@ -9,16 +9,14 @@ export const BottomBox: React.FC<{
 	avatar: string;
 }> = ({squash, avatar}) => {
 	const path = getRough().generator();
-	const drawable = path.path(
-		roundSvg('M 0 0 L 0 100 L 100 100 L 100 0 Z', -1),
-		{
-			strokeWidth: 10,
-			roughness: 0.3,
-			stroke: BASE_COLOR,
-			seed: 5,
-			maxRandomnessOffset: 4,
-		}
-	);
+	const square = 'M 0 0 L 0 100 L 100 100 L 100 0 Z';
+	const drawable = path.path(roundSvg(square, -1), {
+		strokeWidth: 10,
+		roughness: 0.3,
+		stroke: '#000',
+		seed: 5,
+		maxRandomnessOffset: 4,
+	});
 
 	const drawable2 = 'M 0 50 L 100 50';
 	const drawable3 = 'M 50 0 L 50 100';
@@ -75,8 +73,9 @@ export const BottomBox: React.FC<{
 						overflow: 'visible',
 					}}
 				>
-					<path d={drawable2} stroke={BASE_COLOR} strokeWidth={8}></path>
-					<path d={drawable3} stroke={BASE_COLOR} strokeWidth={8}></path>
+					<path d={square} fill={BASE_COLOR}></path>
+					<path d={drawable2} stroke={'#000'} strokeWidth={8}></path>
+					<path d={drawable3} stroke={'#000'} strokeWidth={8}></path>
 					{paths.map((p, i) => {
 						return (
 							<path
