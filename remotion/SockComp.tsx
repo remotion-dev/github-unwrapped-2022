@@ -2,21 +2,24 @@ import React from 'react';
 import {
 	AbsoluteFill,
 	interpolate,
+	random,
 	spring,
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {BG_2022} from '../src/palette';
 import {Sock} from './Icons/Sock';
 import {TypeScript} from './Languages/Typescript';
 
-export const SockComp: React.FC = () => {
+export const SockComp: React.FC<{
+	children: React.ReactNode;
+	delay: number;
+}> = ({children, delay}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
 	const squeezeOut = spring({
 		fps,
-		frame,
+		frame: frame - delay,
 		config: {
 			damping: 200,
 		},
@@ -25,25 +28,32 @@ export const SockComp: React.FC = () => {
 
 	const squeezeIn = spring({
 		fps,
-		frame: frame - 10,
+		frame: frame - 10 - delay,
 		durationInFrames: 10,
 	});
 	const push = spring({
 		fps,
-		frame: frame - 10,
+		frame: frame - 10 - delay,
 		durationInFrames: 20,
 	});
 
 	const scaleX = 1 + squeezeOut * 0.2 - squeezeIn * 0.2;
 	const scaleY = 1 - squeezeOut * 0.2 + squeezeIn * 0.2;
 
-	const top = interpolate(push, [0, 1], [0, -300]);
+	const top = interpolate(push, [0, 1], [0, -350]);
 	const scaleLogo = interpolate(push, [0, 1], [0.15, 0.3]);
+
+	const comp = children ?? <TypeScript />;
 
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: BG_2022,
+				rotate:
+					interpolate(
+						random(delay + 'b'),
+						[0, 1],
+						[-0.1 * Math.PI, 0.1 * Math.PI]
+					) + 'rad',
 			}}
 		>
 			<AbsoluteFill
@@ -53,7 +63,7 @@ export const SockComp: React.FC = () => {
 					marginTop: top,
 				}}
 			>
-				<TypeScript></TypeScript>
+				{comp}
 			</AbsoluteFill>
 			<AbsoluteFill
 				style={{
