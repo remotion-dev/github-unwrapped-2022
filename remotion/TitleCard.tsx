@@ -1,6 +1,7 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {BASE_COLOR} from '../src/palette';
+import {StrokedText} from './StrokedText';
 
 const titleStyle: React.CSSProperties = {
 	color: BASE_COLOR,
@@ -13,7 +14,7 @@ const titleStyle: React.CSSProperties = {
 
 export const TitleCard: React.FC = () => {
 	return (
-		<AbsoluteFill style={{}}>
+		<StrokedText>
 			<AbsoluteFill
 				style={{
 					justifyContent: 'center',
@@ -38,6 +39,6 @@ export const TitleCard: React.FC = () => {
 					</span>
 				</div>
 			</AbsoluteFill>
-		</AbsoluteFill>
+		</StrokedText>
 	);
 };

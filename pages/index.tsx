@@ -6,7 +6,7 @@ import {getFont} from '../remotion/font';
 import {WaterColour} from '../remotion/WaterColour';
 import {button} from '../src/components/button';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
-import {BACKGROUND_COLOR, BASE_COLOR} from '../src/palette';
+import {BASE_COLOR, BG_2022} from '../src/palette';
 
 const input = (): React.CSSProperties => ({
 	padding: 14,
@@ -31,7 +31,7 @@ const abs: React.CSSProperties = {
 	display: 'flex',
 	flexDirection: 'column',
 	overflow: 'auto',
-	backgroundColor: BACKGROUND_COLOR,
+	backgroundColor: BG_2022,
 	position: 'relative',
 };
 

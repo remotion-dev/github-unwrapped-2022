@@ -11,8 +11,8 @@ export const BottomBox: React.FC<{
 	const path = getRough().generator();
 	const square = 'M 0 0 L 0 100 L 100 100 L 100 0 Z';
 	const drawable = path.path(roundSvg(square, -1), {
-		strokeWidth: 10,
-		roughness: 0.3,
+		strokeWidth: 7,
+		roughness: 0.6,
 		stroke: '#000',
 		seed: 5,
 		maxRandomnessOffset: 4,
