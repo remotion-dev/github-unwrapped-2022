@@ -30,18 +30,16 @@ export const Main: React.FC<{
 			}}
 		>
 			<Audio src="https://jonnyburger.s3.eu-central-1.amazonaws.com/the-librarian.mp3"></Audio>
-			<Snow></Snow>
+			<Snow windPushes={duration}></Snow>
 			<Sequence durationInFrames={duration[0]}>
 				<Title noBackground avatar={stats.avatar}></Title>
 			</Sequence>
 			<Sequence durationInFrames={duration[1]} from={accumulatedFrom(1)}>
 				<Socks noBackground></Socks>
 			</Sequence>
-
 			<Sequence durationInFrames={duration[2]} from={accumulatedFrom(2)}>
 				<AvgCommits noBackground></AvgCommits>
 			</Sequence>
-
 			<Sequence durationInFrames={duration[3]} from={accumulatedFrom(3)}>
 				<IssuesOpened2022 noBackground></IssuesOpened2022>
 			</Sequence>

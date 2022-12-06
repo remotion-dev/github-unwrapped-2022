@@ -9,11 +9,11 @@ import {
 } from 'remotion';
 import {noise2D} from '@remotion/noise';
 
-export const Snow: React.FC = () => {
+export const Snow: React.FC<{
+	windPushes?: number[];
+}> = ({windPushes = [100, 200, 300, 400, 500, 600]}) => {
 	const {width, height, fps} = useVideoConfig();
 	const frame = useCurrentFrame();
-
-	const windPushes = [100, 200, 300, 400, 500, 600];
 
 	const wind = windPushes
 		.map((delay) => {
