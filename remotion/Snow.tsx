@@ -10,18 +10,26 @@ import {
 import {noise2D} from '@remotion/noise';
 
 export const Snow: React.FC = () => {
-	const {width, fps} = useVideoConfig();
+	const {width, height, fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
-	const wind =
-		spring({
-			fps,
-			frame: frame - 100,
-			config: {
-				damping: 200,
-			},
-			durationInFrames: 30,
-		}) * 0;
+	const windPushes = [100, 200, 300, 400, 500, 600];
+
+	const wind = windPushes
+		.map((delay) => {
+			return (
+				spring({
+					fps,
+					frame: frame - delay,
+					config: {
+						damping: 200,
+					},
+					durationInFrames: 30,
+				}) * width
+			);
+		})
+		.reduce((a, b) => a + b);
+	const slidingWindow = Math.max(0, useCurrentFrame() - 150);
 
 	return (
 		<AbsoluteFill
@@ -29,28 +37,28 @@ export const Snow: React.FC = () => {
 				display: 'block',
 			}}
 		>
-			{new Array(400).fill(true).map((_, i) => {
-				const size = 15 + random(i + 'size') * 15;
-
-				const pos = random(i) * (width + size);
-
-				const randomOffsset = interpolate(
-					random(i + 'fr'),
-					[0, 1],
-					[-200, 200]
+			{new Array(400).fill(true).map((_, _i) => {
+				const delay = slidingWindow + _i;
+				const scale = random(delay + 'size') * 0.5 + 0.5;
+				const size = scale * 30;
+				const index = windPushes.findIndex(
+					(w) => w > delay + interpolate(random(delay), [0, 1], [-75, 75])
 				);
+				const nextWindPush =
+					(index === -1 ? windPushes.length - 1 : index - 0.5) + 1;
+				const pos = random(delay) * (width + size) + nextWindPush * width;
+				const initialPos = random(delay + 'initial') * height - height / 2;
+				const speed = (random(delay + 'speed') * height) / 2 + height * 1.5;
 
-				const speed = random(i + 'speed') * 500 + 1000;
-
-				const progress = interpolate(frame - randomOffsset, [0, 100], [0, 1]);
+				const progress = interpolate(frame - delay, [0, 100], [0, 1]);
 				const down = interpolate(progress, [0, 1], [0, speed]);
 				const x =
-					interpolate(progress, [0, 1], [-wind * 0.5, -wind]) +
-					noise2D(i, frame / 200, 0) * 200;
+					interpolate(progress, [0, 1], [-wind, -wind]) +
+					noise2D(delay, frame / 200, 0) * 200;
 
 				return (
 					<div
-						key={i}
+						key={delay}
 						style={{
 							backgroundColor: 'white',
 							height: size,
@@ -58,9 +66,9 @@ export const Snow: React.FC = () => {
 							borderRadius: size,
 							display: 'inline-block',
 							position: 'absolute',
-							left: pos,
+							left: pos + initialPos,
 							top: down,
-							marginLeft: -size / 2 + x,
+							marginLeft: -size / 2 - width / 2 + x,
 						}}
 					></div>
 				);

@@ -21,7 +21,7 @@ export const CommitBar: React.FC<{
 		stroke: 'transparent',
 		seed: Number(hour),
 		maxRandomnessOffset: 5,
-		fill: most ? '#E09A00' : 'white',
+		fill: most ? BASE_COLOR : 'white',
 		fillStyle: 'solid',
 	});
 

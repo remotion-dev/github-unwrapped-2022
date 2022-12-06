@@ -116,7 +116,7 @@ export const Root: React.FC = () => {
 			></Composition>
 			<Composition
 				component={Snow}
-				durationInFrames={300}
+				durationInFrames={1200}
 				fps={30}
 				height={1080}
 				width={1080}

@@ -1,8 +1,6 @@
 import {evolvePath} from '@remotion/paths';
 import React from 'react';
 import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
-import {BASE_COLOR} from '../src/palette';
-import {RoughPath} from './RoughPath';
 
 export const Bow: React.FC = () => {
 	const p1 = 'M490 366.657L946 326.657C961.5 137.157 795 -109.843 490 339.657';

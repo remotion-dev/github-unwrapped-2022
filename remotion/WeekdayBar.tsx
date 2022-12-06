@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import {useCurrentFrame} from 'remotion';
+import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {parsePath, roundCommands} from 'svg-round-corners';
 import {BASE_COLOR} from '../src/palette';
 import {getRough} from './get-rough';
@@ -7,18 +7,30 @@ import {getRough} from './get-rough';
 export const WeekdayBar: React.FC<{
 	lower: number;
 	isMostProductive: boolean;
-}> = ({lower, isMostProductive}) => {
+	index: number;
+}> = ({lower, isMostProductive, index}) => {
 	const ref = useRef<SVGSVGElement>(null);
 	const frame = Math.ceil(useCurrentFrame() * 0.3);
 
-	const actualHeight = Math.round(lower * 20) / 20;
-
-	const width = 90;
+	const {fps} = useVideoConfig();
 
 	useEffect(() => {
 		if (!ref.current) {
 			return;
 		}
+
+		const progress = spring({
+			fps,
+			frame: frame - index * 2,
+			config: {
+				damping: 200,
+			},
+		});
+
+		const actualHeight = Math.round(lower * progress * 20) / 20;
+
+		const width = 90;
+
 		const rc = getRough().svg(ref.current as SVGSVGElement, {});
 		const path = `M 0 0 L 0 ${actualHeight} L ${width} ${actualHeight} L ${width} 0 z`;
 
@@ -27,10 +39,10 @@ export const WeekdayBar: React.FC<{
 		const rounded = roundCommands(parsed, 15).path;
 
 		const p = rc.path(rounded, {
-			strokeWidth: 2,
-			bowing: isMostProductive ? 20 : 0,
-			stroke: isMostProductive ? BASE_COLOR : '#DCB09B',
-			fill: isMostProductive ? BASE_COLOR : '#DCB09B',
+			strokeWidth: 6,
+			bowing: isMostProductive ? 5 : 0,
+			stroke: isMostProductive ? 'black' : '#fff',
+			fill: isMostProductive ? BASE_COLOR : '#fff',
 			fillStyle: 'solid',
 			seed: frame,
 		});
@@ -38,16 +50,13 @@ export const WeekdayBar: React.FC<{
 		ref.current.style.height = actualHeight + 'px';
 		ref.current.setAttribute('viewBox', `0 0 90 ${actualHeight}`);
 		ref.current?.replaceChildren(p);
-	}, [actualHeight, isMostProductive, frame]);
+	}, [isMostProductive, frame, fps, lower, index]);
 
 	return (
 		<>
 			<svg
 				style={{
 					overflow: 'visible',
-					filter: isMostProductive
-						? 'drop-shadow(0 0 10px #9E2600)'
-						: undefined,
 				}}
 				ref={ref}
 			></svg>

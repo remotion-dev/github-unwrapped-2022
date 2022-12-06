@@ -1,9 +1,16 @@
 import {lighten} from 'polished';
 import React from 'react';
-import {AbsoluteFill} from 'remotion';
+import {
+	AbsoluteFill,
+	interpolate,
+	spring,
+	useCurrentFrame,
+	useVideoConfig,
+} from 'remotion';
 import {BASE_COLOR} from '../src/palette';
 import {CompactStats, Weekday} from './map-response-to-stats';
 import {Snow} from './Snow';
+import {StrokedText} from './StrokedText';
 import {WaterColour} from './WaterColour';
 import {WeekdayBar} from './WeekdayBar';
 
@@ -49,6 +56,23 @@ const higher = 400;
 export const TopWeekdays2022: React.FC<{
 	stats: CompactStats;
 }> = ({stats}) => {
+	const frame = useCurrentFrame();
+	const {fps} = useVideoConfig();
+
+	const appearIn = spring({
+		fps,
+		frame: frame - 45,
+		config: {
+			damping: 200,
+		},
+		durationInFrames: 45,
+	});
+
+	const opacity2 = interpolate(frame, [90, 110], [0, 1], {
+		extrapolateLeft: 'clamp',
+		extrapolateRight: 'clamp',
+	});
+
 	return (
 		<AbsoluteFill
 			style={{
@@ -59,6 +83,28 @@ export const TopWeekdays2022: React.FC<{
 				<Snow></Snow>
 			</AbsoluteFill>
 			<WaterColour></WaterColour>
+			<StrokedText>
+				<AbsoluteFill
+					style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+						marginTop: -400,
+					}}
+				>
+					<div
+						style={{
+							...bigTitle,
+							transform: `translateY(${interpolate(
+								appearIn,
+								[0, 1],
+								[-200, 0]
+							)}px)`,
+						}}
+					>
+						{weekdayToName(stats.weekdays.most)}
+					</div>
+				</AbsoluteFill>
+			</StrokedText>
 			<AbsoluteFill
 				style={{
 					justifyContent: 'center',
@@ -66,8 +112,9 @@ export const TopWeekdays2022: React.FC<{
 					flexDirection: 'column',
 				}}
 			>
-				<div style={bigTitle}>{weekdayToName(stats.weekdays.most)}</div>
-				<div style={title}>{`was my most productive day.`}</div>
+				<div
+					style={{...title, color: 'black', opacity: opacity2}}
+				>{`is my most productive day.`}</div>
 				<div
 					style={{
 						display: 'flex',
@@ -97,6 +144,7 @@ export const TopWeekdays2022: React.FC<{
 										<WeekdayBar
 											isMostProductive={isMostProductive}
 											lower={lower}
+											index={i}
 										></WeekdayBar>
 										<div
 											style={{
