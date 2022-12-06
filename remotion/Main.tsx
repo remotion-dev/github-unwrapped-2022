@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, Audio, Internals, Sequence} from 'remotion';
+import {AbsoluteFill, Audio, Internals, Sequence, staticFile} from 'remotion';
 import {BG_2022} from '../src/palette';
 import {AvgCommits} from './AvgCommits';
 import {EndCard} from './EndCard';
@@ -37,7 +37,7 @@ export const Main: React.FC<{
 				background: BG_2022,
 			}}
 		>
-			<Audio src="https://jonnyburger.s3.eu-central-1.amazonaws.com/the-librarian.mp3"></Audio>
+			<Audio src={staticFile('sound.mp3')}></Audio>
 			<Snow windPushes={windPushes}></Snow>
 			<Sequence durationInFrames={duration[0] + transitionDuration}>
 				<SlideOut>
