@@ -6,7 +6,6 @@ import {Main} from './Main';
 import {mapResponseToStats} from './map-response-to-stats';
 import {TopWeekdays2022} from './Weekday2022';
 import {TitleCard} from './TitleCard';
-import {TransitionDemo} from './TransitionDemo';
 import {WaterColour} from './WaterColour';
 import {Snow} from './Snow';
 import {Title} from './Title2022';
@@ -74,14 +73,6 @@ export const Root: React.FC = () => {
 				}}
 			></Composition>
 			<Composition
-				component={TransitionDemo}
-				durationInFrames={300}
-				fps={30}
-				height={1080}
-				width={1080}
-				id="transition"
-			></Composition>
-			<Composition
 				component={TopWeekdays2022}
 				durationInFrames={300}
 				fps={30}
@@ -89,6 +80,7 @@ export const Root: React.FC = () => {
 				width={1080}
 				id="top-weekdays-2022"
 				defaultProps={{
+					noBackground: false,
 					stats: mapResponseToStats(all),
 				}}
 			></Composition>
@@ -111,7 +103,7 @@ export const Root: React.FC = () => {
 				width={1080}
 				id="commits"
 				defaultProps={{
-					stats: mapResponseToStats(all),
+					noBackground: false,
 				}}
 			></Composition>
 			<Composition
@@ -133,6 +125,7 @@ export const Root: React.FC = () => {
 				width={1080}
 				id="title"
 				defaultProps={{
+					noBackground: false,
 					avatar: mapResponseToStats(all).avatar,
 				}}
 			></Composition>
