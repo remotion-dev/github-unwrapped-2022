@@ -56,7 +56,6 @@ export const Root: React.FC = () => {
 				width={1080}
 				id={COMP_NAME}
 				defaultProps={{
-					enableDecoration: true,
 					stats: mapResponseToStats(all),
 				}}
 			></Composition>

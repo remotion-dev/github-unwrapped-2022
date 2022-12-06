@@ -1,11 +1,12 @@
 import React from 'react';
-import {AbsoluteFill, Audio, Sequence} from 'remotion';
+import {AbsoluteFill, Audio, Internals, Sequence} from 'remotion';
 import {BG_2022} from '../src/palette';
 import {AvgCommits} from './AvgCommits';
 import {EndCard} from './EndCard';
 import {EndCard2} from './EndCard2';
 import {IssuesOpened2022} from './IssuesOpened';
 import {CompactStats} from './map-response-to-stats';
+import {SlideIn, SlideOut, transitionDuration} from './SlideIn';
 import {Snow} from './Snow';
 import {Socks} from './Socks';
 import {Title} from './Title2022';
@@ -13,15 +14,22 @@ import {TopWeekdays2022} from './Weekday2022';
 
 export const Main: React.FC<{
 	stats: CompactStats;
-	enableDecoration: boolean;
-}> = ({stats, enableDecoration}) => {
+}> = ({stats}) => {
 	if (!stats) {
 		return null;
 	}
 
-	const duration = [130, 150, 150, 150, 150, 150, 150];
+	const duration = [130, 120, 150, 150, 150, 150, 150];
 	const accumulatedFrom = (i: number) =>
 		duration.slice(0, i).reduce((a, b) => a + b);
+	const windPushes = duration
+		.map((d, i) => {
+			if (i === 0) {
+				return null;
+			}
+			return duration.slice(0, i).reduce((a, b) => a + b);
+		})
+		.filter(Internals.truthy);
 
 	return (
 		<AbsoluteFill
@@ -30,27 +38,69 @@ export const Main: React.FC<{
 			}}
 		>
 			<Audio src="https://jonnyburger.s3.eu-central-1.amazonaws.com/the-librarian.mp3"></Audio>
-			<Snow windPushes={duration}></Snow>
-			<Sequence durationInFrames={duration[0]}>
-				<Title noBackground avatar={stats.avatar}></Title>
+			<Snow windPushes={windPushes}></Snow>
+			<Sequence durationInFrames={duration[0] + transitionDuration}>
+				<SlideOut>
+					<Title noBackground avatar={stats.avatar}></Title>
+				</SlideOut>
 			</Sequence>
-			<Sequence durationInFrames={duration[1]} from={accumulatedFrom(1)}>
-				<Socks noBackground></Socks>
+			<Sequence
+				durationInFrames={duration[1] + transitionDuration}
+				from={accumulatedFrom(1)}
+			>
+				<SlideOut>
+					<SlideIn>
+						<Socks noBackground></Socks>
+					</SlideIn>
+				</SlideOut>
 			</Sequence>
-			<Sequence durationInFrames={duration[2]} from={accumulatedFrom(2)}>
-				<AvgCommits noBackground></AvgCommits>
+			<Sequence
+				durationInFrames={duration[2] + transitionDuration}
+				from={accumulatedFrom(2)}
+			>
+				<SlideOut>
+					<SlideIn>
+						<AvgCommits noBackground></AvgCommits>
+					</SlideIn>
+				</SlideOut>
 			</Sequence>
-			<Sequence durationInFrames={duration[3]} from={accumulatedFrom(3)}>
-				<IssuesOpened2022 noBackground></IssuesOpened2022>
+			<Sequence
+				durationInFrames={duration[3] + transitionDuration}
+				from={accumulatedFrom(3)}
+			>
+				<SlideOut>
+					<SlideIn>
+						<IssuesOpened2022 noBackground></IssuesOpened2022>
+					</SlideIn>
+				</SlideOut>
 			</Sequence>
-			<Sequence durationInFrames={duration[4]} from={accumulatedFrom(4)}>
-				<TopWeekdays2022 noBackground stats={stats}></TopWeekdays2022>
+			<Sequence
+				durationInFrames={duration[4] + transitionDuration}
+				from={accumulatedFrom(4)}
+			>
+				<SlideOut>
+					<SlideIn>
+						<TopWeekdays2022 noBackground stats={stats}></TopWeekdays2022>
+					</SlideIn>
+				</SlideOut>
 			</Sequence>
-			<Sequence durationInFrames={duration[5]} from={accumulatedFrom(5)}>
-				<EndCard noBackground stats={stats}></EndCard>
+			<Sequence
+				durationInFrames={duration[5] + transitionDuration}
+				from={accumulatedFrom(5)}
+			>
+				<SlideOut>
+					<SlideIn>
+						<EndCard noBackground stats={stats}></EndCard>
+					</SlideIn>
+				</SlideOut>
 			</Sequence>
-			<Sequence durationInFrames={duration[6]} from={accumulatedFrom(6)}>
-				<EndCard2 noBackground />
+			<Sequence
+				durationInFrames={duration[6] + transitionDuration}
+				from={accumulatedFrom(6)}
+			>
+				<SlideIn>
+					<EndCard2 noBackground />
+				</SlideIn>
 			</Sequence>
 		</AbsoluteFill>
 	);
