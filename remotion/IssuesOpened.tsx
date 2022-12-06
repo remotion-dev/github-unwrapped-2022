@@ -11,6 +11,7 @@ import chunk from 'lodash.chunk';
 import {IssueCircle} from './IssueCircle';
 import {getIndicesToClose, makeIndicesAccurate} from './tree/indices-to-close';
 import {BASE_COLOR, BG_2022} from '../src/palette';
+import {StrokedText} from './StrokedText';
 
 const issuesOpen = 50;
 const issuesClosed = 100;
@@ -176,6 +177,7 @@ export const IssuesOpened2022: React.FC = () => {
 										style={{
 											margin: dotPadding / 2,
 											scale: String(scale * scale2),
+											overflow: 'visible',
 										}}
 										viewBox={`0 0 100 100`}
 									>
@@ -204,25 +206,27 @@ export const IssuesOpened2022: React.FC = () => {
 					);
 				})}
 			</AbsoluteFill>
-			<AbsoluteFill
-				style={{
-					justifyContent: 'center',
-					alignItems: 'center',
-					fontFamily: 'Wintry',
-					fontSize: 130,
-					color: BASE_COLOR,
-					marginTop: 300,
-				}}
-			>
-				{Math.ceil(dotsShown) - Math.ceil(closedDotsProgress * issuesClosed)}
-			</AbsoluteFill>
+			<StrokedText>
+				<AbsoluteFill
+					style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+						fontFamily: 'Wintry',
+						fontSize: 130,
+						color: BASE_COLOR,
+						marginTop: 300,
+					}}
+				>
+					{Math.ceil(dotsShown) - Math.ceil(closedDotsProgress * issuesClosed)}
+				</AbsoluteFill>
+			</StrokedText>
 			<AbsoluteFill
 				style={{
 					justifyContent: 'center',
 					alignItems: 'center',
 					fontFamily: 'Wintry',
 					fontSize: 40,
-					color: BASE_COLOR,
+					color: 'black',
 					marginTop: 390,
 					opacity: interpolate(closedDotsProgress, [0, 0.4], [1, 0]),
 				}}
@@ -235,7 +239,7 @@ export const IssuesOpened2022: React.FC = () => {
 					alignItems: 'center',
 					fontFamily: 'Wintry',
 					fontSize: 40,
-					color: BASE_COLOR,
+					color: 'black',
 					marginTop: 390,
 					opacity: interpolate(closedDotsProgress, [0.4, 0.8], [0, 1]),
 				}}

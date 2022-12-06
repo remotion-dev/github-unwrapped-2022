@@ -369,7 +369,7 @@ export const Root: React.FC = () => {
 				width={1000}
 				durationInFrames={250}
 				fps={30}
-				id="Issues2022"
+				id="Issues"
 			></Composition>
 			<Composition
 				component={TreeComp}

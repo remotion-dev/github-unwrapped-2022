@@ -19,9 +19,9 @@ export const IssueCircle: React.FC<
 			seed: seed,
 			maxRandomnessOffset: 4,
 			hachureAngle: random(seed) * 360,
-			hachureGap: size / 10,
-			strokeWidth: size / 7,
-			stroke: 'none',
+			hachureGap: size / 4,
+			strokeWidth: size / 2,
+			stroke: props.stroke ?? undefined,
 		}
 	);
 
@@ -37,6 +37,7 @@ export const IssueCircle: React.FC<
 						stroke={stroke}
 						strokeWidth={strokeWidth}
 						fill={fill}
+						strokeLinecap="round"
 					></path>
 				);
 			})}
