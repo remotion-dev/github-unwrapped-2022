@@ -58,7 +58,9 @@ const getScale = (
 	);
 };
 
-export const IssuesOpened2022: React.FC = () => {
+export const IssuesOpened2022: React.FC<{
+	noBackground: boolean;
+}> = ({noBackground}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 
@@ -129,7 +131,7 @@ export const IssuesOpened2022: React.FC = () => {
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: BG_2022,
+				backgroundColor: noBackground ? undefined : BG_2022,
 			}}
 		>
 			<AbsoluteFill

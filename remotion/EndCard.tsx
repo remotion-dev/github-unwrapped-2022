@@ -16,19 +16,19 @@ const endCardStyle: React.CSSProperties = {
 
 export const EndCard: React.FC<{
 	stats: CompactStats;
-	enableDecoration: boolean;
-}> = ({stats, enableDecoration}) => {
+	noBackground: boolean;
+}> = ({stats, noBackground}) => {
 	const zeroCommits = stats.contributionCount === 0;
 
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: '#FFE3CA',
+				backgroundColor: noBackground ? undefined : '#FFE3CA',
 				perspective: 1000,
 			}}
 		>
-			<WaterColour></WaterColour>
-			<Snow></Snow>
+			{noBackground ? null : <WaterColour></WaterColour>}
+			{noBackground ? null : <Snow></Snow>}
 
 			<AbsoluteFill
 				style={{

@@ -55,7 +55,8 @@ const higher = 400;
 
 export const TopWeekdays2022: React.FC<{
 	stats: CompactStats;
-}> = ({stats}) => {
+	noBackground: boolean;
+}> = ({stats, noBackground}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 
@@ -76,13 +77,15 @@ export const TopWeekdays2022: React.FC<{
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: '#FFE3CA',
+				backgroundColor: noBackground ? undefined : '#FFE3CA',
 			}}
 		>
-			<AbsoluteFill>
-				<Snow></Snow>
-			</AbsoluteFill>
-			<WaterColour></WaterColour>
+			{noBackground ? null : (
+				<AbsoluteFill>
+					<Snow></Snow>
+				</AbsoluteFill>
+			)}
+			{noBackground ? null : <WaterColour></WaterColour>}
 			<StrokedText>
 				<AbsoluteFill
 					style={{

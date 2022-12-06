@@ -34,7 +34,9 @@ type Hour =
 	| 22
 	| 23;
 
-export const AvgCommits: React.FC = () => {
+export const AvgCommits: React.FC<{
+	noBackground: boolean;
+}> = ({noBackground}) => {
 	const items = commits.items.map((i) => i.commit.author.date);
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
@@ -83,10 +85,10 @@ export const AvgCommits: React.FC = () => {
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: '#FFE3CA',
+				backgroundColor: noBackground ? undefined : '#FFE3CA',
 			}}
 		>
-			<WaterColour></WaterColour>
+			{noBackground ? null : <WaterColour></WaterColour>}
 			<AbsoluteFill
 				style={{
 					opacity: 0.3,

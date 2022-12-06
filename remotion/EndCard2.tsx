@@ -19,7 +19,9 @@ const subtitle: React.CSSProperties = {
 	marginTop: 12,
 };
 
-export const EndCard2: React.FC = () => {
+export const EndCard2: React.FC<{
+	noBackground: boolean;
+}> = ({noBackground}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	const chars = 'githubunwrapped';
@@ -36,14 +38,14 @@ export const EndCard2: React.FC = () => {
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: '#FFE3CA',
+				backgroundColor: noBackground ? undefined : '#FFE3CA',
 				perspective: 1000,
 				justifyContent: 'center',
 				alignItems: 'center',
 			}}
 		>
-			<WaterColour></WaterColour>
-			<Snow></Snow>
+			{noBackground ? null : <WaterColour></WaterColour>}
+			{noBackground ? null : <Snow></Snow>}
 			<AbsoluteFill
 				style={{
 					justifyContent: 'center',

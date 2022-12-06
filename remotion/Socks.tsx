@@ -8,7 +8,9 @@ import {SockComp} from './SockComp';
 
 const icons: React.FC[] = [TypeScript, JavaScript, Java];
 
-export const Socks: React.FC = () => {
+export const Socks: React.FC<{
+	noBackground: boolean;
+}> = ({noBackground}) => {
 	const {width, fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
@@ -29,7 +31,7 @@ export const Socks: React.FC = () => {
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: BG_2022,
+				backgroundColor: noBackground ? undefined : BG_2022,
 			}}
 		>
 			<AbsoluteFill

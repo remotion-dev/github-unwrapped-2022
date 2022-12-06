@@ -7,7 +7,8 @@ import {WaterColour} from './WaterColour';
 
 export const Title: React.FC<{
 	avatar: string;
-}> = ({avatar}) => {
+	noBackground: boolean;
+}> = ({avatar, noBackground}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 	const turn = spring({
@@ -21,11 +22,11 @@ export const Title: React.FC<{
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: '#FFE3CA',
+				backgroundColor: noBackground ? 'transparent' : '#FFE3CA',
 				perspective: 1000,
 			}}
 		>
-			<WaterColour></WaterColour>
+			{noBackground ? null : <WaterColour></WaterColour>}
 			<AbsoluteFill
 				style={{
 					opacity: 0.2,
