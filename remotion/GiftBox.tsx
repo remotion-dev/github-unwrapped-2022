@@ -12,7 +12,7 @@ import {Bow} from './Bow';
 
 const title: React.CSSProperties = {
 	color: BASE_COLOR,
-	fontFamily: 'Wintry',
+	fontFamily: 'MonaSans',
 	marginBottom: 0,
 	marginTop: 0,
 	fontWeight: 'normal',

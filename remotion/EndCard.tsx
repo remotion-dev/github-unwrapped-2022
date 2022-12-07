@@ -7,7 +7,7 @@ import {WaterColour} from './WaterColour';
 
 const endCardStyle: React.CSSProperties = {
 	color: BASE_COLOR,
-	fontFamily: 'Wintry',
+	fontFamily: 'MonaSans',
 	fontSize: 80,
 	textAlign: 'center',
 	fontWeight: 'bold',

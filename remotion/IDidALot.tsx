@@ -6,7 +6,7 @@ const title: React.CSSProperties = {
 	color: BASE_COLOR,
 	fontWeight: 'bold',
 	fontSize: 80,
-	fontFamily: 'Wintry',
+	fontFamily: 'MonaSans',
 	paddingLeft: 50,
 	paddingRight: 50,
 	textAlign: 'center',

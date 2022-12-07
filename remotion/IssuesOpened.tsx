@@ -213,7 +213,7 @@ export const IssuesOpened2022: React.FC<{
 					style={{
 						justifyContent: 'center',
 						alignItems: 'center',
-						fontFamily: 'Wintry',
+						fontFamily: 'MonaSans',
 						fontSize: 130,
 						color: BASE_COLOR,
 						marginTop: 300,
@@ -226,7 +226,7 @@ export const IssuesOpened2022: React.FC<{
 				style={{
 					justifyContent: 'center',
 					alignItems: 'center',
-					fontFamily: 'Wintry',
+					fontFamily: 'MonaSans',
 					fontSize: 40,
 					color: 'black',
 					marginTop: 390,
@@ -239,7 +239,7 @@ export const IssuesOpened2022: React.FC<{
 				style={{
 					justifyContent: 'center',
 					alignItems: 'center',
-					fontFamily: 'Wintry',
+					fontFamily: 'MonaSans',
 					fontSize: 40,
 					color: 'black',
 					marginTop: 390,

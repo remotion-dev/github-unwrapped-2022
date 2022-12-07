@@ -57,7 +57,7 @@ export const CommitBar: React.FC<{
 				style={{
 					width,
 					marginTop: 20,
-					fontFamily: 'Wintry',
+					fontFamily: 'MonaSans',
 					color: BASE_COLOR,
 					fontSize: 24,
 				}}

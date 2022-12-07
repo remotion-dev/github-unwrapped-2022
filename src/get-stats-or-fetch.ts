@@ -27,5 +27,3 @@ export const getStatsOrFetch = async (
 
 	return compact;
 };
-
-getAll('JonnyBurger', githubToken).then((j) => console.log(JSON.stringify(j)));

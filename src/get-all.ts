@@ -59,7 +59,3 @@ export const getAll = async (username: string, token: string): Promise<All> => {
 	}
 	return res.json();
 };
-
-getAll('JonnyBurger', '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').then((a) =>
-	console.log(JSON.stringify(a))
-);

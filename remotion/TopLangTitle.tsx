@@ -14,7 +14,7 @@ export const TopLangTitle: React.FC<{
 			style={{
 				justifyContent: 'center',
 				alignItems: 'center',
-				fontFamily: 'Wintry',
+				fontFamily: 'MonaSans',
 				fontSize: 100,
 				marginTop: -270,
 				color: BASE_COLOR,

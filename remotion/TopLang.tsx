@@ -20,7 +20,7 @@ export const TopLang: React.FC<{
 		<AbsoluteFill
 			style={{
 				backgroundColor: BG_2022,
-				fontFamily: 'Wintry',
+				fontFamily: 'MonaSans',
 			}}
 		>
 			<Snow></Snow>

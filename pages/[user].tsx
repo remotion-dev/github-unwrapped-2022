@@ -86,14 +86,14 @@ const container: React.CSSProperties = {
 };
 
 const title: React.CSSProperties = {
-	fontFamily: 'Wintry',
+	fontFamily: 'MonaSans',
 	textAlign: 'center',
 	color: BASE_COLOR,
 	marginBottom: 0,
 };
 
 const subtitle: React.CSSProperties = {
-	fontFamily: 'Wintry',
+	fontFamily: 'MonaSans',
 	textAlign: 'center',
 	fontSize: 20,
 	marginTop: 14,
@@ -338,7 +338,7 @@ export default function User(props: {user: CompactStats | null}) {
 								<p
 									style={{
 										color: BASE_COLOR,
-										fontFamily: 'Wintry',
+										fontFamily: 'MonaSans',
 										textAlign: 'center',
 									}}
 								>

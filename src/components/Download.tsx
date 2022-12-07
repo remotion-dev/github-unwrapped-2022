@@ -36,7 +36,7 @@ const Download: React.FC<{
 				<>
 					<div
 						style={{
-							fontFamily: 'Wintry',
+							fontFamily: 'MonaSans',
 							color: 'red',
 						}}
 					>

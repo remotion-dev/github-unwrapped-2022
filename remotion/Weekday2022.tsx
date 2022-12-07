@@ -31,14 +31,14 @@ const label: React.CSSProperties = {
 	marginTop: 20,
 	fontWeight: 'bold',
 	fontSize: 60,
-	fontFamily: 'Wintry',
+	fontFamily: 'MonaSans',
 };
 
 const bigTitle: React.CSSProperties = {
 	color: BASE_COLOR,
 	fontWeight: 'bold',
 	fontSize: 100,
-	fontFamily: 'Wintry',
+	fontFamily: 'MonaSans',
 	textAlign: 'center',
 };
 
@@ -46,7 +46,7 @@ const title: React.CSSProperties = {
 	color: BASE_COLOR,
 	fontWeight: 'bold',
 	fontSize: 50,
-	fontFamily: 'Wintry',
+	fontFamily: 'MonaSans',
 	textAlign: 'center',
 	marginBottom: 100,
 };

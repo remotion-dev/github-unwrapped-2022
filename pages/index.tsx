@@ -12,7 +12,7 @@ const input: React.CSSProperties = {
 	padding: 14,
 	borderRadius: 8,
 	fontSize: 22,
-	fontFamily: 'Wintry',
+	fontFamily: 'MonaSans',
 	textAlign: 'center',
 	background: 'white',
 	border: `3px solid ${BASE_COLOR}`,
@@ -49,14 +49,14 @@ const h1: React.CSSProperties = {
 	fontWeight: 'bold',
 	fontSize: 40,
 	color: BASE_COLOR,
-	fontFamily: 'Wintry',
+	fontFamily: 'MonaSans',
 };
 
 const paragraph: React.CSSProperties = {
 	color: BASE_COLOR,
 	lineHeight: 1.5,
 	fontSize: 18,
-	fontFamily: 'Wintry',
+	fontFamily: 'MonaSans',
 };
 
 getFont();

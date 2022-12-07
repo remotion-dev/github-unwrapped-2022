@@ -12,7 +12,7 @@ export const button: React.CSSProperties = {
 	borderRadius: 10,
 	fontSize: 20,
 	fontWeight: 'bold',
-	fontFamily: 'Wintry',
+	fontFamily: 'MonaSans',
 	borderBottom: '3px solid ' + BASE_COLOR,
 	cursor: 'pointer',
 };

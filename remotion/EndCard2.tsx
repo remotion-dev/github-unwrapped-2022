@@ -13,7 +13,7 @@ import {WaterColour} from './WaterColour';
 const subtitle: React.CSSProperties = {
 	textAlign: 'center',
 	color: BASE_COLOR,
-	fontFamily: 'Wintry',
+	fontFamily: 'MonaSans',
 	fontSize: 80,
 	fontWeight: 'bold',
 	marginTop: 12,

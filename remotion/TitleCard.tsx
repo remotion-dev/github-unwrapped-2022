@@ -5,7 +5,7 @@ import {StrokedText} from './StrokedText';
 
 const titleStyle: React.CSSProperties = {
 	color: BASE_COLOR,
-	fontFamily: 'Wintry',
+	fontFamily: 'MonaSans',
 	fontSize: 80,
 	textAlign: 'center',
 	fontWeight: 'bold',
