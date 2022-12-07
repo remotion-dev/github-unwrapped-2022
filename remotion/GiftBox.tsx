@@ -7,6 +7,7 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
+import {AvatarFrame} from './AvatarFrame';
 import {BottomBox} from './BottomBox';
 import {Bow} from './Bow';
 import {Tree} from './Icons/Tree';
@@ -36,6 +37,7 @@ export const GiftBox: React.FC<{}> = () => {
 	const translateY = interpolate(moveAndScaleDown, [0, 1], [300, 0]);
 
 	const wallHangerPos = interpolate(wallHangerComeIn, [0, 1], [750, 360]);
+	const avatarFramePos = interpolate(wallHangerComeIn, [0, 1], [-750, -360]);
 
 	return (
 		<AbsoluteFill>
@@ -58,6 +60,16 @@ export const GiftBox: React.FC<{}> = () => {
 				}}
 			>
 				<WallHanger></WallHanger>
+			</Sequence>
+			<Sequence
+				from={60}
+				style={{
+					top: -100,
+					left: avatarFramePos,
+					scale: '0.4',
+				}}
+			>
+				<AvatarFrame></AvatarFrame>
 			</Sequence>
 			<AbsoluteFill
 				style={{
