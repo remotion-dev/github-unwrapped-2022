@@ -15,9 +15,10 @@ export const AvgCommitsTitle: React.FC = () => {
 					justifyContent: 'center',
 					alignItems: 'center',
 					fontFamily: 'MonaSans',
-					fontSize: 70,
+					fontSize: 50,
 					marginTop: -320,
 					color: BASE_COLOR,
+					fontVariationSettings: '"wght" 700',
 				}}
 			>
 				<div

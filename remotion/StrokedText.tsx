@@ -8,7 +8,7 @@ export const StrokedText: React.FC<{
 		<AbsoluteFill>
 			<AbsoluteFill
 				style={{
-					WebkitTextStroke: '20px white',
+					WebkitTextStroke: '10px white',
 					WebkitTextFillColor: 'transparent',
 					marginLeft: 1,
 					marginTop: 1,
