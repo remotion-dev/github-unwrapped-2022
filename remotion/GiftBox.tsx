@@ -8,20 +8,15 @@ import {
 	useVideoConfig,
 } from 'remotion';
 import {AvatarFrame} from './AvatarFrame';
-import {BottomBox} from './BottomBox';
-import {Bow} from './Bow';
 import {Tree} from './Icons/Tree';
+import {Squeeze} from './Squeeze';
 import {TitleCard} from './TitleCard';
+import {Unwrap} from './Unwrap';
 import {WallHanger} from './WallHanger';
 
 export const GiftBox: React.FC<{}> = () => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
-	const bump = spring({
-		fps,
-		frame,
-		durationInFrames: 20,
-	});
 
 	const moveAndScaleDown = spring({
 		fps,
@@ -77,28 +72,18 @@ export const GiftBox: React.FC<{}> = () => {
 			</Sequence>
 			<AbsoluteFill
 				style={{
-					justifyContent: 'center',
-					alignItems: 'center',
-					fontSize: 50,
+					transform: `scale(${interpolate(
+						moveAndScaleDown,
+						[0, 1],
+						[1, 1.5]
+					)}) translateY(${interpolate(moveAndScaleDown, [0, 1], [1, 500])}px)`,
 				}}
 			>
-				<div
-					style={{
-						display: 'flex',
-						justifyContent: 'center',
-						alignItems: 'center',
-						flexDirection: 'column',
-						transform: `translateY(${interpolate(bump, [0, 1], [-200, 0])}px)`,
-						fontVariationSettings: '"wght" 800',
-						marginBottom: 5,
-					}}
-				>
-					<Bow></Bow>
-				</div>
-				<BottomBox
-					moveAndScaleDown={moveAndScaleDown}
-					squash={-Math.min(0, 1 - bump) * 0.4}
-				></BottomBox>
+				<Squeeze direction="vertical" delay={18}>
+					<Squeeze direction="horizontal" delay={0}>
+						<Unwrap></Unwrap>
+					</Squeeze>
+				</Squeeze>
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);

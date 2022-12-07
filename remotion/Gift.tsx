@@ -3,13 +3,18 @@ import {SVGProps} from 'react';
 import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {BASE_COLOR} from '../src/palette';
 
-export const Gift = (props: SVGProps<SVGSVGElement>) => {
+export const Gift = ({
+	delay,
+	...props
+}: SVGProps<SVGSVGElement> & {
+	delay: number;
+}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 
 	const bow1 = spring({
 		fps,
-		frame: 20 - frame,
+		frame: 20 - frame + delay,
 		config: {
 			damping: 15,
 		},
@@ -17,7 +22,7 @@ export const Gift = (props: SVGProps<SVGSVGElement>) => {
 	});
 	const bow2 = spring({
 		fps,
-		frame: 20 - frame - 5,
+		frame: 20 - frame - 5 + delay,
 		config: {
 			damping: 15,
 		},
@@ -25,7 +30,7 @@ export const Gift = (props: SVGProps<SVGSVGElement>) => {
 	});
 	const bow3 = spring({
 		fps,
-		frame: 20 - frame - 9,
+		frame: 20 - frame - 9 + delay,
 		config: {
 			damping: 15,
 		},

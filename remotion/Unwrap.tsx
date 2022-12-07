@@ -4,6 +4,7 @@ import {Gift} from './Gift';
 import {Band} from './Band';
 
 export const Unwrap: React.FC = () => {
+	const delay = 30;
 	return (
 		<AbsoluteFill>
 			<AbsoluteFill
@@ -17,6 +18,7 @@ export const Unwrap: React.FC = () => {
 					style={{
 						height: 750,
 					}}
+					delay={delay}
 				></Gift>
 			</AbsoluteFill>
 			<Band
@@ -24,7 +26,7 @@ export const Unwrap: React.FC = () => {
 					scale: '0.62',
 					marginTop: 130,
 				}}
-				delay={20}
+				delay={20 + delay}
 				height={100}
 				width={800}
 			></Band>
@@ -34,7 +36,7 @@ export const Unwrap: React.FC = () => {
 					marginTop: 120,
 					rotate: '90deg',
 				}}
-				delay={10}
+				delay={10 + delay}
 				height={100}
 				width={640}
 			></Band>
