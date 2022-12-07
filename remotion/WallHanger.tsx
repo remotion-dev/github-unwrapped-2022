@@ -94,7 +94,7 @@ export const WallHanger: React.FC = () => {
 								d={`M 0 100 L 50 0 L 100 100`}
 								fill="none"
 								stroke="black"
-								strokeWidth={3}
+								strokeWidth={5}
 							></RoughPath>
 						</svg>
 					</div>
@@ -121,7 +121,7 @@ export const WallHanger: React.FC = () => {
 								d={roundSvg(`M 0 0 L 400 0 L 400 400 L 0 400 z`, 20)}
 								fill="white"
 								stroke="black"
-								strokeWidth={10}
+								strokeWidth={15}
 							></path>
 						</svg>
 					</div>
@@ -168,7 +168,7 @@ export const WallHanger: React.FC = () => {
 								>
 									<RoughPath
 										d={roundSvg(`M 0 0 L 100 0 L 100 100 L 0 100 z`, 4)}
-										strokeWidth={8}
+										strokeWidth={12}
 										fill={color[i]}
 										roughness={1}
 										stroke="black"

@@ -2,6 +2,7 @@ import React from 'react';
 import {
 	AbsoluteFill,
 	interpolate,
+	Sequence,
 	spring,
 	useCurrentFrame,
 	useVideoConfig,
@@ -9,6 +10,7 @@ import {
 import {BottomBox} from './BottomBox';
 import {Bow} from './Bow';
 import {Tree} from './Icons/Tree';
+import {WallHanger} from './WallHanger';
 
 export const GiftBox: React.FC<{}> = () => {
 	const {fps} = useVideoConfig();
@@ -24,9 +26,16 @@ export const GiftBox: React.FC<{}> = () => {
 		frame: frame - 64,
 		config: {},
 	});
+	const wallHangerComeIn = spring({
+		fps,
+		frame: frame - 70,
+		config: {damping: 200},
+	});
 
-	const scale = interpolate(moveAndScaleDown, [0, 1], [0, 0.7]);
+	const scale = interpolate(moveAndScaleDown, [0, 1], [0, 0.8]);
 	const translateY = interpolate(moveAndScaleDown, [0, 1], [300, 0]);
+
+	const wallHangerPos = interpolate(wallHangerComeIn, [0, 1], [750, 360]);
 
 	return (
 		<AbsoluteFill>
@@ -40,6 +49,16 @@ export const GiftBox: React.FC<{}> = () => {
 			>
 				<Tree></Tree>
 			</AbsoluteFill>
+			<Sequence
+				from={60}
+				style={{
+					top: -100,
+					left: wallHangerPos,
+					scale: '0.4',
+				}}
+			>
+				<WallHanger></WallHanger>
+			</Sequence>
 			<AbsoluteFill
 				style={{
 					justifyContent: 'center',

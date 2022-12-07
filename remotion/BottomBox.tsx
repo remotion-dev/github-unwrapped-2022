@@ -49,16 +49,12 @@ export const BottomBox: React.FC<{
 		durationInFrames: 20,
 	});
 
-	const stripWidth = interpolate(strip1, [0, 1], [100, 0]);
-	const rightLine = `M 0 50 L ${stripWidth} 50`;
-	const rightLineTop = `M 0 46 L ${stripWidth} 46`;
-	const rightLineBottom = `M 0 54 L ${stripWidth} 54`;
+	const stripWidth = interpolate(strip1, [0, 1], [90, 10]);
+	const rightLine = `M 10 50 L ${stripWidth} 50`;
 
-	const stripHeight = interpolate(strip2, [0, 1], [100, 0]);
+	const stripHeight = interpolate(strip2, [0, 1], [90, 10]);
 
-	const downLine = `M 50 0 L 50 ${stripHeight}`;
-	const downLineBorderRight = `M 54 0 L 54 ${stripHeight}`;
-	const downLineBorderLeft = `M 46 0 L 46 ${stripHeight}`;
+	const downLine = `M 50 10 L 50 ${stripHeight}`;
 
 	const lidLeftAngle = interpolate(lidAnimation, [0, 1], [0, -Math.PI * 0.6]);
 	const lidRightAngle = interpolate(lidAnimation, [0, 1], [0, Math.PI * 0.6]);
@@ -95,11 +91,7 @@ export const BottomBox: React.FC<{
 				>
 					<path d={square} fill={BASE_COLOR}></path>
 					<path d={rightLine} stroke={ACCENT_COLOR} strokeWidth={8}></path>
-					<path d={rightLineTop} stroke={'#fff'} strokeWidth={1}></path>
-					<path d={rightLineBottom} stroke={'#fff'} strokeWidth={1}></path>
 					<path d={downLine} stroke={ACCENT_COLOR} strokeWidth={8}></path>
-					<path d={downLineBorderLeft} stroke={'#fff'} strokeWidth={1}></path>
-					<path d={downLineBorderRight} stroke={'#fff'} strokeWidth={1}></path>
 					<path
 						d={leftLid}
 						style={{
