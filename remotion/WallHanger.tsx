@@ -18,6 +18,8 @@ const color = [
 	'#9be9a8',
 ];
 
+const commitCount = 477;
+
 export const WallHanger: React.FC = () => {
 	const {height, fps} = useVideoConfig();
 	const frame = useCurrentFrame();
@@ -106,22 +108,35 @@ export const WallHanger: React.FC = () => {
 					<div
 						style={{
 							width: 450,
+							marginTop: 120,
 						}}
 					>
 						<svg
-							viewBox="0 0 400 300"
+							viewBox="0 0 400 400"
 							style={{
 								overflow: 'visible',
 							}}
 						>
 							<path
-								d={roundSvg(`M 0 0 L 400 0 L 400 300 L 0 300 z`, 20)}
+								d={roundSvg(`M 0 0 L 400 0 L 400 400 L 0 400 z`, 20)}
 								fill="white"
 								stroke="black"
 								strokeWidth={10}
 							></path>
 						</svg>
 					</div>
+				</AbsoluteFill>
+				<AbsoluteFill
+					style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+						fontSize: 120,
+						marginTop: 208,
+						fontFamily: 'MonaSans',
+						fontVariationSettings: '"wght" 600',
+					}}
+				>
+					<strong>{commitCount}</strong>
 				</AbsoluteFill>
 				<AbsoluteFill
 					style={{
