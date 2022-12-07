@@ -8,13 +8,15 @@ import {button} from '../src/components/button';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
 import {BASE_COLOR, BG_2022} from '../src/palette';
 
-const input = (): React.CSSProperties => ({
+const input: React.CSSProperties = {
 	padding: 14,
 	borderRadius: 8,
 	fontSize: 22,
 	fontFamily: 'Wintry',
 	textAlign: 'center',
-});
+	background: 'white',
+	border: `3px solid ${BASE_COLOR}`,
+};
 
 const container: React.CSSProperties = {
 	height: '100%',
@@ -53,7 +55,7 @@ const h1: React.CSSProperties = {
 const paragraph: React.CSSProperties = {
 	color: BASE_COLOR,
 	lineHeight: 1.5,
-	fontSize: 15,
+	fontSize: 18,
 	fontFamily: 'Wintry',
 };
 
@@ -125,7 +127,7 @@ export default function Home() {
 								disabled={loading}
 								autoComplete="none"
 								name="github_username"
-								style={input()}
+								style={input}
 								className="github-username"
 								placeholder="GitHub username"
 							></input>
