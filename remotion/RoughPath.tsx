@@ -8,8 +8,9 @@ export const RoughPath: React.FC<
 		roughness?: number;
 		strokeWidth?: number;
 		hachureGap?: number;
+		seed?: number;
 	}
-> = ({roughness, strokeWidth, hachureGap, ...props}) => {
+> = ({roughness, strokeWidth, seed, hachureGap, ...props}) => {
 	const [noiseX, noiseY] = useNoiseTranslate(props.d ?? '');
 
 	const frame = Math.floor(useCurrentFrame() / 3);
@@ -20,7 +21,7 @@ export const RoughPath: React.FC<
 		seed: frame,
 		maxRandomnessOffset: 4,
 		hachureGap: hachureGap ?? 1,
-		hachureAngle: random(props.d ?? '') * 360,
+		hachureAngle: random(seed ?? props.d ?? '') * 360,
 		strokeWidth: strokeWidth ?? 2,
 		stroke: props.stroke ?? undefined,
 	});

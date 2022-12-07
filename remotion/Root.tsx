@@ -45,6 +45,7 @@ import {TreeGithub} from './TreeGithub';
 import {SockComp} from './SockComp';
 import {Socks} from './Socks';
 import {GiftBox} from './GiftBox';
+import {WallHanger} from './WallHanger';
 
 export const Root: React.FC = () => {
 	return (
@@ -418,6 +419,14 @@ export const Root: React.FC = () => {
 				durationInFrames={250}
 				fps={30}
 				id="BottomBox"
+			></Composition>
+			<Composition
+				component={WallHanger}
+				height={1080}
+				width={1080}
+				durationInFrames={250}
+				fps={30}
+				id="WallHanger"
 			></Composition>
 		</>
 	);
