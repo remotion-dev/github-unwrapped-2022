@@ -22,7 +22,7 @@ export const Title: React.FC<{
 			>
 				<Snow></Snow>
 			</AbsoluteFill>
-			<AbsoluteFill style={{}}>
+			<AbsoluteFill>
 				<GiftBox></GiftBox>
 			</AbsoluteFill>
 		</AbsoluteFill>

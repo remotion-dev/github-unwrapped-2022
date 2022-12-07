@@ -1,7 +1,15 @@
 import React from 'react';
-import {AbsoluteFill} from 'remotion';
+import {
+	AbsoluteFill,
+	interpolate,
+	spring,
+	useCurrentFrame,
+	useVideoConfig,
+} from 'remotion';
 import {BASE_COLOR} from '../src/palette';
-import {StrokedText} from './StrokedText';
+import {Candy} from './Icons/Candy';
+import {Star} from './Icons/Star';
+import {RoughPath} from './RoughPath';
 
 const titleStyle: React.CSSProperties = {
 	color: 'black',
@@ -9,12 +17,53 @@ const titleStyle: React.CSSProperties = {
 	fontSize: 80,
 	textAlign: 'center',
 	fontWeight: 'bold',
-	marginTop: 20,
+	lineHeight: 1.1,
 };
 
+const icons = false;
 export const TitleCard: React.FC = () => {
+	const {fps} = useVideoConfig();
+	const frame = useCurrentFrame();
+
+	const spr = spring({
+		fps,
+		frame,
+		config: {
+			damping: 200,
+		},
+	});
+
+	const translateY = interpolate(spr, [0, 1], [800, 300]);
+
 	return (
-		<StrokedText>
+		<AbsoluteFill
+			style={{
+				scale: '0.8',
+				translate: '0 ' + translateY + 'px',
+			}}
+		>
+			<AbsoluteFill
+				style={{
+					justifyContent: 'center',
+					alignItems: 'center',
+				}}
+			>
+				<svg
+					style={{
+						width: 1000,
+						overflow: 'visible',
+					}}
+					viewBox="0 0 800 250"
+				>
+					<RoughPath
+						stroke="black"
+						strokeWidth={12}
+						fill="#fff"
+						roughness={1}
+						d={`M 0 0 L 800 0 L 800 250 L 0 250 z`}
+					></RoughPath>
+				</svg>
+			</AbsoluteFill>{' '}
 			<AbsoluteFill
 				style={{
 					justifyContent: 'center',
@@ -28,7 +77,14 @@ export const TitleCard: React.FC = () => {
 							fontVariationSettings: '"wght" 600',
 						}}
 					>
-						This is my
+						This is my{' '}
+						<span
+							style={{
+								fontVariationSettings: '"wght" 800',
+							}}
+						>
+							#GithubUnwrapped
+						</span>
 					</span>
 					<br />
 					<span
@@ -38,10 +94,43 @@ export const TitleCard: React.FC = () => {
 							color: BASE_COLOR,
 						}}
 					>
-						#GitHubUnwrapped
+						JonnyBurger
 					</span>
 				</div>
 			</AbsoluteFill>
-		</StrokedText>
+			{icons ? (
+				<AbsoluteFill
+					style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+						marginLeft: 450,
+						marginTop: 100,
+					}}
+				>
+					<Candy
+						style={{
+							height: 250,
+							rotate: '150deg',
+						}}
+					></Candy>
+				</AbsoluteFill>
+			) : null}
+			{icons ? (
+				<AbsoluteFill
+					style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+						marginLeft: -440,
+						marginTop: -170,
+					}}
+				>
+					<Star
+						style={{
+							height: 200,
+						}}
+					></Star>
+				</AbsoluteFill>
+			) : null}
+		</AbsoluteFill>
 	);
 };

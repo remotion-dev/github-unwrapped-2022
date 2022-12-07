@@ -437,6 +437,14 @@ export const Root: React.FC = () => {
 				fps={30}
 				id="AvatarFrame"
 			></Composition>
+			<Composition
+				component={TitleCard}
+				height={1080}
+				width={1080}
+				durationInFrames={250}
+				fps={30}
+				id="TitleCard"
+			></Composition>
 		</>
 	);
 };

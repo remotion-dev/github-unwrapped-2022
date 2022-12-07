@@ -11,6 +11,7 @@ import {AvatarFrame} from './AvatarFrame';
 import {BottomBox} from './BottomBox';
 import {Bow} from './Bow';
 import {Tree} from './Icons/Tree';
+import {TitleCard} from './TitleCard';
 import {WallHanger} from './WallHanger';
 
 export const GiftBox: React.FC<{}> = () => {
@@ -34,7 +35,7 @@ export const GiftBox: React.FC<{}> = () => {
 	});
 
 	const scale = interpolate(moveAndScaleDown, [0, 1], [0, 0.8]);
-	const translateY = interpolate(moveAndScaleDown, [0, 1], [300, 0]);
+	const translateY = interpolate(moveAndScaleDown, [0, 1], [300, -100]);
 
 	const wallHangerPos = interpolate(wallHangerComeIn, [0, 1], [750, 360]);
 	const avatarFramePos = interpolate(wallHangerComeIn, [0, 1], [-750, -360]);
@@ -70,6 +71,9 @@ export const GiftBox: React.FC<{}> = () => {
 				}}
 			>
 				<AvatarFrame></AvatarFrame>
+			</Sequence>
+			<Sequence from={70}>
+				<TitleCard></TitleCard>
 			</Sequence>
 			<AbsoluteFill
 				style={{
