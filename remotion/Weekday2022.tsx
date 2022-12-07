@@ -28,18 +28,19 @@ const weekdayToName = (weekday: Weekday) => {
 
 const label: React.CSSProperties = {
 	textAlign: 'center',
-	marginTop: 20,
+	marginTop: 30,
 	fontWeight: 'bold',
-	fontSize: 60,
+	fontSize: 50,
 	fontFamily: 'MonaSans',
 };
 
 const bigTitle: React.CSSProperties = {
 	color: BASE_COLOR,
 	fontWeight: 'bold',
-	fontSize: 100,
+	fontSize: 80,
 	fontFamily: 'MonaSans',
 	textAlign: 'center',
+	fontVariationSettings: '"wght" 700',
 };
 
 const title: React.CSSProperties = {
@@ -91,7 +92,7 @@ export const TopWeekdays2022: React.FC<{
 					style={{
 						justifyContent: 'center',
 						alignItems: 'center',
-						marginTop: -400,
+						marginTop: -380,
 					}}
 				>
 					<div
@@ -116,7 +117,13 @@ export const TopWeekdays2022: React.FC<{
 				}}
 			>
 				<div
-					style={{...title, color: 'black', opacity: opacity2}}
+					style={{
+						...title,
+						color: 'black',
+						opacity: opacity2,
+						fontSize: 45,
+						fontVariationSettings: '"wght" 700',
+					}}
 				>{`is my most productive day.`}</div>
 				<div
 					style={{
@@ -155,6 +162,7 @@ export const TopWeekdays2022: React.FC<{
 												color: isMostProductive
 													? BASE_COLOR
 													: lighten(0.15, BASE_COLOR),
+												fontVariationSettings: '"wght" 700',
 											}}
 										>
 											{['M', 'T', 'W', 'T', 'F', 'S', 'S'][i]}

@@ -23,7 +23,7 @@ export const Main: React.FC<{
 	const accumulatedFrom = (i: number) =>
 		duration.slice(0, i).reduce((a, b) => a + b);
 	const windPushes = duration
-		.map((d, i) => {
+		.map((_, i) => {
 			if (i === 0) {
 				return null;
 			}
@@ -41,7 +41,7 @@ export const Main: React.FC<{
 			<Snow windPushes={windPushes}></Snow>
 			<Sequence durationInFrames={duration[0] + transitionDuration}>
 				<SlideOut>
-					<Title noBackground avatar={stats.avatar}></Title>
+					<Title noBackground></Title>
 				</SlideOut>
 			</Sequence>
 			<Sequence
@@ -90,7 +90,7 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<EndCard noBackground stats={stats}></EndCard>
+						<EndCard noBackground></EndCard>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>

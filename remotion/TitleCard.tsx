@@ -4,7 +4,7 @@ import {BASE_COLOR} from '../src/palette';
 import {StrokedText} from './StrokedText';
 
 const titleStyle: React.CSSProperties = {
-	color: BASE_COLOR,
+	color: 'black',
 	fontFamily: 'MonaSans',
 	fontSize: 80,
 	textAlign: 'center',
@@ -25,6 +25,7 @@ export const TitleCard: React.FC = () => {
 					<span
 						style={{
 							fontSize: '0.7em',
+							fontVariationSettings: '"wght" 600',
 						}}
 					>
 						This is my
@@ -32,7 +33,9 @@ export const TitleCard: React.FC = () => {
 					<br />
 					<span
 						style={{
-							fontSize: '1.4em',
+							fontSize: '1.1em',
+							fontVariationSettings: '"wght" 700',
+							color: BASE_COLOR,
 						}}
 					>
 						#GitHubUnwrapped

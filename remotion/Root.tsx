@@ -44,6 +44,7 @@ import {GithubComp} from './GithubComp';
 import {TreeGithub} from './TreeGithub';
 import {SockComp} from './SockComp';
 import {Socks} from './Socks';
+import {GiftBox} from './GiftBox';
 
 export const Root: React.FC = () => {
 	return (
@@ -125,7 +126,6 @@ export const Root: React.FC = () => {
 				id="title"
 				defaultProps={{
 					noBackground: false,
-					avatar: mapResponseToStats(all).avatar,
 				}}
 			></Composition>
 			<Composition
@@ -410,6 +410,14 @@ export const Root: React.FC = () => {
 				durationInFrames={250}
 				fps={30}
 				id="Socks"
+			></Composition>
+			<Composition
+				component={GiftBox}
+				height={1080}
+				width={1080}
+				durationInFrames={250}
+				fps={30}
+				id="BottomBox"
 			></Composition>
 		</>
 	);

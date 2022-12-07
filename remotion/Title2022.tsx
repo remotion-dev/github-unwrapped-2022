@@ -6,9 +6,8 @@ import {TitleCard} from './TitleCard';
 import {WaterColour} from './WaterColour';
 
 export const Title: React.FC<{
-	avatar: string;
 	noBackground: boolean;
-}> = ({avatar, noBackground}) => {
+}> = ({noBackground}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 	const turn = spring({
@@ -40,7 +39,7 @@ export const Title: React.FC<{
 					backfaceVisibility: 'hidden',
 				}}
 			>
-				<GiftBox avatar={avatar}></GiftBox>
+				<GiftBox></GiftBox>
 			</AbsoluteFill>
 			<AbsoluteFill
 				style={{

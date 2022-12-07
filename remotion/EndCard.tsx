@@ -1,25 +1,22 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {BASE_COLOR} from '../src/palette';
-import {CompactStats} from './map-response-to-stats';
 import {Snow} from './Snow';
 import {WaterColour} from './WaterColour';
 
 const endCardStyle: React.CSSProperties = {
 	color: BASE_COLOR,
 	fontFamily: 'MonaSans',
-	fontSize: 80,
+	fontSize: 65,
 	textAlign: 'center',
 	fontWeight: 'bold',
 	marginTop: 20,
+	fontVariationSettings: '"wght" 700',
 };
 
 export const EndCard: React.FC<{
-	stats: CompactStats;
 	noBackground: boolean;
-}> = ({stats, noBackground}) => {
-	const zeroCommits = stats.contributionCount === 0;
-
+}> = ({noBackground}) => {
 	return (
 		<AbsoluteFill
 			style={{
@@ -41,11 +38,7 @@ export const EndCard: React.FC<{
 					alignItems: 'center',
 				}}
 			>
-				<div style={endCardStyle}>
-					{zeroCommits
-						? 'Actually, everything is on GitLab.'
-						: `Wonder how you'll compare?`}
-				</div>
+				<div style={endCardStyle}>{`Wonder how you'll compare?`}</div>
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);

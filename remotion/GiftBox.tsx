@@ -6,21 +6,10 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {BASE_COLOR} from '../src/palette';
 import {BottomBox} from './BottomBox';
 import {Bow} from './Bow';
 
-const title: React.CSSProperties = {
-	color: BASE_COLOR,
-	fontFamily: 'MonaSans',
-	marginBottom: 0,
-	marginTop: 0,
-	fontWeight: 'normal',
-};
-
-export const GiftBox: React.FC<{
-	avatar: string;
-}> = ({avatar}) => {
+export const GiftBox: React.FC<{}> = () => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 	const bump = spring({
@@ -44,15 +33,13 @@ export const GiftBox: React.FC<{
 					alignItems: 'center',
 					flexDirection: 'column',
 					transform: `translateY(${interpolate(bump, [0, 1], [-200, 0])}px)`,
+					fontVariationSettings: '"wght" 800',
+					marginBottom: 5,
 				}}
 			>
 				<Bow></Bow>
-				<h1 style={title}>JonnyBurger</h1>
 			</div>
-			<BottomBox
-				avatar={avatar}
-				squash={-Math.min(0, 1 - bump) * 0.4}
-			></BottomBox>
+			<BottomBox squash={-Math.min(0, 1 - bump) * 0.4}></BottomBox>
 		</AbsoluteFill>
 	);
 };
