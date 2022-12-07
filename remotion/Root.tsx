@@ -48,6 +48,8 @@ import {GiftBox} from './GiftBox';
 import {WallHanger} from './WallHanger';
 import {AvatarFrame} from './AvatarFrame';
 import {Unwrap} from './Unwrap';
+import {Commit} from './Commit';
+import {BestCommits} from './BestCommits';
 
 export const Root: React.FC = () => {
 	return (
@@ -453,6 +455,27 @@ export const Root: React.FC = () => {
 				durationInFrames={250}
 				fps={30}
 				id="Unwrap"
+			></Composition>
+			<Composition
+				component={Commit}
+				height={1080}
+				width={1080}
+				durationInFrames={250}
+				fps={30}
+				id="Commit"
+				defaultProps={{
+					message: 'fix wrong type',
+					date: new Date('2022-12-10').getTime(),
+					avatar: 'https://avatars.githubusercontent.com/u/1629785?v=4',
+				}}
+			></Composition>
+			<Composition
+				component={BestCommits}
+				height={1080}
+				width={1080}
+				durationInFrames={250}
+				fps={30}
+				id="BestCommits"
 			></Composition>
 		</>
 	);

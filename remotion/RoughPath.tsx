@@ -9,6 +9,7 @@ export const RoughPath: React.FC<
 		strokeWidth?: number;
 		hachureGap?: number;
 		seed?: number;
+		bowing?: number;
 	}
 > = ({roughness, strokeWidth, seed, hachureGap, ...props}) => {
 	const [noiseX, noiseY] = useNoiseTranslate(props.d ?? '');
@@ -24,6 +25,7 @@ export const RoughPath: React.FC<
 		hachureAngle: random(seed ?? props.d ?? '') * 360,
 		strokeWidth: strokeWidth ?? 2,
 		stroke: props.stroke ?? undefined,
+		bowing: props.bowing ?? 1,
 	});
 
 	const paths = path.toPaths(drawable);

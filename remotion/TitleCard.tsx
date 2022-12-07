@@ -83,7 +83,7 @@ export const TitleCard: React.FC = () => {
 								fontVariationSettings: '"wght" 800',
 							}}
 						>
-							#GithubUnwrapped
+							#GitHubUnwrapped
 						</span>
 					</span>
 					<br />
