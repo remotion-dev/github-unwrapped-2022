@@ -47,6 +47,7 @@ import {Socks} from './Socks';
 import {GiftBox} from './GiftBox';
 import {WallHanger} from './WallHanger';
 import {AvatarFrame} from './AvatarFrame';
+import {Unwrap} from './Unwrap';
 
 export const Root: React.FC = () => {
 	return (
@@ -444,6 +445,14 @@ export const Root: React.FC = () => {
 				durationInFrames={250}
 				fps={30}
 				id="TitleCard"
+			></Composition>
+			<Composition
+				component={Unwrap}
+				height={1080}
+				width={1080}
+				durationInFrames={250}
+				fps={30}
+				id="Unwrap"
 			></Composition>
 		</>
 	);
