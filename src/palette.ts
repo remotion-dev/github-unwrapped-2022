@@ -13,3 +13,4 @@ export const PINK = '#D980FA';
 export const PINK_BACKGROUND = lighten(0.21, PINK);
 
 export const BG_2022 = '#FFE3CA';
+export const ACCENT_COLOR = '#900';

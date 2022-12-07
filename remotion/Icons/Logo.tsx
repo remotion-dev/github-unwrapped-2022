@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {SVGProps} from 'react';
+import {ACCENT_COLOR} from '../../src/palette';
 import {RoughPath} from '../RoughPath';
 
 export const Logo = (props: SVGProps<SVGSVGElement>) => (
@@ -62,7 +63,7 @@ export const Logo = (props: SVGProps<SVGSVGElement>) => (
 		<path
 			style={{
 				fill: 'none',
-				stroke: '#900',
+				stroke: ACCENT_COLOR,
 				strokeLinecap: 'round',
 				strokeLinejoin: 'round',
 				strokeMiterlimit: 20,
@@ -73,7 +74,7 @@ export const Logo = (props: SVGProps<SVGSVGElement>) => (
 		<path
 			style={{
 				fill: 'none',
-				stroke: '#900',
+				stroke: ACCENT_COLOR,
 				strokeLinecap: 'round',
 				strokeLinejoin: 'round',
 				strokeMiterlimit: 10,

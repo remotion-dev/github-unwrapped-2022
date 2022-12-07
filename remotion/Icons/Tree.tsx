@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {SVGProps} from 'react';
+import {ACCENT_COLOR} from '../../src/palette';
 import {RoughPath} from '../RoughPath';
 
 export const Tree = ({
@@ -92,7 +93,7 @@ export const Tree = ({
 		<path
 			style={{
 				fill: 'none',
-				stroke: '#900',
+				stroke: ACCENT_COLOR,
 				strokeLinecap: 'round',
 				strokeLinejoin: 'round',
 				strokeMiterlimit: 10,

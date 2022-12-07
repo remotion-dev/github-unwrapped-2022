@@ -1,6 +1,6 @@
 import React from 'react';
 import {interpolate, spring, useCurrentFrame, useVideoConfig} from 'remotion';
-import {BASE_COLOR} from '../src/palette';
+import {ACCENT_COLOR, BASE_COLOR} from '../src/palette';
 import {getRough} from './get-rough';
 import {roundSvg} from './round-svg';
 
@@ -51,14 +51,14 @@ export const BottomBox: React.FC<{
 
 	const stripWidth = interpolate(strip1, [0, 1], [100, 0]);
 	const rightLine = `M 0 50 L ${stripWidth} 50`;
-	const rightLineTop = `M 0 45 L ${stripWidth} 45`;
-	const rightLineBottom = `M 0 55 L ${stripWidth} 55`;
+	const rightLineTop = `M 0 46 L ${stripWidth} 46`;
+	const rightLineBottom = `M 0 54 L ${stripWidth} 54`;
 
 	const stripHeight = interpolate(strip2, [0, 1], [100, 0]);
 
 	const downLine = `M 50 0 L 50 ${stripHeight}`;
-	const downLineBorderRight = `M 55 0 L 55 ${stripHeight}`;
-	const downLineBorderLeft = `M 45 0 L 45 ${stripHeight}`;
+	const downLineBorderRight = `M 54 0 L 54 ${stripHeight}`;
+	const downLineBorderLeft = `M 46 0 L 46 ${stripHeight}`;
 
 	const lidLeftAngle = interpolate(lidAnimation, [0, 1], [0, -Math.PI * 0.6]);
 	const lidRightAngle = interpolate(lidAnimation, [0, 1], [0, Math.PI * 0.6]);
@@ -94,16 +94,12 @@ export const BottomBox: React.FC<{
 					}}
 				>
 					<path d={square} fill={BASE_COLOR}></path>
-					<path d={rightLine} stroke={'#fff'} strokeWidth={8}></path>
-					<path d={rightLineTop} stroke={'#000'} strokeWidth={1.5}></path>
-					<path d={rightLineBottom} stroke={'#000'} strokeWidth={1.5}></path>
-					<path d={downLine} stroke={'#fff'} strokeWidth={8}></path>
-					<path d={downLineBorderLeft} stroke={'#000'} strokeWidth={1.5}></path>
-					<path
-						d={downLineBorderRight}
-						stroke={'#000'}
-						strokeWidth={1.5}
-					></path>
+					<path d={rightLine} stroke={ACCENT_COLOR} strokeWidth={8}></path>
+					<path d={rightLineTop} stroke={'#fff'} strokeWidth={1}></path>
+					<path d={rightLineBottom} stroke={'#fff'} strokeWidth={1}></path>
+					<path d={downLine} stroke={ACCENT_COLOR} strokeWidth={8}></path>
+					<path d={downLineBorderLeft} stroke={'#fff'} strokeWidth={1}></path>
+					<path d={downLineBorderRight} stroke={'#fff'} strokeWidth={1}></path>
 					<path
 						d={leftLid}
 						style={{
