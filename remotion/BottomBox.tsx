@@ -6,7 +6,8 @@ import {roundSvg} from './round-svg';
 
 export const BottomBox: React.FC<{
 	squash: number;
-}> = ({squash}) => {
+	moveAndScaleDown: number;
+}> = ({squash, moveAndScaleDown}) => {
 	const path = getRough().generator();
 	const square = 'M 0 0 L 0 100 L 100 100 L 100 0';
 	const drawable = path.path(roundSvg(square, -1), {
@@ -61,14 +62,6 @@ export const BottomBox: React.FC<{
 
 	const lidLeftAngle = interpolate(lidAnimation, [0, 1], [0, -Math.PI * 0.6]);
 	const lidRightAngle = interpolate(lidAnimation, [0, 1], [0, Math.PI * 0.6]);
-
-	const moveAndScaleDown = spring({
-		fps,
-		frame: frame - 64,
-		config: {
-			damping: 200,
-		},
-	});
 
 	return (
 		<div
