@@ -16,6 +16,4 @@ export type Weekdays = {
 	days: number[];
 };
 
-export type FrontendStats = {
-	commits: Commit[];
-};
+export type FrontendStats = Commit[];

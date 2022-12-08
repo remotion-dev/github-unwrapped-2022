@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, spring, useCurrentFrame, useVideoConfig} from 'remotion';
+import {TopLanguage} from '../src/get-all';
 import {BG_2022} from '../src/palette';
-import {TopLanguage} from './map-response-to-stats';
 import {SockComp} from './SockComp';
 import {Lang} from './TopLang';
 

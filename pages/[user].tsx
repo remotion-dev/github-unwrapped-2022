@@ -12,7 +12,7 @@ import {backButton} from '../src/components/button';
 import Download from '../src/components/Download';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
 import Spinner from '../src/components/spinner';
-import {getFromCache} from '../src/db/cache';
+import {getAllStatsFromCache} from '../src/db/cache';
 import {BASE_COLOR} from '../src/palette';
 import {RenderProgressOrFinality} from './api/progress';
 
@@ -47,7 +47,7 @@ export const getStaticProps = async ({params}: {params: {user: string}}) => {
 	}
 
 	try {
-		const compact = await getFromCache(user);
+		const compact = await getAllStatsFromCache(user);
 		if (!compact) {
 			return {
 				props: {
