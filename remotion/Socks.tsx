@@ -1,21 +1,19 @@
 import React from 'react';
 import {AbsoluteFill, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {BG_2022} from '../src/palette';
-import {Java} from './Languages/Java';
-import {JavaScript} from './Languages/JavaScript';
-import {TypeScript} from './Languages/Typescript';
+import {TopLanguage} from './map-response-to-stats';
 import {SockComp} from './SockComp';
-
-const icons: React.FC[] = [TypeScript, JavaScript, Java];
+import {Lang} from './TopLang';
 
 export const Socks: React.FC<{
 	noBackground: boolean;
-}> = ({noBackground}) => {
+	topLanguages: TopLanguage[] | null;
+}> = ({noBackground, topLanguages}) => {
 	const {width, fps} = useVideoConfig();
+	const top3Languages = topLanguages?.slice(0, 3);
 	const frame = useCurrentFrame();
-
 	const offset =
-		new Array(icons.length)
+		new Array(top3Languages?.length)
 			.fill(true)
 			.map((_, i) => {
 				return spring({
@@ -44,7 +42,7 @@ export const Socks: React.FC<{
 						marginLeft: -offset,
 					}}
 				>
-					{icons.map((Icon, i) => {
+					{top3Languages?.map((language, i) => {
 						return (
 							<AbsoluteFill
 								key={i}
@@ -53,7 +51,7 @@ export const Socks: React.FC<{
 								}}
 							>
 								<SockComp delay={i * 40}>
-									<Icon></Icon>
+									<Lang lang={language}></Lang>
 								</SockComp>
 							</AbsoluteFill>
 						);

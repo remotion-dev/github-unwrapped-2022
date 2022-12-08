@@ -7,7 +7,7 @@ export const LanguageIcon: React.FC<{
 	return (
 		<icon.Component
 			style={{
-				height: 150,
+				height: 900,
 				overflow: 'visible',
 			}}
 		></icon.Component>

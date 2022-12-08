@@ -88,7 +88,7 @@ const style: React.CSSProperties = {
 	display: 'inline-block',
 };
 
-const Lang: React.FC<{
+export const Lang: React.FC<{
 	lang: TopLanguage;
 }> = ({lang}) => {
 	const icon = languageList.find((f) => {
@@ -97,9 +97,14 @@ const Lang: React.FC<{
 
 	return (
 		<div style={style} key={lang.name}>
-			<div
+			<AbsoluteFill
 				style={{
-					margin: 20,
+					justifyContent: 'center',
+					alignItems: 'center',
+					flexDirection: 'row',
+					flexWrap: 'wrap',
+					alignContent: 'center',
+					marginTop: 200,
 				}}
 			>
 				{icon ? (
@@ -110,7 +115,7 @@ const Lang: React.FC<{
 						name={lang.name}
 					></LangPlaceholder>
 				)}
-			</div>
+			</AbsoluteFill>
 		</div>
 	);
 };

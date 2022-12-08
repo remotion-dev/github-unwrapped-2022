@@ -55,7 +55,10 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<Socks noBackground={true}></Socks>
+						<Socks
+							noBackground={true}
+							topLanguages={stats.topLanguages}
+						></Socks>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>

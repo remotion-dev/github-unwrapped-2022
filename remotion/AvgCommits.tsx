@@ -4,6 +4,7 @@ import {Arc} from './Arc';
 import {AvgCommitsTitle} from './AvgCommitsTitle';
 import {CommitBar} from './CommitBar';
 import {commits} from './commits';
+import {SpaceSavingContribution} from './map-response-to-stats';
 import {MiddleLine} from './MiddleLine';
 import {Snow} from './Snow';
 import {WaterColour} from './WaterColour';
