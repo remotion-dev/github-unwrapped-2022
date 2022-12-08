@@ -128,7 +128,7 @@ export const IssuesOpened2022: React.FC<{
 			issuesClosed,
 			totalIssues
 		);
-	}, [avgRotsPerRow, dotsPerRow, rows, totalIssues]);
+	}, [avgRotsPerRow, dotsPerRow, issuesClosed, rows, totalIssues]);
 
 	return (
 		<AbsoluteFill
