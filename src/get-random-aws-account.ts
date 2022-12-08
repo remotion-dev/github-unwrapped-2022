@@ -1,5 +1,5 @@
-import { getAccountCount } from "./get-account-count";
+import {getAccountCount} from './get-account-count';
 
 export const getRandomAwsAccount = () => {
-  return Math.ceil(Math.random() * getAccountCount());
+	return Math.ceil(Math.random() * getAccountCount());
 };

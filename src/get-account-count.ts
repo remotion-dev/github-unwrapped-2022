@@ -6,13 +6,13 @@
 // This method will count how many there are so they can be rotated between each other.
 
 export const getAccountCount = () => {
-  let count = 0;
-  while (
-    process.env["AWS_KEY_" + (count + 1)] &&
-    process.env["AWS_SECRET_" + (count + 1)]
-  ) {
-    count++;
-  }
+	let count = 0;
+	while (
+		process.env['AWS_KEY_' + (count + 1)] &&
+		process.env['AWS_SECRET_' + (count + 1)]
+	) {
+		count++;
+	}
 
-  return count;
+	return count;
 };
