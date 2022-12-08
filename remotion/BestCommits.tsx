@@ -50,7 +50,7 @@ export const BestCommits: React.FC<{
 					{/**
 					 * // TODO: Fix number of commits
 					 */}
-					You crafted 7322 commits. <br></br>
+					You crafted {stats.commitCount} commits. <br></br>
 					<span style={{opacity}}>Here are some sweet ones.</span>
 				</h1>
 			</AbsoluteFill>

@@ -17,6 +17,7 @@ const subtitle: React.CSSProperties = {
 	fontSize: 80,
 	fontWeight: 'bold',
 	marginTop: 12,
+	fontVariationSettings: '"wght" 700',
 };
 
 export const EndCard2: React.FC<{

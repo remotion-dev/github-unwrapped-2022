@@ -154,5 +154,8 @@ export const backendResponseToBackendStats = (
 		repositoriesContributedTo: repositoriesContributedTo,
 		topLanguages: getTopLanguages(response),
 		issues: getIssues(response),
+		commitCount:
+			response.data.user.contributionsCollection.totalCommitContributions +
+			response.data.user.contributionsCollection.restrictedContributionsCount,
 	};
 };

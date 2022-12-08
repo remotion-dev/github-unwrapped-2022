@@ -14,6 +14,7 @@ export type BackendStats = {
 	repositoriesContributedTo: string[];
 	topLanguages: TopLanguage[] | null;
 	issues: Issues;
+	commitCount: number;
 };
 
 export type BackendStatsResponse =

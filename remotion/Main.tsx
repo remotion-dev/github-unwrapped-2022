@@ -2,6 +2,7 @@ import React from 'react';
 import {AbsoluteFill, Audio, Internals, Sequence, staticFile} from 'remotion';
 import {BG_2022} from '../src/palette';
 import {AvgCommits} from './AvgCommits';
+import {BestCommits} from './BestCommits';
 import {EndCard} from './EndCard';
 import {EndCard2} from './EndCard2';
 import {IssuesOpened2022} from './IssuesOpened';
@@ -19,7 +20,7 @@ export const Main: React.FC<{
 		return null;
 	}
 
-	const duration = [130, 120, 150, 150, 150, 150, 150];
+	const duration = [130, 120, 150, 150, 150, 150, 60, 150];
 	const accumulatedFrom = (i: number) =>
 		duration.slice(0, i).reduce((a, b) => a + b);
 	const windPushes = duration
@@ -99,13 +100,23 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<EndCard noBackground={true}></EndCard>
+						<BestCommits stats={stats}></BestCommits>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>
 			<Sequence
 				durationInFrames={duration[6] + transitionDuration}
 				from={accumulatedFrom(6)}
+			>
+				<SlideOut>
+					<SlideIn>
+						<EndCard noBackground={true}></EndCard>
+					</SlideIn>
+				</SlideOut>
+			</Sequence>
+			<Sequence
+				durationInFrames={duration[7] + transitionDuration}
+				from={accumulatedFrom(7)}
 			>
 				<SlideIn>
 					<EndCard2 noBackground={true} />
