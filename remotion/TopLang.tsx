@@ -1,11 +1,12 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
+import {TopLanguage} from '../src/get-all';
 import {BG_2022} from '../src/palette';
 import {getFont} from './font';
 import {LangPlaceholder} from './LangPlaceholder';
 import {languageList} from './language-list';
 import {LanguageIcon} from './Languages/LanguageIcon';
-import {CompactStats, TopLanguage} from './map-response-to-stats';
+import {CompactStats} from './map-response-to-stats';
 import {Snow} from './Snow';
 import {TopLangTitle} from './TopLangTitle';
 

@@ -52,6 +52,7 @@ import {Commit} from './Commit';
 import {BestCommits} from './BestCommits';
 import {mapApiResponseToCommits} from './map-api-response-to-commits';
 import {commits} from './commits';
+import {backendResponseToBackendStats} from '../src/get-all';
 
 export const Root: React.FC = () => {
 	return (
@@ -64,7 +65,10 @@ export const Root: React.FC = () => {
 				width={1080}
 				id={COMP_NAME}
 				defaultProps={{
-					stats: mapResponseToStats(all, mapApiResponseToCommits(commits)),
+					stats: mapResponseToStats(
+						backendResponseToBackendStats(all),
+						mapApiResponseToCommits(commits)
+					),
 				}}
 			></Composition>
 			<Composition
@@ -87,7 +91,10 @@ export const Root: React.FC = () => {
 				id="top-weekdays-2022"
 				defaultProps={{
 					noBackground: false,
-					stats: mapResponseToStats(all, mapApiResponseToCommits(commits)),
+					stats: mapResponseToStats(
+						backendResponseToBackendStats(all),
+						mapApiResponseToCommits(commits)
+					),
 				}}
 			></Composition>
 			<Composition
@@ -98,7 +105,10 @@ export const Root: React.FC = () => {
 				width={1080}
 				id="water"
 				defaultProps={{
-					stats: mapResponseToStats(all, mapApiResponseToCommits(commits)),
+					stats: mapResponseToStats(
+						backendResponseToBackendStats(all),
+						mapApiResponseToCommits(commits)
+					),
 				}}
 			></Composition>
 			<Composition
@@ -132,7 +142,10 @@ export const Root: React.FC = () => {
 				id="title"
 				defaultProps={{
 					noBackground: false,
-					userStats: mapResponseToStats(all, mapApiResponseToCommits(commits)),
+					userStats: mapResponseToStats(
+						backendResponseToBackendStats(all),
+						mapApiResponseToCommits(commits)
+					),
 				}}
 			></Composition>
 			<Composition
@@ -143,7 +156,10 @@ export const Root: React.FC = () => {
 				width={1080}
 				id="languages"
 				defaultProps={{
-					stats: mapResponseToStats(all, mapApiResponseToCommits(commits)),
+					stats: mapResponseToStats(
+						backendResponseToBackendStats(all),
+						mapApiResponseToCommits(commits)
+					),
 				}}
 			></Composition>
 			<Still
@@ -478,6 +494,12 @@ export const Root: React.FC = () => {
 				durationInFrames={250}
 				fps={30}
 				id="BestCommits"
+				defaultProps={{
+					stats: mapResponseToStats(
+						backendResponseToBackendStats(all),
+						mapApiResponseToCommits(commits)
+					),
+				}}
 			></Composition>
 		</>
 	);

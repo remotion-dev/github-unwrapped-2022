@@ -1,4 +1,4 @@
-import {CompactStats} from '../../remotion/map-response-to-stats';
+import {BackendStats, CompactStats} from '../../remotion/map-response-to-stats';
 import {mongoClient} from './mongo';
 
 type CacheCollection = {
@@ -6,23 +6,35 @@ type CacheCollection = {
 	stats: CompactStats;
 };
 
-export const collection = async () => {
+type BackendStatsCollection = {
+	username: string;
+	backendStats: BackendStats;
+};
+
+export const allStatscollection = async () => {
 	const client = await mongoClient;
 	return client.db('wrapped2022').collection<CacheCollection>('wrapped');
 };
 
+export const backendStatsCollection = async () => {
+	const client = await mongoClient;
+	return client
+		.db('wrapped2022')
+		.collection<BackendStatsCollection>('backendstats');
+};
+
 export const saveCache = async (username: string, stats: CompactStats) => {
-	const coll = await collection();
+	const coll = await allStatscollection();
 	return coll.insertOne({
 		stats,
 		username: username.toLowerCase(),
 	});
 };
 
-export const getFromCache = async (
+export const getAllStatsFromCache = async (
 	username: string
 ): Promise<CompactStats | null> => {
-	const coll = await collection();
+	const coll = await allStatscollection();
 	const f = await coll.findOne({
 		username: username.toLowerCase(),
 	});
@@ -30,11 +42,4 @@ export const getFromCache = async (
 		return f.stats;
 	}
 	return null;
-};
-
-export const deleteCache = async (username: string) => {
-	const coll = await collection();
-	await coll.deleteMany({
-		username: username.toLowerCase(),
-	});
 };
