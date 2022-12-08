@@ -1,6 +1,7 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {Candy} from './Icons/Candy';
+import {Gingerman} from './Icons/Gingerman';
 import {Sock} from './Icons/Sock';
 import {Star} from './Icons/Star';
 import {Laptop} from './Laptop';
@@ -41,7 +42,7 @@ export const Commit: React.FC<CommitProps> = ({message, repository, index}) => {
 						{index === 0 ? <Candy style={{width: 80}}></Candy> : null}
 						{index === 1 ? <Star style={{width: 80}}></Star> : null}
 						{index === 2 ? <Laptop style={{width: 80}}></Laptop> : null}
-						{index === 3 ? <Sock style={{width: 80}}></Sock> : null}
+						{index === 3 ? <Gingerman style={{width: 80}}></Gingerman> : null}
 					</div>
 					<div
 						style={{
