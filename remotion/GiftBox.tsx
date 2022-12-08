@@ -9,12 +9,16 @@ import {
 } from 'remotion';
 import {AvatarFrame} from './AvatarFrame';
 import {Tree} from './Icons/Tree';
+import {CompactStats} from './map-response-to-stats';
 import {Squeeze} from './Squeeze';
 import {TitleCard} from './TitleCard';
 import {Unwrap} from './Unwrap';
 import {WallHanger} from './WallHanger';
 
-export const GiftBox: React.FC<{}> = () => {
+export const GiftBox: React.FC<{userStats: CompactStats; username: string}> = ({
+	userStats,
+	username,
+}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
@@ -55,7 +59,7 @@ export const GiftBox: React.FC<{}> = () => {
 					scale: '0.4',
 				}}
 			>
-				<WallHanger></WallHanger>
+				<WallHanger commitCount={userStats.contributionCount}></WallHanger>
 			</Sequence>
 			<Sequence
 				from={60}
@@ -65,10 +69,10 @@ export const GiftBox: React.FC<{}> = () => {
 					scale: '0.4',
 				}}
 			>
-				<AvatarFrame></AvatarFrame>
+				<AvatarFrame avatar={userStats?.avatar}></AvatarFrame>
 			</Sequence>
 			<Sequence from={70}>
-				<TitleCard></TitleCard>
+				<TitleCard username={username}></TitleCard>
 			</Sequence>
 			<AbsoluteFill
 				style={{

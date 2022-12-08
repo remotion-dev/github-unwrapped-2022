@@ -12,9 +12,8 @@ import {IssueCircle} from './IssueCircle';
 import {getIndicesToClose, makeIndicesAccurate} from './tree/indices-to-close';
 import {BASE_COLOR, BG_2022} from '../src/palette';
 import {StrokedText} from './StrokedText';
+import {Issues} from './map-response-to-stats';
 
-const issuesOpen = 50;
-const issuesClosed = 100;
 const padding = 30;
 const bottomSpace = 130;
 
@@ -60,11 +59,14 @@ const getScale = (
 
 export const IssuesOpened2022: React.FC<{
 	noBackground: boolean;
-}> = ({noBackground}) => {
+	issues: Issues;
+}> = ({noBackground, issues}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 
-	const totalIssues = issuesOpen + issuesClosed;
+	const totalIssues = issues?.open + issues?.closed;
+	const issuesOpen = issues.open;
+	const issuesClosed = issues.closed;
 	const openProgress = spring({
 		fps,
 		frame,
@@ -109,7 +111,7 @@ export const IssuesOpened2022: React.FC<{
 		dotsPerRow
 	);
 
-	const openRatio = issuesOpen / (issuesClosed + issuesOpen);
+	const openRatio = issuesOpen / totalIssues;
 	const avgRotsPerRow = openRatio * dotsPerRow;
 
 	const rows = Math.ceil(totalIssues / dotsPerRow);

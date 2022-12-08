@@ -14,7 +14,8 @@ import {TopWeekdays2022} from './Weekday2022';
 
 export const Main: React.FC<{
 	stats: CompactStats;
-}> = ({stats}) => {
+	username: string;
+}> = ({stats, username}) => {
 	if (!stats) {
 		return null;
 	}
@@ -41,7 +42,11 @@ export const Main: React.FC<{
 			<Snow windPushes={windPushes}></Snow>
 			<Sequence durationInFrames={duration[0] + transitionDuration}>
 				<SlideOut>
-					<Title noBackground></Title>
+					<Title
+						noBackground={true}
+						userStats={stats}
+						username={username}
+					></Title>
 				</SlideOut>
 			</Sequence>
 			<Sequence
@@ -50,7 +55,7 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<Socks noBackground></Socks>
+						<Socks noBackground={true}></Socks>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>
@@ -60,7 +65,7 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<AvgCommits noBackground></AvgCommits>
+						<AvgCommits noBackground={true}></AvgCommits>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>
@@ -70,7 +75,10 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<IssuesOpened2022 noBackground></IssuesOpened2022>
+						<IssuesOpened2022
+							noBackground={true}
+							issues={stats.issues}
+						></IssuesOpened2022>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>
@@ -80,7 +88,10 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<TopWeekdays2022 noBackground stats={stats}></TopWeekdays2022>
+						<TopWeekdays2022
+							noBackground={true}
+							stats={stats}
+						></TopWeekdays2022>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>
@@ -90,7 +101,7 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<EndCard noBackground></EndCard>
+						<EndCard noBackground={true}></EndCard>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>
@@ -99,7 +110,7 @@ export const Main: React.FC<{
 				from={accumulatedFrom(6)}
 			>
 				<SlideIn>
-					<EndCard2 noBackground />
+					<EndCard2 noBackground={true} />
 				</SlideIn>
 			</Sequence>
 		</AbsoluteFill>

@@ -14,7 +14,7 @@ import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
 import Rerender from '../src/components/Rerender';
 import Spinner from '../src/components/spinner';
 import {getStatsOrFetch} from '../src/get-stats-or-fetch';
-import {BACKGROUND_COLOR, BASE_COLOR} from '../src/palette';
+import {BASE_COLOR} from '../src/palette';
 import {RenderProgressOrFinality} from './api/progress';
 
 export async function getStaticPaths() {
@@ -74,7 +74,6 @@ const style: React.CSSProperties = {
 };
 
 const abs: React.CSSProperties = {
-	backgroundColor: BACKGROUND_COLOR,
 	width: '100%',
 	position: 'relative',
 };
@@ -270,7 +269,7 @@ export default function User(props: {user: CompactStats | null}) {
 										}}
 										inputProps={{
 											stats: user,
-											enableDecoration: false,
+											username,
 										}}
 									></Player>
 									<AbsoluteFill

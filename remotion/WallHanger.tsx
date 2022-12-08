@@ -18,9 +18,7 @@ const color = [
 	'#9be9a8',
 ];
 
-const commitCount = 477;
-
-export const WallHanger: React.FC = () => {
+export const WallHanger: React.FC<{commitCount: number}> = ({commitCount}) => {
 	const {height, fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 	const swingOut = spring({
