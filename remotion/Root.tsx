@@ -63,6 +63,7 @@ export const Root: React.FC = () => {
 				id={COMP_NAME}
 				defaultProps={{
 					stats: mapResponseToStats(all),
+					username: 'JonnyBurger',
 				}}
 			></Composition>
 			<Composition
@@ -73,8 +74,7 @@ export const Root: React.FC = () => {
 				width={1080}
 				id="title-card"
 				defaultProps={{
-					enableDecoration: false,
-					stats: mapResponseToStats(all),
+					username: 'JonnyBurger',
 				}}
 			></Composition>
 			<Composition
@@ -131,6 +131,8 @@ export const Root: React.FC = () => {
 				id="title"
 				defaultProps={{
 					noBackground: false,
+					userStats: mapResponseToStats(all),
+					username: 'JonnyBurger',
 				}}
 			></Composition>
 			<Composition

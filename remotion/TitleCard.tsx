@@ -21,7 +21,7 @@ const titleStyle: React.CSSProperties = {
 };
 
 const icons = false;
-export const TitleCard: React.FC = () => {
+export const TitleCard: React.FC<{username: string}> = ({username}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
@@ -94,7 +94,7 @@ export const TitleCard: React.FC = () => {
 							color: BASE_COLOR,
 						}}
 					>
-						JonnyBurger
+						{username}
 					</span>
 				</div>
 			</AbsoluteFill>
