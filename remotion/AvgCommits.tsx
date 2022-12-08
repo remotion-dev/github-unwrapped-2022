@@ -4,7 +4,6 @@ import {Arc} from './Arc';
 import {AvgCommitsTitle} from './AvgCommitsTitle';
 import {CommitBar} from './CommitBar';
 import {commits} from './commits';
-import {SpaceSavingContribution} from './map-response-to-stats';
 import {MiddleLine} from './MiddleLine';
 import {Snow} from './Snow';
 import {WaterColour} from './WaterColour';
@@ -81,7 +80,7 @@ export const AvgCommits: React.FC<{
 	}
 
 	const most = Math.max(...values.map((v) => v[1]));
-	const mostIndex = values.findIndex(([a, b]) => b === most);
+	const mostIndex = values.findIndex(([_, b]) => b === most);
 
 	return (
 		<AbsoluteFill

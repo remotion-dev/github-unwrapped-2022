@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import {getFont} from '../remotion/font';
 import {button} from '../src/components/button';
-import {BACKGROUND_COLOR, BASE_COLOR} from '../src/palette';
+import {BASE_COLOR, BG_2022} from '../src/palette';
 
 getFont();
 
@@ -9,11 +9,11 @@ const Faq: React.FC = () => {
 	return (
 		<div
 			style={{
-				backgroundColor: BACKGROUND_COLOR,
+				backgroundColor: BG_2022,
 				position: 'absolute',
 				width: '100%',
 				minHeight: '100vh',
-				fontFamily: 'Jelle',
+				fontFamily: 'MonaSans',
 				color: BASE_COLOR,
 				lineHeight: 1.5,
 			}}

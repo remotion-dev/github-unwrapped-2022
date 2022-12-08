@@ -2,9 +2,7 @@ import React from 'react';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
 import {BASE_COLOR} from '../src/palette';
 
-export const TopLangTitle: React.FC<{
-	numberOfLanguages: number;
-}> = ({numberOfLanguages}) => {
+export const TopLangTitle: React.FC<{}> = ({}) => {
 	const frame = useCurrentFrame();
 	const title = `I speak many languages...`;
 	const words = title.split(' ');

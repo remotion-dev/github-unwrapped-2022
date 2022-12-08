@@ -2,7 +2,6 @@ import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {Candy} from './Icons/Candy';
 import {Gingerman} from './Icons/Gingerman';
-import {Sock} from './Icons/Sock';
 import {Star} from './Icons/Star';
 import {Laptop} from './Laptop';
 import {RoughPath} from './RoughPath';

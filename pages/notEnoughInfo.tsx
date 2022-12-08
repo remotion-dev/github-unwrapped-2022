@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import {AbsoluteFill} from 'remotion';
 import {backButton} from '../src/components/button';
-import {BACKGROUND_COLOR, BASE_COLOR} from '../src/palette';
+import {BASE_COLOR, BG_2022} from '../src/palette';
 
 const notEnoughInfos: React.FC = () => {
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: BACKGROUND_COLOR,
+				backgroundColor: BG_2022,
 				justifyContent: 'center',
 				alignItems: 'center',
 				fontFamily: 'MonaSans',

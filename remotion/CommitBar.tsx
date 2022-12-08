@@ -41,7 +41,7 @@ export const CommitBar: React.FC<{
 					overflow: 'visible',
 				}}
 			>
-				{paths.map((p, i) => {
+				{paths.map((p) => {
 					return (
 						<path
 							key={p.d}

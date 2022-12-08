@@ -63,9 +63,7 @@ export const TopLang: React.FC<{
 			}}
 		>
 			<Snow></Snow>
-			<TopLangTitle
-				numberOfLanguages={stats.topLanguages.length}
-			></TopLangTitle>
+			<TopLangTitle></TopLangTitle>
 			<AbsoluteFill
 				style={{
 					justifyContent: 'center',

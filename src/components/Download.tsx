@@ -15,7 +15,7 @@ const Download: React.FC<{
 	downloadProgress: RenderProgressOrFinality | null;
 	retrying: boolean;
 	retry: () => Promise<void>;
-}> = ({username, downloadProgress, retrying, retry}, ref) => {
+}> = ({username, downloadProgress, retrying, retry}) => {
 	return (
 		<div>
 			{downloadProgress === null ? (

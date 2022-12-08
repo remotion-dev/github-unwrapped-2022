@@ -47,7 +47,7 @@ export const Arc: React.FC = () => {
 						overflow: 'visible',
 					}}
 				>
-					{paths.map((p, i) => {
+					{paths.map((p) => {
 						const {strokeDasharray, strokeDashoffset} = evolvePath(
 							progress / 2,
 							p.d

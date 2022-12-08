@@ -11,7 +11,6 @@ import {CompactStats} from '../remotion/map-response-to-stats';
 import {backButton} from '../src/components/button';
 import Download from '../src/components/Download';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
-import Rerender from '../src/components/Rerender';
 import Spinner from '../src/components/spinner';
 import {getStatsOrFetch} from '../src/get-stats-or-fetch';
 import {BASE_COLOR} from '../src/palette';
@@ -316,7 +315,7 @@ export default function User(props: {user: CompactStats | null}) {
 												<div
 													style={{
 														color: BASE_COLOR,
-														fontFamily: 'Jelle',
+														fontFamily: 'MonaSans',
 														textTransform: 'uppercase',
 														fontSize: 18,
 													}}
@@ -361,7 +360,7 @@ export default function User(props: {user: CompactStats | null}) {
 									<p
 										style={{
 											color: BASE_COLOR,
-											fontFamily: 'Jelle',
+											fontFamily: 'MonaSans',
 											textAlign: 'center',
 											fontSize: 12,
 										}}
@@ -384,11 +383,7 @@ export default function User(props: {user: CompactStats | null}) {
 										height: 20,
 									}}
 								></div>
-								<Rerender
-									stats={user}
-									downloadProgress={downloadProgress}
-									username={username}
-								></Rerender>
+
 								<br />
 								<br />
 								<br />

@@ -33,7 +33,7 @@ export type LangMapping = {
 };
 
 // TODO: Use it
-const NotLanguages = ['Markdown', 'Dockerfile'];
+// const NotLanguages = ['Markdown', 'Dockerfile'];
 
 export const languageList: LangMapping[] = [
 	{

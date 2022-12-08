@@ -1,11 +1,6 @@
-import groupBy from 'lodash.groupby';
 import {Internals} from 'remotion';
 import {All} from '../src/get-all';
 import {languageList} from './language-list';
-
-// Space saving format for contributions to not run into 256KB payload format
-// weekday, contributions, date, color
-export type SpaceSavingContribution = [number, number, string, string];
 
 export type TopLanguage = {
 	color: string | null;
@@ -28,12 +23,10 @@ export type Issues = {
 
 export type CompactStats = {
 	contributionCount: number;
-	contributions: {[key: string]: SpaceSavingContribution[]};
 	avatar: string;
 	topLanguages: TopLanguage[] | null;
 	weekdays: Weekdays;
 	issues: Issues;
-	fixedDec18Issues: boolean | undefined;
 };
 
 export const getIssues = (response: All): Issues => {
@@ -169,26 +162,11 @@ export const mapResponseToStats = (response: All): CompactStats => {
 			.flat(1)
 			.filter((d) => d.date.startsWith('2022'));
 
-	const groupedByMonth = groupBy(
-		allDays.map(
-			(d) =>
-				[
-					d.weekday,
-					d.contributionCount,
-					d.date,
-					d.color,
-				] as SpaceSavingContribution
-		),
-		([_, __, date]) => date.split('-')[1]
-	);
-
 	return {
 		contributionCount: allDays.reduce((a, b) => a + b.contributionCount, 0),
-		contributions: groupedByMonth,
 		avatar: response.data.user.avatarUrl,
 		topLanguages: getTopLanguages(response),
 		weekdays: getMostProductive(response),
 		issues: getIssues(response),
-		fixedDec18Issues: true,
 	};
 };
