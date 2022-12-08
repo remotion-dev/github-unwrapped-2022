@@ -142,7 +142,7 @@ export const TopWeekdays2022: React.FC<{
 							stats.weekdays.most === String(i) && stats.weekdays.mostCount > 0;
 
 						return (
-							<div key={d}>
+							<div key={i}>
 								<div
 									style={{
 										display: 'flex',
