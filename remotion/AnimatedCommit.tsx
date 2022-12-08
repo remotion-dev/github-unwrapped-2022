@@ -1,17 +1,23 @@
 import React from 'react';
-import {AbsoluteFill, interpolate, random, useVideoConfig} from 'remotion';
+import {
+	AbsoluteFill,
+	interpolate,
+	random,
+	useCurrentFrame,
+	useVideoConfig,
+} from 'remotion';
 import {Commit, CommitProps} from './Commit';
 
 export const AnimatedCommit: React.FC<CommitProps> = ({...props}) => {
-	const {width} = useVideoConfig();
-	const seed = random(props.sha);
+	const {width, height} = useVideoConfig();
+	const frame = useCurrentFrame();
 
-	const offsetLeft = interpolate(seed, [0, 1], [-width / 2, width]);
+	const top = interpolate(props.index, [0, 3], [-200, 400]);
 
 	return (
 		<AbsoluteFill
 			style={{
-				transform: `translateX(${offsetLeft}px)`,
+				transform: `translateY(${top}px)`,
 			}}
 		>
 			<Commit {...props}></Commit>

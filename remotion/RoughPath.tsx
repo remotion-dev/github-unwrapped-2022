@@ -19,7 +19,7 @@ export const RoughPath: React.FC<
 	const drawable = path.path(props.d as string, {
 		roughness: roughness ?? 0.3,
 		fill: props.fill,
-		seed: frame,
+		seed: seed ?? frame,
 		maxRandomnessOffset: 4,
 		hachureGap: hachureGap ?? 1,
 		hachureAngle: random(seed ?? props.d ?? '') * 360,

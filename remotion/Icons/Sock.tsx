@@ -1,12 +1,13 @@
 import React from 'react';
 
-export const Sock: React.FC = () => {
+export const Sock: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
 	return (
 		<svg
 			width="69"
 			height="93"
 			viewBox="0 0 69 93"
 			fill="none"
+			style={props.style}
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path

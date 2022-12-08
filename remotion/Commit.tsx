@@ -1,22 +1,20 @@
 import React from 'react';
 import {AbsoluteFill, Img} from 'remotion';
-import {BASE_COLOR} from '../src/palette';
+import {Candy} from './Icons/Candy';
+import {Sock} from './Icons/Sock';
+import {Star} from './Icons/Star';
+import {Laptop} from './Laptop';
 import {RoughPath} from './RoughPath';
 
 export type CommitProps = {
 	message: string;
-	avatar: string;
 	repository: string;
-	sha: string;
+	index: number;
 };
 
 export const commitWidth = 900;
 
-export const Commit: React.FC<CommitProps> = ({
-	avatar,
-	message,
-	repository,
-}) => {
+export const Commit: React.FC<CommitProps> = ({message, repository, index}) => {
 	return (
 		<AbsoluteFill>
 			<AbsoluteFill
@@ -27,49 +25,59 @@ export const Commit: React.FC<CommitProps> = ({
 			>
 				<div
 					style={{
-						alignItems: 'flex-start',
-						justifyContent: 'center',
 						display: 'flex',
-						flexDirection: 'column',
-						width: commitWidth,
-						height: 170,
+						flexDirection: 'row',
 						backgroundColor: 'white',
-						paddingLeft: 30,
+						width: commitWidth,
+						alignItems: 'center',
 					}}
 				>
 					<div
 						style={{
-							display: 'flex',
-							flexDirection: 'row',
-							alignItems: 'center',
-							fontFamily: 'MonaSans',
-							fontSize: 24,
-							fontVariationSettings: '"wght" 500',
+							paddingLeft: 20,
+							paddingRight: 20,
 						}}
 					>
-						<Img
-							style={{
-								height: 40,
-								width: 40,
-								borderRadius: 5,
-								marginRight: 10,
-							}}
-							src={avatar}
-						></Img>
-						{repository}
+						{index === 0 ? <Candy style={{width: 80}}></Candy> : null}
+						{index === 1 ? <Star style={{width: 80}}></Star> : null}
+						{index === 2 ? <Laptop style={{width: 80}}></Laptop> : null}
+						{index === 3 ? <Sock style={{width: 80}}></Sock> : null}
 					</div>
 					<div
 						style={{
-							width: 850,
-							fontFamily: 'MonaSans',
-							fontSize: 45,
-							fontVariationSettings: '"wght" 600',
-							whiteSpace: 'nowrap',
-							overflow: 'hidden',
-							textOverflow: 'ellipsis',
+							alignItems: 'flex-start',
+							justifyContent: 'center',
+							display: 'flex',
+							flexDirection: 'column',
+							height: 170,
+							flex: 1,
 						}}
 					>
-						{message}
+						<div
+							style={{
+								display: 'flex',
+								flexDirection: 'row',
+								alignItems: 'center',
+								fontFamily: 'MonaSans',
+								fontSize: 24,
+								fontVariationSettings: '"wght" 500',
+							}}
+						>
+							{repository}
+						</div>
+						<div
+							style={{
+								fontFamily: 'MonaSans',
+								fontSize: 45,
+								fontVariationSettings: '"wght" 600',
+								whiteSpace: 'nowrap',
+								overflow: 'hidden',
+								textOverflow: 'ellipsis',
+								width: 750,
+							}}
+						>
+							{message}
+						</div>
 					</div>
 				</div>
 			</AbsoluteFill>
@@ -81,16 +89,17 @@ export const Commit: React.FC<CommitProps> = ({
 			>
 				<svg
 					style={{
-						width: 900,
+						width: commitWidth,
 						overflow: 'visible',
 					}}
 					viewBox="0 0 900 170"
 				>
 					<RoughPath
-						stroke={BASE_COLOR}
-						strokeWidth={12}
+						stroke={'#000'}
+						strokeWidth={9}
 						roughness={0.1}
-						bowing={10}
+						bowing={15}
+						seed={index + 1}
 						d={`M 0 0 L 900 0 L 900 170 L 0 170 z`}
 					></RoughPath>
 				</svg>

@@ -467,8 +467,8 @@ export const Root: React.FC = () => {
 				id="Commit"
 				defaultProps={{
 					message: 'fix wrong type',
-					date: new Date('2022-12-10').getTime(),
-					avatar: 'https://avatars.githubusercontent.com/u/1629785?v=4',
+					index: 0,
+					repository: 'remotion/remotion-dev',
 				}}
 			></Composition>
 			<Composition

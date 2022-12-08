@@ -1,7 +1,6 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {BG_2022} from '../src/palette';
-import {Commit} from './Commit';
 import {commits} from './commits';
 import sampleSize from 'lodash.samplesize';
 import {AnimatedCommit} from './AnimatedCommit';
@@ -22,7 +21,7 @@ const interestingWords = [
 const notInteresting = ['release', 'merge'];
 
 export const BestCommits: React.FC = () => {
-	const sampled5Commits = sampleSize(commits.items, 5);
+	const sampled5Commits = sampleSize(commits.items, 4);
 
 	return (
 		<AbsoluteFill
@@ -43,21 +42,21 @@ export const BestCommits: React.FC = () => {
 						fontVariationSettings: '"wght" 600',
 						textAlign: 'center',
 						lineHeight: 1.4,
+						marginTop: -790,
 					}}
 				>
-					You crafted 7322 commits. <br></br>Here are some of the best.
+					You crafted 7322 commits. <br></br>Here are some sweet ones.
 				</h1>
 			</AbsoluteFill>
-			{sampled5Commits.map((commit) => {
+			{sampled5Commits.map((commit, i) => {
 				return (
-					<AbsoluteFill key={commit.sha}>
+					<AbsoluteFill key={i}>
 						<AnimatedCommit
-							avatar={commit.repository.owner.avatar_url}
 							message={commit.commit.message}
 							repository={
 								commit.repository.owner.login + '/' + commit.repository.name
 							}
-							sha={commit.sha}
+							index={i}
 						></AnimatedCommit>
 					</AbsoluteFill>
 				);
