@@ -41,7 +41,7 @@ export const Main: React.FC<{
 			<Snow windPushes={windPushes}></Snow>
 			<Sequence durationInFrames={duration[0] + transitionDuration}>
 				<SlideOut>
-					<Title noBackground></Title>
+					<Title noBackground={true} userStats={stats}></Title>
 				</SlideOut>
 			</Sequence>
 			<Sequence

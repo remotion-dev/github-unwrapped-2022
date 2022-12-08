@@ -1,12 +1,14 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {GiftBox} from './GiftBox';
+import {CompactStats} from './map-response-to-stats';
 import {Snow} from './Snow';
 import {WaterColour} from './WaterColour';
 
 export const Title: React.FC<{
 	noBackground: boolean;
-}> = ({noBackground}) => {
+	userStats: CompactStats;
+}> = ({noBackground, userStats}) => {
 	return (
 		<AbsoluteFill
 			style={{
@@ -23,7 +25,7 @@ export const Title: React.FC<{
 				<Snow></Snow>
 			</AbsoluteFill>
 			<AbsoluteFill>
-				<GiftBox></GiftBox>
+				<GiftBox userStats={userStats}></GiftBox>
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);

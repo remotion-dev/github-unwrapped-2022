@@ -9,7 +9,7 @@ import {
 } from 'remotion';
 import {RoughPath} from './RoughPath';
 
-export const AvatarFrame: React.FC = () => {
+export const AvatarFrame: React.FC<{avatar: string}> = ({avatar}) => {
 	const {height, fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 	const swingOut = spring({
@@ -137,7 +137,7 @@ export const AvatarFrame: React.FC = () => {
 								borderRadius: 20,
 								marginTop: 100,
 							}}
-							src="https://avatars.githubusercontent.com/u/1629785?v=4"
+							src={avatar}
 						></Img>
 					</AbsoluteFill>
 					<AbsoluteFill
