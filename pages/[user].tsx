@@ -237,12 +237,12 @@ export default function User(props: {user: CompactStats | null}) {
 		<div ref={ref}>
 			<Head>
 				<title>
-					{username}
+					{user.username}
 					{"'"}s #GitHubUnwrapped
 				</title>
 				<meta
 					property="og:title"
-					content={`${username}'s #GitHubUnwrapped`}
+					content={`${user.username}'s #GitHubUnwrapped`}
 					key="title"
 				/>
 
@@ -259,7 +259,7 @@ export default function User(props: {user: CompactStats | null}) {
 						<br></br>
 						<br></br>
 						<h1 style={title}>Here is your #GitHubUnwrapped!</h1>
-						<h2 style={subtitle}>@{username}</h2>
+						<h2 style={subtitle}>@{user.username}</h2>
 						<div
 							style={{
 								height: 20,

@@ -3,7 +3,7 @@ import {RoughPath} from '../RoughPath';
 
 export const Java: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 	return (
-		<svg {...props} enable-background="new 0 0 28 28" viewBox="0 0 28 28">
+		<svg {...props} enableBackground="new 0 0 28 28" viewBox="0 0 28 28">
 			<RoughPath
 				fill="#fff"
 				d="M19.2,15.293c1.262,1.278,1.378,7.772-1.018,8.998s-9.163,1.278-9.223-2.347s-0.449-6.755,3.144-7.042C15.696,14.615,17.912,13.989,19.2,15.293z"

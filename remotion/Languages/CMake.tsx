@@ -3,7 +3,7 @@ import {RoughPath} from '../RoughPath';
 
 export const CMake: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 	return (
-		<svg {...props} enable-background="new 0 0 28 28" viewBox="0 0 28 28">
+		<svg {...props} enableBackground="new 0 0 28 28" viewBox="0 0 28 28">
 			<RoughPath
 				fill="#fff"
 				d="M12.933,1.141c-0.855,0-13.375,21.375-11,23.375s20.95,0.4,21.975-1.05C24.933,22.016,15.058,1.141,12.933,1.141z"

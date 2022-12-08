@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
-import {BASE_COLOR, BG_2022} from '../src/palette';
+import {BASE_COLOR} from '../src/palette';
 import {StrokedText} from './StrokedText';
 
 export const AvgCommitsTitle: React.FC = () => {
@@ -28,7 +28,7 @@ export const AvgCommitsTitle: React.FC = () => {
 				>
 					{words.map((word, i) => {
 						return (
-							<>
+							<React.Fragment key={word + i}>
 								<span
 									style={{
 										opacity: interpolate(frame - i * 5 - 10, [0, 40], [0, 1], {
@@ -41,7 +41,7 @@ export const AvgCommitsTitle: React.FC = () => {
 									{word}
 								</span>
 								{words.length - 1 !== i ? <span> </span> : null}
-							</>
+							</React.Fragment>
 						);
 					})}
 				</div>

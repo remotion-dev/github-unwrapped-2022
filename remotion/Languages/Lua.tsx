@@ -3,7 +3,7 @@ import {RoughCircle} from '../RoughCircle';
 
 export const Lua: React.FC<SVGProps<SVGSVGElement>> = (props) => {
 	return (
-		<svg enable-background="new 0 0 28 28" viewBox="0 0 28 28" {...props}>
+		<svg enableBackground="new 0 0 28 28" viewBox="0 0 28 28" {...props}>
 			<RoughCircle cx="15.594" cy="14.301" r="11.677" fill="#fff" />
 			<path
 				fill="#0001ff"
