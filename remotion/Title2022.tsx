@@ -8,8 +8,7 @@ import {WaterColour} from './WaterColour';
 export const Title: React.FC<{
 	noBackground: boolean;
 	userStats: CompactStats;
-	username: string;
-}> = ({noBackground, userStats, username}) => {
+}> = ({noBackground, userStats}) => {
 	return (
 		<AbsoluteFill
 			style={{
@@ -26,7 +25,7 @@ export const Title: React.FC<{
 				<Snow></Snow>
 			</AbsoluteFill>
 			<AbsoluteFill>
-				<GiftBox userStats={userStats} username={username}></GiftBox>
+				<GiftBox userStats={userStats}></GiftBox>
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);

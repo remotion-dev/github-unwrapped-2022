@@ -12,7 +12,7 @@ import {backButton} from '../src/components/button';
 import Download from '../src/components/Download';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
 import Spinner from '../src/components/spinner';
-import {getStatsOrFetch} from '../src/get-stats-or-fetch';
+import {getFromCache} from '../src/db/cache';
 import {BASE_COLOR} from '../src/palette';
 import {RenderProgressOrFinality} from './api/progress';
 
@@ -47,9 +47,13 @@ export const getStaticProps = async ({params}: {params: {user: string}}) => {
 	}
 
 	try {
-		const compact = await getStatsOrFetch(user);
+		const compact = await getFromCache(user);
 		if (!compact) {
-			return {notFound: true};
+			return {
+				props: {
+					user: null,
+				},
+			};
 		}
 
 		return {
@@ -268,7 +272,6 @@ export default function User(props: {user: CompactStats | null}) {
 										}}
 										inputProps={{
 											stats: user,
-											username,
 										}}
 									></Player>
 									<AbsoluteFill

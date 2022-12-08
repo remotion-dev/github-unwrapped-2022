@@ -15,10 +15,7 @@ import {TitleCard} from './TitleCard';
 import {Unwrap} from './Unwrap';
 import {WallHanger} from './WallHanger';
 
-export const GiftBox: React.FC<{userStats: CompactStats; username: string}> = ({
-	userStats,
-	username,
-}) => {
+export const GiftBox: React.FC<{userStats: CompactStats}> = ({userStats}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
@@ -69,10 +66,10 @@ export const GiftBox: React.FC<{userStats: CompactStats; username: string}> = ({
 					scale: '0.4',
 				}}
 			>
-				<AvatarFrame avatar={userStats?.avatar}></AvatarFrame>
+				<AvatarFrame avatar={userStats.avatar}></AvatarFrame>
 			</Sequence>
 			<Sequence from={70}>
-				<TitleCard username={username}></TitleCard>
+				<TitleCard username={userStats.username}></TitleCard>
 			</Sequence>
 			<AbsoluteFill
 				style={{

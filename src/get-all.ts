@@ -4,44 +4,50 @@ export type All = typeof all;
 
 const query = (username: string) =>
 	`{
-  user(login: "${username}") {
-    openIssues: issues (first: 100, orderBy: {field:CREATED_AT, direction: ASC} filterBy: {since: "2022-01-01T00:00:00.000Z"}, states: OPEN) {
-      totalCount
-    }
-    closedIssues: issues (first: 100, orderBy: {field:CREATED_AT, direction: ASC} filterBy: {since: "2022-01-01T00:00:00.000Z"}, states: CLOSED) {
-      totalCount
-    }
-    repositories(last: 50, isFork: false) {
-      nodes {
-        name
-        url
-        languages(first: 3, orderBy: {field: SIZE, direction: DESC}) {
-          edges {
-            size
-            node {
-              id
-              color
-              name
+    user(login: "${username}") {
+      openIssues: issues(filterBy: {since: "2022-01-01T00:00:00.000Z"}, states: OPEN) {
+        totalCount
+      }
+      closedIssues: issues(
+        filterBy: {since: "2022-01-01T00:00:00.000Z"}
+        states: CLOSED
+      ) {
+        totalCount
+      }
+      avatarUrl
+      login
+      contributionsCollection(from: "2022-01-01T00:00:00.000Z") {
+        totalCommitContributions
+        restrictedContributionsCount
+        totalIssueContributions
+        totalCommitContributions
+        totalRepositoryContributions
+        totalPullRequestContributions
+        totalPullRequestReviewContributions
+        contributionCalendar {
+          totalContributions
+        }
+        commitContributionsByRepository {
+          repository {
+            name
+            owner {
+              login
+            }
+            languages(first: 3, orderBy: {field: SIZE, direction: DESC}) {
+              edges {
+                size
+                node {
+                  color
+                  name
+                  id
+                }
+              }
             }
           }
         }
       }
     }
-    avatarUrl
-    contributionsCollection {
-      contributionCalendar {
-        weeks {
-          contributionDays {
-            contributionCount
-            weekday
-            date
-            color
-          }
-        }
-      }
-    }
   }
-}
 `.trim();
 
 export const getAll = async (username: string, token: string): Promise<All> => {

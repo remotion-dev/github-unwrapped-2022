@@ -50,6 +50,8 @@ import {AvatarFrame} from './AvatarFrame';
 import {Unwrap} from './Unwrap';
 import {Commit} from './Commit';
 import {BestCommits} from './BestCommits';
+import {mapApiResponseToCommits} from './map-api-response-to-commits';
+import {commits} from './commits';
 
 export const Root: React.FC = () => {
 	return (
@@ -62,8 +64,7 @@ export const Root: React.FC = () => {
 				width={1080}
 				id={COMP_NAME}
 				defaultProps={{
-					stats: mapResponseToStats(all),
-					username: 'JonnyBurger',
+					stats: mapResponseToStats(all, mapApiResponseToCommits(commits)),
 				}}
 			></Composition>
 			<Composition
@@ -86,7 +87,7 @@ export const Root: React.FC = () => {
 				id="top-weekdays-2022"
 				defaultProps={{
 					noBackground: false,
-					stats: mapResponseToStats(all),
+					stats: mapResponseToStats(all, mapApiResponseToCommits(commits)),
 				}}
 			></Composition>
 			<Composition
@@ -97,7 +98,7 @@ export const Root: React.FC = () => {
 				width={1080}
 				id="water"
 				defaultProps={{
-					stats: mapResponseToStats(all),
+					stats: mapResponseToStats(all, mapApiResponseToCommits(commits)),
 				}}
 			></Composition>
 			<Composition
@@ -131,8 +132,7 @@ export const Root: React.FC = () => {
 				id="title"
 				defaultProps={{
 					noBackground: false,
-					userStats: mapResponseToStats(all),
-					username: 'JonnyBurger',
+					userStats: mapResponseToStats(all, mapApiResponseToCommits(commits)),
 				}}
 			></Composition>
 			<Composition
@@ -143,7 +143,7 @@ export const Root: React.FC = () => {
 				width={1080}
 				id="languages"
 				defaultProps={{
-					stats: mapResponseToStats(all),
+					stats: mapResponseToStats(all, mapApiResponseToCommits(commits)),
 				}}
 			></Composition>
 			<Still

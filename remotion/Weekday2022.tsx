@@ -8,7 +8,8 @@ import {
 	useVideoConfig,
 } from 'remotion';
 import {BASE_COLOR} from '../src/palette';
-import {CompactStats, Weekday} from './map-response-to-stats';
+import {Weekday} from './frontend-stats';
+import {CompactStats} from './map-response-to-stats';
 import {Snow} from './Snow';
 import {StrokedText} from './StrokedText';
 import {WaterColour} from './WaterColour';

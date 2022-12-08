@@ -1,19 +1,12 @@
 import {Internals} from 'remotion';
 import {All} from '../src/get-all';
+import {Commit, Weekday, Weekdays} from './frontend-stats';
 import {languageList} from './language-list';
+import {getRandomCommits} from './rank-commit';
 
 export type TopLanguage = {
 	color: string | null;
 	name: string;
-};
-
-type Weekdays = {
-	least: Weekday;
-	leastCount: number;
-	mostCount: number;
-	most: Weekday;
-	ratio: number;
-	days: number[];
 };
 
 export type Issues = {
@@ -24,9 +17,12 @@ export type Issues = {
 export type CompactStats = {
 	contributionCount: number;
 	avatar: string;
+	username: string;
+	repositoriesContributedTo: string[];
 	topLanguages: TopLanguage[] | null;
 	weekdays: Weekdays;
 	issues: Issues;
+	bestCommits: Commit[];
 };
 
 export const getIssues = (response: All): Issues => {
@@ -36,44 +32,7 @@ export const getIssues = (response: All): Issues => {
 	};
 };
 
-export type Weekday = '0' | '1' | '2' | '3' | '4' | '5' | '6';
-
-export const getMostProductive = (response: All): Weekdays => {
-	const weekdays: {[key in Weekday]: number} = {
-		0: 0,
-		1: 0,
-		2: 0,
-		3: 0,
-		4: 0,
-		5: 0,
-		6: 0,
-	};
-	for (const r of response.data.user.contributionsCollection.contributionCalendar.weeks
-		.map((w) => w.contributionDays)
-		.flat(1)) {
-		weekdays[remapWeekdays(r.weekday)] += r.contributionCount;
-	}
-
-	const entries = Object.entries(weekdays) as [Weekday, number][];
-
-	const sortedDays = entries.slice().sort((a, b) => a[1] - b[1]);
-
-	const [leastDay, leastAmount] = sortedDays[0];
-	const [mostDay, mostAmount] = sortedDays[sortedDays.length - 1];
-
-	const ratio = Math.max(mostAmount, 1) / Math.max(leastAmount, 1);
-
-	return {
-		least: leastDay,
-		most: mostDay,
-		ratio: ratio,
-		leastCount: leastAmount,
-		mostCount: mostAmount,
-		days: Object.values(weekdays),
-	};
-};
-
-export const remapWeekdays = (weekday: number): Weekday => {
+const remapWeekdays = (weekday: number): Weekday => {
 	if (weekday === 0) {
 		return '6';
 	}
@@ -98,15 +57,55 @@ export const remapWeekdays = (weekday: number): Weekday => {
 	throw new Error('unknown weekday' + weekday);
 };
 
+const getMostProductive = (response: Commit[]): Weekdays => {
+	const weekdays: {[key in Weekday]: number} = {
+		0: 0,
+		1: 0,
+		2: 0,
+		3: 0,
+		4: 0,
+		5: 0,
+		6: 0,
+	};
+	for (const r of response) {
+		const date = new Date(r.date);
+		const day = date.getDay();
+		const europeanDay = remapWeekdays(day);
+		weekdays[europeanDay] += 1;
+	}
+
+	const entries = Object.entries(weekdays) as [Weekday, number][];
+
+	const sortedDays = entries.slice().sort((a, b) => a[1] - b[1]);
+
+	const [leastDay, leastAmount] = sortedDays[0];
+	const [mostDay, mostAmount] = sortedDays[sortedDays.length - 1];
+
+	const ratio = Math.max(mostAmount, 1) / Math.max(leastAmount, 1);
+
+	return {
+		least: leastDay,
+		most: mostDay,
+		ratio: ratio,
+		leastCount: leastAmount,
+		mostCount: mostAmount,
+		days: Object.values(weekdays),
+	};
+};
+
 export const getTopLanguages = (response: All): TopLanguage[] | null => {
 	// Store the languages and their counts in an object
 	const langs: {[key: string]: number} = {};
 	// Get the languages used in the repositories
-	const languages = response.data.user.repositories.nodes
-		.filter((n) => n.languages.edges?.[0])
-		.map((n) => n.languages.edges)
-		.flat(1)
-		.map((n) => n.node);
+	const languages =
+		response.data.user.contributionsCollection.commitContributionsByRepository
+			.map((r) => {
+				return r.repository;
+			})
+			.filter((n) => n.languages.edges?.[0])
+			.map((n) => n.languages.edges)
+			.flat(1)
+			.map((n) => n.node);
 
 	// Count the number of times each language is used
 	for (const lang of languages) {
@@ -155,18 +154,33 @@ export const getTopLanguages = (response: All): TopLanguage[] | null => {
 	);
 };
 
-export const mapResponseToStats = (response: All): CompactStats => {
-	const allDays =
-		response.data.user.contributionsCollection.contributionCalendar.weeks
-			.map((w) => w.contributionDays)
-			.flat(1)
-			.filter((d) => d.date.startsWith('2022'));
+export const filterCommitsByContributedRepositoryOnly = (
+	commits: Commit[],
+	repositoriesContributedTo: string[]
+) => {
+	const filterFunction = (commit: Commit) =>
+		repositoriesContributedTo.includes(commit.repo);
 
+	return commits.filter(filterFunction);
+};
+
+export const mapResponseToStats = (
+	response: All,
+	commits: Commit[]
+): CompactStats => {
 	return {
-		contributionCount: allDays.reduce((a, b) => a + b.contributionCount, 0),
+		contributionCount:
+			response.data.user.contributionsCollection.contributionCalendar
+				.totalContributions,
 		avatar: response.data.user.avatarUrl,
+		username: response.data.user.login,
+		repositoriesContributedTo:
+			response.data.user.contributionsCollection.commitContributionsByRepository.map(
+				(r) => r.repository.owner.login + '/' + r.repository.name
+			),
 		topLanguages: getTopLanguages(response),
-		weekdays: getMostProductive(response),
+		weekdays: getMostProductive(commits),
 		issues: getIssues(response),
+		bestCommits: getRandomCommits(commits, '0', 4),
 	};
 };

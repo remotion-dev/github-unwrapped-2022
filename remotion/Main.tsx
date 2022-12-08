@@ -14,8 +14,7 @@ import {TopWeekdays2022} from './Weekday2022';
 
 export const Main: React.FC<{
 	stats: CompactStats;
-	username: string;
-}> = ({stats, username}) => {
+}> = ({stats}) => {
 	if (!stats) {
 		return null;
 	}
@@ -42,11 +41,7 @@ export const Main: React.FC<{
 			<Snow windPushes={windPushes}></Snow>
 			<Sequence durationInFrames={duration[0] + transitionDuration}>
 				<SlideOut>
-					<Title
-						noBackground={true}
-						userStats={stats}
-						username={username}
-					></Title>
+					<Title noBackground={true} userStats={stats}></Title>
 				</SlideOut>
 			</Sequence>
 			<Sequence

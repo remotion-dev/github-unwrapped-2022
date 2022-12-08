@@ -1,11 +1,5 @@
 import {random} from 'remotion';
-
-type Commit = {
-	message: string;
-	author: string;
-	repo: string;
-	date: number;
-};
+import {Commit} from './frontend-stats';
 
 const interestingWords = [
 	'fix',

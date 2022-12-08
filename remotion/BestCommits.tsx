@@ -7,23 +7,12 @@ import {
 	useVideoConfig,
 } from 'remotion';
 import {BG_2022} from '../src/palette';
-import {commits} from './commits';
 import {AnimatedCommit} from './AnimatedCommit';
-import {getRandomCommits} from './rank-commit';
+import {CompactStats} from './map-response-to-stats';
 
-export const BestCommits: React.FC = () => {
-	const sampledCommits = getRandomCommits(
-		commits.items.map((item) => {
-			return {
-				author: item.author.login,
-				date: Date.now(),
-				message: item.commit.message,
-				repo: item.repository.full_name,
-			};
-		}),
-		'0',
-		4
-	);
+export const BestCommits: React.FC<{
+	stats: CompactStats;
+}> = ({stats}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 	const opacity = interpolate(frame, [30, 60], [0, 1]);
@@ -65,7 +54,7 @@ export const BestCommits: React.FC = () => {
 					<span style={{opacity}}>Here are some sweet ones.</span>
 				</h1>
 			</AbsoluteFill>
-			{sampledCommits.map((commit, i) => {
+			{stats.bestCommits.map((commit, i) => {
 				return (
 					<AbsoluteFill key={i}>
 						<AnimatedCommit
