@@ -4,24 +4,21 @@ import {BG_2022} from '../src/palette';
 import {commits} from './commits';
 import sampleSize from 'lodash.samplesize';
 import {AnimatedCommit} from './AnimatedCommit';
-
-const interestingWords = [
-	'fix',
-	'wrong',
-	'revert',
-	'!!!',
-	'add',
-	'kill',
-	'restore',
-	'prevent',
-	'allow',
-	'simplify',
-];
-
-const notInteresting = ['release', 'merge'];
+import {getRandomCommits} from './rank-commit';
 
 export const BestCommits: React.FC = () => {
-	const sampled5Commits = sampleSize(commits.items, 4);
+	const sampled5Commits = getRandomCommits(
+		commits.items.map((item) => {
+			return {
+				author: item.author.login,
+				date: Date.now(),
+				message: item.commit.message,
+				repo: item.repository.full_name,
+			};
+		}),
+		'0',
+		4
+	);
 
 	return (
 		<AbsoluteFill
@@ -52,10 +49,8 @@ export const BestCommits: React.FC = () => {
 				return (
 					<AbsoluteFill key={i}>
 						<AnimatedCommit
-							message={commit.commit.message}
-							repository={
-								commit.repository.owner.login + '/' + commit.repository.name
-							}
+							message={commit.message}
+							repository={commit.repo}
 							index={i}
 						></AnimatedCommit>
 					</AbsoluteFill>
