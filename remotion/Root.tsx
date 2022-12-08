@@ -494,6 +494,12 @@ export const Root: React.FC = () => {
 				durationInFrames={250}
 				fps={30}
 				id="BestCommits"
+				defaultProps={{
+					stats: mapResponseToStats(
+						backendResponseToBackendStats(all),
+						mapApiResponseToCommits(commits)
+					),
+				}}
 			></Composition>
 		</>
 	);
