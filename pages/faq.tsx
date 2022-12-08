@@ -111,7 +111,7 @@ const Faq: React.FC = () => {
 					>
 						Jonny Burger
 					</a>
-					. No affiliation with GitHub.{' '}
+					.
 				</p>
 				<h2>What is the song?</h2>
 				<p>
