@@ -2,13 +2,21 @@ import React from 'react';
 import {AbsoluteFill, Img} from 'remotion';
 import {BASE_COLOR} from '../src/palette';
 import {RoughPath} from './RoughPath';
-import {roundSvg} from './round-svg';
 
-export const Commit: React.FC<{
+export type CommitProps = {
 	message: string;
 	avatar: string;
 	repository: string;
-}> = ({avatar, message, repository}) => {
+	sha: string;
+};
+
+export const commitWidth = 900;
+
+export const Commit: React.FC<CommitProps> = ({
+	avatar,
+	message,
+	repository,
+}) => {
 	return (
 		<AbsoluteFill>
 			<AbsoluteFill
@@ -23,7 +31,7 @@ export const Commit: React.FC<{
 						justifyContent: 'center',
 						display: 'flex',
 						flexDirection: 'column',
-						width: 900,
+						width: commitWidth,
 						height: 170,
 						backgroundColor: 'white',
 						paddingLeft: 30,

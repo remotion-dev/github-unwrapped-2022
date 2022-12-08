@@ -4,6 +4,7 @@ import {BG_2022} from '../src/palette';
 import {Commit} from './Commit';
 import {commits} from './commits';
 import sampleSize from 'lodash.samplesize';
+import {AnimatedCommit} from './AnimatedCommit';
 
 const interestingWords = [
 	'fix',
@@ -49,14 +50,15 @@ export const BestCommits: React.FC = () => {
 			</AbsoluteFill>
 			{sampled5Commits.map((commit) => {
 				return (
-					<AbsoluteFill>
-						<Commit
+					<AbsoluteFill key={commit.sha}>
+						<AnimatedCommit
 							avatar={commit.repository.owner.avatar_url}
 							message={commit.commit.message}
 							repository={
 								commit.repository.owner.login + '/' + commit.repository.name
 							}
-						></Commit>
+							sha={commit.sha}
+						></AnimatedCommit>
 					</AbsoluteFill>
 				);
 			})}
