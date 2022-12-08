@@ -106,13 +106,16 @@ export const remapWeekdays = (weekday: number): Weekday => {
 };
 
 export const getTopLanguages = (response: All): TopLanguage[] | null => {
+	// Store the languages and their counts in an object
 	const langs: {[key: string]: number} = {};
+	// Get the languages used in the repositories
 	const languages = response.data.user.repositories.nodes
 		.filter((n) => n.languages.edges?.[0])
 		.map((n) => n.languages.edges)
 		.flat(1)
 		.map((n) => n.node);
 
+	// Count the number of times each language is used
 	for (const lang of languages) {
 		if (!langs[lang.id]) {
 			langs[lang.id] = 0;
@@ -120,34 +123,43 @@ export const getTopLanguages = (response: All): TopLanguage[] | null => {
 		langs[lang.id]++;
 	}
 
-	const topEntries = Object.entries(langs)
-		.sort((a, b) => a[1] - b[1])
-		.reverse();
+	// Sort the languages by their counts in descending order
+	const topEntries = Object.entries(langs).sort((a, b) => b[1] - a[1]);
 
 	if (topEntries.length === 0) {
 		return null;
 	}
 
-	return topEntries
-		.map((entry) => {
-			const lang = languages.find((l) => l.id === entry[0]);
-			if (!lang) {
-				return null;
-			}
+	return (
+		topEntries
+			// Create an object for each language with its color and name
+			.map((entry) => {
+				const lang = languages.find((l) => l.id === entry[0]);
+				if (!lang) {
+					return null;
+				}
 
-			return {
-				color: lang?.color,
-				name: lang?.name,
-			};
-		})
-		.filter(Internals.truthy)
-		.sort((a) => {
-			const hasIconA = languageList.find((f) => {
-				return f.name === a.name;
-			});
+				return {
+					color: lang?.color,
+					name: lang?.name,
+				};
+			})
+			// Remove any null values
+			.filter(Internals.truthy)
+			// Sort the languages by whether they have an icon and then by their values
+			.sort((a, b) => {
+				const hasIconA = languageList.find((f) => f.name === a.name);
+				const hasIconB = languageList.find((f) => f.name === b.name);
 
-			return hasIconA ? -1 : 1;
-		});
+				if (hasIconA && !hasIconB) {
+					return -1;
+				} else if (!hasIconA && hasIconB) {
+					return 1;
+				} else {
+					return 0;
+				}
+			})
+	);
 };
 
 export const mapResponseToStats = (response: All): CompactStats => {
