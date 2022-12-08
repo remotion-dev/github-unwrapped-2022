@@ -6,9 +6,9 @@ import {roundSvg} from './round-svg';
 
 export const Commit: React.FC<{
 	message: string;
-	date: number;
 	avatar: string;
-}> = ({avatar, date, message}) => {
+	repository: string;
+}> = ({avatar, message, repository}) => {
 	return (
 		<AbsoluteFill>
 			<AbsoluteFill
@@ -17,56 +17,48 @@ export const Commit: React.FC<{
 					alignItems: 'center',
 				}}
 			>
-				<svg
+				<div
 					style={{
-						width: 1000,
-						overflow: 'visible',
+						alignItems: 'flex-start',
+						justifyContent: 'center',
+						display: 'flex',
+						flexDirection: 'column',
+						width: 900,
+						height: 170,
+						backgroundColor: 'white',
+						paddingLeft: 30,
 					}}
-					viewBox="0 0 800 150"
 				>
-					<RoughPath
-						stroke={BASE_COLOR}
-						strokeWidth={12}
-						fill="#fff"
-						roughness={0.1}
-						bowing={10}
-						d={`M 0 0 L 800 0 L 800 150 L 0 150 z`}
-					></RoughPath>
-					<RoughPath
-						d={roundSvg(
-							`M 500 -30 L 810 -30 L 810 30 L 500 30 L 500 0 L 500 -30 L 810 -30`,
-							20
-						)}
-						fill={'#000'}
-						strokeWidth={10}
-						hachureGap={5}
-						seed={3}
-					></RoughPath>
-				</svg>
-			</AbsoluteFill>
-			<AbsoluteFill
-				style={{
-					alignItems: 'center',
-					flexDirection: 'row',
-					width: '100%',
-					marginLeft: 80,
-				}}
-			>
-				<Img
-					style={{
-						height: 110,
-						width: 110,
-						borderRadius: 20,
-						marginRight: 30,
-					}}
-					src={avatar}
-				></Img>
-				<div>
 					<div
 						style={{
+							display: 'flex',
+							flexDirection: 'row',
+							alignItems: 'center',
 							fontFamily: 'MonaSans',
-							fontSize: 40,
+							fontSize: 24,
+							fontVariationSettings: '"wght" 500',
+						}}
+					>
+						<Img
+							style={{
+								height: 40,
+								width: 40,
+								borderRadius: 5,
+								marginRight: 10,
+							}}
+							src={avatar}
+						></Img>
+						{repository}
+					</div>
+					<div
+						style={{
+							width: 850,
+							fontFamily: 'MonaSans',
+							fontSize: 45,
 							fontVariationSettings: '"wght" 600',
+							whiteSpace: 'nowrap',
+							overflow: 'hidden',
+							textOverflow: 'ellipsis',
 						}}
 					>
 						{message}
@@ -76,19 +68,24 @@ export const Commit: React.FC<{
 			<AbsoluteFill
 				style={{
 					justifyContent: 'center',
-					marginTop: -93,
-					color: 'white',
-					marginLeft: -80,
-					fontSize: 45,
-					fontFamily: 'MonaSans',
-					fontVariationSettings: '"wght" 600',
-					textAlign: 'right',
+					alignItems: 'center',
 				}}
 			>
-				{new Intl.DateTimeFormat('en-US', {
-					month: 'long',
-					day: 'numeric',
-				}).format(date)}
+				<svg
+					style={{
+						width: 900,
+						overflow: 'visible',
+					}}
+					viewBox="0 0 900 170"
+				>
+					<RoughPath
+						stroke={BASE_COLOR}
+						strokeWidth={12}
+						roughness={0.1}
+						bowing={10}
+						d={`M 0 0 L 900 0 L 900 170 L 0 170 z`}
+					></RoughPath>
+				</svg>
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);
