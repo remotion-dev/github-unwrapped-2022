@@ -41,7 +41,7 @@ export const AvgCommits: React.FC<{
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
-	const times = items.map((item) => new Date(item).getUTCHours());
+	const times = items.map((item) => new Date(item).getHours());
 
 	let hours: {[key in Hour]: number} = {
 		'5': 0,
