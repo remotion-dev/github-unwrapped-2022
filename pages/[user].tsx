@@ -6,8 +6,13 @@ import {transparentize} from 'polished';
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {AbsoluteFill} from 'remotion';
 import {getFont} from '../remotion/font';
+import {getALotOfGithubCommits, getGithubCommits} from '../remotion/github-api';
 import {Main} from '../remotion/Main';
-import {CompactStats} from '../remotion/map-response-to-stats';
+import {
+	BackendStatsResponse,
+	CompactStats,
+	mapResponseToStats,
+} from '../remotion/map-response-to-stats';
 import {backButton} from '../src/components/button';
 import Download from '../src/components/Download';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
@@ -19,14 +24,6 @@ import {RenderProgressOrFinality} from './api/progress';
 export async function getStaticPaths() {
 	return {paths: [], fallback: true};
 }
-
-const SafeHydrate: React.FC = ({children}) => {
-	return (
-		<div suppressHydrationWarning>
-			{typeof window === 'undefined' ? null : children}
-		</div>
-	);
-};
 
 const iosSafari = () => {
 	if (typeof window === 'undefined') {
@@ -112,17 +109,18 @@ const layout: React.CSSProperties = {
 getFont();
 
 export default function User(props: {user: CompactStats | null}) {
-	const [ready, setReady] = useState(false);
 	const [playing, setPlaying] = useState(false);
 	const player = useRef<PlayerRef>(null);
 	const ref = useRef<HTMLDivElement>(null);
-	const {user} = props;
+	const {user: cachedResponse} = props;
+
+	const [user, setUser] = useState<CompactStats | null>(cachedResponse);
 
 	const router = useRouter();
 	const username = ([] as string[]).concat(router.query.user ?? '')[0];
 
 	useEffect(() => {
-		if (!ready || !user || !player.current) {
+		if (!user || !player.current) {
 			return;
 		}
 
@@ -139,11 +137,7 @@ export default function User(props: {user: CompactStats | null}) {
 		player.current.addEventListener('play', () => {
 			setPlaying(true);
 		});
-	}, [ready, router, user]);
-
-	useEffect(() => {
-		setReady(true);
-	}, []);
+	}, [router, user]);
 
 	const [downloadProgress, setDownloadProgress] =
 		useState<RenderProgressOrFinality | null>(null);
@@ -196,6 +190,15 @@ export default function User(props: {user: CompactStats | null}) {
 		setRetrying(false);
 	}, [username]);
 
+	const getBackendStats = useCallback(async () => {
+		const res = await fetch('/api/stats/' + username);
+		return res.json() as Promise<BackendStatsResponse>;
+	}, [username]);
+
+	const getFrontendStats = useCallback(() => {
+		return getALotOfGithubCommits(username);
+	}, [username]);
+
 	const type = downloadProgress?.type ?? null;
 
 	useEffect(() => {
@@ -210,6 +213,24 @@ export default function User(props: {user: CompactStats | null}) {
 		}
 	}, [downloadProgress, render]);
 
+	useEffect(() => {
+		if (!username) {
+			return;
+		}
+
+		Promise.all([getBackendStats(), getFrontendStats()]).then(
+			([backendResponse, frontendStats]) => {
+				if (backendResponse.type === 'found') {
+					setUser(
+						mapResponseToStats(backendResponse.backendStats, frontendStats)
+					);
+				} else {
+					throw new TypeError('bad backend stats');
+				}
+			}
+		);
+	}, [getBackendStats, getFrontendStats, username]);
+
 	if (!user) {
 		return (
 			<div ref={ref}>
@@ -219,183 +240,180 @@ export default function User(props: {user: CompactStats | null}) {
 	}
 
 	return (
-		<SafeHydrate>
-			<div ref={ref}>
-				<Head>
-					<title>
-						{username}
-						{"'"}s #GitHubUnwrapped
-					</title>
-					<meta
-						property="og:title"
-						content={`${username}'s #GitHubUnwrapped`}
-						key="title"
-					/>
+		<div ref={ref}>
+			<Head>
+				<title>
+					{username}
+					{"'"}s #GitHubUnwrapped
+				</title>
+				<meta
+					property="og:title"
+					content={`${username}'s #GitHubUnwrapped`}
+					key="title"
+				/>
 
-					<meta
-						name="description"
-						content={`My coding 2022 in review. Get your own personalized video as well!`}
-					/>
-					<link rel="icon" href="/fav.png" />
-				</Head>
+				<meta
+					name="description"
+					content={`My coding 2022 in review. Get your own personalized video as well!`}
+				/>
+				<link rel="icon" href="/fav.png" />
+			</Head>
 
-				<div style={abs}>
-					<div style={container}>
-						<header style={style}>
-							<br></br>
-							<br></br>
-							<h1 style={title}>Here is your #GitHubUnwrapped!</h1>
-							<h3 style={subtitle}>@{username}</h3>
+			<div style={abs}>
+				<div style={container}>
+					<header style={style}>
+						<br></br>
+						<br></br>
+						<h1 style={title}>Here is your #GitHubUnwrapped!</h1>
+						<h3 style={subtitle}>@{username}</h3>
+						<div
+							style={{
+								height: 20,
+							}}
+						></div>
+						{user ? (
 							<div
 								style={{
-									height: 20,
+									position: 'relative',
 								}}
-							></div>
-							{user ? (
-								<div
+							>
+								<Player
+									ref={player}
+									component={Main}
+									compositionHeight={1080}
+									compositionWidth={1080}
+									durationInFrames={990}
+									fps={30}
 									style={{
-										position: 'relative',
+										...layout,
+										boxShadow: '0 0 10px ' + transparentize(0.8, BASE_COLOR),
+										borderRadius: 10,
+										overflow: 'hidden',
+									}}
+									inputProps={{
+										stats: user,
+									}}
+								></Player>
+								<AbsoluteFill
+									style={{
+										justifyContent: 'center',
+										alignItems: 'center',
+										flexDirection: 'column',
+										display: 'flex',
+										cursor: 'pointer',
+									}}
+									onClick={(e) => {
+										(player.current as PlayerRef).toggle(e);
 									}}
 								>
-									<Player
-										ref={player}
-										component={Main}
-										compositionHeight={1080}
-										compositionWidth={1080}
-										durationInFrames={990}
-										fps={30}
-										style={{
-											...layout,
-											boxShadow: '0 0 10px ' + transparentize(0.8, BASE_COLOR),
-											borderRadius: 10,
-											overflow: 'hidden',
-										}}
-										inputProps={{
-											stats: user,
-										}}
-									></Player>
-									<AbsoluteFill
-										style={{
-											justifyContent: 'center',
-											alignItems: 'center',
-											flexDirection: 'column',
-											display: 'flex',
-											cursor: 'pointer',
-										}}
-										onClick={(e) => {
-											// @ts-expect-error
-											player.current.toggle(e);
-										}}
-									>
-										{playing ? null : (
+									{playing ? null : (
+										<div
+											style={{
+												width: 200,
+												height: 200,
+												backgroundColor: 'white',
+												borderRadius: '50%',
+												display: 'flex',
+												justifyContent: 'center',
+												alignItems: 'center',
+												flexDirection: 'column',
+												boxShadow:
+													'0 0 40px ' + transparentize(0.9, BASE_COLOR),
+											}}
+										>
+											<svg
+												style={{
+													height: 60,
+													transform: `translateX(3px)`,
+												}}
+												viewBox="0 0 448 512"
+											>
+												<path
+													fill={BASE_COLOR}
+													d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"
+												></path>
+											</svg>
+											<br />
 											<div
 												style={{
-													width: 200,
-													height: 200,
-													backgroundColor: 'white',
-													borderRadius: '50%',
-													display: 'flex',
-													justifyContent: 'center',
-													alignItems: 'center',
-													flexDirection: 'column',
-													boxShadow:
-														'0 0 40px ' + transparentize(0.9, BASE_COLOR),
+													color: BASE_COLOR,
+													fontFamily: 'MonaSans',
+													textTransform: 'uppercase',
+													fontSize: 18,
 												}}
 											>
-												<svg
-													style={{
-														height: 60,
-														transform: `translateX(3px)`,
-													}}
-													viewBox="0 0 448 512"
-												>
-													<path
-														fill={BASE_COLOR}
-														d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"
-													></path>
-												</svg>
-												<br />
-												<div
-													style={{
-														color: BASE_COLOR,
-														fontFamily: 'MonaSans',
-														textTransform: 'uppercase',
-														fontSize: 18,
-													}}
-												>
-													Click to play
-												</div>
+												Click to play
 											</div>
-										)}
-									</AbsoluteFill>
-								</div>
-							) : null}
-							<div
+										</div>
+									)}
+								</AbsoluteFill>
+							</div>
+						) : null}
+						<div
+							style={{
+								height: 40,
+							}}
+						></div>
+						<div style={layout}>
+							<p
 								style={{
-									height: 40,
+									color: BASE_COLOR,
+									fontFamily: 'MonaSans',
+									textAlign: 'center',
 								}}
-							></div>
-							<div style={layout}>
+							>
+								Download your video and tweet it using{' '}
+								<span
+									style={{
+										color: 'black',
+									}}
+								>
+									#GitHubUnwrapped
+								</span>{' '}
+								hashtag!
+							</p>
+							<Download
+								downloadProgress={downloadProgress}
+								retry={retry}
+								retrying={retrying}
+								username={username}
+							></Download>
+							{iosSafari() ? (
 								<p
 									style={{
 										color: BASE_COLOR,
 										fontFamily: 'MonaSans',
 										textAlign: 'center',
+										fontSize: 12,
 									}}
 								>
-									Download your video and tweet it using{' '}
-									<span
-										style={{
-											color: 'black',
-										}}
-									>
-										#GitHubUnwrapped
-									</span>{' '}
-									hashtag!
+									Tip for iOS Safari: Long press the {'"'}Download button{'"'},
+									then press {'"'}Download Linked File{'"'} to save the video
+									locally.
 								</p>
-								<Download
-									downloadProgress={downloadProgress}
-									retry={retry}
-									retrying={retrying}
-									username={username}
-								></Download>
-								{iosSafari() ? (
-									<p
-										style={{
-											color: BASE_COLOR,
-											fontFamily: 'MonaSans',
-											textAlign: 'center',
-											fontSize: 12,
-										}}
-									>
-										Tip for iOS Safari: Long press the {'"'}Download button{'"'}
-										, then press {'"'}Download Linked File{'"'} to save the
-										video locally.
-									</p>
-								) : null}
-								<div
-									style={{
-										height: 20,
-									}}
-								></div>
-								<Link href="/" passHref>
-									<button style={backButton}>View for another user</button>
-								</Link>
-								<div
-									style={{
-										height: 20,
-									}}
-								></div>
+							) : null}
+							<div
+								style={{
+									height: 20,
+								}}
+							></div>
+							<Link href="/" passHref>
+								<button style={backButton}>View for another user</button>
+							</Link>
+							<div
+								style={{
+									height: 20,
+								}}
+							></div>
 
-								<br />
-								<br />
-								<br />
-							</div>
-						</header>
-					</div>
+							<br />
+							<br />
+							<br />
+						</div>
+					</header>
 				</div>
-				<Footer></Footer>
 			</div>
-		</SafeHydrate>
+			<Footer></Footer>
+		</div>
 	);
 }

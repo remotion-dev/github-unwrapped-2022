@@ -1,4 +1,3 @@
-import React, {forwardRef} from 'react';
 import {RenderProgressOrFinality} from '../../pages/api/progress';
 import {button} from './button';
 
@@ -64,4 +63,4 @@ const Download: React.FC<{
 	);
 };
 
-export default forwardRef(Download);
+export default Download;

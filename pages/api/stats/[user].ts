@@ -12,23 +12,29 @@ export default async function handler(
 	res: NextApiResponse<BackendStatsResponse>
 ) {
 	const username = req.query.user;
+	if (typeof username !== 'string') {
+		return res.status(400);
+	}
 	const entry = await (
 		await backendStatsCollection()
 	).findOne({
 		username,
 	});
+
 	if (entry) {
 		return res
 			.status(200)
 			.json({type: 'found', backendStats: entry.backendStats});
 	}
 
-	const response = await getAll(
-		username as string,
-		process.env.GITHUB_TOKEN as string
-	);
+	const response = await getAll(username, process.env.GITHUB_TOKEN as string);
 
 	const backendStats = backendResponseToBackendStats(response);
+
+	(await backendStatsCollection()).insertOne({
+		backendStats,
+		username,
+	});
 
 	return res.status(200).json({type: 'found', backendStats});
 }
