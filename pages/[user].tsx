@@ -231,7 +231,7 @@ export default function User(props: {user: CompactStats | null}) {
 
 					<meta
 						name="description"
-						content={`My coding 2021 in review. Get your own personalized video as well!`}
+						content={`My coding 2022 in review. Get your own personalized video as well!`}
 					/>
 					<link rel="icon" href="/fav.png" />
 				</Head>
