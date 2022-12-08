@@ -1,4 +1,8 @@
-import {random} from 'remotion';
+import chunk from 'lodash.chunk';
+const {random} = require('remotion');
+
+const padding = 30;
+const bottomSpace = 130;
 
 export const getIndicesToClose = ({
 	totalIssues,
@@ -35,11 +39,15 @@ export const getIndicesToClose = ({
 	return indices;
 };
 
-export const makeIndicesAccurate = (
-	indices: number[],
-	expectedIndices: number,
-	totalIssues: number
-): number[] => {
+export const makeIndicesAccurate = ({
+	indices,
+	expectedIndices,
+	totalIssues,
+}: {
+	indices: number[];
+	expectedIndices: number;
+	totalIssues: number;
+}): number[] => {
 	let diff = expectedIndices - indices.length;
 	if (diff === 0) {
 		return indices;
@@ -59,11 +67,58 @@ export const makeIndicesAccurate = (
 	const indicesToRemove: number[] = [];
 	for (let i = 0; i < Math.abs(diff); i++) {
 		const index = Math.floor(random(i) * totalIssues);
-		if (indices.includes(index)) {
-			indicesToRemove.push(indices[index]);
+		if (indices.includes(index) && !indicesToRemove.includes(index)) {
+			indicesToRemove.push(index);
 		} else {
-			diff++;
+			diff += Math.sign(diff) as number;
 		}
 	}
 	return indices.filter((i) => !indicesToRemove.includes(i));
+};
+
+export const getTreeMath = ({
+	width,
+	height,
+	issuesClosed,
+	issuesOpen,
+}: {
+	width: number;
+	height: number;
+	issuesOpen: number;
+	issuesClosed: number;
+}) => {
+	const totalWidth = width - padding * 2;
+	const totalHeight = height - padding * 2 - bottomSpace;
+	const totalIssues = issuesClosed + issuesOpen;
+	const ratio = totalWidth / totalHeight;
+
+	const area = totalHeight * totalWidth;
+	const sizePerDot = Math.sqrt(area / totalIssues);
+
+	let dotsPerRow = Math.max(4, Math.floor((totalWidth / sizePerDot) * ratio));
+	if (dotsPerRow % 2 === 0) {
+		dotsPerRow++;
+	}
+	const dotSize = totalWidth / dotsPerRow;
+	const dotPadding = dotSize / 5;
+
+	const chunks = chunk(
+		new Array(totalIssues).fill(true).map((_, i) => {
+			return i;
+		}),
+		dotsPerRow
+	);
+
+	const openRatio = issuesOpen / totalIssues;
+	const avgRotsPerRow = openRatio * dotsPerRow;
+	const rows = Math.ceil(totalIssues / dotsPerRow);
+
+	return {
+		avgRotsPerRow,
+		dotPadding,
+		chunks,
+		dotsPerRow,
+		dotSize,
+		rows,
+	};
 };

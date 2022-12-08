@@ -7,17 +7,15 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import chunk from 'lodash.chunk';
 import {IssueCircle} from './IssueCircle';
-import {getIndicesToClose, makeIndicesAccurate} from './tree/indices-to-close';
+import {
+	getIndicesToClose,
+	getTreeMath,
+	makeIndicesAccurate,
+} from './tree/indices-to-close';
 import {BASE_COLOR, BG_2022} from '../src/palette';
 import {StrokedText} from './StrokedText';
 import {Issues} from './map-response-to-stats';
-
-const padding = 30;
-const bottomSpace = 130;
-
-const duration = 70;
 
 const getColor = (
 	indicesToClose: number[],
@@ -57,6 +55,8 @@ const getScale = (
 	);
 };
 
+const duration = 70;
+
 export const IssuesOpened2022: React.FC<{
 	noBackground: boolean;
 	issues: Issues;
@@ -88,46 +88,28 @@ export const IssuesOpened2022: React.FC<{
 
 	const {height, width} = useVideoConfig();
 
-	const totalHeight = height - padding * 2 - bottomSpace;
-	const totalWidth = width - padding * 2;
-
 	const canAffordRoughJs = totalIssues < 200;
 
-	const ratio = totalWidth / totalHeight;
-
-	const area = totalHeight * totalWidth;
-	const sizePerDot = Math.sqrt(area / totalIssues);
-	let dotsPerRow = Math.max(4, Math.floor((totalWidth / sizePerDot) * ratio));
-	if (dotsPerRow % 2 === 0) {
-		dotsPerRow++;
-	}
-	const dotSize = totalWidth / dotsPerRow;
-	const dotPadding = dotSize / 5;
-
-	const chunks = chunk(
-		new Array(totalIssues).fill(true).map((_, i) => {
-			return i;
-		}),
-		dotsPerRow
-	);
-
-	const openRatio = issuesOpen / totalIssues;
-	const avgRotsPerRow = openRatio * dotsPerRow;
-
-	const rows = Math.ceil(totalIssues / dotsPerRow);
+	const {avgRotsPerRow, dotPadding, dotsPerRow, chunks, dotSize, rows} =
+		getTreeMath({
+			height,
+			issuesClosed,
+			issuesOpen,
+			width,
+		});
 
 	// first to close from left: 0,
 	const indicesToClose = useMemo(() => {
-		return makeIndicesAccurate(
-			getIndicesToClose({
+		return makeIndicesAccurate({
+			indices: getIndicesToClose({
 				avgRotsPerRow,
 				dotsPerRow,
 				rows,
 				totalIssues,
 			}),
-			issuesClosed,
-			totalIssues
-		);
+			expectedIndices: issuesClosed,
+			totalIssues,
+		});
 	}, [avgRotsPerRow, dotsPerRow, issuesClosed, rows, totalIssues]);
 
 	return (
