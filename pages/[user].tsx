@@ -1,4 +1,5 @@
 import {Player, PlayerRef} from '@remotion/player';
+import RenderResult from 'next/dist/server/render-result';
 import Head from 'next/head';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
@@ -19,6 +20,7 @@ import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
 import Spinner from '../src/components/spinner';
 import {getAllStatsFromCache} from '../src/db/cache';
 import {BASE_COLOR} from '../src/palette';
+import {RenderRequest} from '../src/types';
 import {RenderProgressOrFinality} from './api/progress';
 
 export async function getStaticPaths() {
@@ -141,7 +143,6 @@ export default function User(props: {user: CompactStats | null}) {
 
 	const [downloadProgress, setDownloadProgress] =
 		useState<RenderProgressOrFinality | null>(null);
-	const [retrying, setRetrying] = useState(false);
 
 	const pollProgress = useCallback(async () => {
 		const poll = async () => {
@@ -164,31 +165,21 @@ export default function User(props: {user: CompactStats | null}) {
 	}, [username]);
 
 	const render = useCallback(async () => {
-		if (!username) {
+		if (!user) {
 			return;
 		}
+
+		const renderRequest: RenderRequest = {
+			username,
+			compactStats: user,
+		};
 		const res = await fetch('/api/render', {
 			method: 'POST',
-			body: JSON.stringify({
-				username,
-			}),
+			body: JSON.stringify(renderRequest),
 		});
 		const prog = (await res.json()) as RenderProgressOrFinality;
 		setDownloadProgress(prog);
-	}, [username]);
-
-	const retry = useCallback(async () => {
-		setRetrying(true);
-		const res = await fetch('/api/retry', {
-			method: 'POST',
-			body: JSON.stringify({
-				username,
-			}),
-		});
-		const prog = (await res.json()) as RenderProgressOrFinality;
-		setDownloadProgress(prog);
-		setRetrying(false);
-	}, [username]);
+	}, [user, username]);
 
 	const getBackendStats = useCallback(async () => {
 		const res = await fetch('/api/stats/' + username);
@@ -374,8 +365,6 @@ export default function User(props: {user: CompactStats | null}) {
 							</p>
 							<Download
 								downloadProgress={downloadProgress}
-								retry={retry}
-								retrying={retrying}
 								username={username}
 							></Download>
 							{iosSafari() ? (

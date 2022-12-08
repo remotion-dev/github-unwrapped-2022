@@ -12,9 +12,7 @@ const downloadButton: React.CSSProperties = {
 const Download: React.FC<{
 	username: string;
 	downloadProgress: RenderProgressOrFinality | null;
-	retrying: boolean;
-	retry: () => Promise<void>;
-}> = ({username, downloadProgress, retrying, retry}) => {
+}> = ({username, downloadProgress}) => {
 	return (
 		<div>
 			{downloadProgress === null ? (
@@ -32,26 +30,15 @@ const Download: React.FC<{
 			) : downloadProgress.type === 'finality' &&
 			  downloadProgress.finality &&
 			  downloadProgress.finality.type === 'error' ? (
-				<>
-					<div
-						style={{
-							fontFamily: 'MonaSans',
-							color: 'red',
-						}}
-					>
-						Oops, sorry the render failed! We will fix all render bugs, so come
-						back tomorrow and it should be fixed! Or just press the retry button
-						which will work most of the time.
-					</div>
-					<div
-						style={{
-							height: 15,
-						}}
-					></div>
-					<button disabled={retrying} style={downloadButton} onClick={retry}>
-						{retrying ? 'Retrying...' : 'Retry'}
-					</button>
-				</>
+				<div
+					style={{
+						fontFamily: 'MonaSans',
+						color: 'red',
+					}}
+				>
+					Oops, sorry the render failed! We will fix all render bugs, so come
+					back tomorrow and it should be fixed!
+				</div>
 			) : downloadProgress.type === 'progress' ? (
 				<button style={downloadButton} type="button">
 					{'Rendering... ' +
