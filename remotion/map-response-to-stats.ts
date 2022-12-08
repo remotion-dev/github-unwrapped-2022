@@ -21,7 +21,7 @@ type Weekdays = {
 	days: number[];
 };
 
-type Issues = {
+export type Issues = {
 	closed: number;
 	open: number;
 };

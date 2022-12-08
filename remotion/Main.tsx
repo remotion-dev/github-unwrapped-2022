@@ -75,7 +75,10 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<IssuesOpened2022 noBackground={true}></IssuesOpened2022>
+						<IssuesOpened2022
+							noBackground={true}
+							issues={stats.issues}
+						></IssuesOpened2022>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>
