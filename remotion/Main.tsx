@@ -43,7 +43,7 @@ export const Main: React.FC<{
 			<Sequence durationInFrames={duration[0] + transitionDuration}>
 				<SlideOut>
 					<Title
-						noBackground={false}
+						noBackground={true}
 						userStats={stats}
 						username={username}
 					></Title>
@@ -55,7 +55,7 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<Socks noBackground={false}></Socks>
+						<Socks noBackground={true}></Socks>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>
@@ -65,7 +65,7 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<AvgCommits noBackground={false}></AvgCommits>
+						<AvgCommits noBackground={true}></AvgCommits>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>
@@ -75,7 +75,7 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<IssuesOpened2022 noBackground={false}></IssuesOpened2022>
+						<IssuesOpened2022 noBackground={true}></IssuesOpened2022>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>
@@ -86,7 +86,7 @@ export const Main: React.FC<{
 				<SlideOut>
 					<SlideIn>
 						<TopWeekdays2022
-							noBackground={false}
+							noBackground={true}
 							stats={stats}
 						></TopWeekdays2022>
 					</SlideIn>
@@ -98,7 +98,7 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<EndCard noBackground={false}></EndCard>
+						<EndCard noBackground={true}></EndCard>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>
@@ -107,7 +107,7 @@ export const Main: React.FC<{
 				from={accumulatedFrom(6)}
 			>
 				<SlideIn>
-					<EndCard2 noBackground={false} />
+					<EndCard2 noBackground={true} />
 				</SlideIn>
 			</Sequence>
 		</AbsoluteFill>

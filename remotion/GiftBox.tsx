@@ -59,7 +59,7 @@ export const GiftBox: React.FC<{userStats: CompactStats; username: string}> = ({
 					scale: '0.4',
 				}}
 			>
-				<WallHanger></WallHanger>
+				<WallHanger commitCount={userStats.contributionCount}></WallHanger>
 			</Sequence>
 			<Sequence
 				from={60}
