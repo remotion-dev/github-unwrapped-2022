@@ -6,7 +6,7 @@ import {BASE_COLOR, BG_2022} from '../src/palette';
 
 getFont();
 
-const gingerman = '/icons/gingerman.svg';
+const gingerman = '/icons/Gingerman.svg';
 
 const notEnoughInfos: React.FC = () => {
 	return (
