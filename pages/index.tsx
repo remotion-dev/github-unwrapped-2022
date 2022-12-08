@@ -3,7 +3,6 @@ import {useRouter} from 'next/router';
 import {lighten} from 'polished';
 import React, {useCallback, useRef, useState} from 'react';
 import {getFont} from '../remotion/font';
-import {WaterColour} from '../remotion/WaterColour';
 import {button} from '../src/components/button';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
 import {BASE_COLOR, BG_2022} from '../src/palette';
@@ -108,8 +107,6 @@ export default function Home() {
 				<link rel="icon" href="/fav.png" />
 			</Head>
 			<div style={abs} ref={ref}>
-				<WaterColour></WaterColour>
-
 				<div style={container}>
 					<header style={headerStyle}>
 						<div style={h1}>Your coding year in review</div>

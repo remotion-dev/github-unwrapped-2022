@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
-import {BASE_COLOR} from '../src/palette';
+import {BASE_COLOR, BG_2022} from '../src/palette';
 import {StrokedText} from './StrokedText';
 
 export const AvgCommitsTitle: React.FC = () => {

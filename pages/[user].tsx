@@ -2,7 +2,7 @@ import {Player, PlayerRef} from '@remotion/player';
 import Head from 'next/head';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import {modularScale, transparentize} from 'polished';
+import {transparentize} from 'polished';
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {AbsoluteFill} from 'remotion';
 import {getFont} from '../remotion/font';
@@ -18,7 +18,7 @@ import Download from '../src/components/Download';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
 import Spinner from '../src/components/spinner';
 import {getAllStatsFromCache} from '../src/db/cache';
-import {BASE_COLOR} from '../src/palette';
+import {BASE_COLOR, BG_2022} from '../src/palette';
 import {RenderProgressOrFinality} from './api/progress';
 
 export async function getStaticPaths() {
@@ -76,6 +76,7 @@ const style: React.CSSProperties = {
 const abs: React.CSSProperties = {
 	width: '100%',
 	position: 'relative',
+	backgroundColor: BG_2022,
 };
 
 const container: React.CSSProperties = {
@@ -89,14 +90,17 @@ const title: React.CSSProperties = {
 	textAlign: 'center',
 	color: BASE_COLOR,
 	marginBottom: 0,
+	fontSize: '46px',
+	fontVariationSettings: '"wght" 600px',
 };
 
 const subtitle: React.CSSProperties = {
 	fontFamily: 'MonaSans',
 	textAlign: 'center',
-	fontSize: 20,
+	fontSize: 24,
 	marginTop: 14,
 	marginBottom: 0,
+	fontVariationSettings: '"wght" 600px',
 };
 
 const layout: React.CSSProperties = {
@@ -265,7 +269,7 @@ export default function User(props: {user: CompactStats | null}) {
 						<br></br>
 						<br></br>
 						<h1 style={title}>Here is your #GitHubUnwrapped!</h1>
-						<h3 style={subtitle}>@{username}</h3>
+						<h2 style={subtitle}>@{username}</h2>
 						<div
 							style={{
 								height: 20,
