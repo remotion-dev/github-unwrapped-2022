@@ -6,7 +6,7 @@ import {transparentize} from 'polished';
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {AbsoluteFill} from 'remotion';
 import {getFont} from '../remotion/font';
-import {getALotOfGithubCommits, getGithubCommits} from '../remotion/github-api';
+import {getALotOfGithubCommits} from '../remotion/github-api';
 import {Main} from '../remotion/Main';
 import {
 	BackendStatsResponse,
