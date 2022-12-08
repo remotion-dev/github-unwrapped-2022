@@ -1,5 +1,4 @@
 import {Player, PlayerRef} from '@remotion/player';
-import RenderResult from 'next/dist/server/render-result';
 import Head from 'next/head';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
