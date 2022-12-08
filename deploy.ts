@@ -1,9 +1,13 @@
-import {deployFunction, deploySite, getOrCreateBucket} from '@remotion/lambda';
+import {
+	deployFunction,
+	deploySite,
+	getOrCreateBucket,
+	getRegions,
+} from '@remotion/lambda';
 import dotenv from 'dotenv';
 import path from 'path';
 import {SITE_ID} from './src/config';
 import {getAccountCount} from './src/get-account-count';
-import {usedRegions} from './src/regions';
 import {setEnvForKey} from './src/set-env-for-key';
 dotenv.config();
 
@@ -12,7 +16,7 @@ console.log(`Found ${count} accounts. Deploying...`);
 
 const execute = async () => {
 	for (let i = 1; i <= count; i++) {
-		for (const region of usedRegions) {
+		for (const region of getRegions()) {
 			setEnvForKey(i);
 			const {functionName, alreadyExisted} = await deployFunction({
 				architecture: 'arm64',
