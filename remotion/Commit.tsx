@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, Img} from 'remotion';
+import {AbsoluteFill} from 'remotion';
 import {Candy} from './Icons/Candy';
 import {Sock} from './Icons/Sock';
 import {Star} from './Icons/Star';

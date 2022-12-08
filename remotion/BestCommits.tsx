@@ -1,13 +1,18 @@
 import React from 'react';
-import {AbsoluteFill} from 'remotion';
+import {
+	AbsoluteFill,
+	interpolate,
+	spring,
+	useCurrentFrame,
+	useVideoConfig,
+} from 'remotion';
 import {BG_2022} from '../src/palette';
 import {commits} from './commits';
-import sampleSize from 'lodash.samplesize';
 import {AnimatedCommit} from './AnimatedCommit';
 import {getRandomCommits} from './rank-commit';
 
 export const BestCommits: React.FC = () => {
-	const sampled5Commits = getRandomCommits(
+	const sampledCommits = getRandomCommits(
 		commits.items.map((item) => {
 			return {
 				author: item.author.login,
@@ -19,6 +24,17 @@ export const BestCommits: React.FC = () => {
 		'0',
 		4
 	);
+	const {fps} = useVideoConfig();
+	const frame = useCurrentFrame();
+	const opacity = interpolate(frame, [30, 60], [0, 1]);
+
+	const moveUp = spring({
+		fps,
+		frame: frame - 75,
+		config: {
+			damping: 200,
+		},
+	});
 
 	return (
 		<AbsoluteFill
@@ -39,13 +55,17 @@ export const BestCommits: React.FC = () => {
 						fontVariationSettings: '"wght" 600',
 						textAlign: 'center',
 						lineHeight: 1.4,
-						marginTop: -790,
+						marginTop: interpolate(moveUp, [0, 1], [0, -790]),
 					}}
 				>
-					You crafted 7322 commits. <br></br>Here are some sweet ones.
+					{/**
+					 * // TODO: Fix number of commits
+					 */}
+					You crafted 7322 commits. <br></br>
+					<span style={{opacity}}>Here are some sweet ones.</span>
 				</h1>
 			</AbsoluteFill>
-			{sampled5Commits.map((commit, i) => {
+			{sampledCommits.map((commit, i) => {
 				return (
 					<AbsoluteFill key={i}>
 						<AnimatedCommit
