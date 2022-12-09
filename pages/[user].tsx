@@ -357,7 +357,7 @@ export default function User(props: {user: CompactStats | null}) {
 									textAlign: 'center',
 								}}
 							>
-								Download your video and tweet it using{' '}
+								Download your video and share it on social media using{' '}
 								<span
 									style={{
 										color: 'black',
