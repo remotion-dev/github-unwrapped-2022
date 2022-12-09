@@ -1,20 +1,11 @@
 import React, {useMemo} from 'react';
 import {AbsoluteFill} from 'remotion';
-import {BASE_COLOR} from '../src/palette';
-
-const title: React.CSSProperties = {
-	color: BASE_COLOR,
-	fontWeight: 'bold',
-	fontSize: 80,
-	fontFamily: 'MonaSans',
-	paddingLeft: 50,
-	paddingRight: 50,
-	textAlign: 'center',
-};
+import {Theme} from './theme';
 
 export const IDidALot: React.FC<{
 	commitCount: number;
-}> = ({commitCount}) => {
+	theme: Theme;
+}> = ({commitCount, theme}) => {
 	const text = useMemo(() => {
 		if (commitCount < 10) {
 			return '2022 was chill! Just look at my commits:';
@@ -27,6 +18,19 @@ export const IDidALot: React.FC<{
 		}
 		return 'I made tons of contributions!';
 	}, [commitCount]);
+
+	const title: React.CSSProperties = useMemo(
+		() => ({
+			color: theme.mainColor,
+			fontWeight: 'bold',
+			fontSize: 80,
+			fontFamily: 'MonaSans',
+			paddingLeft: 50,
+			paddingRight: 50,
+			textAlign: 'center',
+		}),
+		[theme.mainColor]
+	);
 
 	return (
 		<AbsoluteFill

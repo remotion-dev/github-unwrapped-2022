@@ -11,11 +11,15 @@ import {AvatarFrame} from './AvatarFrame';
 import {Tree} from './Icons/Tree';
 import {CompactStats} from './map-response-to-stats';
 import {Squeeze} from './Squeeze';
+import {Theme} from './theme';
 import {TitleCard} from './TitleCard';
 import {Unwrap} from './Unwrap';
 import {WallHanger} from './WallHanger';
 
-export const GiftBox: React.FC<{userStats: CompactStats}> = ({userStats}) => {
+export const GiftBox: React.FC<{userStats: CompactStats; theme: Theme}> = ({
+	userStats,
+	theme,
+}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
@@ -46,7 +50,7 @@ export const GiftBox: React.FC<{userStats: CompactStats}> = ({userStats}) => {
 					translate: `0 ${translateY}px`,
 				}}
 			>
-				<Tree></Tree>
+				<Tree theme={theme}></Tree>
 			</AbsoluteFill>
 			<Sequence
 				from={60}
@@ -69,7 +73,7 @@ export const GiftBox: React.FC<{userStats: CompactStats}> = ({userStats}) => {
 				<AvatarFrame avatar={userStats.avatar}></AvatarFrame>
 			</Sequence>
 			<Sequence from={70}>
-				<TitleCard username={userStats.username}></TitleCard>
+				<TitleCard theme={theme} username={userStats.username}></TitleCard>
 			</Sequence>
 			<AbsoluteFill
 				style={{
@@ -82,7 +86,7 @@ export const GiftBox: React.FC<{userStats: CompactStats}> = ({userStats}) => {
 			>
 				<Squeeze direction="vertical" delay={18}>
 					<Squeeze direction="horizontal" delay={0}>
-						<Unwrap></Unwrap>
+						<Unwrap theme={theme}></Unwrap>
 					</Squeeze>
 				</Squeeze>
 			</AbsoluteFill>

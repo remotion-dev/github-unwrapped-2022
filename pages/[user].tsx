@@ -2,7 +2,7 @@ import {Player, PlayerRef} from '@remotion/player';
 import Head from 'next/head';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import React, {useCallback, useEffect, useRef, useState} from 'react';
+import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {AbsoluteFill} from 'remotion';
 import {getFont} from '../remotion/font';
 import {getALotOfGithubCommits} from '../remotion/github-api';
@@ -13,6 +13,7 @@ import {
 	CompactStats,
 	mapResponseToStats,
 } from '../remotion/map-response-to-stats';
+import {redTheme, useTheme} from '../remotion/theme';
 import {backButton} from '../src/components/button';
 import Download from '../src/components/Download';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
@@ -20,7 +21,7 @@ import {Gingerman} from '../src/components/Gingerman';
 import {PlayButton} from '../src/components/Play';
 import {RoughBox} from '../src/components/RoughBox';
 import {getAllStatsFromCache} from '../src/db/cache';
-import {BASE_COLOR, BG_2022} from '../src/palette';
+import {BG_2022} from '../src/palette';
 import {RenderRequest} from '../src/types';
 import {RenderProgressOrFinality} from './api/progress';
 
@@ -91,16 +92,6 @@ const container: React.CSSProperties = {
 	position: 'relative',
 };
 
-const title: React.CSSProperties = {
-	fontFamily: 'MonaSans',
-	textAlign: 'center',
-	color: BASE_COLOR,
-	marginBottom: 0,
-	fontSize: 40,
-	marginTop: 0,
-	fontVariationSettings: '"wght" 700',
-};
-
 const subtitle: React.CSSProperties = {
 	fontFamily: 'MonaSans',
 	textAlign: 'center',
@@ -126,8 +117,22 @@ export default function User(props: {user: CompactStats | null}) {
 
 	const [user, setUser] = useState<CompactStats | null>(cachedResponse);
 
+	const theme = useTheme();
 	const router = useRouter();
 	const username = ([] as string[]).concat(router.query.user ?? '')[0];
+
+	const title: React.CSSProperties = useMemo(
+		() => ({
+			fontFamily: 'MonaSans',
+			textAlign: 'center',
+			color: theme.mainColor,
+			marginBottom: 0,
+			fontSize: 40,
+			marginTop: 0,
+			fontVariationSettings: '"wght" 700',
+		}),
+		[theme.mainColor]
+	);
 
 	useEffect(() => {
 		if (!user || !player.current) {
@@ -289,6 +294,7 @@ export default function User(props: {user: CompactStats | null}) {
 										}}
 										inputProps={{
 											stats: user,
+											theme: redTheme,
 										}}
 									></Player>
 									<AbsoluteFill
@@ -324,7 +330,7 @@ export default function User(props: {user: CompactStats | null}) {
 													viewBox="0 0 448 512"
 												>
 													<path
-														fill={BASE_COLOR}
+														fill={theme.mainColor}
 														d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"
 													></path>
 												</svg>
@@ -368,7 +374,7 @@ export default function User(props: {user: CompactStats | null}) {
 										Download and share your video on social media using{' '}
 										<span
 											style={{
-												color: BASE_COLOR,
+												color: theme.mainColor,
 											}}
 										>
 											#GitHubUnwrapped
@@ -382,7 +388,7 @@ export default function User(props: {user: CompactStats | null}) {
 									{iosSafari() ? (
 										<p
 											style={{
-												color: BASE_COLOR,
+												color: theme.mainColor,
 												fontFamily: 'MonaSans',
 												textAlign: 'center',
 												fontSize: 12,

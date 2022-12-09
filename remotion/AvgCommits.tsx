@@ -6,6 +6,7 @@ import {CommitBar} from './CommitBar';
 import {commits} from './commits';
 import {MiddleLine} from './MiddleLine';
 import {Snow} from './Snow';
+import {Theme} from './theme';
 import {WaterColour} from './WaterColour';
 
 type Hour =
@@ -36,7 +37,8 @@ type Hour =
 
 export const AvgCommits: React.FC<{
 	noBackground: boolean;
-}> = ({noBackground}) => {
+	theme: Theme;
+}> = ({noBackground, theme}) => {
 	const items = commits.items.map((i) => i.commit.author.date);
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
@@ -110,7 +112,7 @@ export const AvgCommits: React.FC<{
 						alignItems: 'center',
 					}}
 				>
-					<MiddleLine></MiddleLine>
+					<MiddleLine theme={theme}></MiddleLine>
 				</AbsoluteFill>
 				<AbsoluteFill
 					style={{
@@ -137,12 +139,13 @@ export const AvgCommits: React.FC<{
 									},
 									durationInFrames: 30,
 								})}
+								theme={theme}
 							></CommitBar>
 						);
 					})}
 				</AbsoluteFill>
 			</AbsoluteFill>
-			<AvgCommitsTitle />
+			<AvgCommitsTitle theme={theme} />
 		</AbsoluteFill>
 	);
 };

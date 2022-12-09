@@ -1,9 +1,11 @@
 import {Player} from '@remotion/player';
 import React from 'react';
-import {BASE_COLOR, BG_2022} from '../src/palette';
+import {BG_2022} from '../src/palette';
 import {Loader} from './Loader';
+import {useTheme} from './theme';
 
 export const LoadingPage: React.FC = () => {
+	const theme = useTheme();
 	return (
 		<div
 			style={{
@@ -29,13 +31,16 @@ export const LoadingPage: React.FC = () => {
 					height: 300,
 					backgroundColor: BG_2022,
 				}}
+				inputProps={{
+					theme,
+				}}
 			></Player>
 			<div
 				style={{
 					fontVariationSettings: '"wght" 700',
 					fontSize: 30,
 					marginRight: -20,
-					color: BASE_COLOR,
+					color: theme.mainColor,
 				}}
 			>
 				Wrapping...

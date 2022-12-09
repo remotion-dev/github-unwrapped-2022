@@ -1,12 +1,14 @@
 import Link from 'next/link';
 import {AbsoluteFill} from 'remotion';
 import {getFont} from '../remotion/font';
+import {useTheme} from '../remotion/theme';
 import {backButton} from '../src/components/button';
-import {BASE_COLOR, BG_2022} from '../src/palette';
+import {BG_2022} from '../src/palette';
 
 getFont();
 
 const Spinner: React.FC = () => {
+	const theme = useTheme();
 	return (
 		<AbsoluteFill
 			style={{
@@ -14,7 +16,7 @@ const Spinner: React.FC = () => {
 				justifyContent: 'center',
 				alignItems: 'center',
 				fontFamily: 'MonaSans',
-				color: BASE_COLOR,
+				color: theme.mainColor,
 			}}
 		>
 			<h1>User not found!</h1>

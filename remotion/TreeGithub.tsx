@@ -2,8 +2,11 @@ import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {Github} from './Github';
 import {Tree} from './Icons/Tree';
+import {Theme} from './theme';
 
-export const TreeGithub: React.FC = () => {
+export const TreeGithub: React.FC<{
+	theme: Theme;
+}> = ({theme}) => {
 	return (
 		<AbsoluteFill>
 			<AbsoluteFill
@@ -12,7 +15,7 @@ export const TreeGithub: React.FC = () => {
 					alignItems: 'center',
 				}}
 			>
-				<Tree withoutStar></Tree>
+				<Tree theme={theme} withoutStar></Tree>
 			</AbsoluteFill>
 			<AbsoluteFill
 				style={{
@@ -20,7 +23,10 @@ export const TreeGithub: React.FC = () => {
 					marginLeft: -10,
 				}}
 			>
-				<Github style={{height: 130, overflow: 'visible'}}></Github>
+				<Github
+					theme={theme}
+					style={{height: 130, overflow: 'visible'}}
+				></Github>
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);

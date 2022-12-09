@@ -1,14 +1,15 @@
 import React from 'react';
-import {BASE_COLOR} from '../src/palette';
 import {getRough} from './get-rough';
 import {roundSvg} from './round-svg';
+import {Theme} from './theme';
 
 export const CommitBar: React.FC<{
 	height: number;
 	hour: string;
 	progress: number;
 	most: boolean;
-}> = ({height, hour, progress, most}) => {
+	theme: Theme;
+}> = ({height, hour, progress, most, theme}) => {
 	const width = 35;
 
 	const actualHeight = progress * height;
@@ -21,7 +22,7 @@ export const CommitBar: React.FC<{
 		stroke: 'transparent',
 		seed: Number(hour),
 		maxRandomnessOffset: 5,
-		fill: most ? BASE_COLOR : 'white',
+		fill: most ? theme.mainColor : 'white',
 		fillStyle: 'solid',
 	});
 
@@ -58,7 +59,7 @@ export const CommitBar: React.FC<{
 					width,
 					marginTop: 20,
 					fontFamily: 'MonaSans',
-					color: BASE_COLOR,
+					color: theme.mainColor,
 					fontSize: 24,
 				}}
 			>

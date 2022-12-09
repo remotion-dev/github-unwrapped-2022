@@ -1,15 +1,17 @@
 import React from 'react';
-import {BASE_COLOR} from '../src/palette';
 import {getRough} from './get-rough';
+import {Theme} from './theme';
 
-export const MiddleLine: React.FC = () => {
+export const MiddleLine: React.FC<{
+	theme: Theme;
+}> = ({theme}) => {
 	const d = 'M 0 5 L 1000 5';
 
 	const path = getRough().generator();
 	const drawable = path.path(d, {
 		strokeWidth: 5,
 		roughness: 0.9,
-		stroke: BASE_COLOR,
+		stroke: theme.mainColor,
 		seed: 5,
 		maxRandomnessOffset: 4,
 	});

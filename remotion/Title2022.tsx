@@ -3,12 +3,14 @@ import {AbsoluteFill} from 'remotion';
 import {GiftBox} from './GiftBox';
 import {CompactStats} from './map-response-to-stats';
 import {Snow} from './Snow';
+import {Theme} from './theme';
 import {WaterColour} from './WaterColour';
 
 export const Title: React.FC<{
 	noBackground: boolean;
 	userStats: CompactStats;
-}> = ({noBackground, userStats}) => {
+	theme: Theme;
+}> = ({noBackground, userStats, theme}) => {
 	return (
 		<AbsoluteFill
 			style={{
@@ -25,7 +27,7 @@ export const Title: React.FC<{
 				<Snow></Snow>
 			</AbsoluteFill>
 			<AbsoluteFill>
-				<GiftBox userStats={userStats}></GiftBox>
+				<GiftBox theme={theme} userStats={userStats}></GiftBox>
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);

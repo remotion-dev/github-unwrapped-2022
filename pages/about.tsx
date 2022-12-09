@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import React from 'react';
 import {getFont} from '../remotion/font';
+import {useTheme} from '../remotion/theme';
 import {button} from '../src/components/button';
 import {RoughBox} from '../src/components/RoughBox';
-import {BASE_COLOR, BG_2022} from '../src/palette';
+import {BG_2022} from '../src/palette';
 
 getFont();
 
@@ -34,6 +35,7 @@ const box: React.CSSProperties = {
 };
 
 const Faq: React.FC = () => {
+	const theme = useTheme();
 	return (
 		<div
 			style={{
@@ -42,7 +44,7 @@ const Faq: React.FC = () => {
 				width: '100%',
 				minHeight: '100vh',
 				fontFamily: 'MonaSans',
-				color: BASE_COLOR,
+				color: theme.mainColor,
 				lineHeight: 1.5,
 			}}
 		>

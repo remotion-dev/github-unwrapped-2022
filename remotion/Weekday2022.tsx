@@ -1,5 +1,5 @@
 import {lighten} from 'polished';
-import React from 'react';
+import React, {useMemo} from 'react';
 import {
 	AbsoluteFill,
 	interpolate,
@@ -7,11 +7,11 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {BASE_COLOR} from '../src/palette';
 import {Weekday} from './frontend-stats';
 import {CompactStats} from './map-response-to-stats';
 import {Snow} from './Snow';
 import {StrokedText} from './StrokedText';
+import {Theme} from './theme';
 import {WaterColour} from './WaterColour';
 import {WeekdayBar} from './WeekdayBar';
 
@@ -35,32 +35,38 @@ const label: React.CSSProperties = {
 	fontFamily: 'MonaSans',
 };
 
-const bigTitle: React.CSSProperties = {
-	color: BASE_COLOR,
-	fontWeight: 'bold',
-	fontSize: 80,
-	fontFamily: 'MonaSans',
-	textAlign: 'center',
-	fontVariationSettings: '"wght" 700',
-};
-
-const title: React.CSSProperties = {
-	color: BASE_COLOR,
-	fontWeight: 'bold',
-	fontSize: 50,
-	fontFamily: 'MonaSans',
-	textAlign: 'center',
-	marginBottom: 100,
-};
-
 const higher = 400;
 
 export const TopWeekdays2022: React.FC<{
 	stats: CompactStats;
 	noBackground: boolean;
-}> = ({stats, noBackground}) => {
+	theme: Theme;
+}> = ({stats, noBackground, theme}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
+
+	const bigTitle: React.CSSProperties = useMemo(
+		() => ({
+			color: theme.mainColor,
+			fontWeight: 'bold',
+			fontSize: 80,
+			fontFamily: 'MonaSans',
+			textAlign: 'center',
+			fontVariationSettings: '"wght" 700',
+		}),
+		[theme.mainColor]
+	);
+
+	const title: React.CSSProperties = useMemo(() => {
+		return {
+			color: theme.mainColor,
+			fontWeight: 'bold',
+			fontSize: 50,
+			fontFamily: 'MonaSans',
+			textAlign: 'center',
+			marginBottom: 100,
+		};
+	}, [theme.mainColor]);
 
 	const appearIn = spring({
 		fps,
@@ -156,13 +162,14 @@ export const TopWeekdays2022: React.FC<{
 											isMostProductive={isMostProductive}
 											lower={lower}
 											index={i}
+											theme={theme}
 										></WeekdayBar>
 										<div
 											style={{
 												...label,
 												color: isMostProductive
-													? BASE_COLOR
-													: lighten(0.15, BASE_COLOR),
+													? theme.mainColor
+													: lighten(0.15, theme.mainColor),
 												fontVariationSettings: '"wght" 700',
 											}}
 										>

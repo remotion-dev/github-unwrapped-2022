@@ -10,12 +10,14 @@ import {CompactStats} from './map-response-to-stats';
 import {SlideIn, SlideOut, transitionDuration} from './SlideIn';
 import {Snow} from './Snow';
 import {Socks} from './Socks';
+import {Theme} from './theme';
 import {Title} from './Title2022';
 import {TopWeekdays2022} from './Weekday2022';
 
 export const Main: React.FC<{
 	stats: CompactStats;
-}> = ({stats}) => {
+	theme: Theme;
+}> = ({stats, theme}) => {
 	if (!stats) {
 		return null;
 	}
@@ -42,7 +44,7 @@ export const Main: React.FC<{
 			<Snow windPushes={windPushes}></Snow>
 			<Sequence durationInFrames={duration[0] + transitionDuration}>
 				<SlideOut>
-					<Title noBackground={true} userStats={stats}></Title>
+					<Title theme={theme} noBackground={true} userStats={stats}></Title>
 				</SlideOut>
 			</Sequence>
 			<Sequence
@@ -64,7 +66,7 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<AvgCommits noBackground={true}></AvgCommits>
+						<AvgCommits theme={theme} noBackground={true}></AvgCommits>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>
@@ -75,6 +77,7 @@ export const Main: React.FC<{
 				<SlideOut>
 					<SlideIn>
 						<IssuesOpened2022
+							theme={theme}
 							noBackground={true}
 							issues={stats.issues}
 						></IssuesOpened2022>
@@ -88,6 +91,7 @@ export const Main: React.FC<{
 				<SlideOut>
 					<SlideIn>
 						<TopWeekdays2022
+							theme={theme}
 							noBackground={true}
 							stats={stats}
 						></TopWeekdays2022>
@@ -119,7 +123,7 @@ export const Main: React.FC<{
 				from={accumulatedFrom(7)}
 			>
 				<SlideIn>
-					<EndCard2 noBackground={true} />
+					<EndCard2 theme={theme} noBackground={true} />
 				</SlideIn>
 			</Sequence>
 		</AbsoluteFill>

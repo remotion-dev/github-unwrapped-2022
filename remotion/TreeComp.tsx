@@ -2,8 +2,9 @@ import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {BG_2022} from '../src/palette';
 import {Tree} from './Icons/Tree';
+import {Theme} from './theme';
 
-export const TreeComp: React.FC = () => {
+export const TreeComp: React.FC<{theme: Theme}> = ({theme}) => {
 	return (
 		<AbsoluteFill
 			style={{
@@ -12,7 +13,7 @@ export const TreeComp: React.FC = () => {
 				backgroundColor: BG_2022,
 			}}
 		>
-			<Tree></Tree>
+			<Tree theme={theme}></Tree>
 		</AbsoluteFill>
 	);
 };

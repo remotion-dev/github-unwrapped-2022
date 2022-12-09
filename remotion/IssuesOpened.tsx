@@ -13,9 +13,10 @@ import {
 	getTreeMath,
 	makeIndicesAccurate,
 } from './tree/indices-to-close';
-import {BASE_COLOR, BG_2022} from '../src/palette';
+import {BG_2022} from '../src/palette';
 import {StrokedText} from './StrokedText';
 import {Issues} from './map-response-to-stats';
+import {Theme} from './theme';
 
 const getColor = (
 	indicesToClose: number[],
@@ -60,7 +61,8 @@ const duration = 70;
 export const IssuesOpened2022: React.FC<{
 	noBackground: boolean;
 	issues: Issues;
-}> = ({noBackground, issues}) => {
+	theme: Theme;
+}> = ({noBackground, issues, theme}) => {
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 
@@ -199,7 +201,7 @@ export const IssuesOpened2022: React.FC<{
 						alignItems: 'center',
 						fontFamily: 'MonaSans',
 						fontSize: 130,
-						color: BASE_COLOR,
+						color: theme.mainColor,
 						marginTop: 300,
 					}}
 				>

@@ -1,21 +1,12 @@
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {lighten} from 'polished';
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
 import {getFont} from '../remotion/font';
+import {Theme, useTheme} from '../remotion/theme';
 import {button} from '../src/components/button';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
-import {BASE_COLOR, BG_2022} from '../src/palette';
-
-const input: React.CSSProperties = {
-	padding: 14,
-	borderRadius: 8,
-	fontSize: 22,
-	fontFamily: 'MonaSans',
-	textAlign: 'center',
-	background: 'white',
-	border: `3px solid ${BASE_COLOR}`,
-};
+import {BG_2022} from '../src/palette';
 
 const container: React.CSSProperties = {
 	height: '100%',
@@ -44,14 +35,6 @@ const headerStyle: React.CSSProperties = {
 	margin: 'auto',
 };
 
-const h1: React.CSSProperties = {
-	fontWeight: 'bold',
-	fontSize: 40,
-	color: BASE_COLOR,
-	fontFamily: 'MonaSans',
-	fontVariationSettings: '"wght" 700',
-};
-
 const paragraph: React.CSSProperties = {
 	lineHeight: 1.5,
 	fontSize: 18,
@@ -61,19 +44,43 @@ const paragraph: React.CSSProperties = {
 
 getFont();
 
-const buttonStyle = (disabled: boolean): React.CSSProperties =>
+const buttonStyle = (disabled: boolean, theme: Theme): React.CSSProperties =>
 	disabled
 		? {
-				...button,
-				backgroundColor: lighten(0.6, BASE_COLOR),
-				borderBottomColor: lighten(0.4, BASE_COLOR),
+				...button(theme),
+				backgroundColor: lighten(0.6, theme.mainColor),
+				borderBottomColor: lighten(0.4, theme.mainColor),
 		  }
-		: button;
+		: button(theme);
 
 export default function Home() {
 	const router = useRouter();
 	const [username, setUsername] = useState('');
 	const [loading, setLoading] = useState(false);
+	const theme = useTheme();
+
+	const h1: React.CSSProperties = useMemo(() => {
+		return {
+			fontWeight: 'bold',
+			fontSize: 40,
+			color: theme.mainColor,
+			fontFamily: 'MonaSans',
+			fontVariationSettings: '"wght" 700',
+		};
+	}, [theme.mainColor]);
+
+	const input: React.CSSProperties = useMemo(
+		() => ({
+			padding: 14,
+			borderRadius: 8,
+			fontSize: 22,
+			fontFamily: 'MonaSans',
+			textAlign: 'center',
+			background: 'white',
+			border: `3px solid ${theme.mainColor}`,
+		}),
+		[theme.mainColor]
+	);
 
 	const onSubmit: React.FormEventHandler = useCallback(
 		(e) => {
@@ -130,7 +137,7 @@ export default function Home() {
 							<br />
 							<br />
 							<input
-								style={buttonStyle(loading)}
+								style={buttonStyle(loading, theme)}
 								type="submit"
 								value={
 									loading ? 'Getting your Unwrapped...' : 'Get your Unwrapped'

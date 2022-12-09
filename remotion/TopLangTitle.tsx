@@ -1,8 +1,10 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
-import {BASE_COLOR} from '../src/palette';
+import {Theme} from './theme';
 
-export const TopLangTitle: React.FC<{}> = ({}) => {
+export const TopLangTitle: React.FC<{
+	theme: Theme;
+}> = ({theme}) => {
 	const frame = useCurrentFrame();
 	const title = `I speak many languages...`;
 	const words = title.split(' ');
@@ -15,7 +17,7 @@ export const TopLangTitle: React.FC<{}> = ({}) => {
 				fontFamily: 'MonaSans',
 				fontSize: 100,
 				marginTop: -270,
-				color: BASE_COLOR,
+				color: theme.mainColor,
 			}}
 		>
 			<div

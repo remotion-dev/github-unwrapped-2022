@@ -1,10 +1,13 @@
 import React from 'react';
 import {AbsoluteFill, interpolate, useCurrentFrame} from 'remotion';
-import {BASE_COLOR} from '../src/palette';
 import {StrokedText} from './StrokedText';
+import {Theme} from './theme';
 
-export const AvgCommitsTitle: React.FC = () => {
+export const AvgCommitsTitle: React.FC<{
+	theme: Theme;
+}> = ({theme}) => {
 	const frame = useCurrentFrame();
+	// TODO
 	const title = 'I code the most in the afternoon.';
 	const words = title.split(' ');
 
@@ -17,7 +20,7 @@ export const AvgCommitsTitle: React.FC = () => {
 					fontFamily: 'MonaSans',
 					fontSize: 50,
 					marginTop: -320,
-					color: BASE_COLOR,
+					color: theme.mainColor,
 					fontVariationSettings: '"wght" 700',
 				}}
 			>

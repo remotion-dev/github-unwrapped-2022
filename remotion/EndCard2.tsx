@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {
 	AbsoluteFill,
 	interpolate,
@@ -6,23 +6,26 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {BASE_COLOR} from '../src/palette';
 import {Snow} from './Snow';
+import {Theme} from './theme';
 import {WaterColour} from './WaterColour';
-
-const subtitle: React.CSSProperties = {
-	textAlign: 'center',
-	color: BASE_COLOR,
-	fontFamily: 'MonaSans',
-	fontSize: 80,
-	fontWeight: 'bold',
-	marginTop: 12,
-	fontVariationSettings: '"wght" 700',
-};
 
 export const EndCard2: React.FC<{
 	noBackground: boolean;
-}> = ({noBackground}) => {
+	theme: Theme;
+}> = ({noBackground, theme}) => {
+	const subtitle: React.CSSProperties = useMemo(() => {
+		return {
+			textAlign: 'center',
+			color: theme.mainColor,
+			fontFamily: 'MonaSans',
+			fontSize: 80,
+			fontWeight: 'bold',
+			marginTop: 12,
+			fontVariationSettings: '"wght" 700',
+		};
+	}, [theme.mainColor]);
+
 	const frame = useCurrentFrame();
 	const {fps} = useVideoConfig();
 	const chars = 'githubunwrapped';

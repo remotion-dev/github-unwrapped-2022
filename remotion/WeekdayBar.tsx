@@ -1,14 +1,15 @@
 import React, {useEffect, useRef} from 'react';
 import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {parsePath, roundCommands} from 'svg-round-corners';
-import {BASE_COLOR} from '../src/palette';
 import {getRough} from './get-rough';
+import {Theme} from './theme';
 
 export const WeekdayBar: React.FC<{
 	lower: number;
 	isMostProductive: boolean;
 	index: number;
-}> = ({lower, isMostProductive, index}) => {
+	theme: Theme;
+}> = ({lower, isMostProductive, index, theme}) => {
 	const ref = useRef<SVGSVGElement>(null);
 	const frame = Math.ceil(useCurrentFrame() * 0.3);
 
@@ -42,7 +43,7 @@ export const WeekdayBar: React.FC<{
 			strokeWidth: 6,
 			bowing: isMostProductive ? 5 : 0,
 			stroke: isMostProductive ? 'black' : '#fff',
-			fill: isMostProductive ? BASE_COLOR : '#fff',
+			fill: isMostProductive ? theme.mainColor : '#fff',
 			fillStyle: 'solid',
 			seed: frame,
 		});
@@ -50,7 +51,7 @@ export const WeekdayBar: React.FC<{
 		ref.current.style.height = actualHeight + 'px';
 		ref.current.setAttribute('viewBox', `0 0 90 ${actualHeight}`);
 		ref.current?.replaceChildren(p);
-	}, [isMostProductive, frame, fps, lower, index]);
+	}, [isMostProductive, frame, fps, lower, index, theme.mainColor]);
 
 	return (
 		<>

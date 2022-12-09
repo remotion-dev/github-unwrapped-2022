@@ -6,10 +6,10 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {BASE_COLOR} from '../src/palette';
 import {Candy} from './Icons/Candy';
 import {Star} from './Icons/Star';
 import {RoughPath} from './RoughPath';
+import {Theme} from './theme';
 
 const titleStyle: React.CSSProperties = {
 	color: 'black',
@@ -21,7 +21,10 @@ const titleStyle: React.CSSProperties = {
 };
 
 const icons = false;
-export const TitleCard: React.FC<{username: string}> = ({username}) => {
+export const TitleCard: React.FC<{username: string; theme: Theme}> = ({
+	username,
+	theme,
+}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
@@ -91,7 +94,7 @@ export const TitleCard: React.FC<{username: string}> = ({username}) => {
 						style={{
 							fontSize: '1.1em',
 							fontVariationSettings: '"wght" 700',
-							color: BASE_COLOR,
+							color: theme.mainColor,
 						}}
 					>
 						{username}

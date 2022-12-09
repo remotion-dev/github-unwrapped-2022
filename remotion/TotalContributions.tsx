@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {
 	AbsoluteFill,
 	interpolate,
@@ -6,29 +6,36 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {BASE_COLOR} from '../src/palette';
-
-const title: React.CSSProperties = {
-	textAlign: 'center',
-	fontSize: 200,
-	fontFamily: 'MonaSans',
-	color: BASE_COLOR,
-	fontWeight: 'bold',
-};
-
-const subtitle: React.CSSProperties = {
-	textAlign: 'center',
-	fontSize: 36,
-	fontFamily: 'MonaSans',
-	color: BASE_COLOR,
-	fontWeight: 'bold',
-};
+import {Theme} from './theme';
 
 export const TotalContributions: React.FC<{
 	totalContributions: number;
-}> = ({totalContributions}) => {
+	theme: Theme;
+}> = ({totalContributions, theme}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
+
+	const title: React.CSSProperties = useMemo(
+		() => ({
+			textAlign: 'center',
+			fontSize: 200,
+			fontFamily: 'MonaSans',
+			color: theme.mainColor,
+			fontWeight: 'bold',
+		}),
+		[theme.mainColor]
+	);
+
+	const subtitle: React.CSSProperties = useMemo(
+		() => ({
+			textAlign: 'center',
+			fontSize: 36,
+			fontFamily: 'MonaSans',
+			color: theme.mainColor,
+			fontWeight: 'bold',
+		}),
+		[theme.mainColor]
+	);
 
 	const prog = spring({
 		fps,

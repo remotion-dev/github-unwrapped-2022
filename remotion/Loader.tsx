@@ -2,8 +2,11 @@ import React from 'react';
 import {AbsoluteFill, Freeze, useCurrentFrame} from 'remotion';
 import {Gift} from './Gift';
 import {Band} from './Band';
+import {Theme} from './theme';
 
-export const Loader: React.FC = () => {
+export const Loader: React.FC<{
+	theme: Theme;
+}> = ({theme}) => {
 	const frame = useCurrentFrame();
 	const reverse = 40 - frame;
 	return (
@@ -20,6 +23,7 @@ export const Loader: React.FC = () => {
 						style={{
 							height: 750,
 						}}
+						theme={theme}
 						delay={0}
 					></Gift>
 				</Freeze>

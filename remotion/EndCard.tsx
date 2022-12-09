@@ -1,22 +1,25 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {AbsoluteFill} from 'remotion';
-import {BASE_COLOR} from '../src/palette';
 import {Snow} from './Snow';
+import {useTheme} from './theme';
 import {WaterColour} from './WaterColour';
-
-const endCardStyle: React.CSSProperties = {
-	color: BASE_COLOR,
-	fontFamily: 'MonaSans',
-	fontSize: 65,
-	textAlign: 'center',
-	fontWeight: 'bold',
-	marginTop: 20,
-	fontVariationSettings: '"wght" 700',
-};
 
 export const EndCard: React.FC<{
 	noBackground: boolean;
 }> = ({noBackground}) => {
+	const theme = useTheme();
+	const endCardStyle: React.CSSProperties = useMemo(() => {
+		return {
+			color: theme.mainColor,
+			fontFamily: 'MonaSans',
+			fontSize: 65,
+			textAlign: 'center',
+			fontWeight: 'bold',
+			marginTop: 20,
+			fontVariationSettings: '"wght" 700',
+		};
+	}, [theme.mainColor]);
+
 	return (
 		<AbsoluteFill
 			style={{

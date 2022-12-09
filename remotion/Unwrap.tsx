@@ -2,8 +2,11 @@ import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {Gift} from './Gift';
 import {Band} from './Band';
+import {Theme} from './theme';
 
-export const Unwrap: React.FC = () => {
+export const Unwrap: React.FC<{
+	theme: Theme;
+}> = ({theme}) => {
 	const delay = 30;
 	return (
 		<AbsoluteFill>
@@ -15,6 +18,7 @@ export const Unwrap: React.FC = () => {
 				}}
 			>
 				<Gift
+					theme={theme}
 					style={{
 						height: 750,
 					}}
