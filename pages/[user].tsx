@@ -92,7 +92,7 @@ const title: React.CSSProperties = {
 	color: BASE_COLOR,
 	marginBottom: 0,
 	fontSize: '46px',
-	fontVariationSettings: '"wght" 600px',
+	fontVariationSettings: '"wght" 600',
 };
 
 const subtitle: React.CSSProperties = {
@@ -101,7 +101,7 @@ const subtitle: React.CSSProperties = {
 	fontSize: 24,
 	marginTop: 14,
 	marginBottom: 0,
-	fontVariationSettings: '"wght" 600px',
+	fontVariationSettings: '"wght" 600',
 };
 
 const layout: React.CSSProperties = {
