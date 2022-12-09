@@ -21,9 +21,9 @@ export const greenTheme: Theme = {
 
 export const blueTheme: Theme = {
 	name: 'Icy Winter',
-	mainColor: 'blue',
-	accentColor: 'blue',
-	background: 'white',
+	mainColor: '#4185de',
+	accentColor: '#233DC9',
+	background: '#e0f2fc',
 };
 
 export const useTheme = () => {

@@ -96,7 +96,7 @@ export const Tree = ({
 			<path
 				style={{
 					fill: 'none',
-					stroke: theme.mainColor,
+					stroke: theme.accentColor,
 					strokeLinecap: 'round',
 					strokeLinejoin: 'round',
 					strokeMiterlimit: 10,
