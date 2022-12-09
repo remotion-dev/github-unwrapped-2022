@@ -13,7 +13,6 @@ import {
 	getTreeMath,
 	makeIndicesAccurate,
 } from './tree/indices-to-close';
-import {BG_2022} from '../src/palette';
 import {StrokedText} from './StrokedText';
 import {Issues} from './map-response-to-stats';
 import {Theme} from './theme';
@@ -117,7 +116,7 @@ export const IssuesOpened2022: React.FC<{
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: noBackground ? undefined : BG_2022,
+				backgroundColor: noBackground ? undefined : theme.background,
 			}}
 		>
 			<AbsoluteFill

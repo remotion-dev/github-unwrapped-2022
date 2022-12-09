@@ -3,7 +3,6 @@ import {AbsoluteFill} from 'remotion';
 import {getFont} from '../remotion/font';
 import {useTheme} from '../remotion/theme';
 import {backButton} from '../src/components/button';
-import {BG_2022} from '../src/palette';
 
 getFont();
 
@@ -15,7 +14,7 @@ const NotEnoughInfos: React.FC = () => {
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: BG_2022,
+				backgroundColor: theme.background,
 				justifyContent: 'center',
 				alignItems: 'center',
 				fontFamily: 'MonaSans',

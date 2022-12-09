@@ -1,7 +1,6 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {TopLanguage} from '../src/get-all';
-import {BG_2022} from '../src/palette';
 import {getFont} from './font';
 import {LangPlaceholder} from './LangPlaceholder';
 import {languageList} from './language-list';
@@ -61,7 +60,7 @@ export const TopLang: React.FC<{
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: BG_2022,
+				backgroundColor: theme.background,
 				fontFamily: 'MonaSans',
 			}}
 		>

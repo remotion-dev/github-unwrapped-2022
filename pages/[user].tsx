@@ -21,7 +21,6 @@ import {Gingerman} from '../src/components/Gingerman';
 import {PlayButton} from '../src/components/Play';
 import {RoughBox} from '../src/components/RoughBox';
 import {getAllStatsFromCache} from '../src/db/cache';
-import {BG_2022} from '../src/palette';
 import {RenderRequest} from '../src/types';
 import {RenderProgressOrFinality} from './api/progress';
 
@@ -80,12 +79,6 @@ const style: React.CSSProperties = {
 	paddingRight: 20,
 };
 
-const abs: React.CSSProperties = {
-	width: '100%',
-	position: 'relative',
-	backgroundColor: BG_2022,
-};
-
 const container: React.CSSProperties = {
 	minHeight: `calc(100vh - ${FOOTER_HEIGHT}px)`,
 	width: '100%',
@@ -120,6 +113,15 @@ export default function User(props: {user: CompactStats | null}) {
 	const theme = useTheme();
 	const router = useRouter();
 	const username = ([] as string[]).concat(router.query.user ?? '')[0];
+
+	const abs: React.CSSProperties = useMemo(
+		() => ({
+			width: '100%',
+			position: 'relative',
+			backgroundColor: theme.background,
+		}),
+		[theme.background]
+	);
 
 	const title: React.CSSProperties = useMemo(
 		() => ({

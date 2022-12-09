@@ -1,6 +1,5 @@
 import React from 'react';
 import {AbsoluteFill, Audio, Internals, Sequence, staticFile} from 'remotion';
-import {BG_2022} from '../src/palette';
 import {AvgCommits} from './AvgCommits';
 import {BestCommits} from './BestCommits';
 import {EndCard} from './EndCard';
@@ -37,7 +36,7 @@ export const Main: React.FC<{
 	return (
 		<AbsoluteFill
 			style={{
-				background: BG_2022,
+				background: theme.background,
 			}}
 		>
 			<Audio src={staticFile('sound.mp3')}></Audio>

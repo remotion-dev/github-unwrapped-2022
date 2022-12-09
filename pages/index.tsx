@@ -6,7 +6,6 @@ import {getFont} from '../remotion/font';
 import {Theme, useTheme} from '../remotion/theme';
 import {button} from '../src/components/button';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
-import {BG_2022} from '../src/palette';
 
 const container: React.CSSProperties = {
 	height: '100%',
@@ -15,16 +14,6 @@ const container: React.CSSProperties = {
 	display: 'flex',
 	flexDirection: 'column',
 	paddingTop: '10vh',
-};
-
-const abs: React.CSSProperties = {
-	minHeight: `calc(100vh - ${FOOTER_HEIGHT}px)`,
-	width: '100%',
-	display: 'flex',
-	flexDirection: 'column',
-	overflow: 'auto',
-	backgroundColor: BG_2022,
-	position: 'relative',
 };
 
 const headerStyle: React.CSSProperties = {
@@ -58,6 +47,19 @@ export default function Home() {
 	const [username, setUsername] = useState('');
 	const [loading, setLoading] = useState(false);
 	const theme = useTheme();
+
+	const abs: React.CSSProperties = useMemo(
+		() => ({
+			minHeight: `calc(100vh - ${FOOTER_HEIGHT}px)`,
+			width: '100%',
+			display: 'flex',
+			flexDirection: 'column',
+			overflow: 'auto',
+			backgroundColor: theme.background,
+			position: 'relative',
+		}),
+		[theme.background]
+	);
 
 	const h1: React.CSSProperties = useMemo(() => {
 		return {

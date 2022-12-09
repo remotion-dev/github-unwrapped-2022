@@ -1,6 +1,5 @@
 import {Player} from '@remotion/player';
 import React from 'react';
-import {BG_2022} from '../src/palette';
 import {Loader} from './Loader';
 import {useTheme} from './theme';
 
@@ -15,7 +14,7 @@ export const LoadingPage: React.FC = () => {
 				alignItems: 'center',
 				display: 'flex',
 				flexDirection: 'column',
-				backgroundColor: BG_2022,
+				backgroundColor: theme.background,
 			}}
 		>
 			<Player
@@ -29,7 +28,6 @@ export const LoadingPage: React.FC = () => {
 				style={{
 					width: 300,
 					height: 300,
-					backgroundColor: BG_2022,
 				}}
 				inputProps={{
 					theme,

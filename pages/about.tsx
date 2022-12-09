@@ -4,7 +4,6 @@ import {getFont} from '../remotion/font';
 import {useTheme} from '../remotion/theme';
 import {button} from '../src/components/button';
 import {RoughBox} from '../src/components/RoughBox';
-import {BG_2022} from '../src/palette';
 
 getFont();
 
@@ -39,7 +38,7 @@ const Faq: React.FC = () => {
 	return (
 		<div
 			style={{
-				backgroundColor: BG_2022,
+				backgroundColor: theme.mainColor,
 				position: 'absolute',
 				width: '100%',
 				minHeight: '100vh',

@@ -1,16 +1,11 @@
 import Link from 'next/link';
-import React from 'react';
+import React, {useMemo} from 'react';
 import {Theme} from '../../remotion/theme';
-import {BG_2022} from '../palette';
 import {Bauble} from './Bauble';
 import {GithubIcon} from './Github';
 import {PlayButton} from './Play';
 
 export const FOOTER_HEIGHT = 50;
-
-const outer: React.CSSProperties = {
-	backgroundColor: BG_2022,
-};
 
 const container: React.CSSProperties = {
 	minHeight: FOOTER_HEIGHT,
@@ -46,6 +41,13 @@ const item: React.CSSProperties = {
 export const Footer: React.FC<{
 	theme: Theme;
 }> = ({theme}) => {
+	const outer: React.CSSProperties = useMemo(
+		() => ({
+			backgroundColor: theme.background,
+		}),
+		[theme.background]
+	);
+
 	return (
 		<div style={outer}>
 			<div style={container}>

@@ -1,7 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {TopLanguage} from '../src/get-all';
-import {BG_2022} from '../src/palette';
 import {SockComp} from './SockComp';
 import {Theme} from './theme';
 import {Lang} from './TopLang';
@@ -31,7 +30,7 @@ export const Socks: React.FC<{
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: noBackground ? undefined : BG_2022,
+				backgroundColor: noBackground ? undefined : theme.background,
 			}}
 		>
 			<AbsoluteFill
