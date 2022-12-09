@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import React from 'react';
 import {BG_2022} from '../palette';
+import {Bauble} from './Bauble';
 import {GithubIcon} from './Github';
 import {PlayButton} from './Play';
 
 export const FOOTER_HEIGHT = 50;
+
+const outer: React.CSSProperties = {
+	backgroundColor: BG_2022,
+};
 
 const container: React.CSSProperties = {
 	minHeight: FOOTER_HEIGHT,
@@ -12,10 +17,11 @@ const container: React.CSSProperties = {
 	alignItems: 'center',
 	paddingLeft: 20,
 	paddingRight: 20,
-	paddingTop: 20,
-	paddingBottom: 20,
-	backgroundColor: BG_2022,
+	paddingTop: 40,
+	paddingBottom: 40,
 	justifyContent: 'center',
+	width: 1000,
+	margin: 'auto',
 	fontSize: 14,
 	textAlign: 'center',
 	fontVariationSettings: '"wght" 500',
@@ -23,31 +29,54 @@ const container: React.CSSProperties = {
 	flexDirection: 'row',
 };
 
+const link: React.CSSProperties = {
+	flex: 1,
+};
+
+const item: React.CSSProperties = {
+	flex: 1,
+	cursor: 'pointer',
+	display: 'flex',
+	flexDirection: 'row',
+	alignItems: 'center',
+	justifyContent: 'center',
+};
+
 export const Footer: React.FC = () => {
 	return (
-		<div style={container}>
-			<a href="https://remotion.dev">
-				<div>
-					<PlayButton style={{height: 30}}></PlayButton>
-					Made with Remotion
-				</div>
-			</a>
-			<a href="https://github.com/remotion-dev/github-unwrapped-2022">
-				<div>
-					<GithubIcon style={{height: 30}}></GithubIcon>
-					Source Code
-				</div>
-			</a>
-			<Link href="/faq" passHref>
-				<div
-					style={{
-						cursor: 'pointer',
-					}}
+		<div style={outer}>
+			<div style={container}>
+				<a
+					href="https://remotion.dev"
+					target={'_blank'}
+					style={link}
+					rel="noreferrer"
 				>
-					{' '}
-					About this site
-				</div>
-			</Link>
+					<div style={item}>
+						<PlayButton style={{height: 30, marginRight: 12}}></PlayButton>
+						Made with Remotion
+					</div>
+				</a>
+				<a
+					href="https://github.com/remotion-dev/github-unwrapped-2022"
+					style={link}
+					target="_blank"
+					rel="noreferrer"
+				>
+					<div style={item}>
+						<GithubIcon style={{height: 30, marginRight: 12}}></GithubIcon>
+						Source Code
+					</div>
+				</a>
+				<Link href="/faq" passHref style={link}>
+					<div style={item}>
+						<Bauble
+							style={{height: 35, marginTop: -5, marginRight: 6}}
+						></Bauble>
+						About this site
+					</div>
+				</Link>
+			</div>
 		</div>
 	);
 };
