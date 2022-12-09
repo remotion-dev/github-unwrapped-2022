@@ -37,12 +37,12 @@ export const getRenderProgressWithFinality = async (
 	const finality = getFinality(progress);
 
 	if (finality) {
-		await updateRenderWithFinality(
-			render.renderId,
-			render.username,
-			render.region,
-			finality
-		);
+		await updateRenderWithFinality({
+			renderId: render.renderId,
+			username: render.username,
+			region: render.region,
+			finality,
+		});
 		console.log(`Updated ${render.renderId} with finality`, finality);
 		return {
 			type: 'finality',

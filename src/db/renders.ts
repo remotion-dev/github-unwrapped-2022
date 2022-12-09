@@ -72,12 +72,17 @@ export const saveRender = async ({
 	);
 };
 
-export const updateRenderWithFinality = async (
-	renderId: string,
-	username: string,
-	region: AwsRegion,
-	finality: Finality
-) => {
+export const updateRenderWithFinality = async ({
+	renderId,
+	username,
+	region,
+	finality,
+}: {
+	renderId: string;
+	username: string;
+	region: AwsRegion;
+	finality: Finality;
+}) => {
 	if (finality && finality.type === 'success') {
 		console.log(`Successfully rendered video for ${username}.`);
 	} else {

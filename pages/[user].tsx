@@ -67,8 +67,8 @@ export const getServerSideProps = async ({
 
 const style: React.CSSProperties = {
 	display: 'flex',
-	flexDirection: 'column',
-	maxWidth: 800,
+	flexDirection: 'row',
+	maxWidth: 1100,
 	margin: 'auto',
 	paddingLeft: 20,
 	paddingRight: 20,
@@ -92,6 +92,7 @@ const title: React.CSSProperties = {
 	color: BASE_COLOR,
 	marginBottom: 0,
 	fontSize: 40,
+	marginTop: 0,
 	fontVariationSettings: '"wght" 700',
 };
 
@@ -254,17 +255,17 @@ export default function User(props: {user: CompactStats | null}) {
 
 			<div style={abs}>
 				<div style={container}>
-					<header style={style}>
-						<br></br>
-						<br></br>
-						<h1 style={title}>Here is your #GitHubUnwrapped!</h1>
-						<h2 style={subtitle}>@{user.username}</h2>
-						<div
-							style={{
-								height: 20,
-							}}
-						></div>
-						{user ? (
+					<br></br>
+					<br></br>
+					<h1 style={title}>Here is your #GitHubUnwrapped!</h1>
+					<h2 style={subtitle}>@{user.username}</h2>
+					<div style={style}>
+						<div>
+							<div
+								style={{
+									height: 20,
+								}}
+							></div>
 							<div
 								style={{
 									position: 'relative',
@@ -283,6 +284,7 @@ export default function User(props: {user: CompactStats | null}) {
 										borderRadius: 10,
 										overflow: 'hidden',
 										maxWidth: '600px',
+										aspectRatio: '1 / 1',
 									}}
 									inputProps={{
 										stats: user,
@@ -342,67 +344,77 @@ export default function User(props: {user: CompactStats | null}) {
 									)}
 								</AbsoluteFill>
 							</div>
-						) : null}
+							<div
+								style={{
+									height: 40,
+								}}
+							></div>
+						</div>
 						<div
 							style={{
-								height: 40,
+								width: 40,
 							}}
 						></div>
-						<div style={layout}>
-							<p
-								style={{
-									color: BASE_COLOR,
-									fontFamily: 'MonaSans',
-									textAlign: 'center',
-								}}
-							>
-								Download your video and share it on social media using{' '}
-								<span
-									style={{
-										color: 'black',
-									}}
-								>
-									#GitHubUnwrapped
-								</span>{' '}
-								hashtag!
-							</p>
-							<Download
-								downloadProgress={downloadProgress}
-								username={username}
-							></Download>
-							{iosSafari() ? (
+
+						<div>
+							<div style={layout}>
 								<p
 									style={{
 										color: BASE_COLOR,
 										fontFamily: 'MonaSans',
-										textAlign: 'center',
-										fontSize: 12,
+										fontVariationSettings: '"wght" 600',
+										marginTop: 30,
+										lineHeight: 1.5,
 									}}
 								>
-									Tip for iOS Safari: Long press the {'"'}Download button{'"'},
-									then press {'"'}Download Linked File{'"'} to save the video
-									locally.
+									Download your video and share it on social media using the{' '}
+									<span
+										style={{
+											color: 'black',
+										}}
+									>
+										#GitHubUnwrapped
+									</span>{' '}
+									hashtag!
 								</p>
-							) : null}
-							<div
-								style={{
-									height: 20,
-								}}
-							></div>
-							<Link href="/" passHref>
-								<button style={backButton}>View for another user</button>
-							</Link>
-							<div
-								style={{
-									height: 20,
-								}}
-							></div>
+								<Download
+									downloadProgress={downloadProgress}
+									username={username}
+								></Download>
+								{iosSafari() ? (
+									<p
+										style={{
+											color: BASE_COLOR,
+											fontFamily: 'MonaSans',
+											textAlign: 'center',
+											fontSize: 12,
+										}}
+									>
+										Tip for iOS Safari: Long press the {'"'}Download button{'"'}
+										, then press {'"'}Download Linked File{'"'} to save the
+										video locally.
+									</p>
+								) : null}
+								<div
+									style={{
+										height: 20,
+									}}
+								></div>
+								<Link href="/" passHref>
+									<button style={backButton}>View for another user</button>
+								</Link>
+								<div
+									style={{
+										height: 20,
+									}}
+								></div>
 
-							<br />
-							<br />
-							<br />
+								<br />
+								<br />
+								<br />
+							</div>
 						</div>
-					</header>
+					</div>
 				</div>
 			</div>
 			<Footer></Footer>

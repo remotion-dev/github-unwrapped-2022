@@ -76,9 +76,14 @@ export const getRenderOrMake = async (
 	} catch (err) {
 		console.log(`Failed to render video for ${username}`, (err as Error).stack);
 		if (_renderId && _region) {
-			await updateRenderWithFinality(_renderId, username, _region, {
-				type: 'error',
-				errors: (err as Error).stack as string,
+			await updateRenderWithFinality({
+				renderId: _renderId,
+				username,
+				region: _region,
+				finality: {
+					type: 'error',
+					errors: (err as Error).stack as string,
+				},
 			});
 		}
 		return {
