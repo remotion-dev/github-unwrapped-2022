@@ -23,12 +23,28 @@ export const backendStatsCollection = async () => {
 		.collection<BackendStatsCollection>('backendstats');
 };
 
-export const saveCache = async (username: string, stats: CompactStats) => {
+export const saveCache = async ({
+	username,
+	stats,
+}: {
+	username: string;
+	stats: CompactStats;
+}) => {
 	const coll = await allStatscollection();
-	return coll.insertOne({
-		stats,
-		username: username.toLowerCase(),
-	});
+	return coll.updateOne(
+		{
+			username: username.toLowerCase(),
+		},
+		{
+			$set: {
+				stats,
+				username: username.toLowerCase(),
+			},
+		},
+		{
+			upsert: true,
+		}
+	);
 };
 
 export const getAllStatsFromCache = async (

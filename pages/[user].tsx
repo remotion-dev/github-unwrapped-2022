@@ -22,10 +22,6 @@ import {BASE_COLOR, BG_2022} from '../src/palette';
 import {RenderRequest} from '../src/types';
 import {RenderProgressOrFinality} from './api/progress';
 
-export async function getStaticPaths() {
-	return {paths: [], fallback: true};
-}
-
 const iosSafari = () => {
 	if (typeof window === 'undefined') {
 		return false;
@@ -36,7 +32,11 @@ const iosSafari = () => {
 	return iOS && webkit;
 };
 
-export const getStaticProps = async ({params}: {params: {user: string}}) => {
+export const getServerSideProps = async ({
+	params,
+}: {
+	params: {user: string};
+}) => {
 	const {user} = params;
 
 	if (user.length > 40) {
@@ -119,6 +119,7 @@ export default function User(props: {user: CompactStats | null}) {
 	const ref = useRef<HTMLDivElement>(null);
 	const {user: cachedResponse} = props;
 
+	console.log(props);
 	const [user, setUser] = useState<CompactStats | null>(cachedResponse);
 
 	const router = useRouter();
@@ -212,6 +213,10 @@ export default function User(props: {user: CompactStats | null}) {
 			return;
 		}
 
+		if (user) {
+			return;
+		}
+
 		Promise.all([getBackendStats(), getFrontendStats()]).then(
 			([backendResponse, frontendStats]) => {
 				if (backendResponse.type === 'found') {
@@ -223,7 +228,7 @@ export default function User(props: {user: CompactStats | null}) {
 				}
 			}
 		);
-	}, [getBackendStats, getFrontendStats, username]);
+	}, [getBackendStats, getFrontendStats, user, username]);
 
 	if (!user) {
 		return (
