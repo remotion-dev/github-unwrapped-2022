@@ -38,7 +38,7 @@ const Faq: React.FC = () => {
 	return (
 		<div
 			style={{
-				backgroundColor: theme.mainColor,
+				backgroundColor: theme.background,
 				position: 'absolute',
 				width: '100%',
 				minHeight: '100vh',
@@ -132,7 +132,9 @@ const Faq: React.FC = () => {
 				<br></br>
 				<br></br>
 				<Link href="/" passHref>
-					<button style={{...button, width: '100%'}}>Back to homepage</button>
+					<button style={{...button(theme), width: '100%'}}>
+						Back to homepage
+					</button>
 				</Link>
 				<br></br>
 				<br></br>

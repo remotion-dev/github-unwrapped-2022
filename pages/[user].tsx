@@ -13,7 +13,7 @@ import {
 	CompactStats,
 	mapResponseToStats,
 } from '../remotion/map-response-to-stats';
-import {redTheme, useTheme} from '../remotion/theme';
+import {useTheme} from '../remotion/theme';
 import {backButton} from '../src/components/button';
 import Download from '../src/components/Download';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
@@ -296,7 +296,7 @@ export default function User(props: {user: CompactStats | null}) {
 										}}
 										inputProps={{
 											stats: user,
-											theme: redTheme,
+											theme: theme,
 										}}
 									></Player>
 									<AbsoluteFill
