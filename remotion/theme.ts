@@ -12,11 +12,11 @@ export const redTheme: Theme = {
 	background: '#FFE3CA',
 };
 
-export const greenTheme: Theme = {
+export const goldenTheme: Theme = {
 	name: 'Mistletoe Bliss',
-	mainColor: 'green',
-	accentColor: 'green',
-	background: 'white',
+	mainColor: '#DAA520',
+	accentColor: '#C97723',
+	background: '#fff7eb',
 };
 
 export const blueTheme: Theme = {
@@ -27,5 +27,5 @@ export const blueTheme: Theme = {
 };
 
 export const useTheme = () => {
-	return redTheme;
+	return goldenTheme;
 };
