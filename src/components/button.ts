@@ -16,7 +16,12 @@ export const button: React.CSSProperties = {
 };
 
 export const backButton: React.CSSProperties = {
-	...button,
-	backgroundColor: 'white',
+	textAlign: 'left',
+	backgroundColor: 'transparent',
 	color: 'black',
+	fontSize: 16,
+	flexDirection: 'row',
+	alignItems: 'center',
+	fontVariationSettings: '"wght" 700',
+	display: 'flex',
 };

@@ -17,6 +17,7 @@ import {
 import {backButton} from '../src/components/button';
 import Download from '../src/components/Download';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
+import {Gingerman} from '../src/components/Gingerman';
 import {getAllStatsFromCache} from '../src/db/cache';
 import {BASE_COLOR, BG_2022} from '../src/palette';
 import {RenderRequest} from '../src/types';
@@ -68,7 +69,7 @@ export const getServerSideProps = async ({
 const style: React.CSSProperties = {
 	display: 'flex',
 	flexDirection: 'row',
-	maxWidth: 1100,
+	maxWidth: 1000,
 	margin: 'auto',
 	paddingLeft: 20,
 	paddingRight: 20,
@@ -332,10 +333,10 @@ export default function User(props: {user: CompactStats | null}) {
 											<br />
 											<div
 												style={{
-													color: BASE_COLOR,
+													color: 'black',
 													fontFamily: 'MonaSans',
-													textTransform: 'uppercase',
 													fontSize: 18,
+													fontVariationSettings: '"wght" 500',
 												}}
 											>
 												Click to play
@@ -401,7 +402,12 @@ export default function User(props: {user: CompactStats | null}) {
 									}}
 								></div>
 								<Link href="/" passHref>
-									<button style={backButton}>View for another user</button>
+									<div style={backButton}>
+										<Gingerman
+											style={{height: 45, marginRight: 10}}
+										></Gingerman>{' '}
+										<div>View for another user</div>
+									</div>
 								</Link>
 								<div
 									style={{
