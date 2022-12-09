@@ -2,7 +2,6 @@ import {Player, PlayerRef} from '@remotion/player';
 import Head from 'next/head';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import {transparentize} from 'polished';
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {AbsoluteFill} from 'remotion';
 import {getFont} from '../remotion/font';
@@ -285,7 +284,7 @@ export default function User(props: {user: CompactStats | null}) {
 											...layout,
 											borderRadius: 10,
 											overflow: 'hidden',
-											maxWidth: '600px',
+											maxWidth: 600,
 											aspectRatio: '1 / 1',
 										}}
 										inputProps={{
@@ -315,8 +314,6 @@ export default function User(props: {user: CompactStats | null}) {
 													justifyContent: 'center',
 													alignItems: 'center',
 													flexDirection: 'column',
-													boxShadow:
-														'0 0 40px ' + transparentize(0.9, BASE_COLOR),
 												}}
 											>
 												<svg
