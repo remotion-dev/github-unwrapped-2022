@@ -16,7 +16,7 @@ const greenTheme: Theme = {
 	accentColor: 'green',
 };
 
-const blue: Theme = {
+export const blueTheme: Theme = {
 	name: 'Icy Winter',
 	mainColor: 'blue',
 	accentColor: 'blue',

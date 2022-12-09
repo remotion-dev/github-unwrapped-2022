@@ -1,7 +1,13 @@
 import * as React from 'react';
 import {SVGProps} from 'react';
+import {Theme} from '../../remotion/theme';
 
-export const PlayButton = (props: SVGProps<SVGSVGElement>) => (
+export const PlayButton = ({
+	theme,
+	...props
+}: SVGProps<SVGSVGElement> & {
+	theme: Theme;
+}) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 100 100"
@@ -37,7 +43,7 @@ export const PlayButton = (props: SVGProps<SVGSVGElement>) => (
 		/>
 		<path
 			style={{
-				fill: '#e74c3c',
+				fill: theme.mainColor,
 			}}
 			d="M19.563 27.543c1.56-4.828 4.873-9.355 9.636-11.102 4.543-1.665 9.606-.596 14.218.865A89.47 89.47 0 0 1 76.703 36.54c2.403 2.2 4.756 4.643 5.822 7.722 1.233 3.562.554 7.583-1.143 10.949-1.696 3.366-4.327 6.168-7.096 8.727-10.065 9.304-22.479 16.047-35.762 19.425-4.999 1.271-10.812 1.912-14.86-1.285-3.099-2.447-4.334-6.533-5.123-10.401-1.644-8.058-2.06-16.314-1.346-24.502.562-6.452.37-13.449 2.368-19.632z"
 		/>

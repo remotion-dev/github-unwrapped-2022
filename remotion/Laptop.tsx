@@ -1,6 +1,11 @@
 import * as React from 'react';
+import {Theme} from './theme';
 
-export const Laptop: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
+export const Laptop: React.FC<
+	React.SVGProps<SVGSVGElement> & {
+		theme: Theme;
+	}
+> = ({theme, ...props}) => {
 	return (
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
@@ -10,7 +15,7 @@ export const Laptop: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
 		>
 			<path
 				style={{
-					fill: '#e74c3c',
+					fill: theme.mainColor,
 				}}
 				d="M13.499 65.99a4.541 4.541 0 0 1-.598-.953c-.63-1.373-.63-2.956-.63-4.475.081-12.891.145-25.797.226-38.688 0-1.696.048-3.489 1.002-4.878 1.567-2.294 4.814-2.504 7.608-2.488 18.318.145 36.636.307 54.971.452 3.101.016 7.544-1.971 9.773.969 2.31 3.085 1.874 35.489 1.777 39.431-.065 2.262-.162 4.523-.242 6.801-.048 1.325-.113 2.714-.808 3.861"
 			/>
@@ -61,7 +66,7 @@ export const Laptop: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
 			/>
 			<path
 				style={{
-					fill: '#e74c3c',
+					fill: theme.mainColor,
 				}}
 				d="M96.977 78.267c.125 1.734-.269 3.538-1.053 4.823-.798 1.306-1.943 2.037-3.103 2.353-1.16.315-2.349.25-3.528.184H10.707c-1.178.066-2.367.132-3.528-.184s-2.305-1.047-3.103-2.353c-.785-1.285-1.179-3.089-1.053-4.823h93.954z"
 			/>

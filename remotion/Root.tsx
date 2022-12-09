@@ -53,7 +53,7 @@ import {mapApiResponseToCommits} from './map-api-response-to-commits';
 import {commits} from './commits';
 import {backendResponseToBackendStats} from '../src/get-all';
 import {Loader} from './Loader';
-import {redTheme} from './theme';
+import {blueTheme, redTheme} from './theme';
 
 export const Root: React.FC = () => {
 	return (
@@ -71,6 +71,21 @@ export const Root: React.FC = () => {
 						mapApiResponseToCommits(commits)
 					),
 					theme: redTheme,
+				}}
+			></Composition>
+			<Composition
+				component={Main}
+				durationInFrames={990}
+				fps={30}
+				height={1080}
+				width={1080}
+				id={`${COMP_NAME}-blue`}
+				defaultProps={{
+					stats: mapResponseToStats(
+						backendResponseToBackendStats(all),
+						mapApiResponseToCommits(commits)
+					),
+					theme: blueTheme,
 				}}
 			></Composition>
 			<Composition
