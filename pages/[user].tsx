@@ -18,6 +18,7 @@ import {backButton} from '../src/components/button';
 import Download from '../src/components/Download';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
 import {Gingerman} from '../src/components/Gingerman';
+import {PlayButton} from '../src/components/Play';
 import {getAllStatsFromCache} from '../src/db/cache';
 import {BASE_COLOR, BG_2022} from '../src/palette';
 import {RenderRequest} from '../src/types';
@@ -101,7 +102,7 @@ const subtitle: React.CSSProperties = {
 	fontFamily: 'MonaSans',
 	textAlign: 'center',
 	fontSize: 24,
-	marginTop: 14,
+	marginTop: 4,
 	marginBottom: 0,
 	fontVariationSettings: '"wght" 600',
 };
@@ -253,20 +254,16 @@ export default function User(props: {user: CompactStats | null}) {
 				/>
 				<link rel="icon" href="/fav.png" />
 			</Head>
-
 			<div style={abs}>
 				<div style={container}>
 					<br></br>
 					<br></br>
 					<h1 style={title}>Here is your #GitHubUnwrapped!</h1>
 					<h2 style={subtitle}>@{user.username}</h2>
+					<br></br>
+					<br></br>
 					<div style={style}>
 						<div>
-							<div
-								style={{
-									height: 20,
-								}}
-							></div>
 							<div
 								style={{
 									position: 'relative',
@@ -356,28 +353,33 @@ export default function User(props: {user: CompactStats | null}) {
 								width: 40,
 							}}
 						></div>
-
 						<div>
-							<div style={layout}>
-								<p
+							<div
+								style={{
+									display: 'flex',
+									flexDirection: 'column',
+									height: '100%',
+								}}
+							>
+								<div
 									style={{
 										color: BASE_COLOR,
 										fontFamily: 'MonaSans',
 										fontVariationSettings: '"wght" 600',
-										marginTop: 30,
 										lineHeight: 1.5,
+										marginBottom: 10,
 									}}
 								>
-									Download your video and share it on social media using the{' '}
+									Download and share your video on social media using{' '}
 									<span
 										style={{
 											color: 'black',
 										}}
 									>
 										#GitHubUnwrapped
-									</span>{' '}
-									hashtag!
-								</p>
+									</span>
+									!
+								</div>
 								<Download
 									downloadProgress={downloadProgress}
 									username={username}
@@ -398,14 +400,12 @@ export default function User(props: {user: CompactStats | null}) {
 								) : null}
 								<div
 									style={{
-										height: 20,
+										flex: 1,
 									}}
 								></div>
 								<Link href="/" passHref>
 									<div style={backButton}>
-										<Gingerman
-											style={{height: 45, marginRight: 10}}
-										></Gingerman>{' '}
+										<Gingerman style={{width: 45, marginRight: 10}}></Gingerman>{' '}
 										<div>View for another user</div>
 									</div>
 								</Link>
@@ -414,8 +414,15 @@ export default function User(props: {user: CompactStats | null}) {
 										height: 20,
 									}}
 								></div>
+								<Link href="/" passHref>
+									<div style={backButton}>
+										<PlayButton
+											style={{width: 45, marginRight: 10}}
+										></PlayButton>{' '}
+										<div>How we made GitHub Unwrapped</div>
+									</div>
+								</Link>
 
-								<br />
 								<br />
 								<br />
 							</div>

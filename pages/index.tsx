@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import {lighten} from 'polished';
-import React, {useCallback, useRef, useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {getFont} from '../remotion/font';
 import {button} from '../src/components/button';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
@@ -74,8 +74,6 @@ export default function Home() {
 	const [username, setUsername] = useState('');
 	const [loading, setLoading] = useState(false);
 
-	const ref = useRef<HTMLDivElement>(null);
-
 	const onSubmit: React.FormEventHandler = useCallback(
 		(e) => {
 			e.preventDefault();
@@ -106,7 +104,7 @@ export default function Home() {
 				/>
 				<link rel="icon" href="/fav.png" />
 			</Head>
-			<div style={abs} ref={ref}>
+			<div style={abs}>
 				<div style={container}>
 					<header style={headerStyle}>
 						<div style={h1}>Your coding year in review</div>

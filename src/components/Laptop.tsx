@@ -1,12 +1,9 @@
 import * as React from 'react';
 
-export const Laptop = (props) => (
+export const Laptop = (props: React.SVGProps<SVGSVGElement>) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 100 100"
-		style={{
-			enableBackground: 'new 0 0 100 100',
-		}}
 		xmlSpace="preserve"
 		{...props}
 	>

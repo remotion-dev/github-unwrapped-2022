@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import {lighten} from 'polished';
 import React from 'react';
-import {BASE_COLOR} from '../palette';
+import {BG_2022} from '../palette';
+import {GithubIcon} from './Github';
+import {PlayButton} from './Play';
 
 export const FOOTER_HEIGHT = 50;
 
@@ -13,52 +14,40 @@ const container: React.CSSProperties = {
 	paddingRight: 20,
 	paddingTop: 20,
 	paddingBottom: 20,
-	backgroundColor: lighten(0.8, BASE_COLOR),
-	color: BASE_COLOR,
-	justifyContent: 'column',
+	backgroundColor: BG_2022,
+	justifyContent: 'center',
 	fontSize: 14,
+	textAlign: 'center',
+	fontVariationSettings: '"wght" 500',
 	display: 'flex',
+	flexDirection: 'row',
 };
 
 export const Footer: React.FC = () => {
 	return (
 		<div style={container}>
-			<div>
-				Built with{' '}
-				<a
-					target="_blank"
+			<a href="https://remotion.dev">
+				<div>
+					<PlayButton style={{height: 30}}></PlayButton>
+					Made with Remotion
+				</div>
+			</a>
+			<a href="https://github.com/remotion-dev/github-unwrapped-2022">
+				<div>
+					<GithubIcon style={{height: 30}}></GithubIcon>
+					Source Code
+				</div>
+			</a>
+			<Link href="/faq" passHref>
+				<div
 					style={{
-						color: lighten(0.1, BASE_COLOR),
+						cursor: 'pointer',
 					}}
-					href="https://remotion.dev"
-					rel="noreferrer"
 				>
-					Remotion
-				</a>{' '}
-				by{' '}
-				<a
-					target="_blank"
-					style={{
-						color: lighten(0.1, BASE_COLOR),
-					}}
-					href="https://twitter.com/JNYBGR"
-					rel="noreferrer"
-				>
-					Jonny Burger
-				</a>
-				. Not affiliated with GitHub.
-				<Link href="/faq" passHref>
-					<span
-						style={{
-							color: lighten(0.1, BASE_COLOR),
-							cursor: 'pointer',
-						}}
-					>
-						{' '}
-						About this site
-					</span>
-				</Link>
-			</div>
+					{' '}
+					About this site
+				</div>
+			</Link>
 		</div>
 	);
 };
