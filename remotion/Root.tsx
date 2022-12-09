@@ -53,6 +53,7 @@ import {BestCommits} from './BestCommits';
 import {mapApiResponseToCommits} from './map-api-response-to-commits';
 import {commits} from './commits';
 import {backendResponseToBackendStats} from '../src/get-all';
+import {Loader} from './Loader';
 
 export const Root: React.FC = () => {
 	return (
@@ -500,6 +501,14 @@ export const Root: React.FC = () => {
 						mapApiResponseToCommits(commits)
 					),
 				}}
+			></Composition>
+			<Composition
+				component={Loader}
+				height={1080}
+				width={1080}
+				durationInFrames={65}
+				fps={30}
+				id="Loader"
 			></Composition>
 		</>
 	);

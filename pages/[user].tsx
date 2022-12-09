@@ -7,6 +7,7 @@ import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {AbsoluteFill} from 'remotion';
 import {getFont} from '../remotion/font';
 import {getALotOfGithubCommits} from '../remotion/github-api';
+import {LoadingPage} from '../remotion/LoadingPage';
 import {Main} from '../remotion/Main';
 import {
 	BackendStatsResponse,
@@ -16,7 +17,6 @@ import {
 import {backButton} from '../src/components/button';
 import Download from '../src/components/Download';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
-import Spinner from '../src/components/spinner';
 import {getAllStatsFromCache} from '../src/db/cache';
 import {BASE_COLOR, BG_2022} from '../src/palette';
 import {RenderRequest} from '../src/types';
@@ -116,10 +116,8 @@ getFont();
 export default function User(props: {user: CompactStats | null}) {
 	const [playing, setPlaying] = useState(false);
 	const player = useRef<PlayerRef>(null);
-	const ref = useRef<HTMLDivElement>(null);
 	const {user: cachedResponse} = props;
 
-	console.log(props);
 	const [user, setUser] = useState<CompactStats | null>(cachedResponse);
 
 	const router = useRouter();
@@ -231,15 +229,11 @@ export default function User(props: {user: CompactStats | null}) {
 	}, [getBackendStats, getFrontendStats, user, username]);
 
 	if (!user) {
-		return (
-			<div ref={ref}>
-				<Spinner></Spinner>
-			</div>
-		);
+		return <LoadingPage></LoadingPage>;
 	}
 
 	return (
-		<div ref={ref}>
+		<div>
 			<Head>
 				<title>
 					{user.username}
