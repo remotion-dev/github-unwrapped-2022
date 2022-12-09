@@ -414,7 +414,7 @@ export default function User(props: {user: CompactStats | null}) {
 										height: 20,
 									}}
 								></div>
-								<Link href="/" passHref>
+								<Link href="/faq" passHref>
 									<div style={backButton}>
 										<PlayButton
 											style={{width: 45, marginRight: 10}}
@@ -422,7 +422,6 @@ export default function User(props: {user: CompactStats | null}) {
 										<div>How we made GitHub Unwrapped</div>
 									</div>
 								</Link>
-
 								<br />
 								<br />
 							</div>

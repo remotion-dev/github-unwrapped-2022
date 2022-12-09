@@ -24,4 +24,5 @@ export const backButton: React.CSSProperties = {
 	alignItems: 'center',
 	fontVariationSettings: '"wght" 700',
 	display: 'flex',
+	cursor: 'pointer',
 };

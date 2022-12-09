@@ -49,6 +49,7 @@ const h1: React.CSSProperties = {
 	fontSize: 40,
 	color: BASE_COLOR,
 	fontFamily: 'MonaSans',
+	fontVariationSettings: '"wght" 700',
 };
 
 const paragraph: React.CSSProperties = {
@@ -109,8 +110,8 @@ export default function Home() {
 					<header style={headerStyle}>
 						<div style={h1}>Your coding year in review</div>
 						<p style={paragraph}>
-							Get a personalized video of your GitHub activity in 2022. Type
-							your username to get started!
+							Get a personalized video of your GitHub activity in 2022.
+							<br /> Type your username to get started!
 						</p>
 						<br />
 
