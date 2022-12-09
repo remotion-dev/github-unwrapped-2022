@@ -19,6 +19,7 @@ import Download from '../src/components/Download';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
 import {Gingerman} from '../src/components/Gingerman';
 import {PlayButton} from '../src/components/Play';
+import {RoughBox} from '../src/components/RoughBox';
 import {getAllStatsFromCache} from '../src/db/cache';
 import {BASE_COLOR, BG_2022} from '../src/palette';
 import {RenderRequest} from '../src/types';
@@ -67,11 +68,14 @@ export const getServerSideProps = async ({
 	}
 };
 
+const outer: React.CSSProperties = {
+	maxWidth: 1000,
+	margin: 'auto',
+};
+
 const style: React.CSSProperties = {
 	display: 'flex',
 	flexDirection: 'row',
-	maxWidth: 1000,
-	margin: 'auto',
 	paddingLeft: 20,
 	paddingRight: 20,
 };
@@ -262,170 +266,165 @@ export default function User(props: {user: CompactStats | null}) {
 					<h2 style={subtitle}>@{user.username}</h2>
 					<br></br>
 					<br></br>
-					<div style={style}>
-						<div>
-							<div
-								style={{
-									position: 'relative',
-								}}
-							>
-								<Player
-									ref={player}
-									component={Main}
-									compositionHeight={1080}
-									compositionWidth={1080}
-									durationInFrames={990}
-									fps={30}
+					<div style={outer}>
+						<RoughBox seed={6} style={style}>
+							<div>
+								<div
 									style={{
-										...layout,
-										boxShadow: '0 0 10px ' + transparentize(0.8, BASE_COLOR),
-										borderRadius: 10,
-										overflow: 'hidden',
-										maxWidth: '600px',
-										aspectRatio: '1 / 1',
-									}}
-									inputProps={{
-										stats: user,
-									}}
-								></Player>
-								<AbsoluteFill
-									style={{
-										justifyContent: 'center',
-										alignItems: 'center',
-										flexDirection: 'column',
-										display: 'flex',
-										cursor: 'pointer',
-									}}
-									onClick={(e) => {
-										(player.current as PlayerRef).toggle(e);
+										position: 'relative',
 									}}
 								>
-									{playing ? null : (
-										<div
-											style={{
-												width: 200,
-												height: 200,
-												backgroundColor: 'white',
-												borderRadius: '50%',
-												display: 'flex',
-												justifyContent: 'center',
-												alignItems: 'center',
-												flexDirection: 'column',
-												boxShadow:
-													'0 0 40px ' + transparentize(0.9, BASE_COLOR),
-											}}
-										>
-											<svg
-												style={{
-													height: 60,
-													transform: `translateX(3px)`,
-												}}
-												viewBox="0 0 448 512"
-											>
-												<path
-													fill={BASE_COLOR}
-													d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"
-												></path>
-											</svg>
-											<br />
+									<Player
+										ref={player}
+										component={Main}
+										compositionHeight={1080}
+										compositionWidth={1080}
+										durationInFrames={990}
+										fps={30}
+										style={{
+											...layout,
+											borderRadius: 10,
+											overflow: 'hidden',
+											maxWidth: '600px',
+											aspectRatio: '1 / 1',
+										}}
+										inputProps={{
+											stats: user,
+										}}
+									></Player>
+									<AbsoluteFill
+										style={{
+											justifyContent: 'center',
+											alignItems: 'center',
+											flexDirection: 'column',
+											display: 'flex',
+											cursor: 'pointer',
+										}}
+										onClick={(e) => {
+											(player.current as PlayerRef).toggle(e);
+										}}
+									>
+										{playing ? null : (
 											<div
 												style={{
-													color: 'black',
-													fontFamily: 'MonaSans',
-													fontSize: 18,
-													fontVariationSettings: '"wght" 500',
+													width: 200,
+													height: 200,
+													backgroundColor: 'white',
+													borderRadius: '50%',
+													display: 'flex',
+													justifyContent: 'center',
+													alignItems: 'center',
+													flexDirection: 'column',
+													boxShadow:
+														'0 0 40px ' + transparentize(0.9, BASE_COLOR),
 												}}
 											>
-												Click to play
+												<svg
+													style={{
+														height: 60,
+														transform: `translateX(3px)`,
+													}}
+													viewBox="0 0 448 512"
+												>
+													<path
+														fill={BASE_COLOR}
+														d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"
+													></path>
+												</svg>
+												<br />
+												<div
+													style={{
+														color: 'black',
+														fontFamily: 'MonaSans',
+														fontSize: 18,
+														fontVariationSettings: '"wght" 500',
+													}}
+												>
+													Click to play
+												</div>
 											</div>
-										</div>
-									)}
-								</AbsoluteFill>
+										)}
+									</AbsoluteFill>
+								</div>
 							</div>
 							<div
 								style={{
-									height: 40,
+									width: 40,
 								}}
 							></div>
-						</div>
-						<div
-							style={{
-								width: 40,
-							}}
-						></div>
-						<div>
-							<div
-								style={{
-									display: 'flex',
-									flexDirection: 'column',
-									height: '100%',
-								}}
-							>
+							<div>
 								<div
 									style={{
-										color: BASE_COLOR,
-										fontFamily: 'MonaSans',
-										fontVariationSettings: '"wght" 600',
-										lineHeight: 1.5,
-										marginBottom: 10,
+										display: 'flex',
+										flexDirection: 'column',
+										height: '100%',
 									}}
 								>
-									Download and share your video on social media using{' '}
-									<span
+									<div
 										style={{
-											color: 'black',
-										}}
-									>
-										#GitHubUnwrapped
-									</span>
-									!
-								</div>
-								<Download
-									downloadProgress={downloadProgress}
-									username={username}
-								></Download>
-								{iosSafari() ? (
-									<p
-										style={{
-											color: BASE_COLOR,
 											fontFamily: 'MonaSans',
-											textAlign: 'center',
-											fontSize: 12,
+											fontVariationSettings: '"wght" 600',
+											lineHeight: 1.5,
+											marginBottom: 10,
 										}}
 									>
-										Tip for iOS Safari: Long press the {'"'}Download button{'"'}
-										, then press {'"'}Download Linked File{'"'} to save the
-										video locally.
-									</p>
-								) : null}
-								<div
-									style={{
-										flex: 1,
-									}}
-								></div>
-								<Link href="/" passHref>
-									<div style={backButton}>
-										<Gingerman style={{width: 45, marginRight: 10}}></Gingerman>{' '}
-										<div>View for another user</div>
+										Download and share your video on social media using{' '}
+										<span
+											style={{
+												color: BASE_COLOR,
+											}}
+										>
+											#GitHubUnwrapped
+										</span>
+										!
 									</div>
-								</Link>
-								<div
-									style={{
-										height: 20,
-									}}
-								></div>
-								<Link href="/about" passHref>
-									<div style={backButton}>
-										<PlayButton
-											style={{width: 45, marginRight: 10}}
-										></PlayButton>{' '}
-										<div>How we made GitHub Unwrapped</div>
-									</div>
-								</Link>
-								<br />
-								<br />
+									<Download
+										downloadProgress={downloadProgress}
+										username={username}
+									></Download>
+									{iosSafari() ? (
+										<p
+											style={{
+												color: BASE_COLOR,
+												fontFamily: 'MonaSans',
+												textAlign: 'center',
+												fontSize: 12,
+											}}
+										>
+											Tip for iOS Safari: Long press the {'"'}Download button
+											{'"'}, then press {'"'}Download Linked File{'"'} to save
+											the video locally.
+										</p>
+									) : null}
+									<div
+										style={{
+											flex: 1,
+										}}
+									></div>
+									<Link href="/" passHref>
+										<div style={backButton}>
+											<Gingerman
+												style={{width: 45, marginRight: 10}}
+											></Gingerman>{' '}
+											<div>View for another user</div>
+										</div>
+									</Link>
+									<div
+										style={{
+											height: 20,
+										}}
+									></div>
+									<Link href="/about" passHref>
+										<div style={backButton}>
+											<PlayButton
+												style={{width: 45, marginRight: 10}}
+											></PlayButton>{' '}
+											<div>How we made GitHub Unwrapped</div>
+										</div>
+									</Link>
+								</div>
 							</div>
-						</div>
+						</RoughBox>
 					</div>
 				</div>
 			</div>

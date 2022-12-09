@@ -43,7 +43,7 @@ export const RoughBox: React.FC<{
 	}, [d, seed]);
 
 	return (
-		<div style={{...style, ...passedStyle}} ref={ref}>
+		<div style={{...style}} ref={ref}>
 			<svg
 				style={{
 					position: 'absolute',
@@ -65,7 +65,7 @@ export const RoughBox: React.FC<{
 					);
 				})}
 			</svg>
-			<div style={content}>{children}</div>
+			<div style={{...content, ...passedStyle}}>{children}</div>
 		</div>
 	);
 };
