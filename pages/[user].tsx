@@ -414,7 +414,7 @@ export default function User(props: {user: CompactStats | null}) {
 										height: 20,
 									}}
 								></div>
-								<Link href="/faq" passHref>
+								<Link href="/about" passHref>
 									<div style={backButton}>
 										<PlayButton
 											style={{width: 45, marginRight: 10}}

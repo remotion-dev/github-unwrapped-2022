@@ -68,7 +68,7 @@ export const Footer: React.FC = () => {
 						Source Code
 					</div>
 				</a>
-				<Link href="/faq" passHref style={link}>
+				<Link href="/about" passHref style={link}>
 					<div style={item}>
 						<Bauble
 							style={{height: 35, marginTop: -5, marginRight: 6}}
