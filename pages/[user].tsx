@@ -91,8 +91,8 @@ const title: React.CSSProperties = {
 	textAlign: 'center',
 	color: BASE_COLOR,
 	marginBottom: 0,
-	fontSize: '46px',
-	fontVariationSettings: '"wght" 600',
+	fontSize: 40,
+	fontVariationSettings: '"wght" 700',
 };
 
 const subtitle: React.CSSProperties = {
