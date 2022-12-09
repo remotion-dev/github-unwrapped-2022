@@ -382,6 +382,7 @@ export default function User(props: {user: CompactStats | null}) {
 										!
 									</div>
 									<Download
+										theme={theme}
 										downloadProgress={downloadProgress}
 										username={username}
 									></Download>

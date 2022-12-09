@@ -1,16 +1,19 @@
 import React from 'react';
 import {RenderProgressOrFinality} from '../../pages/api/progress';
+import {Theme} from '../../remotion/theme';
 import {button} from './button';
 import {Laptop} from './Laptop';
 
-const downloadButton: React.CSSProperties = {
-	...button,
-	width: '100%',
-	paddingTop: 20,
-	paddingBottom: 20,
-	display: 'flex',
-	flexDirection: 'row',
-	alignItems: 'center',
+const downloadButton = (theme: Theme): React.CSSProperties => {
+	return {
+		...button(theme),
+		width: '100%',
+		paddingTop: 20,
+		paddingBottom: 20,
+		display: 'flex',
+		flexDirection: 'row',
+		alignItems: 'center',
+	};
 };
 
 const sizeLabel: React.CSSProperties = {
@@ -22,12 +25,13 @@ const sizeLabel: React.CSSProperties = {
 const Download: React.FC<{
 	username: string;
 	downloadProgress: RenderProgressOrFinality | null;
-}> = ({username, downloadProgress}) => {
+	theme: Theme;
+}> = ({username, downloadProgress, theme}) => {
 	return (
 		<div>
 			{downloadProgress === null ? (
 				<div>
-					<button style={downloadButton} type="button">
+					<button style={downloadButton(theme)} type="button">
 						Initializing render...
 					</button>
 				</div>
@@ -35,7 +39,7 @@ const Download: React.FC<{
 			  downloadProgress.finality &&
 			  downloadProgress.finality.type === 'success' ? (
 				<a href={downloadProgress.finality.url} download={`${username}`}>
-					<div style={downloadButton}>
+					<div style={downloadButton(theme)}>
 						<div style={{flex: 1}}>
 							Download video
 							<div style={sizeLabel}>9.3MB</div>
@@ -60,7 +64,7 @@ const Download: React.FC<{
 					back tomorrow and it should be fixed!
 				</div>
 			) : downloadProgress.type === 'progress' ? (
-				<button style={downloadButton} type="button">
+				<button style={downloadButton(theme)} type="button">
 					{'Rendering... ' +
 						Math.round(downloadProgress.progress.percent * 100) +
 						'%'}
