@@ -9,10 +9,12 @@ import {
 import {BG_2022} from '../src/palette';
 import {AnimatedCommit} from './AnimatedCommit';
 import {CompactStats} from './map-response-to-stats';
+import {Theme} from './theme';
 
 export const BestCommits: React.FC<{
 	stats: CompactStats;
-}> = ({stats}) => {
+	theme: Theme;
+}> = ({stats, theme}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 	const opacity = interpolate(frame, [30, 60], [0, 1]);
@@ -55,6 +57,7 @@ export const BestCommits: React.FC<{
 				return (
 					<AbsoluteFill key={i}>
 						<AnimatedCommit
+							theme={theme}
 							message={commit.message}
 							repository={commit.repo}
 							index={i}

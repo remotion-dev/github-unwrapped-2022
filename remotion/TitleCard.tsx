@@ -111,6 +111,7 @@ export const TitleCard: React.FC<{username: string; theme: Theme}> = ({
 					}}
 				>
 					<Candy
+						theme={theme}
 						style={{
 							height: 250,
 							rotate: '150deg',
@@ -128,6 +129,7 @@ export const TitleCard: React.FC<{username: string; theme: Theme}> = ({
 					}}
 				>
 					<Star
+						theme={theme}
 						style={{
 							height: 200,
 						}}

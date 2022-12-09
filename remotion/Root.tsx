@@ -500,6 +500,7 @@ export const Root: React.FC = () => {
 					message: 'fix wrong type',
 					index: 0,
 					repository: 'remotion/remotion-dev',
+					theme: redTheme,
 				}}
 			></Composition>
 			<Composition
@@ -514,6 +515,7 @@ export const Root: React.FC = () => {
 						backendResponseToBackendStats(all),
 						mapApiResponseToCommits(commits)
 					),
+					theme: redTheme,
 				}}
 			></Composition>
 			<Composition

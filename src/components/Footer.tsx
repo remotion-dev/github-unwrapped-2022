@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import {Theme} from '../../remotion/theme';
 import {BG_2022} from '../palette';
 import {Bauble} from './Bauble';
 import {GithubIcon} from './Github';
@@ -42,7 +43,9 @@ const item: React.CSSProperties = {
 	justifyContent: 'center',
 };
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC<{
+	theme: Theme;
+}> = ({theme}) => {
 	return (
 		<div style={outer}>
 			<div style={container}>
@@ -53,7 +56,10 @@ export const Footer: React.FC = () => {
 					rel="noreferrer"
 				>
 					<div style={item}>
-						<PlayButton style={{height: 30, marginRight: 12}}></PlayButton>
+						<PlayButton
+							theme={theme}
+							style={{height: 30, marginRight: 12}}
+						></PlayButton>
 						Made with Remotion
 					</div>
 				</a>
@@ -64,13 +70,17 @@ export const Footer: React.FC = () => {
 					rel="noreferrer"
 				>
 					<div style={item}>
-						<GithubIcon style={{height: 30, marginRight: 12}}></GithubIcon>
+						<GithubIcon
+							theme={theme}
+							style={{height: 30, marginRight: 12}}
+						></GithubIcon>
 						Source Code
 					</div>
 				</a>
 				<Link href="/about" passHref style={link}>
 					<div style={item}>
 						<Bauble
+							theme={theme}
 							style={{height: 35, marginTop: -5, marginRight: 6}}
 						></Bauble>
 						About this site

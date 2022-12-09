@@ -45,6 +45,7 @@ const Download: React.FC<{
 							<div style={sizeLabel}>9.3MB</div>
 						</div>
 						<Laptop
+							theme={theme}
 							style={{
 								height: 50,
 							}}

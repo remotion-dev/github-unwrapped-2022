@@ -10,7 +10,7 @@ export const redTheme: Theme = {
 	accentColor: '#900',
 };
 
-const greenTheme: Theme = {
+export const greenTheme: Theme = {
 	name: 'Mistletoe Bliss',
 	mainColor: 'green',
 	accentColor: 'green',

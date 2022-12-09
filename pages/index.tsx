@@ -147,7 +147,7 @@ export default function Home() {
 					</header>
 				</div>
 			</div>
-			<Footer></Footer>
+			<Footer theme={theme}></Footer>
 		</>
 	);
 }

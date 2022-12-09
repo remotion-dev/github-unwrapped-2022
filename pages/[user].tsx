@@ -408,6 +408,7 @@ export default function User(props: {user: CompactStats | null}) {
 									<Link href="/" passHref>
 										<div style={backButton}>
 											<Gingerman
+												theme={theme}
 												style={{width: 45, marginRight: 10}}
 											></Gingerman>{' '}
 											<div>View for another user</div>
@@ -421,6 +422,7 @@ export default function User(props: {user: CompactStats | null}) {
 									<Link href="/about" passHref>
 										<div style={backButton}>
 											<PlayButton
+												theme={theme}
 												style={{width: 45, marginRight: 10}}
 											></PlayButton>{' '}
 											<div>How we made GitHub Unwrapped</div>
@@ -432,7 +434,7 @@ export default function User(props: {user: CompactStats | null}) {
 					</div>
 				</div>
 			</div>
-			<Footer></Footer>
+			<Footer theme={theme}></Footer>
 		</div>
 	);
 }

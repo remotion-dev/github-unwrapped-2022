@@ -54,6 +54,7 @@ export const Main: React.FC<{
 				<SlideOut>
 					<SlideIn>
 						<Socks
+							theme={theme}
 							noBackground={true}
 							topLanguages={stats.topLanguages}
 						></Socks>
@@ -104,7 +105,7 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<BestCommits stats={stats}></BestCommits>
+						<BestCommits theme={theme} stats={stats}></BestCommits>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>
@@ -114,7 +115,7 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<EndCard noBackground={true}></EndCard>
+						<EndCard theme={theme} noBackground={true}></EndCard>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>

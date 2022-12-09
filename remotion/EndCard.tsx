@@ -1,13 +1,13 @@
 import React, {useMemo} from 'react';
 import {AbsoluteFill} from 'remotion';
 import {Snow} from './Snow';
-import {useTheme} from './theme';
+import {Theme} from './theme';
 import {WaterColour} from './WaterColour';
 
 export const EndCard: React.FC<{
 	noBackground: boolean;
-}> = ({noBackground}) => {
-	const theme = useTheme();
+	theme: Theme;
+}> = ({noBackground, theme}) => {
 	const endCardStyle: React.CSSProperties = useMemo(() => {
 		return {
 			color: theme.mainColor,

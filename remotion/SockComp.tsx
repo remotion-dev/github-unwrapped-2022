@@ -9,11 +9,13 @@ import {
 } from 'remotion';
 import {Sock} from './Icons/Sock';
 import {TypeScript} from './Languages/Typescript';
+import {Theme} from './theme';
 
 export const SockComp: React.FC<{
 	children: React.ReactNode;
 	delay: number;
-}> = ({children, delay}) => {
+	theme: Theme;
+}> = ({children, delay, theme}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
@@ -78,7 +80,7 @@ export const SockComp: React.FC<{
 						transform: `scaleX(${scaleX}) scaleY(${scaleY})`,
 					}}
 				>
-					<Sock></Sock>
+					<Sock theme={theme}></Sock>
 				</AbsoluteFill>
 			</AbsoluteFill>
 		</AbsoluteFill>

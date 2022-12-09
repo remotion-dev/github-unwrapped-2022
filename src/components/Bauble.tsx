@@ -1,7 +1,13 @@
 import * as React from 'react';
 import {SVGProps} from 'react';
+import {Theme} from '../../remotion/theme';
 
-export const Bauble = (props: SVGProps<SVGSVGElement>) => (
+export const Bauble = ({
+	theme,
+	...props
+}: SVGProps<SVGSVGElement> & {
+	theme: Theme;
+}) => (
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 100 100"
@@ -16,13 +22,13 @@ export const Bauble = (props: SVGProps<SVGSVGElement>) => (
 		/>
 		<path
 			style={{
-				fill: '#e84c3d',
+				fill: theme.mainColor,
 			}}
 			d="M75.309 81.397a272.9 272.9 0 0 0-50.41 1.144c-3.869-7.162-4.778-15.959-1.86-23.57a27.355 27.355 0 0 1 2.352-4.714 272.565 272.565 0 0 0 49.416-1.154 27.735 27.735 0 0 1 2.63 5.922c2.276 7.353 1.346 15.531-2.128 22.372z"
 		/>
 		<path
 			style={{
-				fill: '#e84c3d',
+				fill: theme.mainColor,
 			}}
 			d="M75.508 80.991c-.066.141-.132.273-.197.404-.066 0-.132-.009-.197-.009l.394-.395z"
 		/>

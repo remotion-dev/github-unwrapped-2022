@@ -3,12 +3,14 @@ import {AbsoluteFill, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {TopLanguage} from '../src/get-all';
 import {BG_2022} from '../src/palette';
 import {SockComp} from './SockComp';
+import {Theme} from './theme';
 import {Lang} from './TopLang';
 
 export const Socks: React.FC<{
 	noBackground: boolean;
 	topLanguages: TopLanguage[] | null;
-}> = ({noBackground, topLanguages}) => {
+	theme: Theme;
+}> = ({noBackground, topLanguages, theme}) => {
 	const {width, fps} = useVideoConfig();
 	const top3Languages = topLanguages?.slice(0, 3);
 	const frame = useCurrentFrame();
@@ -50,7 +52,7 @@ export const Socks: React.FC<{
 									left: i * width,
 								}}
 							>
-								<SockComp delay={i * 40}>
+								<SockComp theme={theme} delay={i * 40}>
 									<Lang lang={language}></Lang>
 								</SockComp>
 							</AbsoluteFill>

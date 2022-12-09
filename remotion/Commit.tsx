@@ -5,16 +5,23 @@ import {Gingerman} from './Icons/Gingerman';
 import {Star} from './Icons/Star';
 import {Laptop} from './Laptop';
 import {RoughPath} from './RoughPath';
+import {Theme} from './theme';
 
 export type CommitProps = {
 	message: string;
 	repository: string;
 	index: number;
+	theme: Theme;
 };
 
 export const commitWidth = 900;
 
-export const Commit: React.FC<CommitProps> = ({message, repository, index}) => {
+export const Commit: React.FC<CommitProps> = ({
+	message,
+	repository,
+	index,
+	theme,
+}) => {
 	return (
 		<AbsoluteFill>
 			<AbsoluteFill
@@ -38,10 +45,18 @@ export const Commit: React.FC<CommitProps> = ({message, repository, index}) => {
 							paddingRight: 20,
 						}}
 					>
-						{index === 0 ? <Candy style={{width: 80}}></Candy> : null}
-						{index === 1 ? <Star style={{width: 80}}></Star> : null}
-						{index === 2 ? <Laptop style={{width: 80}}></Laptop> : null}
-						{index === 3 ? <Gingerman style={{width: 80}}></Gingerman> : null}
+						{index === 0 ? (
+							<Candy theme={theme} style={{width: 80}}></Candy>
+						) : null}
+						{index === 1 ? (
+							<Star theme={theme} style={{width: 80}}></Star>
+						) : null}
+						{index === 2 ? (
+							<Laptop theme={theme} style={{width: 80}}></Laptop>
+						) : null}
+						{index === 3 ? (
+							<Gingerman theme={theme} style={{width: 80}}></Gingerman>
+						) : null}
 					</div>
 					<div
 						style={{
