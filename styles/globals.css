@@ -19,3 +19,13 @@ a {
 	outline: none;
 	border: 3px solid red;
 }
+
+.mobile-row {
+	flex-direction: row;
+}
+
+@media screen and (max-width: 1000px) {
+	.mobile-row {
+		flex-direction: column;
+	}	
+}

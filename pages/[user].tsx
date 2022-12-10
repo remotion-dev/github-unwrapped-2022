@@ -70,11 +70,12 @@ export const getServerSideProps = async ({
 const outer: React.CSSProperties = {
 	maxWidth: 1000,
 	margin: 'auto',
+	paddingLeft: 20,
+	paddingRight: 20,
 };
 
 const style: React.CSSProperties = {
 	display: 'flex',
-	flexDirection: 'row',
 	paddingLeft: 20,
 	paddingRight: 20,
 };
@@ -273,7 +274,7 @@ export default function User(props: {user: CompactStats | null}) {
 					<br></br>
 					<br></br>
 					<div style={outer}>
-						<RoughBox seed={6} style={style}>
+						<RoughBox className="mobile-row" seed={6} style={style}>
 							<div>
 								<div
 									style={{
@@ -355,6 +356,7 @@ export default function User(props: {user: CompactStats | null}) {
 							<div
 								style={{
 									width: 40,
+									height: 40,
 								}}
 							></div>
 							<div>
@@ -405,6 +407,7 @@ export default function User(props: {user: CompactStats | null}) {
 									<div
 										style={{
 											flex: 1,
+											flexBasis: 20,
 										}}
 									></div>
 									<Link href="/" passHref>
