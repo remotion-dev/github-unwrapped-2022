@@ -20,7 +20,6 @@ const titleStyle: React.CSSProperties = {
 	lineHeight: 1.1,
 };
 
-const icons = false;
 export const TitleCard: React.FC<{username: string; theme: Theme}> = ({
 	username,
 	theme,
@@ -64,6 +63,7 @@ export const TitleCard: React.FC<{username: string; theme: Theme}> = ({
 						fill="#fff"
 						roughness={1}
 						d={`M 0 0 L 800 0 L 800 250 L 0 250 z`}
+						freeze
 					></RoughPath>
 				</svg>
 			</AbsoluteFill>{' '}
@@ -101,41 +101,6 @@ export const TitleCard: React.FC<{username: string; theme: Theme}> = ({
 					</span>
 				</div>
 			</AbsoluteFill>
-			{icons ? (
-				<AbsoluteFill
-					style={{
-						justifyContent: 'center',
-						alignItems: 'center',
-						marginLeft: 450,
-						marginTop: 100,
-					}}
-				>
-					<Candy
-						theme={theme}
-						style={{
-							height: 250,
-							rotate: '150deg',
-						}}
-					></Candy>
-				</AbsoluteFill>
-			) : null}
-			{icons ? (
-				<AbsoluteFill
-					style={{
-						justifyContent: 'center',
-						alignItems: 'center',
-						marginLeft: -440,
-						marginTop: -170,
-					}}
-				>
-					<Star
-						theme={theme}
-						style={{
-							height: 200,
-						}}
-					></Star>
-				</AbsoluteFill>
-			) : null}
 		</AbsoluteFill>
 	);
 };

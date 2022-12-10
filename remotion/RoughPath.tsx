@@ -9,9 +9,11 @@ export const RoughPath: React.FC<
 		hachureGap?: number;
 		seed?: number;
 		bowing?: number;
+		freeze?: boolean;
 	}
-> = ({roughness, strokeWidth, seed, hachureGap, ...props}) => {
-	const frame = Math.floor(useCurrentFrame() / 3);
+> = ({roughness, freeze, strokeWidth, seed, hachureGap, ...props}) => {
+	const currentFrame = useCurrentFrame();
+	const frame = freeze ? 0 : Math.floor(currentFrame / 3);
 
 	const paths = useMemo(() => {
 		const path = getRough().generator();
