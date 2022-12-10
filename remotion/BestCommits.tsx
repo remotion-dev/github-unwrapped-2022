@@ -48,7 +48,7 @@ export const BestCommits: React.FC<{
 						marginTop: interpolate(moveUp, [0, 1], [0, -790]),
 					}}
 				>
-					You crafted {stats.commitCount} commits. <br></br>
+					I crafted {stats.commitCount} commits. <br></br>
 					<span style={{opacity}}>Here are some sweet ones.</span>
 				</h1>
 			</AbsoluteFill>
