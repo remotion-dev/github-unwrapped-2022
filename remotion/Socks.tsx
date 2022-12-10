@@ -7,7 +7,7 @@ import {Lang} from './TopLang';
 
 export const Socks: React.FC<{
 	noBackground: boolean;
-	topLanguages: TopLanguage[] | null;
+	topLanguages: TopLanguage[];
 	theme: Theme;
 }> = ({noBackground, topLanguages, theme}) => {
 	const {width, fps} = useVideoConfig();
@@ -35,15 +35,16 @@ export const Socks: React.FC<{
 		>
 			<AbsoluteFill
 				style={{
-					scale: '0.5 ',
+					scale: '0.7',
 				}}
 			>
 				<AbsoluteFill
 					style={{
 						marginLeft: -offset,
+						marginTop: -200,
 					}}
 				>
-					{top3Languages?.map((language, i) => {
+					{top3Languages.map((language, i) => {
 						return (
 							<AbsoluteFill
 								key={i}
@@ -58,6 +59,24 @@ export const Socks: React.FC<{
 						);
 					})}
 				</AbsoluteFill>
+			</AbsoluteFill>
+			<AbsoluteFill
+				style={{
+					justifyContent: 'center',
+					alignItems: 'center',
+					fontVariationSettings: '"wght" 600',
+					fontFamily: 'MonaSans',
+					fontSize: 50,
+					marginTop: 400,
+				}}
+			>
+				{top3Languages.reverse().map((language, i) => {
+					return (
+						<div key={language.name}>
+							{i + 1}. {language.name}
+						</div>
+					);
+				})}
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);

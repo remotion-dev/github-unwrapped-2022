@@ -6,8 +6,6 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {Candy} from './Icons/Candy';
-import {Star} from './Icons/Star';
 import {RoughPath} from './RoughPath';
 import {Theme} from './theme';
 

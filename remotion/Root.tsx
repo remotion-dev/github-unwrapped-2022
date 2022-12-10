@@ -470,6 +470,20 @@ export const Root: React.FC = () => {
 				durationInFrames={250}
 				fps={30}
 				id="Socks"
+				defaultProps={{
+					theme: redTheme,
+					noBackground: false,
+					topLanguages: [
+						{
+							color: 'red',
+							name: 'CSS',
+						},
+						{
+							color: 'red',
+							name: 'JavaScript',
+						},
+					],
+				}}
 			></Composition>
 
 			<Composition
