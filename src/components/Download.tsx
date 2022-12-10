@@ -1,6 +1,7 @@
 import React from 'react';
 import {RenderProgressOrFinality} from '../../pages/api/progress';
 import {Theme} from '../../remotion/theme';
+import {formatBytes} from '../format-bytes';
 import {button} from './button';
 import {Laptop} from './Laptop';
 
@@ -42,7 +43,9 @@ const Download: React.FC<{
 					<div style={downloadButton(theme)}>
 						<div style={{flex: 1}}>
 							Download video
-							<div style={sizeLabel}>9.3MB</div>
+							<div style={sizeLabel}>
+								{formatBytes(downloadProgress.finality.outputSize)}
+							</div>
 						</div>
 						<Laptop
 							theme={theme}

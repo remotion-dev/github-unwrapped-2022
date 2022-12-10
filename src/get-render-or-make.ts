@@ -103,6 +103,7 @@ export const getFinality = (
 		return {
 			type: 'success',
 			url: renderProgress.outputFile,
+			outputSize: renderProgress.outputSizeInBytes as number,
 		};
 	}
 	if (renderProgress.fatalErrorEncountered) {

@@ -6,6 +6,7 @@ export type Finality =
 	| {
 			type: 'success';
 			url: string;
+			outputSize: number;
 	  }
 	| {
 			type: 'error';
