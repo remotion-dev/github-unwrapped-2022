@@ -27,5 +27,5 @@ export const blueTheme: Theme = {
 };
 
 export const useTheme = () => {
-	return goldenTheme;
+	return redTheme;
 };
