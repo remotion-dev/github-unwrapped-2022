@@ -5,7 +5,7 @@ import {useRouter} from 'next/router';
 import React, {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {AbsoluteFill} from 'remotion';
 import {getFont} from '../remotion/font';
-import {getALotOfGithubCommits} from '../remotion/github-api';
+import {getALotOfGithubCommits, RATE_LIMIT_TOKEN} from '../remotion/github-api';
 import {LoadingPage} from '../remotion/LoadingPage';
 import {Main} from '../remotion/Main';
 import {
@@ -23,6 +23,7 @@ import {RoughBox} from '../src/components/RoughBox';
 import {getAllStatsFromCache} from '../src/db/cache';
 import {RenderRequest} from '../src/types';
 import {RenderProgressOrFinality} from './api/progress';
+import ErrorHandler from '../src/components/Error';
 
 const iosSafari = () => {
 	if (typeof window === 'undefined') {
@@ -104,12 +105,32 @@ const layout: React.CSSProperties = {
 
 getFont();
 
+type UserState =
+	| {
+			type: 'initial';
+	  }
+	| {
+			type: 'loading';
+	  }
+	| {
+			type: 'not-found';
+	  }
+	| {
+			type: 'rate-limit';
+	  }
+	| {
+			type: 'found';
+			stats: CompactStats;
+	  };
+
 export default function User(props: {user: CompactStats | null}) {
 	const [playing, setPlaying] = useState(false);
 	const player = useRef<PlayerRef>(null);
 	const {user: cachedResponse} = props;
 
-	const [user, setUser] = useState<CompactStats | null>(cachedResponse);
+	const [state, setState] = useState<UserState>(
+		cachedResponse ? {type: 'found', stats: cachedResponse} : {type: 'initial'}
+	);
 
 	const theme = useTheme();
 	const router = useRouter();
@@ -138,11 +159,11 @@ export default function User(props: {user: CompactStats | null}) {
 	);
 
 	useEffect(() => {
-		if (!user || !player.current) {
+		if (state.type !== 'found' || !player.current) {
 			return;
 		}
 
-		if (!user.topLanguages || user.topLanguages.length < 1) {
+		if (!state.stats.topLanguages || state.stats.topLanguages.length < 1) {
 			router.push('/notEnoughInfo');
 		}
 
@@ -155,7 +176,7 @@ export default function User(props: {user: CompactStats | null}) {
 		player.current.addEventListener('play', () => {
 			setPlaying(true);
 		});
-	}, [router, user]);
+	}, [router, state]);
 
 	const [downloadProgress, setDownloadProgress] =
 		useState<RenderProgressOrFinality | null>(null);
@@ -181,13 +202,13 @@ export default function User(props: {user: CompactStats | null}) {
 	}, [username]);
 
 	const render = useCallback(async () => {
-		if (!user) {
+		if (state.type !== 'found') {
 			return;
 		}
 
 		const renderRequest: RenderRequest = {
 			username,
-			compactStats: user,
+			compactStats: state.stats,
 		};
 		const res = await fetch('/api/render', {
 			method: 'POST',
@@ -195,7 +216,7 @@ export default function User(props: {user: CompactStats | null}) {
 		});
 		const prog = (await res.json()) as RenderProgressOrFinality;
 		setDownloadProgress(prog);
-	}, [user, username]);
+	}, [state, username]);
 
 	const getBackendStats = useCallback(async () => {
 		const res = await fetch('/api/stats/' + username);
@@ -225,37 +246,59 @@ export default function User(props: {user: CompactStats | null}) {
 			return;
 		}
 
-		if (user) {
+		if (state.type !== 'initial') {
 			return;
 		}
 
-		Promise.all([getBackendStats(), getFrontendStats()]).then(
-			([backendResponse, frontendStats]) => {
+		Promise.all([getBackendStats(), getFrontendStats()])
+			.then(([backendResponse, frontendStats]) => {
 				if (backendResponse.type === 'found') {
-					setUser(
-						mapResponseToStats(backendResponse.backendStats, frontendStats)
-					);
+					setState({
+						type: 'found',
+						stats: mapResponseToStats(
+							backendResponse.backendStats,
+							frontendStats
+						),
+					});
+				} else if (backendResponse.type === 'not-found') {
+					setState({
+						type: 'not-found',
+					});
 				} else {
 					throw new TypeError('bad backend stats');
 				}
-			}
-		);
-	}, [getBackendStats, getFrontendStats, user, username]);
+			})
+			.catch((err) => {
+				if ((err as Error).message.includes(RATE_LIMIT_TOKEN)) {
+					setState({
+						type: 'rate-limit',
+					});
+				}
+			});
+	}, [getBackendStats, getFrontendStats, state, username]);
 
-	if (!user) {
+	if (state.type === 'loading' || state.type === 'initial') {
 		return <LoadingPage></LoadingPage>;
+	}
+	if (state.type === 'not-found') {
+		return <ErrorHandler reason="not-found" username={username}></ErrorHandler>;
+	}
+	if (state.type === 'rate-limit') {
+		return (
+			<ErrorHandler reason="rate-limit" username={username}></ErrorHandler>
+		);
 	}
 
 	return (
 		<div>
 			<Head>
 				<title>
-					{user.username}
+					{state.stats.username}
 					{"'"}s #GitHubUnwrapped
 				</title>
 				<meta
 					property="og:title"
-					content={`${user.username}'s #GitHubUnwrapped`}
+					content={`${state.stats.username}'s #GitHubUnwrapped`}
 					key="title"
 				/>
 
@@ -270,7 +313,7 @@ export default function User(props: {user: CompactStats | null}) {
 					<br></br>
 					<br></br>
 					<h1 style={title}>Here is your #GitHubUnwrapped!</h1>
-					<h2 style={subtitle}>@{user.username}</h2>
+					<h2 style={subtitle}>@{state.stats.username}</h2>
 					<br></br>
 					<br></br>
 					<div style={outer}>
@@ -296,7 +339,7 @@ export default function User(props: {user: CompactStats | null}) {
 											aspectRatio: '1 / 1',
 										}}
 										inputProps={{
-											stats: user,
+											stats: state.stats,
 											theme: theme,
 										}}
 									></Player>

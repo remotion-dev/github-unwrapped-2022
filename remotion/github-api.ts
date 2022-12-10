@@ -2,12 +2,18 @@ import type {commits} from './commits';
 import {Commit} from './frontend-stats';
 import {mapApiResponseToCommits} from './map-api-response-to-commits';
 
+export const RATE_LIMIT_TOKEN = 'rate-limit-token';
+
 export const getGithubCommits = async (username: string, page: number) => {
 	const response = await fetch(
 		`https://api.github.com/search/commits?q=author:${username}%20merge:false&sort=author-date&order=desc&page=${page}&per_page=100`
 	);
 	if (response.status !== 200) {
 		// TODO: Distinguish between 404 and rate limit
+		const message = (await response.json()).message;
+		if (message.includes('API rate limit')) {
+			throw new TypeError(RATE_LIMIT_TOKEN);
+		}
 		throw new TypeError((await response.json()).message);
 	}
 	const json = (await response.json()) as typeof commits;

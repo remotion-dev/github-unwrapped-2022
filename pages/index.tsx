@@ -29,6 +29,7 @@ const paragraph: React.CSSProperties = {
 	fontSize: 18,
 	fontFamily: 'MonaSans',
 	color: 'black',
+	fontVariationSettings: '"wght" 500',
 };
 
 getFont();

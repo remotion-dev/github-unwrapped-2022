@@ -138,9 +138,15 @@ const getTopLanguages = (response: BackendResponse): TopLanguage[] | null => {
 	);
 };
 
+export const NOT_FOUND_TOKEN = 'Not found';
+
 export const backendResponseToBackendStats = (
 	response: BackendResponse
 ): BackendStats => {
+	if (!response.data.user) {
+		throw new Error(NOT_FOUND_TOKEN);
+	}
+
 	const repositoriesContributedTo =
 		response.data.user.contributionsCollection.commitContributionsByRepository.map(
 			(r) => r.repository.owner.login + '/' + r.repository.name
