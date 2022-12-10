@@ -55,7 +55,7 @@ export const Main: React.FC<{
 						<Socks
 							theme={theme}
 							noBackground={true}
-							topLanguages={stats.topLanguages}
+							topLanguages={stats.topLanguages ?? []}
 						></Socks>
 					</SlideIn>
 				</SlideOut>
