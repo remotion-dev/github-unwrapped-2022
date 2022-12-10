@@ -28,8 +28,8 @@ export const LangPlaceholder: React.FC<{
 	return (
 		<div
 			style={{
-				height: 150,
-				width: 150,
+				height: 900,
+				width: 900,
 				position: 'relative',
 			}}
 		>
@@ -37,7 +37,7 @@ export const LangPlaceholder: React.FC<{
 				viewBox={`0 0 100 100`}
 				style={{
 					overflow: 'visible',
-					height: 150,
+					height: 900,
 					position: 'absolute',
 				}}
 			>
@@ -60,9 +60,10 @@ export const LangPlaceholder: React.FC<{
 				style={{
 					justifyContent: 'center',
 					alignItems: 'center',
-					fontSize: 32,
-					textShadow: '0 4px 10px ' + color,
+					fontSize: 180,
 					textAlign: 'center',
+					fontFamily: 'MonaSans',
+					fontVariationSettings: '"wght" 600',
 				}}
 			>
 				{name}

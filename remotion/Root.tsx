@@ -480,7 +480,7 @@ export const Root: React.FC = () => {
 						},
 						{
 							color: 'red',
-							name: 'JavaScript',
+							name: 'Bash',
 						},
 					],
 				}}
