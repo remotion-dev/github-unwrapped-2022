@@ -16,13 +16,12 @@ const container: React.CSSProperties = {
 	paddingTop: 40,
 	paddingBottom: 40,
 	justifyContent: 'center',
-	width: 1000,
+	maxWidth: 1000,
 	margin: 'auto',
 	fontSize: 14,
 	textAlign: 'center',
 	fontVariationSettings: '"wght" 500',
 	display: 'flex',
-	flexDirection: 'row',
 };
 
 const link: React.CSSProperties = {
@@ -36,6 +35,8 @@ const item: React.CSSProperties = {
 	flexDirection: 'row',
 	alignItems: 'center',
 	justifyContent: 'center',
+	paddingTop: 5,
+	paddingBottom: 5,
 };
 
 export const Footer: React.FC<{
@@ -50,7 +51,7 @@ export const Footer: React.FC<{
 
 	return (
 		<div style={outer}>
-			<div style={container}>
+			<div style={container} className="mobile-row">
 				<a
 					href="https://remotion.dev"
 					target={'_blank'}
