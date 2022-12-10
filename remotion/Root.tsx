@@ -482,6 +482,10 @@ export const Root: React.FC = () => {
 							color: 'red',
 							name: 'Bash',
 						},
+						{
+							color: 'red',
+							name: 'Bash',
+						},
 					],
 				}}
 			></Composition>

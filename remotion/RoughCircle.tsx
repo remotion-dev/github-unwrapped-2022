@@ -4,7 +4,7 @@ import {getRough} from './get-rough';
 
 import {useNoiseTranslate} from './use-noise-translate';
 
-export const RoughCircle: React.FC<SVGProps<SVGEllipseElement>> = (props) => {
+export const RoughCircle: React.FC<SVGProps<SVGCircleElement>> = (props) => {
 	const frame = Math.floor(useCurrentFrame() / 3);
 	const path = getRough().generator();
 	const drawable = path.circle(
@@ -17,8 +17,8 @@ export const RoughCircle: React.FC<SVGProps<SVGEllipseElement>> = (props) => {
 			seed: frame,
 			maxRandomnessOffset: 4,
 			hachureGap: 1,
-			strokeWidth: 2,
-			stroke: 'none',
+			strokeWidth: (props.strokeWidth as number) ?? 2,
+			stroke: props.stroke ?? undefined,
 		}
 	);
 	const [noiseX, noiseY] = useNoiseTranslate(String(props.cx) + props.cy);
