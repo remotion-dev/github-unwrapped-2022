@@ -2,7 +2,6 @@ import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {GiftBox} from './GiftBox';
 import {CompactStats} from './map-response-to-stats';
-import {Snow} from './Snow';
 import {Theme} from './theme';
 import {WaterColour} from './WaterColour';
 

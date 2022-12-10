@@ -1,7 +1,6 @@
 import React, {SVGProps, useMemo} from 'react';
 import {random, useCurrentFrame} from 'remotion';
 import {getRough} from './get-rough';
-import {useNoiseTranslate} from './use-noise-translate';
 
 export const RoughPath: React.FC<
 	SVGProps<SVGPathElement> & {
