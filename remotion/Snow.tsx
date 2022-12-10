@@ -7,7 +7,6 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {noise2D} from '@remotion/noise';
 
 export const Snow: React.FC<{
 	windPushes?: number[];
@@ -54,7 +53,7 @@ export const Snow: React.FC<{
 				const down = interpolate(progress, [0, 1], [0, speed]);
 				const x =
 					interpolate(progress, [0, 1], [-wind, -wind]) +
-					noise2D(delay, frame / 200, 0) * 200;
+					Math.sin(frame / 20 + delay) * 100;
 
 				return (
 					<div

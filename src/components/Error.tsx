@@ -3,7 +3,6 @@ import {useMemo} from 'react';
 import {AbsoluteFill} from 'remotion';
 import {getFont} from '../../remotion/font';
 import {useTheme} from '../../remotion/theme';
-import {backButton} from './button';
 import {Gingerman} from './Gingerman';
 
 getFont();

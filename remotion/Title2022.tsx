@@ -19,13 +19,6 @@ export const Title: React.FC<{
 			}}
 		>
 			{noBackground ? null : <WaterColour></WaterColour>}
-			<AbsoluteFill
-				style={{
-					opacity: 0.2,
-				}}
-			>
-				<Snow></Snow>
-			</AbsoluteFill>
 			<AbsoluteFill>
 				<GiftBox theme={theme} userStats={userStats}></GiftBox>
 			</AbsoluteFill>
