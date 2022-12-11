@@ -13,7 +13,6 @@ import {
 	getTreeMath,
 	makeIndicesAccurate,
 } from './tree/indices-to-close';
-import {StrokedText} from './StrokedText';
 import {Issues} from './map-response-to-stats';
 import {Theme} from './theme';
 
@@ -229,7 +228,7 @@ export const IssuesOpened2022: React.FC<{
 					fontFamily: 'MonaSans',
 					fontSize: 40,
 					color: 'black',
-					marginTop: 390,
+					marginTop: 470,
 					opacity: interpolate(closedDotsProgress, [0.4, 0.8], [0, 1]),
 					fontVariationSettings: '"wght" 500 ',
 				}}
