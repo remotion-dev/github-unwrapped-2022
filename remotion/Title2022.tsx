@@ -3,7 +3,6 @@ import {AbsoluteFill} from 'remotion';
 import {GiftBox} from './GiftBox';
 import {CompactStats} from './map-response-to-stats';
 import {Theme} from './theme';
-import {WaterColour} from './WaterColour';
 
 export const Title: React.FC<{
 	noBackground: boolean;
@@ -17,7 +16,6 @@ export const Title: React.FC<{
 				perspective: 1000,
 			}}
 		>
-			{noBackground ? null : <WaterColour></WaterColour>}
 			<AbsoluteFill>
 				<GiftBox theme={theme} userStats={userStats}></GiftBox>
 			</AbsoluteFill>

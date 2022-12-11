@@ -11,7 +11,6 @@ import {Weekday} from './frontend-stats';
 import {CompactStats} from './map-response-to-stats';
 import {StrokedText} from './StrokedText';
 import {Theme} from './theme';
-import {WaterColour} from './WaterColour';
 import {WeekdayBar} from './WeekdayBar';
 
 const weekdayToName = (weekday: Weekday) => {
@@ -87,7 +86,6 @@ export const TopWeekdays2022: React.FC<{
 				backgroundColor: noBackground ? undefined : '#FFE3CA',
 			}}
 		>
-			{noBackground ? null : <WaterColour></WaterColour>}
 			<StrokedText>
 				<AbsoluteFill
 					style={{

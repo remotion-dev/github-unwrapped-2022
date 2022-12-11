@@ -2,7 +2,6 @@ import React, {useMemo} from 'react';
 import {AbsoluteFill} from 'remotion';
 import {Snow} from './Snow';
 import {Theme} from './theme';
-import {WaterColour} from './WaterColour';
 
 export const EndCard: React.FC<{
 	noBackground: boolean;
@@ -27,7 +26,6 @@ export const EndCard: React.FC<{
 				perspective: 1000,
 			}}
 		>
-			{noBackground ? null : <WaterColour></WaterColour>}
 			{noBackground ? null : <Snow></Snow>}
 
 			<AbsoluteFill

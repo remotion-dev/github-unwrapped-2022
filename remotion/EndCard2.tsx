@@ -8,7 +8,6 @@ import {
 } from 'remotion';
 import {Snow} from './Snow';
 import {Theme} from './theme';
-import {WaterColour} from './WaterColour';
 
 export const EndCard2: React.FC<{
 	noBackground: boolean;
@@ -48,7 +47,6 @@ export const EndCard2: React.FC<{
 				alignItems: 'center',
 			}}
 		>
-			{noBackground ? null : <WaterColour></WaterColour>}
 			{noBackground ? null : <Snow></Snow>}
 			<AbsoluteFill
 				style={{

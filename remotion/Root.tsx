@@ -6,7 +6,6 @@ import {Main} from './Main';
 import {mapResponseToStats} from './map-response-to-stats';
 import {TopWeekdays2022} from './Weekday2022';
 import {TitleCard} from './TitleCard';
-import {WaterColour} from './WaterColour';
 import {Snow} from './Snow';
 import {Title} from './Title2022';
 import {AvgCommits} from './AvgCommits';
@@ -129,20 +128,6 @@ export const Root: React.FC = () => {
 						mapApiResponseToCommits(commits)
 					),
 					theme: redTheme,
-				}}
-			></Composition>
-			<Composition
-				component={WaterColour}
-				durationInFrames={300}
-				fps={30}
-				height={1080}
-				width={1080}
-				id="water"
-				defaultProps={{
-					stats: mapResponseToStats(
-						backendResponseToBackendStats(all),
-						mapApiResponseToCommits(commits)
-					),
 				}}
 			></Composition>
 			<Composition

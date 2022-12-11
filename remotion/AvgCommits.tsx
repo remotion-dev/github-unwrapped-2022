@@ -6,7 +6,6 @@ import {CommitBar} from './CommitBar';
 import {commits} from './commits';
 import {MiddleLine} from './MiddleLine';
 import {Theme} from './theme';
-import {WaterColour} from './WaterColour';
 
 type Hour =
 	| 0
@@ -89,7 +88,6 @@ export const AvgCommits: React.FC<{
 				backgroundColor: noBackground ? undefined : '#FFE3CA',
 			}}
 		>
-			{noBackground ? null : <WaterColour></WaterColour>}
 			<AbsoluteFill
 				style={{
 					marginTop: 440,
