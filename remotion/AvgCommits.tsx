@@ -93,13 +93,6 @@ export const AvgCommits: React.FC<{
 			{noBackground ? null : <WaterColour></WaterColour>}
 			<AbsoluteFill
 				style={{
-					opacity: 0.3,
-				}}
-			>
-				<Snow></Snow>
-			</AbsoluteFill>
-			<AbsoluteFill
-				style={{
 					marginTop: 440,
 				}}
 			>

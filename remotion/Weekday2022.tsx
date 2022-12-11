@@ -88,11 +88,6 @@ export const TopWeekdays2022: React.FC<{
 				backgroundColor: noBackground ? undefined : '#FFE3CA',
 			}}
 		>
-			{noBackground ? null : (
-				<AbsoluteFill>
-					<Snow></Snow>
-				</AbsoluteFill>
-			)}
 			{noBackground ? null : <WaterColour></WaterColour>}
 			<StrokedText>
 				<AbsoluteFill

@@ -64,7 +64,6 @@ export const TopLang: React.FC<{
 				fontFamily: 'MonaSans',
 			}}
 		>
-			<Snow></Snow>
 			<TopLangTitle theme={theme}></TopLangTitle>
 			<AbsoluteFill
 				style={{
