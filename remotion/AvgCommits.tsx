@@ -5,7 +5,6 @@ import {AvgCommitsTitle} from './AvgCommitsTitle';
 import {CommitBar} from './CommitBar';
 import {commits} from './commits';
 import {MiddleLine} from './MiddleLine';
-import {Snow} from './Snow';
 import {Theme} from './theme';
 import {WaterColour} from './WaterColour';
 

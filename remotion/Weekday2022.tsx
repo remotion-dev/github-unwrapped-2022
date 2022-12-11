@@ -9,7 +9,6 @@ import {
 } from 'remotion';
 import {Weekday} from './frontend-stats';
 import {CompactStats} from './map-response-to-stats';
-import {Snow} from './Snow';
 import {StrokedText} from './StrokedText';
 import {Theme} from './theme';
 import {WaterColour} from './WaterColour';

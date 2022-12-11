@@ -6,7 +6,6 @@ import {LangPlaceholder} from './LangPlaceholder';
 import {languageList} from './language-list';
 import {LanguageIcon} from './Languages/LanguageIcon';
 import {CompactStats} from './map-response-to-stats';
-import {Snow} from './Snow';
 import {Theme} from './theme';
 import {TopLangTitle} from './TopLangTitle';
 
