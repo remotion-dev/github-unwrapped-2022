@@ -92,12 +92,14 @@ export const IssuesOpened2022: React.FC<{
 	const canAffordRoughJs = totalIssues < 200;
 
 	const {avgRotsPerRow, dotPadding, dotsPerRow, chunks, dotSize, rows} =
-		getTreeMath({
-			height,
-			issuesClosed,
-			issuesOpen,
-			width,
-		});
+		useMemo(() => {
+			return getTreeMath({
+				height,
+				issuesClosed,
+				issuesOpen,
+				width,
+			});
+		}, [height, issuesClosed, issuesOpen, width]);
 
 	// first to close from left: 0,
 	const indicesToClose = useMemo(() => {
