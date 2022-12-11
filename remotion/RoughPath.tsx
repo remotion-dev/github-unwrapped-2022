@@ -23,7 +23,9 @@ export const RoughPath: React.FC<
 			seed: seed ?? frame,
 			maxRandomnessOffset: 4,
 			hachureGap: hachureGap ?? 1,
-			hachureAngle: random(seed ?? props.d ?? '') * 360,
+			hachureAngle: freeze
+				? random(seed ?? '') * 360
+				: random(seed ?? props.d ?? '') * 360,
 			strokeWidth: strokeWidth ?? 2,
 			stroke: props.stroke ?? undefined,
 			bowing: props.bowing ?? 1,
@@ -32,6 +34,7 @@ export const RoughPath: React.FC<
 		return path.toPaths(drawable);
 	}, [
 		frame,
+		freeze,
 		hachureGap,
 		props.bowing,
 		props.d,

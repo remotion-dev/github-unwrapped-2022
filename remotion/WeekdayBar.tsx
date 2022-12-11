@@ -49,6 +49,8 @@ export const WeekdayBar: React.FC<{
 					bowing={isMostProductive ? 5 : 0}
 					fill={isMostProductive ? theme.mainColor : '#fff'}
 					d={d}
+					seed={index}
+					freeze
 				></RoughPath>
 			</svg>
 		</>
