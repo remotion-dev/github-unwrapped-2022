@@ -89,7 +89,7 @@ export const IssuesOpened2022: React.FC<{
 
 	const {height, width} = useVideoConfig();
 
-	const canAffordRoughJs = totalIssues < 200;
+	const canAffordRoughJs = totalIssues < 30;
 
 	const {avgRotsPerRow, dotPadding, dotsPerRow, chunks, dotSize, rows} =
 		useMemo(() => {
@@ -195,20 +195,19 @@ export const IssuesOpened2022: React.FC<{
 					);
 				})}
 			</AbsoluteFill>
-			<StrokedText>
-				<AbsoluteFill
-					style={{
-						justifyContent: 'center',
-						alignItems: 'center',
-						fontFamily: 'MonaSans',
-						fontSize: 130,
-						color: theme.mainColor,
-						marginTop: 300,
-					}}
-				>
-					{Math.ceil(dotsShown) - Math.ceil(closedDotsProgress * issuesClosed)}
-				</AbsoluteFill>
-			</StrokedText>
+			<AbsoluteFill
+				style={{
+					justifyContent: 'center',
+					alignItems: 'center',
+					fontFamily: 'MonaSans',
+					fontSize: 130,
+					color: theme.mainColor,
+					marginTop: 390,
+					fontVariationSettings: '"wght" 600',
+				}}
+			>
+				{Math.ceil(dotsShown) - Math.ceil(closedDotsProgress * issuesClosed)}
+			</AbsoluteFill>
 			<AbsoluteFill
 				style={{
 					justifyContent: 'center',
@@ -216,8 +215,9 @@ export const IssuesOpened2022: React.FC<{
 					fontFamily: 'MonaSans',
 					fontSize: 40,
 					color: 'black',
-					marginTop: 390,
+					marginTop: 470,
 					opacity: interpolate(closedDotsProgress, [0, 0.4], [1, 0]),
+					fontVariationSettings: '"wght" 500 ',
 				}}
 			>
 				Issues opened
@@ -231,6 +231,7 @@ export const IssuesOpened2022: React.FC<{
 					color: 'black',
 					marginTop: 390,
 					opacity: interpolate(closedDotsProgress, [0.4, 0.8], [0, 1]),
+					fontVariationSettings: '"wght" 500 ',
 				}}
 			>
 				Issues still open
