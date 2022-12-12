@@ -23,7 +23,7 @@ export const SockComp: React.FC<{
 	const squeezeOut = lastLanguage
 		? spring({
 				fps,
-				frame: frame - 30 - delay,
+				frame: frame - 45 - delay,
 				config: {
 					damping: 200,
 				},
@@ -34,13 +34,13 @@ export const SockComp: React.FC<{
 	const squeezeIn = lastLanguage
 		? spring({
 				fps,
-				frame: frame - 40 - delay,
+				frame: frame - 50 - delay,
 				durationInFrames: 10,
 		  })
 		: 0;
 	const push = spring({
 		fps,
-		frame: frame - (lastLanguage ? 40 : 10) - delay,
+		frame: frame - (lastLanguage ? 50 : 10) - delay,
 		durationInFrames: 20,
 	});
 
