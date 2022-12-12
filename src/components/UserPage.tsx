@@ -39,7 +39,7 @@ const subtitle: React.CSSProperties = {
 	fontSize: 24,
 	marginTop: 4,
 	marginBottom: 0,
-	fontVariationSettings: '"wght" 600',
+	fontVariationSettings: '"wght" 500',
 };
 
 const layout: React.CSSProperties = {

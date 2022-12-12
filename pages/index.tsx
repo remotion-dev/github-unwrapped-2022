@@ -130,7 +130,6 @@ export default function Home() {
 								type={'text'}
 								disabled={loading}
 								autoComplete="none"
-								name="github_username"
 								style={input}
 								className="github-username"
 								placeholder="GitHub username"

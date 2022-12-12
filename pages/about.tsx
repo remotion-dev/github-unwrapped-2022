@@ -8,7 +8,7 @@ import {RoughBox} from '../src/components/RoughBox';
 getFont();
 
 const bigTitle: React.CSSProperties = {
-	fontVariationSettings: '"wght" 800',
+	fontVariationSettings: '"wght" 700',
 	marginTop: 0,
 	marginBottom: 20,
 	textAlign: 'center',
@@ -17,7 +17,7 @@ const bigTitle: React.CSSProperties = {
 };
 
 const title: React.CSSProperties = {
-	fontVariationSettings: '"wght" 750',
+	fontVariationSettings: '"wght" 700',
 	marginTop: 0,
 	marginBottom: 0,
 };
@@ -26,7 +26,7 @@ const para: React.CSSProperties = {
 	marginTop: 0,
 	marginBottom: 0,
 	color: 'black',
-	fontVariationSettings: '"wght" 400',
+	fontVariationSettings: '"wght" 500',
 };
 
 const box: React.CSSProperties = {

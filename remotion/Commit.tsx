@@ -75,7 +75,7 @@ export const Commit: React.FC<CommitProps> = ({
 								alignItems: 'center',
 								fontFamily: 'MonaSans',
 								fontSize: 24,
-								fontVariationSettings: '"wght" 500',
+								fontVariationSettings: '"wght" 700',
 							}}
 						>
 							{repository}
