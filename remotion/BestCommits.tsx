@@ -13,7 +13,8 @@ import {Theme} from './theme';
 export const BestCommits: React.FC<{
 	stats: CompactStats;
 	theme: Theme;
-}> = ({stats, theme}) => {
+	noBackground: boolean;
+}> = ({stats, theme, noBackground}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 	const opacity = interpolate(frame, [30, 60], [0, 1]);
@@ -29,7 +30,7 @@ export const BestCommits: React.FC<{
 	return (
 		<AbsoluteFill
 			style={{
-				background: theme.background,
+				background: noBackground ? undefined : theme.background,
 			}}
 		>
 			<AbsoluteFill

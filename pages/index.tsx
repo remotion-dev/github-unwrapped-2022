@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import {useRouter} from 'next/router';
-import {lighten} from 'polished';
 import React, {useCallback, useMemo, useState} from 'react';
 import {getFont} from '../remotion/font';
 import {Theme, useTheme} from '../remotion/theme';
@@ -38,8 +37,7 @@ const buttonStyle = (disabled: boolean, theme: Theme): React.CSSProperties =>
 	disabled
 		? {
 				...button(theme),
-				backgroundColor: lighten(0.6, theme.mainColor),
-				borderBottomColor: lighten(0.4, theme.mainColor),
+				opacity: 0.6,
 		  }
 		: button(theme);
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
+import {Bonbon} from './Icons/Bonbon';
 import {Candy} from './Icons/Candy';
 import {Gingerman} from './Icons/Gingerman';
 import {Star} from './Icons/Star';
-import {Laptop} from './Laptop';
 import {RoughPath} from './RoughPath';
 import {Theme} from './theme';
 
@@ -52,7 +52,7 @@ export const Commit: React.FC<CommitProps> = ({
 							<Star theme={theme} style={{width: 80}}></Star>
 						) : null}
 						{index === 2 ? (
-							<Laptop theme={theme} style={{width: 80}}></Laptop>
+							<Bonbon theme={theme} style={{width: 80}}></Bonbon>
 						) : null}
 						{index === 3 ? (
 							<Gingerman theme={theme} style={{width: 80}}></Gingerman>

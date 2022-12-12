@@ -1,37 +1,11 @@
 import React from 'react';
 import {AbsoluteFill, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Arc} from './Arc';
-import {AvgCommitsTitle} from './AvgCommitsTitle';
+import {AvgCommitsTitle, Hour} from './AvgCommitsTitle';
 import {CommitBar} from './CommitBar';
 import {commits} from './commits';
 import {MiddleLine} from './MiddleLine';
 import {Theme} from './theme';
-
-type Hour =
-	| 0
-	| 1
-	| 2
-	| 3
-	| 4
-	| 5
-	| 6
-	| 7
-	| 8
-	| 9
-	| 10
-	| 11
-	| 12
-	| 13
-	| 14
-	| 15
-	| 16
-	| 17
-	| 18
-	| 19
-	| 20
-	| 21
-	| 22
-	| 23;
 
 export const AvgCommits: React.FC<{
 	noBackground: boolean;
@@ -81,6 +55,11 @@ export const AvgCommits: React.FC<{
 
 	const most = Math.max(...values.map((v) => v[1]));
 	const mostIndex = values.findIndex(([_, b]) => b === most);
+	const mostHour = values.find(([_, b]) => b === most);
+
+	if (!mostHour) {
+		throw new Error('No most hour');
+	}
 
 	return (
 		<AbsoluteFill
@@ -135,7 +114,7 @@ export const AvgCommits: React.FC<{
 					})}
 				</AbsoluteFill>
 			</AbsoluteFill>
-			<AvgCommitsTitle theme={theme} />
+			<AvgCommitsTitle topHour={Number(mostHour[0]) as Hour} />
 		</AbsoluteFill>
 	);
 };

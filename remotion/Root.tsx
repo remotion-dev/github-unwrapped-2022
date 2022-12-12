@@ -4,7 +4,7 @@ import {all} from './all';
 import {Flashcard} from './Flashcard';
 import {Main} from './Main';
 import {mapResponseToStats} from './map-response-to-stats';
-import {TopWeekdays2022} from './Weekday2022';
+import {TopWeekdays2022} from './TopWeekdays';
 import {TitleCard} from './TitleCard';
 import {Snow} from './Snow';
 import {Title} from './Title2022';

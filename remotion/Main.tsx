@@ -11,7 +11,7 @@ import {SlideIn, SlideOut, transitionDuration} from './SlideIn';
 import {Snow} from './Snow';
 import {Theme} from './theme';
 import {Title} from './Title2022';
-import {TopWeekdays2022} from './Weekday2022';
+import {TopWeekdays2022} from './TopWeekdays';
 
 export const Main: React.FC<{
 	stats: CompactStats;
@@ -104,7 +104,7 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<BestCommits theme={theme} stats={stats}></BestCommits>
+						<BestCommits noBackground theme={theme} stats={stats}></BestCommits>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>

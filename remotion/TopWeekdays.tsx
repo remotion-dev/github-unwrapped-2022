@@ -1,4 +1,3 @@
-import {lighten} from 'polished';
 import React, {useMemo} from 'react';
 import {
 	AbsoluteFill,
@@ -159,9 +158,7 @@ export const TopWeekdays2022: React.FC<{
 										<div
 											style={{
 												...label,
-												color: isMostProductive
-													? theme.mainColor
-													: lighten(0.15, theme.mainColor),
+												color: isMostProductive ? theme.mainColor : 'black',
 												fontVariationSettings: '"wght" 700',
 											}}
 										>
