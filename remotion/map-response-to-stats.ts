@@ -102,16 +102,6 @@ const getMostProductive = (response: Commit[]): Weekdays => {
 	};
 };
 
-const filterCommitsByContributedRepositoryOnly = (
-	commits: Commit[],
-	repositoriesContributedTo: string[]
-) => {
-	const filterFunction = (commit: Commit) =>
-		repositoriesContributedTo.includes(commit.repo);
-
-	return commits.filter(filterFunction);
-};
-
 export const mapResponseToStats = (
 	response: BackendStats,
 	commits: FrontendStats
@@ -119,13 +109,11 @@ export const mapResponseToStats = (
 	return {
 		...response,
 		weekdays: getMostProductive(commits),
-		bestCommits: getRandomCommits(
-			filterCommitsByContributedRepositoryOnly(
-				commits,
-				response.repositoriesContributedTo
-			),
-			'0',
-			4
-		),
+		bestCommits: getRandomCommits({
+			commits: commits,
+			seed: '0',
+			numCommits: 4,
+			repositoriesContributedTo: response.repositoriesContributedTo,
+		}),
 	};
 };

@@ -15,18 +15,7 @@ const interestingWords = [
 	'damn',
 ];
 
-const notInteresting = ['release', 'merge', 'update'];
-
-function filterNonInterestingCommits(commits: Commit[]) {
-	return commits.filter((commit) => {
-		for (const word of notInteresting) {
-			if (commit.message.toLowerCase().includes(word.toLowerCase())) {
-				return false;
-			}
-		}
-		return true;
-	});
-}
+const notInteresting = ['release', 'merge', 'update', 'minor'];
 
 function filterRepeatedRepositories(
 	commits: Commit[],
@@ -50,7 +39,7 @@ function prioritizeInterestingCommits(commits: Commit[]) {
 
 	for (const commit of commits) {
 		for (const word of interestingWords) {
-			if (commit.message.includes(word)) {
+			if (commit.message.toLowerCase().includes(word)) {
 				interestingCommits.push(commit);
 				break;
 			}
@@ -61,17 +50,63 @@ function prioritizeInterestingCommits(commits: Commit[]) {
 	return [...interestingCommits, ...nonInterestingCommits];
 }
 
-export function getRandomCommits(
+function dePrioritizeUninterestingCommits(commits: Commit[]) {
+	const interestingCommits = [];
+	const nonInterestingCommits = [];
+
+	for (const commit of commits) {
+		for (const word of notInteresting) {
+			if (commit.message.toLowerCase().includes(word)) {
+				nonInterestingCommits.push(commit);
+				break;
+			}
+		}
+		interestingCommits.push(commit);
+	}
+
+	return [...interestingCommits, ...nonInterestingCommits];
+}
+
+function prioritizeCommitsAsContributor(
 	commits: Commit[],
-	seed: number | string,
-	numCommits = 4
-): Commit[] {
+	repositoriesContributedTo: string[]
+) {
+	const asContributor = [];
+	const foreign = [];
+
+	const filterFunction = (commit: Commit) =>
+		repositoriesContributedTo.includes(commit.repo);
+
+	for (const commit of commits) {
+		if (filterFunction(commit)) {
+			asContributor.push(commit);
+		} else {
+			foreign.push(commit);
+		}
+	}
+
+	return [...asContributor, ...foreign];
+}
+
+export function getRandomCommits({
+	commits,
+	seed,
+	numCommits = 4,
+	repositoriesContributedTo,
+}: {
+	commits: Commit[];
+	seed: number | string;
+	numCommits: number;
+	repositoriesContributedTo: string[];
+}): Commit[] {
 	// Filter out non-interesting and repeated commits, and prioritize interesting ones
-	let remainingCommits = shuffleArray(
-		filterNonInterestingCommits(commits),
-		seed
-	);
+	let remainingCommits = shuffleArray(commits, seed);
 	remainingCommits = prioritizeInterestingCommits(remainingCommits);
+	remainingCommits = dePrioritizeUninterestingCommits(remainingCommits);
+	remainingCommits = prioritizeCommitsAsContributor(
+		remainingCommits,
+		repositoriesContributedTo
+	);
 
 	// Select the desired number of random commits
 	const chosenCommits = [];
