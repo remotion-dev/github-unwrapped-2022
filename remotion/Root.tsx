@@ -53,6 +53,7 @@ import {backendResponseToBackendStats} from '../src/get-all';
 import {Loader} from './Loader';
 import {blueTheme, goldenTheme, redTheme} from './theme';
 import {LanguageToSocks} from './LanguageToSocks';
+import {EndCard} from './EndCard';
 
 export const Root: React.FC = () => {
 	return (
@@ -519,6 +520,7 @@ export const Root: React.FC = () => {
 						mapApiResponseToCommits(commits)
 					),
 					theme: redTheme,
+					noBackground: false,
 				}}
 			></Composition>
 			<Composition
@@ -553,6 +555,18 @@ export const Root: React.FC = () => {
 							name: 'Bash',
 						},
 					],
+				}}
+			></Composition>
+			<Composition
+				component={EndCard}
+				height={1080}
+				width={1080}
+				durationInFrames={180}
+				fps={30}
+				id="EndCard"
+				defaultProps={{
+					theme: redTheme,
+					noBackground: true,
 				}}
 			></Composition>
 		</>

@@ -3,7 +3,6 @@ import {AbsoluteFill, Audio, Internals, Sequence, staticFile} from 'remotion';
 import {AvgCommits} from './AvgCommits';
 import {BestCommits} from './BestCommits';
 import {EndCard} from './EndCard';
-import {EndCard2} from './EndCard2';
 import {IssuesOpened2022} from './IssuesOpened';
 import {LanguageToSocks} from './LanguageToSocks';
 import {CompactStats} from './map-response-to-stats';
@@ -17,7 +16,7 @@ export const Main: React.FC<{
 	stats: CompactStats;
 	theme: Theme;
 }> = ({stats, theme}) => {
-	const duration = [130, 240, 150, 180, 100, 150, 60, 150];
+	const duration = [130, 240, 150, 180, 100, 150, 200];
 	const accumulatedFrom = (i: number) =>
 		duration.slice(0, i).reduce((a, b) => a + b);
 	const windPushes = duration
@@ -112,18 +111,8 @@ export const Main: React.FC<{
 				durationInFrames={duration[6] + transitionDuration}
 				from={accumulatedFrom(6)}
 			>
-				<SlideOut>
-					<SlideIn>
-						<EndCard theme={theme} noBackground={true}></EndCard>
-					</SlideIn>
-				</SlideOut>
-			</Sequence>
-			<Sequence
-				durationInFrames={duration[7] + transitionDuration}
-				from={accumulatedFrom(7)}
-			>
 				<SlideIn>
-					<EndCard2 theme={theme} noBackground={true} />
+					<EndCard theme={theme} noBackground={true}></EndCard>
 				</SlideIn>
 			</Sequence>
 		</AbsoluteFill>
