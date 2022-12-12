@@ -1,28 +1,8 @@
 import React from 'react';
-import {AbsoluteFill, Img, interpolate, staticFile} from 'remotion';
+import {AbsoluteFill, interpolate} from 'remotion';
+import {Sun} from '../src/components/Sun';
+import {Moon} from './Moon';
 import {Theme} from './theme';
-
-const Moon: React.FC = () => {
-	return (
-		<Img
-			style={{
-				height: 100,
-			}}
-			src={staticFile('moon.png')}
-		></Img>
-	);
-};
-
-const Sun: React.FC = () => {
-	return (
-		<Img
-			style={{
-				height: 100,
-			}}
-			src={staticFile('sun.png')}
-		></Img>
-	);
-};
 
 export const SunMoon: React.FC<{
 	progress: number;
@@ -70,7 +50,13 @@ export const SunMoon: React.FC<{
 						display: 'flex',
 					}}
 				>
-					<Moon></Moon>
+					<Moon
+						theme={theme}
+						style={{
+							height: 150,
+							transform: 'scale(1.5)',
+						}}
+					></Moon>
 				</div>
 				<div
 					style={{
@@ -84,7 +70,13 @@ export const SunMoon: React.FC<{
 						display: 'flex',
 					}}
 				>
-					<Sun></Sun>
+					<Sun
+						theme={theme}
+						style={{
+							height: 150,
+							transform: 'scale(1.9)',
+						}}
+					></Sun>
 				</div>
 			</div>
 		</AbsoluteFill>
