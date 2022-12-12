@@ -17,10 +17,6 @@ export const Main: React.FC<{
 	stats: CompactStats;
 	theme: Theme;
 }> = ({stats, theme}) => {
-	if (!stats) {
-		return null;
-	}
-
 	const duration = [130, 120, 150, 150, 150, 150, 60, 150];
 	const accumulatedFrom = (i: number) =>
 		duration.slice(0, i).reduce((a, b) => a + b);

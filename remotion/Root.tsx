@@ -9,7 +9,6 @@ import {TitleCard} from './TitleCard';
 import {Snow} from './Snow';
 import {Title} from './Title2022';
 import {AvgCommits} from './AvgCommits';
-import {TopLang} from './TopLang';
 import {TypeScript} from './Languages/Typescript';
 import {JavaScript} from './Languages/JavaScript';
 import {Java} from './Languages/Java';
@@ -53,6 +52,7 @@ import {commits} from './commits';
 import {backendResponseToBackendStats} from '../src/get-all';
 import {Loader} from './Loader';
 import {blueTheme, goldenTheme, redTheme} from './theme';
+import {LanguageToSocks} from './LanguageToSocks';
 
 export const Root: React.FC = () => {
 	return (
@@ -167,21 +167,6 @@ export const Root: React.FC = () => {
 						backendResponseToBackendStats(all),
 						mapApiResponseToCommits(commits)
 					),
-				}}
-			></Composition>
-			<Composition
-				component={TopLang}
-				durationInFrames={300}
-				fps={30}
-				height={1080}
-				width={1080}
-				id="languages"
-				defaultProps={{
-					stats: mapResponseToStats(
-						backendResponseToBackendStats(all),
-						mapApiResponseToCommits(commits)
-					),
-					theme: redTheme,
 				}}
 			></Composition>
 			<Still
@@ -543,6 +528,32 @@ export const Root: React.FC = () => {
 				durationInFrames={65}
 				fps={30}
 				id="Loader"
+			></Composition>
+			<Composition
+				component={LanguageToSocks}
+				height={1080}
+				width={1080}
+				durationInFrames={180}
+				fps={30}
+				id="TopLanguages"
+				defaultProps={{
+					theme: redTheme,
+					noBackground: true,
+					topLanguages: [
+						{
+							color: 'red',
+							name: 'CSS',
+						},
+						{
+							color: 'red',
+							name: 'Bash',
+						},
+						{
+							color: 'red',
+							name: 'Bash',
+						},
+					],
+				}}
 			></Composition>
 		</>
 	);
