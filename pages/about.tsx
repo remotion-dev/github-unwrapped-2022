@@ -109,7 +109,7 @@ const Faq: React.FC = () => {
 					<h2 style={title}>Credits</h2>
 					<p style={para}>
 						<div>Music: </div>
-						<div>Icons: </div>
+						<div>Icons: Tal Revivo (Icon 54) and mehwishumar (Fiverr)</div>
 						<div>Font: Mona Sans</div>
 						<div>Libraries used: Next.JS, Rough.JS</div>
 					</p>
