@@ -1,4 +1,4 @@
-import {Player, PlayerRef} from '@remotion/player';
+import {CallbackListener, Player, PlayerRef} from '@remotion/player';
 import Head from 'next/head';
 import Link from 'next/link';
 import {useRouter} from 'next/router';
@@ -160,23 +160,32 @@ export default function User(props: {user: CompactStats | null}) {
 	);
 
 	useEffect(() => {
-		if (state.type !== 'found' || !player.current) {
+		const {current} = player;
+		if (state.type !== 'found' || !current) {
 			return;
 		}
 
-		if (!state.stats.topLanguages || state.stats.topLanguages.length < 1) {
-			router.push('/notEnoughInfo');
-		}
+		const onPause: CallbackListener<'pause'> = () => {
+			setPlaying(false);
+		};
 
-		player.current.addEventListener('pause', () => {
+		const onEnded: CallbackListener<'ended'> = () => {
 			setPlaying(false);
-		});
-		player.current.addEventListener('ended', () => {
-			setPlaying(false);
-		});
-		player.current.addEventListener('play', () => {
+		};
+
+		const onPlay: CallbackListener<'play'> = () => {
 			setPlaying(true);
-		});
+		};
+
+		current.addEventListener('pause', onPause);
+		current.addEventListener('ended', onEnded);
+		current.addEventListener('play', onPlay);
+
+		return () => {
+			current.removeEventListener('pause', onPause);
+			current.removeEventListener('ended', onEnded);
+			current.removeEventListener('play', onPlay);
+		};
 	}, [router, state]);
 
 	const [downloadProgress, setDownloadProgress] =
