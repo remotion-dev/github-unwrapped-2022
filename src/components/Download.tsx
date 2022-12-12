@@ -29,7 +29,7 @@ const Download: React.FC<{
 	username: string;
 	stats: CompactStats;
 }> = ({username, stats}) => {
-	const theme = useTheme();
+	const [theme] = useTheme();
 	const [downloadProgress, setDownloadProgress] =
 		useState<RenderProgressOrFinality | null>(null);
 

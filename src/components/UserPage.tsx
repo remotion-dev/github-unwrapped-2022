@@ -53,7 +53,7 @@ export const UserPage: React.FC<{
 	stats: CompactStats;
 	username: string;
 }> = ({stats, username}) => {
-	const theme = useTheme();
+	const [theme] = useTheme();
 	const [playing, setPlaying] = useState(false);
 	const player = useRef<PlayerRef>(null);
 

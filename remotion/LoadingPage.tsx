@@ -4,7 +4,7 @@ import {Loader} from './Loader';
 import {useTheme} from './theme';
 
 export const LoadingPage: React.FC = () => {
-	const theme = useTheme();
+	const [theme] = useTheme();
 	return (
 		<div
 			style={{

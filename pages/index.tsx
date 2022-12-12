@@ -40,7 +40,7 @@ export default function Home() {
 	const router = useRouter();
 	const [username, setUsername] = useState('');
 	const [loading, setLoading] = useState(false);
-	const theme = useTheme();
+	const [theme] = useTheme();
 
 	const abs: React.CSSProperties = useMemo(
 		() => ({

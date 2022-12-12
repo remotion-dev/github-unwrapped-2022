@@ -31,7 +31,7 @@ const box: React.CSSProperties = {
 };
 
 const Faq: React.FC = () => {
-	const theme = useTheme();
+	const [theme] = useTheme();
 	return (
 		<div
 			style={{

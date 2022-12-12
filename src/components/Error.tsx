@@ -52,7 +52,7 @@ const ErrorHandler: React.FC<{
 	reason: ErrorReason;
 	username: string;
 }> = ({reason, username}) => {
-	const theme = useTheme();
+	const [theme] = useTheme();
 
 	const {subtitle, title} = useMemo(() => {
 		return getErrorMessage(reason, username);

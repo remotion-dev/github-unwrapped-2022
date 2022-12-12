@@ -4,7 +4,7 @@ import {useTheme} from '../remotion/theme';
 import {backButton} from '../src/components/button';
 
 const Spinner: React.FC = () => {
-	const theme = useTheme();
+	const [theme] = useTheme();
 	return (
 		<AbsoluteFill
 			style={{
