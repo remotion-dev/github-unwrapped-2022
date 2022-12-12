@@ -16,7 +16,7 @@ export const goldenTheme: Theme = {
 	name: 'Mistletoe Bliss',
 	mainColor: '#DAA520',
 	accentColor: '#C97723',
-	background: '#fff7eb',
+	background: '#f7f1de',
 };
 
 export const blueTheme: Theme = {

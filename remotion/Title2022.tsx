@@ -12,7 +12,7 @@ export const Title: React.FC<{
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: noBackground ? 'transparent' : '#FFE3CA',
+				backgroundColor: noBackground ? 'transparent' : theme.background,
 				perspective: 1000,
 			}}
 		>

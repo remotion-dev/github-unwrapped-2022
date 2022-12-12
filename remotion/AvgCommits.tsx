@@ -64,7 +64,7 @@ export const AvgCommits: React.FC<{
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: noBackground ? undefined : '#FFE3CA',
+				backgroundColor: noBackground ? undefined : theme.background,
 			}}
 		>
 			<AbsoluteFill
@@ -73,7 +73,7 @@ export const AvgCommits: React.FC<{
 				}}
 			>
 				<AbsoluteFill>
-					<Arc></Arc>
+					<Arc theme={theme}></Arc>
 				</AbsoluteFill>
 				<AbsoluteFill
 					style={{

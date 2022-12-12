@@ -4,15 +4,18 @@ import {AbsoluteFill, Easing, interpolate, useCurrentFrame} from 'remotion';
 import {getRough} from './get-rough';
 
 import {SunMoon} from './SunMoon';
+import {Theme} from './theme';
 
-export const Arc: React.FC = () => {
+export const Arc: React.FC<{
+	theme: Theme;
+}> = ({theme}) => {
 	const d = 'M 0 540 C 0 -200 1080 -200 1080 540';
 
 	const path = getRough().generator();
 	const drawable = path.path(d, {
 		strokeWidth: 6,
 		roughness: 4,
-		stroke: '#DBAB96',
+		stroke: 'white',
 		seed: 2,
 	});
 
@@ -75,7 +78,7 @@ export const Arc: React.FC = () => {
 					fontSize: 100,
 				}}
 			>
-				<SunMoon progress={progress}></SunMoon>
+				<SunMoon theme={theme} progress={progress}></SunMoon>
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);

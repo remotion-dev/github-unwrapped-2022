@@ -139,7 +139,7 @@ export const Root: React.FC = () => {
 				width={1080}
 				id="commits"
 				defaultProps={{
-					theme: redTheme,
+					theme: goldenTheme,
 					noBackground: false,
 				}}
 			></Composition>

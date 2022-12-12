@@ -47,7 +47,7 @@ export const EndCard: React.FC<{
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: noBackground ? undefined : '#FFE3CA',
+				backgroundColor: noBackground ? undefined : theme.background,
 				perspective: 1000,
 			}}
 		>

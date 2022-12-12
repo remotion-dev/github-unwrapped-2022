@@ -82,7 +82,7 @@ export const TopWeekdays2022: React.FC<{
 	return (
 		<AbsoluteFill
 			style={{
-				backgroundColor: noBackground ? undefined : '#FFE3CA',
+				backgroundColor: noBackground ? undefined : theme.background,
 			}}
 		>
 			<StrokedText>

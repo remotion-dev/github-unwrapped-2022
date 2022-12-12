@@ -1,5 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, Img, interpolate, staticFile} from 'remotion';
+import {Theme} from './theme';
 
 const Moon: React.FC = () => {
 	return (
@@ -25,7 +26,8 @@ const Sun: React.FC = () => {
 
 export const SunMoon: React.FC<{
 	progress: number;
-}> = ({progress}) => {
+	theme: Theme;
+}> = ({progress, theme}) => {
 	const rotation = interpolate(
 		progress,
 		[0.2, 0.3, 0.7, 0.8],
@@ -45,12 +47,11 @@ export const SunMoon: React.FC<{
 		>
 			<div
 				style={{
-					backgroundColor: '#ffe3ca',
+					backgroundColor: theme.background,
 					borderRadius: '50%',
 					height: 120,
 					width: 120,
-					boxShadow:
-						'0px -15px 15px #ffe3ca, 0px 15px 15px #ffe3ca, -15px 0 15px #ffe3ca, 15px 0 15px #ffe3ca',
+					boxShadow: `0px -15px 15px ${theme.background}, 0px 15px 15px ${theme.background}, -15px 0 15px ${theme.background}, 15px 0 15px ${theme.background}`,
 					position: 'relative',
 					display: 'flex',
 					justifyContent: 'center',
