@@ -255,7 +255,7 @@ export const UserPage: React.FC<{
 										>
 											#GitHubUnwrapped
 										</span>
-										!
+										:
 									</div>
 									<Download username={username} stats={stats}></Download>
 									{iosSafari() ? (

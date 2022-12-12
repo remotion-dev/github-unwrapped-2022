@@ -60,7 +60,7 @@ export const LangPlaceholder: React.FC<{
 				style={{
 					justifyContent: 'center',
 					alignItems: 'center',
-					fontSize: 180,
+					fontSize: name.length <= 3 ? 300 : 180,
 					textAlign: 'center',
 					fontFamily: 'MonaSans',
 					fontVariationSettings: '"wght" 600',
