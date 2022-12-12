@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {RenderProgressOrFinality} from '../../pages/api/progress';
-import {Theme} from '../../remotion/theme';
+import {CompactStats} from '../../remotion/map-response-to-stats';
+import {Theme, useTheme} from '../../remotion/theme';
 import {formatBytes} from '../format-bytes';
+import {RenderRequest} from '../types';
 import {button} from './button';
 import {Laptop} from './Laptop';
 
@@ -25,9 +27,59 @@ const sizeLabel: React.CSSProperties = {
 
 const Download: React.FC<{
 	username: string;
-	downloadProgress: RenderProgressOrFinality | null;
-	theme: Theme;
-}> = ({username, downloadProgress, theme}) => {
+	stats: CompactStats;
+}> = ({username, stats}) => {
+	const theme = useTheme();
+	const [downloadProgress, setDownloadProgress] =
+		useState<RenderProgressOrFinality | null>(null);
+
+	const pollProgress = useCallback(async () => {
+		const poll = async () => {
+			const progress = await fetch('/api/progress', {
+				method: 'POST',
+				body: JSON.stringify({
+					username,
+				}),
+			});
+			const progressJson = (await progress.json()) as RenderProgressOrFinality;
+			setDownloadProgress(progressJson);
+			if (progressJson.type !== 'finality') {
+				setTimeout(poll, 1000);
+			}
+		};
+
+		setTimeout(() => {
+			poll();
+		}, 1000);
+	}, [username]);
+
+	const render = useCallback(async () => {
+		const renderRequest: RenderRequest = {
+			username,
+			compactStats: stats,
+		};
+		const res = await fetch('/api/render', {
+			method: 'POST',
+			body: JSON.stringify(renderRequest),
+		});
+		const prog = (await res.json()) as RenderProgressOrFinality;
+		setDownloadProgress(prog);
+	}, [stats, username]);
+
+	const type = downloadProgress?.type ?? null;
+
+	useEffect(() => {
+		if (type === 'progress') {
+			pollProgress();
+		}
+	}, [type, pollProgress]);
+
+	useEffect(() => {
+		if (downloadProgress === null) {
+			render();
+		}
+	}, [downloadProgress, render]);
+
 	return (
 		<div>
 			{downloadProgress === null ? (
