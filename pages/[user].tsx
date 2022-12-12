@@ -1,6 +1,5 @@
 import {useRouter} from 'next/router';
 import React, {useCallback, useEffect, useState} from 'react';
-import {getFont} from '../remotion/font';
 import {getALotOfGithubCommits, RATE_LIMIT_TOKEN} from '../remotion/github-api';
 import {LoadingPage} from '../remotion/LoadingPage';
 import {
@@ -44,8 +43,6 @@ export const getServerSideProps = async ({
 		return {notFound: true};
 	}
 };
-
-getFont();
 
 type UserState =
 	| {

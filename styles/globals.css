@@ -1,3 +1,15 @@
+@font-face {
+	font-family: 'MonaSans';
+	src: url(/Mona-Sans-Medium.otf);
+	font-weight: 500;
+}
+
+@font-face {
+	font-family: 'MonaSans';
+	src: url(/Mona-Sans-Bold.otf);
+	font-weight: 700;
+}
+
 html,
 body {
 	padding: 0;

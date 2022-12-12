@@ -1,11 +1,8 @@
 import Link from 'next/link';
 import React from 'react';
-import {getFont} from '../remotion/font';
 import {useTheme} from '../remotion/theme';
 import {button} from '../src/components/button';
 import {RoughBox} from '../src/components/RoughBox';
-
-getFont();
 
 const bigTitle: React.CSSProperties = {
 	fontWeight: 700,

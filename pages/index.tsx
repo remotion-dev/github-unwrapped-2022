@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import {useRouter} from 'next/router';
 import React, {useCallback, useMemo, useState} from 'react';
-import {getFont} from '../remotion/font';
 import {Theme, useTheme} from '../remotion/theme';
 import {button} from '../src/components/button';
 import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
@@ -28,8 +27,6 @@ const paragraph: React.CSSProperties = {
 	color: 'black',
 	fontWeight: 500,
 };
-
-getFont();
 
 const buttonStyle = (disabled: boolean, theme: Theme): React.CSSProperties =>
 	disabled

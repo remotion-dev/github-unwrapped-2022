@@ -1,7 +1,6 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {TopLanguage} from '../src/get-all';
-import {getFont} from './font';
 import {LangPlaceholder} from './LangPlaceholder';
 import {languageList} from './language-list';
 import {LanguageIcon} from './Languages/LanguageIcon';
@@ -117,5 +116,3 @@ export const Lang: React.FC<{
 		</div>
 	);
 };
-
-getFont();

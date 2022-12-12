@@ -1,12 +1,9 @@
 import Link from 'next/link';
 import {useMemo} from 'react';
 import {AbsoluteFill} from 'remotion';
-import {getFont} from '../../remotion/font';
 import {useTheme} from '../../remotion/theme';
 import {RoughBox} from './RoughBox';
 import {SadGingerman} from './SadGingerman';
-
-getFont();
 
 type ErrorMessage = {
 	title: string;

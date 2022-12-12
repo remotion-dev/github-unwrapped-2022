@@ -1,10 +1,7 @@
 import Link from 'next/link';
 import {AbsoluteFill} from 'remotion';
-import {getFont} from '../remotion/font';
 import {useTheme} from '../remotion/theme';
 import {backButton} from '../src/components/button';
-
-getFont();
 
 const Spinner: React.FC = () => {
 	const theme = useTheme();

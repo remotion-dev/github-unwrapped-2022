@@ -45,7 +45,6 @@ export const TopWeekdays2022: React.FC<{
 	const bigTitle: React.CSSProperties = useMemo(
 		() => ({
 			color: theme.mainColor,
-			fontWeight: 'bold',
 			fontSize: 80,
 			fontFamily: 'MonaSans',
 			textAlign: 'center',
