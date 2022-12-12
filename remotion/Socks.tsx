@@ -13,7 +13,7 @@ export const Socks: React.FC<{
 	delay?: number;
 }> = ({noBackground, topLanguages, theme, delay = 0}) => {
 	const {width, fps} = useVideoConfig();
-	const top3Languages = topLanguages.slice(0, 3);
+	const top3Languages = topLanguages.slice(0, 3).reverse();
 	const frame = useCurrentFrame();
 	const offset = new Array(top3Languages.length - 1)
 		.fill(true)
@@ -78,7 +78,7 @@ export const Socks: React.FC<{
 				}}
 			>
 				<TopLanguagePodium
-					topLanguages={topLanguages.slice().reverse()}
+					topLanguages={topLanguages}
 					delay={delay}
 				></TopLanguagePodium>
 			</AbsoluteFill>

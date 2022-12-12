@@ -43,9 +43,13 @@ const getErrorMessage = (
 };
 
 const style: React.CSSProperties = {
-	paddingLeft: 30,
-	paddingRight: 30,
+	paddingTop: 40,
+	paddingBottom: 40,
+	paddingLeft: 60,
+	paddingRight: 60,
 	textAlign: 'center',
+	marginLeft: 20,
+	marginRight: 20,
 };
 
 const ErrorHandler: React.FC<{
@@ -70,7 +74,7 @@ const ErrorHandler: React.FC<{
 			<RoughBox style={style} seed={4}>
 				<SadGingerman
 					style={{
-						height: 300,
+						height: 200,
 					}}
 					theme={theme}
 				></SadGingerman>
