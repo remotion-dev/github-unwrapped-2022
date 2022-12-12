@@ -28,6 +28,13 @@ export const blueTheme: Theme = {
 	background: '#e0f2fc',
 };
 
+export const greenTheme: Theme = {
+	name: 'Icy Winter',
+	mainColor: '#25822b',
+	accentColor: '#ff2e1f',
+	background: '#d8ffdf',
+};
+
 type Context = {
 	theme: Theme;
 	setTheme: React.Dispatch<React.SetStateAction<Theme>>;

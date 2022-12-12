@@ -13,6 +13,7 @@ import {Footer, FOOTER_HEIGHT} from './Footer';
 import {Gingerman} from './Gingerman';
 import {PlayButton} from './Play';
 import {RoughBox} from './RoughBox';
+import {ThemeSwitcher} from './ThemeSwitcher';
 
 const outer: React.CSSProperties = {
 	maxWidth: 1000,
@@ -130,6 +131,7 @@ export const UserPage: React.FC<{
 			<div style={abs}>
 				<div style={container}>
 					<br></br>
+					<ThemeSwitcher></ThemeSwitcher>
 					<br></br>
 					<h1 style={title}>Here is your #GitHubUnwrapped!</h1>
 					<h2 style={subtitle}>@{stats.username}</h2>
@@ -237,7 +239,17 @@ export const UserPage: React.FC<{
 											marginBottom: 10,
 										}}
 									>
-										Download and share your video on social media using{' '}
+										Download your video as an MP4:
+									</div>
+									<Download username={username} stats={stats}></Download>
+									<div
+										style={{
+											fontWeight: 700,
+											lineHeight: 1.5,
+											marginTop: 10,
+										}}
+									>
+										Share your video on social media using{' '}
 										<span
 											style={{
 												color: theme.mainColor,
@@ -247,7 +259,6 @@ export const UserPage: React.FC<{
 										</span>
 										:
 									</div>
-									<Download username={username} stats={stats}></Download>
 									<div
 										style={{
 											flex: 1,
