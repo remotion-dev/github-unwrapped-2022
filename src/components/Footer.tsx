@@ -5,7 +5,7 @@ import {Bauble} from './Bauble';
 import {GithubIcon} from './Github';
 import {PlayButton} from './Play';
 
-export const FOOTER_HEIGHT = 50;
+export const FOOTER_HEIGHT = 200;
 
 const container: React.CSSProperties = {
 	minHeight: FOOTER_HEIGHT,

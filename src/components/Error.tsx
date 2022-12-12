@@ -3,7 +3,8 @@ import {useMemo} from 'react';
 import {AbsoluteFill} from 'remotion';
 import {getFont} from '../../remotion/font';
 import {useTheme} from '../../remotion/theme';
-import {Gingerman} from './Gingerman';
+import {RoughBox} from './RoughBox';
+import {SadGingerman} from './SadGingerman';
 
 getFont();
 
@@ -29,7 +30,7 @@ const getErrorMessage = (
 	if (reason === 'not-found') {
 		return {
 			title: "That's a typo",
-			subtitle: `No user with the name ${username} was found. Give it another try!`,
+			subtitle: `No GitHub account with the name ${username} was found. Give it another try!`,
 		};
 	}
 
@@ -42,6 +43,12 @@ const getErrorMessage = (
 	}
 
 	throw new Error('unexpected');
+};
+
+const style: React.CSSProperties = {
+	paddingLeft: 30,
+	paddingRight: 30,
+	textAlign: 'center',
 };
 
 const ErrorHandler: React.FC<{
@@ -63,39 +70,41 @@ const ErrorHandler: React.FC<{
 				fontFamily: 'MonaSans',
 			}}
 		>
-			<Gingerman
-				style={{
-					height: 300,
-				}}
-				theme={theme}
-			></Gingerman>
-			<h1
-				style={{
-					fontVariationSettings: '"wght" 700',
-					color: theme.mainColor,
-					marginBottom: 0,
-				}}
-			>
-				{title}
-			</h1>
-			<p
-				style={{
-					fontVariationSettings: '"wght" 500',
-				}}
-			>
-				{subtitle}
-			</p>
-			<Link href="/" passHref>
-				<span
+			<RoughBox style={style} seed={4}>
+				<SadGingerman
 					style={{
-						color: theme.mainColor,
+						height: 300,
+					}}
+					theme={theme}
+				></SadGingerman>
+				<h1
+					style={{
 						fontVariationSettings: '"wght" 700',
-						cursor: 'pointer',
+						color: theme.mainColor,
+						marginBottom: 0,
 					}}
 				>
-					Try again
-				</span>
-			</Link>
+					{title}
+				</h1>
+				<p
+					style={{
+						fontVariationSettings: '"wght" 500',
+					}}
+				>
+					{subtitle}
+				</p>
+				<Link href="/" passHref>
+					<span
+						style={{
+							color: theme.mainColor,
+							fontVariationSettings: '"wght" 700',
+							cursor: 'pointer',
+						}}
+					>
+						Try again
+					</span>
+				</Link>
+			</RoughBox>
 		</AbsoluteFill>
 	);
 };

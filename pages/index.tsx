@@ -9,10 +9,8 @@ import {Footer, FOOTER_HEIGHT} from '../src/components/Footer';
 const container: React.CSSProperties = {
 	height: '100%',
 	width: '100%',
-	position: 'absolute',
 	display: 'flex',
 	flexDirection: 'column',
-	paddingTop: '10vh',
 };
 
 const headerStyle: React.CSSProperties = {
@@ -53,9 +51,10 @@ export default function Home() {
 			width: '100%',
 			display: 'flex',
 			flexDirection: 'column',
-			overflow: 'auto',
 			backgroundColor: theme.background,
-			position: 'relative',
+			justifyContent: 'center',
+			alignItems: 'center',
+			paddingTop: '10vh',
 		}),
 		[theme.background]
 	);
@@ -79,6 +78,7 @@ export default function Home() {
 			textAlign: 'center',
 			background: 'white',
 			border: `3px solid ${theme.mainColor}`,
+			fontVariationSettings: '"wght" 700',
 		}),
 		[theme.mainColor]
 	);
