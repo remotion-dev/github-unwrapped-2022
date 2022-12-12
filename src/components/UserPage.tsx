@@ -49,16 +49,6 @@ const layout: React.CSSProperties = {
 	flexDirection: 'column',
 };
 
-const iosSafari = () => {
-	if (typeof window === 'undefined') {
-		return false;
-	}
-	const ua = window.navigator.userAgent;
-	const iOS = !!ua.match(/iPad/i) || !!ua.match(/iPhone/i);
-	const webkit = !!ua.match(/WebKit/i);
-	return iOS && webkit;
-};
-
 export const UserPage: React.FC<{
 	stats: CompactStats;
 	username: string;
@@ -111,7 +101,7 @@ export const UserPage: React.FC<{
 			textAlign: 'center',
 			color: theme.mainColor,
 			marginBottom: 0,
-			fontSize: 40,
+			fontSize: 36,
 			marginTop: 0,
 			fontWeight: 700,
 		}),
@@ -258,20 +248,6 @@ export const UserPage: React.FC<{
 										:
 									</div>
 									<Download username={username} stats={stats}></Download>
-									{iosSafari() ? (
-										<p
-											style={{
-												color: theme.mainColor,
-												fontFamily: 'MonaSans',
-												textAlign: 'center',
-												fontSize: 12,
-											}}
-										>
-											Tip for iOS Safari: Long press the {'"'}Download button
-											{'"'}, then press {'"'}Download Linked File{'"'} to save
-											the video locally.
-										</p>
-									) : null}
 									<div
 										style={{
 											flex: 1,
