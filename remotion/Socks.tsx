@@ -1,12 +1,10 @@
-import chunk from 'lodash.chunk';
 import React from 'react';
 import {AbsoluteFill, spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {TopLanguage} from '../src/get-all';
-import {Rank} from './Rank';
 import {SockComp} from './SockComp';
 import {Theme} from './theme';
+import {TopLanguagePodium} from './top-language-stairs';
 import {Lang} from './TopLang';
-import {TopLanguageIcon} from './TopLanguageIcon';
 
 export const Socks: React.FC<{
 	noBackground: boolean;
@@ -15,14 +13,15 @@ export const Socks: React.FC<{
 	delay?: number;
 }> = ({noBackground, topLanguages, theme, delay = 0}) => {
 	const {width, fps} = useVideoConfig();
-	const top3Languages = topLanguages?.slice(0, 3);
+	const top3Languages = topLanguages.slice(0, 3);
 	const frame = useCurrentFrame();
-	const offset = new Array(top3Languages?.length)
+	const offset = new Array(top3Languages.length - 1)
 		.fill(true)
 		.map((_, i) => {
 			return spring({
 				fps,
-				frame: frame - (i + 1) * 40 - delay,
+				frame:
+					frame - (i + 1) * (i === top3Languages.length - 2 ? 40 : 40) - delay,
 				config: {
 					damping: 200,
 				},
@@ -44,10 +43,11 @@ export const Socks: React.FC<{
 				<AbsoluteFill
 					style={{
 						marginLeft: -offset * width,
-						marginTop: -300,
+						marginTop: -260,
 					}}
 				>
 					{top3Languages.map((language, i) => {
+						const lastLanguage = i === top3Languages.length - 1;
 						return (
 							<AbsoluteFill
 								key={i}
@@ -55,7 +55,11 @@ export const Socks: React.FC<{
 									left: i * width,
 								}}
 							>
-								<SockComp theme={theme} delay={i * 40 + delay}>
+								<SockComp
+									theme={theme}
+									lastLanguage={lastLanguage}
+									delay={i * 40 + delay + (lastLanguage ? 0 : 0)}
+								>
 									<Lang lang={language}></Lang>
 								</SockComp>
 							</AbsoluteFill>
@@ -70,21 +74,13 @@ export const Socks: React.FC<{
 					fontFamily: 'MonaSans',
 					fontSize: 50,
 					marginTop: 350,
-					paddingLeft: 400,
+					alignItems: 'center',
 				}}
 			>
-				{top3Languages.reverse().map((language, i) => {
-					const reverseIndex = top3Languages.length - i - 1;
-					return (
-						<TopLanguageIcon
-							delay={delay}
-							key={i}
-							reverseIndex={reverseIndex}
-							language={language}
-							num={i + 1}
-						></TopLanguageIcon>
-					);
-				})}
+				<TopLanguagePodium
+					topLanguages={topLanguages.slice().reverse()}
+					delay={delay}
+				></TopLanguagePodium>
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);

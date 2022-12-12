@@ -32,6 +32,7 @@ export const Rank: React.FC<{
 					top: 0,
 					height: size,
 					width: size,
+					fontSize: 50,
 				}}
 			>
 				{num}

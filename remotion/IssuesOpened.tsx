@@ -216,7 +216,7 @@ export const IssuesOpened2022: React.FC<{
 					color: 'black',
 					marginTop: 470,
 					opacity: interpolate(closedDotsProgress, [0, 0.4], [1, 0]),
-					fontVariationSettings: '"wght" 500 ',
+					fontVariationSettings: '"wght" 550',
 				}}
 			>
 				Issues opened
@@ -230,7 +230,7 @@ export const IssuesOpened2022: React.FC<{
 					color: 'black',
 					marginTop: 470,
 					opacity: interpolate(closedDotsProgress, [0.4, 0.8], [0, 1]),
-					fontVariationSettings: '"wght" 500 ',
+					fontVariationSettings: '"wght" 550',
 				}}
 			>
 				Issues still open

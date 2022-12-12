@@ -9,6 +9,8 @@ const row: React.CSSProperties = {
 	alignItems: 'center',
 	marginTop: 10,
 	marginBottom: 10,
+	justifyContent: 'center',
+	lineHeight: 1,
 };
 
 export const TopLanguageIcon: React.FC<{
@@ -16,13 +18,14 @@ export const TopLanguageIcon: React.FC<{
 	delay: number;
 	language: TopLanguage;
 	num: number;
-}> = ({reverseIndex, num, delay, language}) => {
+	top: boolean;
+}> = ({reverseIndex, top, num, delay, language}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
 	const opacity = spring({
 		fps,
-		frame: frame - (reverseIndex + 1) * 40 + 30 - delay,
+		frame: frame - (reverseIndex + 1) * 40 + 30 - delay - (num === 1 ? 40 : 0),
 		config: {
 			damping: 200,
 		},
@@ -33,13 +36,14 @@ export const TopLanguageIcon: React.FC<{
 			style={{
 				display: 'flex',
 				flexDirection: 'row',
+				fontSize: top ? 65 : 50,
 			}}
 			key={language.name}
 		>
-			<div style={row}>
+			<div style={{...row, opacity}}>
 				<Rank num={num}></Rank>
 				<div style={{width: 24}}></div>
-				<div style={{opacity}}>{language.name}</div>
+				<div style={{}}>{language.name}</div>
 			</div>
 		</div>
 	);

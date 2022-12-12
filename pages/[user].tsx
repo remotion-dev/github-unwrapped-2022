@@ -24,6 +24,7 @@ import {getAllStatsFromCache} from '../src/db/cache';
 import {RenderRequest} from '../src/types';
 import {RenderProgressOrFinality} from './api/progress';
 import ErrorHandler from '../src/components/Error';
+import {DURATION} from '../src/config';
 
 const iosSafari = () => {
 	if (typeof window === 'undefined') {
@@ -329,7 +330,7 @@ export default function User(props: {user: CompactStats | null}) {
 										component={Main}
 										compositionHeight={1080}
 										compositionWidth={1080}
-										durationInFrames={990}
+										durationInFrames={DURATION}
 										fps={30}
 										style={{
 											...layout,

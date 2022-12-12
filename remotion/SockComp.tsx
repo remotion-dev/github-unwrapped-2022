@@ -15,27 +15,38 @@ export const SockComp: React.FC<{
 	children: React.ReactNode;
 	delay: number;
 	theme: Theme;
-}> = ({children, delay, theme}) => {
+	lastLanguage: boolean;
+}> = ({children, delay, theme, lastLanguage}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
-	const squeezeOut = spring({
-		fps,
-		frame: frame - delay,
-		config: {
-			damping: 200,
-		},
-		durationInFrames: 15,
-	});
+	const squeezeOut = lastLanguage
+		? spring({
+				fps,
+				frame: frame - 30 - delay,
+				config: {
+					damping: 200,
+				},
+				durationInFrames: 15,
+		  })
+		: 0;
 
-	const squeezeIn = spring({
-		fps,
-		frame: frame - 10 - delay,
-		durationInFrames: 10,
-	});
+	const squeezeIn = lastLanguage
+		? spring({
+				fps,
+				frame: frame - 40 - delay,
+				durationInFrames: 10,
+		  })
+		: 0;
 	const push = spring({
 		fps,
-		frame: frame - 10 - delay,
+		frame: frame - (lastLanguage ? 40 : 10) - delay,
+		durationInFrames: 20,
+	});
+
+	const sockRotation = spring({
+		fps,
+		frame: frame - delay,
 		durationInFrames: 20,
 	});
 
@@ -55,7 +66,13 @@ export const SockComp: React.FC<{
 						random(delay + 'b'),
 						[0, 1],
 						[-0.1 * Math.PI, 0.1 * Math.PI]
-					) + 'rad',
+					) +
+					interpolate(
+						sockRotation,
+						[0, 1],
+						lastLanguage ? [-Math.PI, 0] : [-Math.PI * 2, 0]
+					) +
+					'rad',
 			}}
 		>
 			<AbsoluteFill

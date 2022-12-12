@@ -1,14 +1,14 @@
-import React from 'react';
+import React, {useMemo} from 'react';
 import {AbsoluteFill, Audio, Internals, Sequence, staticFile} from 'remotion';
 import {AvgCommits} from './AvgCommits';
 import {BestCommits} from './BestCommits';
 import {EndCard} from './EndCard';
 import {EndCard2} from './EndCard2';
 import {IssuesOpened2022} from './IssuesOpened';
+import {LanguageToSocks} from './LanguageToSocks';
 import {CompactStats} from './map-response-to-stats';
 import {SlideIn, SlideOut, transitionDuration} from './SlideIn';
 import {Snow} from './Snow';
-import {Socks} from './Socks';
 import {Theme} from './theme';
 import {Title} from './Title2022';
 import {TopWeekdays2022} from './Weekday2022';
@@ -17,7 +17,7 @@ export const Main: React.FC<{
 	stats: CompactStats;
 	theme: Theme;
 }> = ({stats, theme}) => {
-	const duration = [130, 120, 150, 150, 150, 150, 60, 150];
+	const duration = [130, 240, 150, 180, 100, 150, 60, 150];
 	const accumulatedFrom = (i: number) =>
 		duration.slice(0, i).reduce((a, b) => a + b);
 	const windPushes = duration
@@ -28,6 +28,10 @@ export const Main: React.FC<{
 			return duration.slice(0, i).reduce((a, b) => a + b);
 		})
 		.filter(Internals.truthy);
+
+	const topLanguages = useMemo(() => {
+		return stats.topLanguages?.slice(0, 3) ?? [];
+	}, [stats.topLanguages]);
 
 	return (
 		<AbsoluteFill
@@ -48,11 +52,11 @@ export const Main: React.FC<{
 			>
 				<SlideOut>
 					<SlideIn>
-						<Socks
+						<LanguageToSocks
 							theme={theme}
 							noBackground={true}
-							topLanguages={stats.topLanguages ?? []}
-						></Socks>
+							topLanguages={topLanguages}
+						></LanguageToSocks>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>

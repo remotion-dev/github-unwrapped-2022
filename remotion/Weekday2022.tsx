@@ -68,14 +68,14 @@ export const TopWeekdays2022: React.FC<{
 
 	const appearIn = spring({
 		fps,
-		frame: frame - 45,
+		frame: frame - 30,
 		config: {
 			damping: 200,
 		},
-		durationInFrames: 45,
+		durationInFrames: 30,
 	});
 
-	const opacity2 = interpolate(frame, [90, 110], [0, 1], {
+	const opacity2 = interpolate(frame, [50, 80], [0, 1], {
 		extrapolateLeft: 'clamp',
 		extrapolateRight: 'clamp',
 	});

@@ -1,5 +1,5 @@
 import {Composition, Folder, Still} from 'remotion';
-import {COMP_NAME} from '../src/config';
+import {COMP_NAME, DURATION} from '../src/config';
 import {all} from './all';
 import {Flashcard} from './Flashcard';
 import {Main} from './Main';
@@ -59,7 +59,7 @@ export const Root: React.FC = () => {
 		<>
 			<Composition
 				component={Main}
-				durationInFrames={990}
+				durationInFrames={DURATION}
 				fps={30}
 				height={1080}
 				width={1080}
@@ -74,7 +74,7 @@ export const Root: React.FC = () => {
 			></Composition>
 			<Composition
 				component={Main}
-				durationInFrames={990}
+				durationInFrames={DURATION}
 				fps={30}
 				height={1080}
 				width={1080}
@@ -89,7 +89,7 @@ export const Root: React.FC = () => {
 			></Composition>
 			<Composition
 				component={Main}
-				durationInFrames={990}
+				durationInFrames={DURATION}
 				fps={30}
 				height={1080}
 				width={1080}

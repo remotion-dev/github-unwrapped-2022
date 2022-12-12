@@ -20,7 +20,7 @@ export const LanguageToSocks: React.FC<{
 
 	const spr = spring({
 		fps,
-		frame: frame - 30,
+		frame: frame - 60,
 		config: {
 			damping: 200,
 		},
@@ -47,7 +47,7 @@ export const LanguageToSocks: React.FC<{
 					noBackground={noBackground}
 					theme={theme}
 					topLanguages={topLanguages}
-					delay={35}
+					delay={65}
 				></Socks>
 			</AbsoluteFill>
 		</AbsoluteFill>
