@@ -131,7 +131,7 @@ export const WallHanger: React.FC<{commitCount: number}> = ({commitCount}) => {
 						fontSize: 120,
 						marginTop: 208,
 						fontFamily: 'MonaSans',
-						fontVariationSettings: '"wght" 700',
+						fontWeight: 700,
 					}}
 				>
 					<strong>{commitCount}</strong>

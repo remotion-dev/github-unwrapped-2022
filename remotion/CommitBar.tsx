@@ -60,7 +60,7 @@ export const CommitBar: React.FC<{
 					marginTop: 20,
 					fontFamily: 'MonaSans',
 					fontSize: 24,
-					fontVariationSettings: '"wght" 500',
+					fontWeight: 500,
 				}}
 			>
 				{hour}

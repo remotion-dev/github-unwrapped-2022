@@ -35,7 +35,7 @@ export const LoadingPage: React.FC = () => {
 			></Player>
 			<div
 				style={{
-					fontVariationSettings: '"wght" 700',
+					fontWeight: 700,
 					fontSize: 30,
 					marginRight: -20,
 					color: theme.mainColor,

@@ -70,7 +70,7 @@ export const Socks: React.FC<{
 			<AbsoluteFill
 				style={{
 					justifyContent: 'center',
-					fontVariationSettings: '"wght" 700',
+					fontWeight: 700,
 					fontFamily: 'MonaSans',
 					fontSize: 50,
 					marginTop: 350,

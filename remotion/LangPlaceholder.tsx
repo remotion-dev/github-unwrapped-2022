@@ -63,7 +63,7 @@ export const LangPlaceholder: React.FC<{
 					fontSize: name.length <= 3 ? 300 : 180,
 					textAlign: 'center',
 					fontFamily: 'MonaSans',
-					fontVariationSettings: '"wght" 500',
+					fontWeight: 500,
 				}}
 			>
 				{name}

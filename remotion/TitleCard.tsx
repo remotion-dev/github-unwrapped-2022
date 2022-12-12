@@ -75,13 +75,13 @@ export const TitleCard: React.FC<{username: string; theme: Theme}> = ({
 					<span
 						style={{
 							fontSize: '0.7em',
-							fontVariationSettings: '"wght" 500',
+							fontWeight: 500,
 						}}
 					>
 						This is my{' '}
 						<span
 							style={{
-								fontVariationSettings: '"wght" 700',
+								fontWeight: 700,
 							}}
 						>
 							#GitHubUnwrapped
@@ -91,7 +91,7 @@ export const TitleCard: React.FC<{username: string; theme: Theme}> = ({
 					<span
 						style={{
 							fontSize: '1.1em',
-							fontVariationSettings: '"wght" 700',
+							fontWeight: 700,
 							color: theme.mainColor,
 						}}
 					>

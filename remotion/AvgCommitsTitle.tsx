@@ -67,7 +67,7 @@ export const AvgCommitsTitle: React.FC<{topHour: Hour}> = ({topHour}) => {
 				fontFamily: 'MonaSans',
 				fontSize: 50,
 				marginTop: -320,
-				fontVariationSettings: '"wght" 600',
+				fontWeight: 700,
 			}}
 		>
 			<div

@@ -20,7 +20,7 @@ const container: React.CSSProperties = {
 	margin: 'auto',
 	fontSize: 14,
 	textAlign: 'center',
-	fontVariationSettings: '"wght" 500',
+	fontWeight: 500,
 	display: 'flex',
 };
 

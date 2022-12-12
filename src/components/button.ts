@@ -12,7 +12,7 @@ export const button = (theme: Theme): React.CSSProperties => ({
 	fontSize: 20,
 	fontFamily: 'MonaSans',
 	cursor: 'pointer',
-	fontVariationSettings: '"wght" 700',
+	fontWeight: 700,
 });
 
 export const backButton: React.CSSProperties = {
@@ -22,7 +22,7 @@ export const backButton: React.CSSProperties = {
 	fontSize: 16,
 	flexDirection: 'row',
 	alignItems: 'center',
-	fontVariationSettings: '"wght" 700',
+	fontWeight: 700,
 	display: 'flex',
 	cursor: 'pointer',
 };

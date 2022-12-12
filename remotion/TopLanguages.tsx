@@ -6,7 +6,7 @@ export const TopLanguages: React.FC = () => {
 		<AbsoluteFill
 			style={{
 				fontFamily: 'MonaSans',
-				fontVariationSettings: '"wght" 700',
+				fontWeight: 700,
 				justifyContent: 'center',
 				alignItems: 'center',
 				fontSize: 45,

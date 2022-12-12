@@ -49,7 +49,7 @@ export const TopWeekdays2022: React.FC<{
 			fontSize: 80,
 			fontFamily: 'MonaSans',
 			textAlign: 'center',
-			fontVariationSettings: '"wght" 700',
+			fontWeight: 700,
 		}),
 		[theme.mainColor]
 	);
@@ -120,7 +120,7 @@ export const TopWeekdays2022: React.FC<{
 						color: 'black',
 						opacity: opacity2,
 						fontSize: 45,
-						fontVariationSettings: '"wght" 700',
+						fontWeight: 700,
 					}}
 				>{`is my most productive day.`}</div>
 				<div
@@ -159,7 +159,7 @@ export const TopWeekdays2022: React.FC<{
 											style={{
 												...label,
 												color: isMostProductive ? theme.mainColor : 'black',
-												fontVariationSettings: '"wght" 700',
+												fontWeight: 700,
 											}}
 										>
 											{['M', 'T', 'W', 'T', 'F', 'S', 'S'][i]}

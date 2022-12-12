@@ -43,7 +43,7 @@ export const BestCommits: React.FC<{
 					style={{
 						fontSize: 46,
 						fontFamily: 'MonaSans',
-						fontVariationSettings: '"wght" 600',
+						fontWeight: 700,
 						textAlign: 'center',
 						lineHeight: 1.4,
 						marginTop: interpolate(moveUp, [0, 1], [0, -790]),

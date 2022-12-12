@@ -39,7 +39,7 @@ const subtitle: React.CSSProperties = {
 	fontSize: 24,
 	marginTop: 4,
 	marginBottom: 0,
-	fontVariationSettings: '"wght" 500',
+	fontWeight: 500,
 };
 
 const layout: React.CSSProperties = {
@@ -113,7 +113,7 @@ export const UserPage: React.FC<{
 			marginBottom: 0,
 			fontSize: 40,
 			marginTop: 0,
-			fontVariationSettings: '"wght" 700',
+			fontWeight: 700,
 		}),
 		[theme.mainColor]
 	);
@@ -215,7 +215,7 @@ export const UserPage: React.FC<{
 														color: 'black',
 														fontFamily: 'MonaSans',
 														fontSize: 18,
-														fontVariationSettings: '"wght" 500',
+														fontWeight: 500,
 													}}
 												>
 													Click to play
@@ -242,7 +242,7 @@ export const UserPage: React.FC<{
 									<div
 										style={{
 											fontFamily: 'MonaSans',
-											fontVariationSettings: '"wght" 600',
+											fontWeight: 700,
 											lineHeight: 1.5,
 											marginBottom: 10,
 										}}

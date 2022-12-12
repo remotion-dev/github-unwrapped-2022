@@ -26,7 +26,7 @@ const paragraph: React.CSSProperties = {
 	fontSize: 18,
 	fontFamily: 'MonaSans',
 	color: 'black',
-	fontVariationSettings: '"wght" 500',
+	fontWeight: 500,
 };
 
 getFont();
@@ -61,11 +61,10 @@ export default function Home() {
 
 	const h1: React.CSSProperties = useMemo(() => {
 		return {
-			fontWeight: 'bold',
 			fontSize: 40,
 			color: theme.mainColor,
 			fontFamily: 'MonaSans',
-			fontVariationSettings: '"wght" 700',
+			fontWeight: 700,
 		};
 	}, [theme.mainColor]);
 
@@ -78,7 +77,7 @@ export default function Home() {
 			textAlign: 'center',
 			background: 'white',
 			border: `3px solid ${theme.mainColor}`,
-			fontVariationSettings: '"wght" 700',
+			fontWeight: 700,
 		}),
 		[theme.mainColor]
 	);

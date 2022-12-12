@@ -38,9 +38,8 @@ export const EndCard: React.FC<{
 			fontFamily: 'MonaSans',
 			fontSize: 65,
 			textAlign: 'center',
-			fontWeight: 'bold',
 			marginTop: 20,
-			fontVariationSettings: '"wght" 700',
+			fontWeight: 700,
 		};
 	}, [theme.mainColor]);
 

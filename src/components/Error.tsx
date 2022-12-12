@@ -79,7 +79,7 @@ const ErrorHandler: React.FC<{
 				></SadGingerman>
 				<h1
 					style={{
-						fontVariationSettings: '"wght" 700',
+						fontWeight: 700,
 						color: theme.mainColor,
 						marginBottom: 0,
 					}}
@@ -88,7 +88,7 @@ const ErrorHandler: React.FC<{
 				</h1>
 				<p
 					style={{
-						fontVariationSettings: '"wght" 500',
+						fontWeight: 500,
 					}}
 				>
 					{subtitle}
@@ -97,7 +97,7 @@ const ErrorHandler: React.FC<{
 					<span
 						style={{
 							color: theme.mainColor,
-							fontVariationSettings: '"wght" 700',
+							fontWeight: 700,
 							cursor: 'pointer',
 						}}
 					>
