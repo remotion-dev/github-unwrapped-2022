@@ -1,14 +1,11 @@
 import React, {SVGProps, useMemo} from 'react';
-import {useCurrentFrame} from 'remotion';
 import {getRough} from './get-rough';
 
-import {useNoiseTranslate} from './use-noise-translate';
-
-export const RoughCircle: React.FC<SVGProps<SVGCircleElement>> = (props) => {
-	const frame = Math.floor(useCurrentFrame() / 3);
-
-	const [noiseX, noiseY] = useNoiseTranslate(String(props.cx) + props.cy);
-
+export const RoughCircleStatic: React.FC<
+	SVGProps<SVGCircleElement> & {
+		seed: number;
+	}
+> = ({seed, ...props}) => {
 	const paths = useMemo(() => {
 		const path = getRough().generator();
 		const drawable = path.circle(
@@ -18,7 +15,7 @@ export const RoughCircle: React.FC<SVGProps<SVGCircleElement>> = (props) => {
 			{
 				roughness: 0.3,
 				fill: props.fill,
-				seed: frame,
+				seed,
 				maxRandomnessOffset: 4,
 				hachureGap: 1,
 				strokeWidth: (props.strokeWidth as number) ?? 2,
@@ -27,13 +24,13 @@ export const RoughCircle: React.FC<SVGProps<SVGCircleElement>> = (props) => {
 		);
 		return path.toPaths(drawable);
 	}, [
-		frame,
 		props.cx,
 		props.cy,
 		props.fill,
 		props.r,
 		props.stroke,
 		props.strokeWidth,
+		seed,
 	]);
 	return (
 		<>
@@ -41,9 +38,6 @@ export const RoughCircle: React.FC<SVGProps<SVGCircleElement>> = (props) => {
 				const {d, stroke, strokeWidth, fill} = p;
 				return (
 					<path
-						style={{
-							transform: `translateX(${noiseX}px) translateY(${noiseY}px)`,
-						}}
 						key={p.d}
 						d={d}
 						stroke={stroke}

@@ -13,7 +13,6 @@ import Download from './Download';
 import {Footer, FOOTER_HEIGHT} from './Footer';
 import {Gingerman} from './Gingerman';
 import {LinkedIn} from './LinkedIn';
-import {PlayButton} from './Play';
 import {QuestionMark} from './Question';
 import {RoughBox} from './RoughBox';
 import {ThemeSwitcher} from './ThemeSwitcher';
@@ -134,7 +133,6 @@ export const UserPage: React.FC<{
 			<div style={abs}>
 				<div style={container}>
 					<br></br>
-					<ThemeSwitcher></ThemeSwitcher>
 					<br></br>
 					<h1 style={title}>Here is your #GitHubUnwrapped!</h1>
 					<h2 style={subtitle}>@{stats.username}</h2>
@@ -292,12 +290,9 @@ export const UserPage: React.FC<{
 									></div>
 									<Link
 										target={'_blank'}
-										href={
-											'https://twitter.com/intent/tweet?text=' +
-											encodeURIComponent(
-												'This is my #GitHubUnwrapped! Get your own: https://www.githubunwrapped.com'
-											)
-										}
+										href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+											`https://www.githubunwrapped.com/${username}`
+										)}`}
 										passHref
 									>
 										<div style={backButton}>
@@ -340,6 +335,24 @@ export const UserPage: React.FC<{
 								</div>
 							</div>
 						</RoughBox>
+						<div
+							style={{
+								height: 20,
+							}}
+						></div>
+						<div
+							style={{
+								display: 'flex',
+								flexDirection: 'row',
+							}}
+						>
+							<div
+								style={{
+									flex: 1,
+								}}
+							></div>
+							<ThemeSwitcher></ThemeSwitcher>
+						</div>
 					</div>
 				</div>
 			</div>

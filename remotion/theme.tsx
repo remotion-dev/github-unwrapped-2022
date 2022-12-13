@@ -15,7 +15,7 @@ export const redTheme: Theme = {
 };
 
 export const goldenTheme: Theme = {
-	name: 'Mistletoe Bliss',
+	name: 'Bespoke Golden',
 	mainColor: '#DAA520',
 	accentColor: '#C97723',
 	background: '#f7f1de',
@@ -29,7 +29,7 @@ export const blueTheme: Theme = {
 };
 
 export const greenTheme: Theme = {
-	name: 'Icy Winter',
+	name: 'Pure Fir',
 	mainColor: '#25822b',
 	accentColor: '#ff2e1f',
 	background: '#d8ffdf',

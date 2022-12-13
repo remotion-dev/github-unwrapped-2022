@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import {
 	blueTheme,
 	goldenTheme,
@@ -6,32 +6,52 @@ import {
 	redTheme,
 	useTheme,
 } from '../../remotion/theme';
+import {RoughBox} from './RoughBox';
+import {ThemeSwitcherItem} from './ThemeSwitcherItem';
+
+const container: React.CSSProperties = {
+	display: 'flex',
+	flexDirection: 'row',
+	justifyContent: 'flex-end',
+	paddingRight: 20,
+	fontFamily: 'MonaSans',
+	alignItems: 'center',
+};
+
+const themeTitle: React.CSSProperties = {
+	fontSize: 13,
+	marginBottom: 4,
+};
+
+const themeName: React.CSSProperties = {
+	fontWeight: 'bold',
+};
+
+const spacer: React.CSSProperties = {
+	width: 14,
+};
 
 export const ThemeSwitcher: React.FC = () => {
-	const [, setTheme] = useTheme();
-
-	const setRed = useCallback(() => {
-		setTheme(redTheme);
-	}, [setTheme]);
-
-	const setGolden = useCallback(() => {
-		setTheme(goldenTheme);
-	}, [setTheme]);
-
-	const setBlue = useCallback(() => {
-		setTheme(blueTheme);
-	}, [setTheme]);
-
-	const setGreen = useCallback(() => {
-		setTheme(greenTheme);
-	}, [setTheme]);
+	const [activeTheme, setTheme] = useTheme();
 
 	return (
-		<div>
-			<button onClick={setRed}>Red theme</button>
-			<button onClick={setGolden}>Golden theme</button>
-			<button onClick={setBlue}>Blue theme</button>
-			<button onClick={setGreen}>Green theme</button>
-		</div>
+		<RoughBox seed={2} style={container}>
+			<div>
+				<div style={themeTitle}>Theme</div>
+				<div style={themeName}>{activeTheme.name}</div>
+			</div>
+			<div style={spacer}></div>
+			{[redTheme, goldenTheme, blueTheme, greenTheme].map((theme, i) => {
+				return (
+					<ThemeSwitcherItem
+						active={theme === activeTheme}
+						key={i}
+						seed={i + 1}
+						color={theme.mainColor}
+						onClick={() => setTheme(theme)}
+					/>
+				);
+			})}
+		</RoughBox>
 	);
 };
