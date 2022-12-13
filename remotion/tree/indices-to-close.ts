@@ -2,7 +2,7 @@ import chunk from 'lodash.chunk';
 const {random} = require('remotion');
 
 const padding = 30;
-const bottomSpace = 130;
+const bottomSpace = 210;
 
 export const getIndicesToClose = ({
 	totalIssues,

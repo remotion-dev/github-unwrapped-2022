@@ -179,208 +179,208 @@ export const Root: React.FC = () => {
 			<Folder name="languages">
 				<Composition
 					component={TypeScript}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="typescript"
 				></Composition>
 				<Composition
 					component={JavaScript}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="javascript"
 				></Composition>
 				<Composition
 					component={Java}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="java"
 				></Composition>
 				<Composition
 					component={Clojure}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="clojure"
 				></Composition>
 				<Composition
 					component={CMake}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="cmake"
 				></Composition>
 				<Composition
 					component={Vue}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="vue"
 				></Composition>
 				<Composition
 					component={CoffeeScript}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="coffeescript"
 				></Composition>
 				<Composition
 					component={Kotlin}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="kotlin"
 				></Composition>
 				<Composition
 					component={CPlusPlus}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="cplusplus"
 				></Composition>
 				<Composition
 					component={Solidity}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="solidity"
 				></Composition>
 				<Composition
 					component={Flutter}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="flutter"
 				></Composition>
 				<Composition
 					component={SQL}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="mysql"
 				></Composition>
 				<Composition
 					component={Haskell}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="haskell"
 				></Composition>
 				<Composition
 					component={Lua}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="lua"
 				></Composition>
 				<Composition
 					component={Python}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="python"
 				></Composition>
 				<Composition
 					component={PowerShell}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="powershell"
 				></Composition>
 				<Composition
 					component={Ruby}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="ruby"
 				></Composition>
 				<Composition
 					component={Html}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="html"
 				></Composition>
 				<Composition
 					component={Scala}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="scala"
 				></Composition>
 				<Composition
 					component={Php}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="php"
 				></Composition>
 				<Composition
 					component={Swift}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="swift"
 				></Composition>
 				<Composition
 					component={Css}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="css"
 				></Composition>
 				<Composition
 					component={GraphQL}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="graphql"
 				></Composition>
 				<Composition
 					component={RLang}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="r"
 				></Composition>
 				<Composition
 					component={Rust}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="rust"
 				></Composition>
 				<Composition
 					component={Sass}
-					height={1000}
-					width={1000}
+					height={1080}
+					width={1080}
 					durationInFrames={50}
 					fps={30}
 					id="sass"
@@ -388,8 +388,8 @@ export const Root: React.FC = () => {
 			</Folder>
 			<Composition
 				component={IssuesOpened}
-				height={1000}
-				width={1000}
+				height={1080}
+				width={1080}
 				durationInFrames={250}
 				fps={30}
 				id="FewIssues"
@@ -404,8 +404,8 @@ export const Root: React.FC = () => {
 			></Composition>
 			<Composition
 				component={IssuesOpened}
-				height={1000}
-				width={1000}
+				height={1080}
+				width={1080}
 				durationInFrames={250}
 				fps={30}
 				id="50Issues"
@@ -420,32 +420,32 @@ export const Root: React.FC = () => {
 			></Composition>
 			<Composition
 				component={TreeComp}
-				height={1000}
-				width={1000}
+				height={1080}
+				width={1080}
 				durationInFrames={250}
 				fps={30}
 				id="Tree"
 			></Composition>
 			<Composition
 				component={LogoComp}
-				height={1000}
-				width={1000}
+				height={1080}
+				width={1080}
 				durationInFrames={250}
 				fps={30}
 				id="Logo"
 			></Composition>
 			<Composition
 				component={GithubComp}
-				height={1000}
-				width={1000}
+				height={1080}
+				width={1080}
 				durationInFrames={250}
 				fps={30}
 				id="Github"
 			></Composition>
 			<Composition
 				component={TreeGithub}
-				height={1000}
-				width={1000}
+				height={1080}
+				width={1080}
 				durationInFrames={250}
 				fps={30}
 				id="TreeGithub"
