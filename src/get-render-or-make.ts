@@ -6,7 +6,7 @@ import {
 } from '@remotion/lambda';
 import {RenderProgressOrFinality} from '../pages/api/progress';
 import {CompactStats} from '../remotion/map-response-to-stats';
-import {ThemeId} from '../remotion/theme';
+import {allThemes, ThemeId} from '../remotion/theme';
 import {COMP_NAME, SITE_ID} from './config';
 import {
 	Finality,
@@ -19,15 +19,16 @@ import {getRandomAwsAccount} from './get-random-aws-account';
 import {getRenderProgressWithFinality} from './get-render-progress-with-finality';
 import {getRandomRegion} from './regions';
 import {setEnvForKey} from './set-env-for-key';
+import {CompProps} from './types';
 
 export const getRenderOrMake = async ({
 	username,
 	stats,
-	theme,
+	themeId,
 }: {
 	username: string;
 	stats: CompactStats;
-	theme: ThemeId;
+	themeId: ThemeId;
 }): Promise<RenderProgressOrFinality> => {
 	const cache = await getRender(username);
 	let _renderId: string | null = cache?.renderId ?? null;
@@ -53,15 +54,28 @@ export const getRenderOrMake = async ({
 			username,
 			account,
 			functionName: first.functionName,
-			theme,
+			theme: themeId,
 		});
+
+		const theme = allThemes.find((t) => {
+			return t.name === themeId;
+		});
+
+		if (!theme) {
+			throw new Error('theme not found');
+		}
+
+		const inputProps: CompProps = {
+			stats,
+			theme,
+		};
 
 		const {renderId, bucketName} = await renderMediaOnLambda({
 			region: region,
 			functionName: first.functionName,
 			serveUrl: SITE_ID,
 			composition: COMP_NAME,
-			inputProps: {stats: stats},
+			inputProps,
 			codec: 'h264',
 			imageFormat: 'jpeg',
 			maxRetries: 1,

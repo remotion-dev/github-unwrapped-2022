@@ -242,7 +242,11 @@ export const UserPage: React.FC<{
 									>
 										Download your video as an MP4:
 									</div>
-									<Download username={username} stats={stats}></Download>
+									<Download
+										key={theme.name}
+										username={username}
+										stats={stats}
+									></Download>
 									<div
 										style={{
 											fontWeight: 700,

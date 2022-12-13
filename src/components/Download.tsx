@@ -3,7 +3,7 @@ import {RenderProgressOrFinality} from '../../pages/api/progress';
 import {CompactStats} from '../../remotion/map-response-to-stats';
 import {Theme, useTheme} from '../../remotion/theme';
 import {formatBytes} from '../format-bytes';
-import {RenderRequest} from '../types';
+import {ProgressData, RenderRequest} from '../types';
 import {button} from './button';
 import {Laptop} from './Laptop';
 
@@ -33,13 +33,16 @@ const Download: React.FC<{
 	const [downloadProgress, setDownloadProgress] =
 		useState<RenderProgressOrFinality | null>(null);
 
-	const pollProgress = useCallback(async () => {
+	const pollProgress = useCallback(() => {
+		const data: ProgressData = {
+			username,
+			theme: theme.name,
+		};
+
 		const poll = async () => {
 			const progress = await fetch('/api/progress', {
 				method: 'POST',
-				body: JSON.stringify({
-					username,
-				}),
+				body: JSON.stringify(data),
 			});
 			const progressJson = (await progress.json()) as RenderProgressOrFinality;
 			setDownloadProgress(progressJson);
@@ -48,10 +51,12 @@ const Download: React.FC<{
 			}
 		};
 
-		setTimeout(() => {
+		const cleanup = setTimeout(() => {
 			poll();
 		}, 1000);
-	}, [username]);
+
+		return cleanup;
+	}, [theme.name, username]);
 
 	const render = useCallback(async () => {
 		const renderRequest: RenderRequest = {
@@ -68,11 +73,17 @@ const Download: React.FC<{
 	}, [stats, theme, username]);
 
 	const type = downloadProgress?.type ?? null;
+	0;
 
 	useEffect(() => {
-		if (type === 'progress') {
-			pollProgress();
+		if (type !== 'progress') {
+			return;
 		}
+		const timeout = pollProgress();
+
+		return () => {
+			return clearTimeout(timeout);
+		};
 	}, [type, pollProgress]);
 
 	useEffect(() => {

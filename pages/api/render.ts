@@ -13,7 +13,7 @@ export default async function handler(
 	const prog = await getRenderOrMake({
 		username: body.username,
 		stats: body.compactStats,
-		theme: body.theme,
+		themeId: body.theme,
 	});
 	res.status(200).json(prog);
 }

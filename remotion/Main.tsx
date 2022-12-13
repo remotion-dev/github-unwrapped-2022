@@ -1,21 +1,17 @@
 import React, {useMemo} from 'react';
 import {AbsoluteFill, Audio, Internals, Sequence, staticFile} from 'remotion';
+import {CompProps} from '../src/types';
 import {AvgCommits} from './AvgCommits';
 import {BestCommits} from './BestCommits';
 import {EndCard} from './EndCard';
 import {IssuesOpened2022} from './IssuesOpened';
 import {LanguageToSocks} from './LanguageToSocks';
-import {CompactStats} from './map-response-to-stats';
 import {SlideIn, SlideOut, transitionDuration} from './SlideIn';
 import {Snow} from './Snow';
-import {Theme} from './theme';
 import {Title} from './Title2022';
 import {TopWeekdays2022} from './TopWeekdays';
 
-export const Main: React.FC<{
-	stats: CompactStats;
-	theme: Theme;
-}> = ({stats, theme}) => {
+export const Main: React.FC<CompProps> = ({stats, theme}) => {
 	const duration = [130, 240, 150, 180, 100, 150, 200];
 	const accumulatedFrom = (i: number) =>
 		duration.slice(0, i).reduce((a, b) => a + b);
