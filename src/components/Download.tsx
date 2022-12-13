@@ -108,7 +108,9 @@ const Download: React.FC<{
 						<div style={{flex: 1}}>
 							Download video
 							<div style={sizeLabel}>
-								{formatBytes(downloadProgress.finality.outputSize)}
+								{downloadProgress.finality.outputSize
+									? formatBytes(downloadProgress.finality.outputSize)
+									: null}
 							</div>
 						</div>
 						<Laptop
