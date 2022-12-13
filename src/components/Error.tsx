@@ -1,4 +1,6 @@
+import Head from 'next/head';
 import Link from 'next/link';
+import React from 'react';
 import {useMemo} from 'react';
 import {AbsoluteFill} from 'remotion';
 import {useTheme} from '../../remotion/theme';
@@ -50,6 +52,8 @@ const style: React.CSSProperties = {
 	textAlign: 'center',
 	marginLeft: 20,
 	marginRight: 20,
+	maxWidth: 800,
+	lineHeight: 1.4,
 };
 
 const ErrorHandler: React.FC<{
@@ -69,8 +73,13 @@ const ErrorHandler: React.FC<{
 				justifyContent: 'center',
 				alignItems: 'center',
 				fontFamily: 'MonaSans',
+				paddingLeft: 30,
+				paddingRight: 30,
 			}}
 		>
+			<Head>
+				<title>{":'("} - GitHubWrapped</title>
+			</Head>
 			<RoughBox style={style} seed={4}>
 				<SadGingerman
 					style={{
