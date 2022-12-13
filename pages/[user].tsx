@@ -10,13 +10,17 @@ import {
 import {getAllStatsFromCache} from '../src/db/cache';
 import ErrorHandler from '../src/components/Error';
 import {UserPage} from '../src/components/UserPage';
-import {ThemeProvider} from '../remotion/theme';
+import {ThemeId, ThemeProvider} from '../remotion/theme';
 import {GetServerSideProps} from 'next';
 import {getCookie} from 'cookies-next';
+import {getRenderProgressWithFinality} from '../src/get-render-progress-with-finality';
+import {getRender} from '../src/db/renders';
+import {RenderProgressOrFinality} from '../src/types';
 
 type Props = {
 	user: CompactStats | null;
-	initialTheme: string | null;
+	initialTheme: ThemeId | null;
+	initialRenderProgress: RenderProgressOrFinality | null;
 };
 
 export const getServerSideProps: GetServerSideProps<
@@ -35,13 +39,27 @@ export const getServerSideProps: GetServerSideProps<
 		return {notFound: true};
 	}
 
+	const initialTheme = ((getCookie('theme', {req, res}) as string) ??
+		null) as ThemeId | null;
+
 	try {
 		const compact = await getAllStatsFromCache(user);
+		const render = initialTheme
+			? await getRender({
+					username: params.user,
+					theme: initialTheme,
+			  })
+			: null;
+		const finality = render
+			? await getRenderProgressWithFinality({assume0Progress: false, render})
+			: null;
+
 		if (!compact) {
 			return {
 				props: {
 					user: null,
-					initialTheme: (getCookie('theme', {req, res}) as string) ?? null,
+					initialTheme,
+					initialRenderProgress: null,
 				},
 			};
 		}
@@ -49,7 +67,8 @@ export const getServerSideProps: GetServerSideProps<
 		return {
 			props: {
 				user: compact,
-				initialTheme: (getCookie('theme', {req, res}) as string) ?? null,
+				initialTheme,
+				initialRenderProgress: finality,
 			},
 		};
 	} catch (error) {
@@ -155,7 +174,12 @@ export default function User(props: Props) {
 
 	return (
 		<ThemeProvider initialTheme={props.initialTheme}>
-			<UserPage username={username} stats={state.stats}></UserPage>
+			<UserPage
+				initialTheme={props.initialTheme}
+				initialRenderProgress={props.initialRenderProgress}
+				username={username}
+				stats={state.stats}
+			></UserPage>
 		</ThemeProvider>
 	);
 }

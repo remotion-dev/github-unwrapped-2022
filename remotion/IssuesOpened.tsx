@@ -56,7 +56,7 @@ const getScale = (
 
 const duration = 70;
 
-export const IssuesOpened2022: React.FC<{
+export const IssuesOpened: React.FC<{
 	noBackground: boolean;
 	issues: Issues;
 	theme: Theme;

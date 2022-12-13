@@ -1,6 +1,5 @@
 import {AwsRegion, renderMediaOnLambda, RenderProgress} from '@remotion/lambda';
 import {VERSION} from 'remotion/version';
-import {RenderProgressOrFinality} from '../pages/api/progress';
 import {CompactStats} from '../remotion/map-response-to-stats';
 import {allThemes, ThemeId} from '../remotion/theme';
 import {COMP_NAME, DISK, RAM, SITE_ID, TIMEOUT} from './config';
@@ -15,7 +14,7 @@ import {getRandomAwsAccount} from './get-random-aws-account';
 import {getRenderProgressWithFinality} from './get-render-progress-with-finality';
 import {getRandomRegion} from './regions';
 import {setEnvForKey} from './set-env-for-key';
-import {CompProps} from './types';
+import {CompProps, RenderProgressOrFinality} from './types';
 
 export const getRenderOrMake = async ({
 	username,

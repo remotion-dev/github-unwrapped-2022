@@ -1,8 +1,8 @@
 import {getRenderProgress} from '@remotion/lambda';
-import {RenderProgressOrFinality} from '../pages/api/progress';
 import {Render, updateRenderWithFinality} from './db/renders';
 import {getFinality} from './get-render-or-make';
 import {setEnvForKey} from './set-env-for-key';
+import {RenderProgressOrFinality} from './types';
 
 export const getRenderProgressWithFinality = async ({
 	render,

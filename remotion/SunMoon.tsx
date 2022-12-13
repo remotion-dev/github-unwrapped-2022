@@ -42,6 +42,7 @@ export const SunMoon: React.FC<{
 					style={{
 						justifyContent: 'center',
 						alignItems: 'center',
+						WebkitPerspective: 0,
 						transform: `rotateY(${rotation}rad)`,
 						transformStyle: 'preserve-3d',
 						WebkitTransformStyle: 'preserve-3d',
@@ -66,6 +67,7 @@ export const SunMoon: React.FC<{
 					style={{
 						justifyContent: 'center',
 						alignItems: 'center',
+						WebkitPerspective: 0,
 						transform: `rotateY(${rotation + Math.PI}rad)`,
 						visibility: 'visible',
 						backfaceVisibility: 'hidden',

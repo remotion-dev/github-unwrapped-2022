@@ -4,7 +4,7 @@ import {CompProps} from '../src/types';
 import {AvgCommits} from './AvgCommits';
 import {BestCommits} from './BestCommits';
 import {EndCard} from './EndCard';
-import {IssuesOpened2022} from './IssuesOpened';
+import {IssuesOpened} from './IssuesOpened';
 import {LanguageToSocks} from './LanguageToSocks';
 import {SlideIn, SlideOut, transitionDuration} from './SlideIn';
 import {Snow} from './Snow';
@@ -71,11 +71,11 @@ export const Main: React.FC<CompProps> = ({stats, theme}) => {
 			>
 				<SlideOut>
 					<SlideIn>
-						<IssuesOpened2022
+						<IssuesOpened
 							theme={theme}
 							noBackground={true}
 							issues={stats.issues}
-						></IssuesOpened2022>
+						></IssuesOpened>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>

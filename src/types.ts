@@ -1,5 +1,6 @@
 import {CompactStats} from '../remotion/map-response-to-stats';
 import {Theme, ThemeId} from '../remotion/theme';
+import {Finality} from './db/renders';
 
 export type RenderRequest = {
 	username: string;
@@ -16,3 +17,15 @@ export type ProgressData = {
 	username: string;
 	theme: ThemeId;
 };
+
+export type RenderProgressOrFinality =
+	| {
+			type: 'progress';
+			progress: {
+				percent: number;
+			};
+	  }
+	| {
+			type: 'finality';
+			finality: Finality;
+	  };

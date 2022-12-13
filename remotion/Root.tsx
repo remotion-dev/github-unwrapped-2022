@@ -35,7 +35,7 @@ import {GraphQL} from './Languages/GraphQl';
 import {RLang} from './Languages/RLang';
 import {Rust} from './Languages/Rust';
 import {Sass} from './Languages/Sass';
-import {IssuesOpened2022} from './IssuesOpened';
+import {IssuesOpened} from './IssuesOpened';
 import {TreeComp} from './TreeComp';
 import {LogoComp} from './LogoComp';
 import {GithubComp} from './GithubComp';
@@ -387,12 +387,36 @@ export const Root: React.FC = () => {
 				></Composition>
 			</Folder>
 			<Composition
-				component={IssuesOpened2022}
+				component={IssuesOpened}
 				height={1000}
 				width={1000}
 				durationInFrames={250}
 				fps={30}
-				id="Issues"
+				id="FewIssues"
+				defaultProps={{
+					noBackground: false,
+					issues: {
+						closed: 2,
+						open: 2,
+					},
+					theme: redTheme,
+				}}
+			></Composition>
+			<Composition
+				component={IssuesOpened}
+				height={1000}
+				width={1000}
+				durationInFrames={250}
+				fps={30}
+				id="50Issues"
+				defaultProps={{
+					noBackground: false,
+					issues: {
+						closed: 54,
+						open: 11,
+					},
+					theme: redTheme,
+				}}
 			></Composition>
 			<Composition
 				component={TreeComp}

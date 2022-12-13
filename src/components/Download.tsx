@@ -1,9 +1,8 @@
 import React, {useCallback, useEffect, useState} from 'react';
-import {RenderProgressOrFinality} from '../../pages/api/progress';
 import {CompactStats} from '../../remotion/map-response-to-stats';
-import {Theme, useTheme} from '../../remotion/theme';
+import {Theme, ThemeId, useTheme} from '../../remotion/theme';
 import {formatBytes} from '../format-bytes';
-import {ProgressData, RenderRequest} from '../types';
+import {ProgressData, RenderProgressOrFinality, RenderRequest} from '../types';
 import {button} from './button';
 import {Laptop} from './Laptop';
 
@@ -27,10 +26,14 @@ const sizeLabel: React.CSSProperties = {
 const Download: React.FC<{
 	username: string;
 	stats: CompactStats;
-}> = ({username, stats}) => {
+	initialRenderProgress: RenderProgressOrFinality | null;
+	initialTheme: ThemeId | null;
+}> = ({username, stats, initialRenderProgress, initialTheme}) => {
 	const [theme] = useTheme();
 	const [downloadProgress, setDownloadProgress] =
-		useState<RenderProgressOrFinality | null>(null);
+		useState<RenderProgressOrFinality | null>(
+			initialTheme === theme.name ? initialRenderProgress : null
+		);
 
 	const pollProgress = useCallback(() => {
 		const data: ProgressData = {

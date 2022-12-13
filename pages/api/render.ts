@@ -1,8 +1,7 @@
 import {NextApiRequest, NextApiResponse} from 'next';
 import {saveCache} from '../../src/db/cache';
 import {getRenderOrMake} from '../../src/get-render-or-make';
-import {RenderRequest} from '../../src/types';
-import {RenderProgressOrFinality} from './progress';
+import {RenderProgressOrFinality, RenderRequest} from '../../src/types';
 
 export default async function handler(
 	req: NextApiRequest,

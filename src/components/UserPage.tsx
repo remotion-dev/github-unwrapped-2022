@@ -5,8 +5,9 @@ import {useEffect, useMemo, useRef, useState} from 'react';
 import {AbsoluteFill} from 'remotion';
 import {Main} from '../../remotion/Main';
 import {CompactStats} from '../../remotion/map-response-to-stats';
-import {useTheme} from '../../remotion/theme';
+import {ThemeId, useTheme} from '../../remotion/theme';
 import {DURATION} from '../config';
+import {RenderProgressOrFinality} from '../types';
 import {Bird} from './Bird';
 import {backButton} from './button';
 import Download from './Download';
@@ -54,8 +55,10 @@ const layout: React.CSSProperties = {
 
 export const UserPage: React.FC<{
 	stats: CompactStats;
+	initialRenderProgress: RenderProgressOrFinality | null;
+	initialTheme: ThemeId | null;
 	username: string;
-}> = ({stats, username}) => {
+}> = ({stats, username, initialRenderProgress, initialTheme}) => {
 	const [theme] = useTheme();
 	const [playing, setPlaying] = useState(false);
 	const player = useRef<PlayerRef>(null);
@@ -242,9 +245,11 @@ export const UserPage: React.FC<{
 										Download your video as an MP4:
 									</div>
 									<Download
+										initialTheme={initialTheme}
 										key={theme.name}
 										username={username}
 										stats={stats}
+										initialRenderProgress={initialRenderProgress}
 									></Download>
 									<div
 										style={{
