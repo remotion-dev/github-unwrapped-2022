@@ -344,13 +344,9 @@ export const UserPage: React.FC<{
 							style={{
 								display: 'flex',
 								flexDirection: 'row',
+								justifyContent: 'flex-end',
 							}}
 						>
-							<div
-								style={{
-									flex: 1,
-								}}
-							></div>
 							<ThemeSwitcher></ThemeSwitcher>
 						</div>
 					</div>

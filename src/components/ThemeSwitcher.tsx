@@ -16,6 +16,7 @@ const container: React.CSSProperties = {
 	paddingRight: 20,
 	fontFamily: 'MonaSans',
 	alignItems: 'center',
+	flex: 1,
 };
 
 const themeTitle: React.CSSProperties = {
@@ -35,12 +36,12 @@ export const ThemeSwitcher: React.FC = () => {
 	const [activeTheme, setTheme] = useTheme();
 
 	return (
-		<RoughBox seed={2} style={container}>
+		<RoughBox seed={2} containerClassName="mobile-full-width" style={container}>
 			<div>
 				<div style={themeTitle}>Theme</div>
 				<div style={themeName}>{activeTheme.name}</div>
 			</div>
-			<div style={spacer}></div>
+			<div className="mobile-flex" style={spacer}></div>
 			{[redTheme, goldenTheme, blueTheme, greenTheme].map((theme, i) => {
 				return (
 					<ThemeSwitcherItem

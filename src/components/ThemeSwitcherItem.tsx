@@ -13,6 +13,9 @@ export const ThemeSwitcherItem: React.FC<{
 			onClick={onClick}
 			type="button"
 			style={{
+				flexShrink: 0,
+				paddingLeft: 4,
+				paddingRight: 4,
 				appearance: 'none',
 				backgroundColor: 'transparent',
 				border: 0,
@@ -26,6 +29,8 @@ export const ThemeSwitcherItem: React.FC<{
 					width: SIZE,
 					height: SIZE,
 					overflow: 'visible',
+					marginTop: 8,
+					marginBottom: 8,
 				}}
 			>
 				<RoughCircleStatic

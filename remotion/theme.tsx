@@ -52,10 +52,12 @@ export const useTheme = () => {
 	return [theme, setTheme] as const;
 };
 
+export const DEFAULT_THEME = redTheme;
+
 export const ThemeProvider: React.FC<{
 	children: React.ReactNode;
 }> = ({children}) => {
-	const [theme, setTheme] = useState(redTheme);
+	const [theme, setTheme] = useState(DEFAULT_THEME);
 
 	const data = useMemo(() => {
 		return {

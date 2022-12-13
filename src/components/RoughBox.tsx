@@ -15,7 +15,8 @@ export const RoughBox: React.FC<{
 	seed: number;
 	style: React.CSSProperties;
 	className?: string;
-}> = ({children, seed, className, style: passedStyle}) => {
+	containerClassName?: string;
+}> = ({children, seed, containerClassName, className, style: passedStyle}) => {
 	const ref = useRef<HTMLDivElement>(null);
 
 	const elementSize = PlayerInternals.useElementSize(ref, {
@@ -44,7 +45,7 @@ export const RoughBox: React.FC<{
 	}, [d, seed]);
 
 	return (
-		<div style={style} ref={ref}>
+		<div className={containerClassName} style={style} ref={ref}>
 			<svg
 				style={{
 					position: 'absolute',
