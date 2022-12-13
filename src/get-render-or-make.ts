@@ -30,7 +30,7 @@ export const getRenderOrMake = async (
 		if (cache) {
 			const progress = await getRenderProgressWithFinality(
 				cache,
-				cache.account ?? 1
+				cache.account
 			);
 			return progress;
 		}

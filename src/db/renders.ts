@@ -20,7 +20,7 @@ export type Render = {
 	bucketName: string | null;
 	finality: Finality | null;
 	functionName: string;
-	account: number | undefined;
+	account: number;
 };
 
 export const rendersCollection = async () => {
