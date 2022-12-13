@@ -10,12 +10,24 @@ import {
 import {getAllStatsFromCache} from '../src/db/cache';
 import ErrorHandler from '../src/components/Error';
 import {UserPage} from '../src/components/UserPage';
+import {ThemeProvider} from '../remotion/theme';
+import {GetServerSideProps} from 'next';
+import {getCookie} from 'cookies-next';
 
-export const getServerSideProps = async ({
-	params,
-}: {
-	params: {user: string};
-}) => {
+type Props = {
+	user: CompactStats | null;
+	initialTheme: string | null;
+};
+
+export const getServerSideProps: GetServerSideProps<
+	Props,
+	{
+		user: string;
+	}
+> = async ({params, req, res}) => {
+	if (!params?.user) {
+		return {notFound: true};
+	}
 	const {user} = params;
 
 	if (user.length > 40) {
@@ -29,6 +41,7 @@ export const getServerSideProps = async ({
 			return {
 				props: {
 					user: null,
+					initialTheme: (getCookie('theme', {req, res}) as string) ?? null,
 				},
 			};
 		}
@@ -36,6 +49,7 @@ export const getServerSideProps = async ({
 		return {
 			props: {
 				user: compact,
+				initialTheme: (getCookie('theme', {req, res}) as string) ?? null,
 			},
 		};
 	} catch (error) {
@@ -62,7 +76,7 @@ type UserState =
 			stats: CompactStats;
 	  };
 
-export default function User(props: {user: CompactStats | null}) {
+export default function User(props: Props) {
 	const {user: cachedResponse} = props;
 
 	const [state, setState] = useState<UserState>(
@@ -118,16 +132,30 @@ export default function User(props: {user: CompactStats | null}) {
 	}, [getBackendStats, getFrontendStats, state, username]);
 
 	if (state.type === 'loading' || state.type === 'initial') {
-		return <LoadingPage></LoadingPage>;
+		return (
+			<ThemeProvider initialTheme={props.initialTheme}>
+				<LoadingPage></LoadingPage>
+			</ThemeProvider>
+		);
 	}
 	if (state.type === 'not-found') {
-		return <ErrorHandler reason="not-found" username={username}></ErrorHandler>;
+		return (
+			<ThemeProvider initialTheme={props.initialTheme}>
+				<ErrorHandler reason="not-found" username={username}></ErrorHandler>
+			</ThemeProvider>
+		);
 	}
 	if (state.type === 'rate-limit') {
 		return (
-			<ErrorHandler reason="rate-limit" username={username}></ErrorHandler>
+			<ThemeProvider initialTheme={props.initialTheme}>
+				<ErrorHandler reason="rate-limit" username={username}></ErrorHandler>
+			</ThemeProvider>
 		);
 	}
 
-	return <UserPage username={username} stats={state.stats}></UserPage>;
+	return (
+		<ThemeProvider initialTheme={props.initialTheme}>
+			<UserPage username={username} stats={state.stats}></UserPage>
+		</ThemeProvider>
+	);
 }

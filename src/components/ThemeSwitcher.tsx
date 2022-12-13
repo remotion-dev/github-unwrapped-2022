@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-	blueTheme,
-	goldenTheme,
-	greenTheme,
-	redTheme,
-	useTheme,
-} from '../../remotion/theme';
+import {allThemes, useTheme} from '../../remotion/theme';
 import {RoughBox} from './RoughBox';
 import {ThemeSwitcherItem} from './ThemeSwitcherItem';
 
@@ -42,7 +36,7 @@ export const ThemeSwitcher: React.FC = () => {
 				<div style={themeName}>{activeTheme.name}</div>
 			</div>
 			<div className="mobile-flex" style={spacer}></div>
-			{[redTheme, goldenTheme, blueTheme, greenTheme].map((theme, i) => {
+			{allThemes.map((theme, i) => {
 				return (
 					<ThemeSwitcherItem
 						active={theme === activeTheme}

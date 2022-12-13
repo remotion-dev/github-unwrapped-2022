@@ -1,12 +1,9 @@
+import {AppProps} from 'next/app';
 import Head from 'next/head';
 import React from 'react';
-import {ThemeProvider} from '../remotion/theme';
 import '../styles/globals.css';
 
-const MyApp: React.FC<{
-	Component: React.FC<any>;
-	pageProps: any;
-}> = ({Component, pageProps}) => {
+const MyApp: React.FC<AppProps> = ({Component, pageProps}) => {
 	return (
 		<>
 			<Head>
@@ -20,9 +17,7 @@ const MyApp: React.FC<{
 					content="https://www.githubunwrapped.com/flash.png"
 				/>
 			</Head>
-			<ThemeProvider>
-				<Component {...pageProps} />
-			</ThemeProvider>
+			<Component {...pageProps} />
 		</>
 	);
 };

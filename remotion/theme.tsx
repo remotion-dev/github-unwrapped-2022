@@ -1,5 +1,11 @@
-import React, {createContext, useContext, useMemo, useState} from 'react';
-
+import React, {
+	createContext,
+	useCallback,
+	useContext,
+	useMemo,
+	useState,
+} from 'react';
+import {setCookie} from 'cookies-next';
 export type Theme = {
 	name: string;
 	mainColor: string;
@@ -35,9 +41,11 @@ export const greenTheme: Theme = {
 	background: '#d8ffdf',
 };
 
+export const allThemes = [redTheme, goldenTheme, blueTheme, greenTheme];
+
 type Context = {
 	theme: Theme;
-	setTheme: React.Dispatch<React.SetStateAction<Theme>>;
+	setTheme: (newTheme: Theme) => void;
 };
 
 export const ThemeContext = createContext<Context>({
@@ -56,15 +64,29 @@ export const DEFAULT_THEME = redTheme;
 
 export const ThemeProvider: React.FC<{
 	children: React.ReactNode;
-}> = ({children}) => {
-	const [theme, setTheme] = useState(DEFAULT_THEME);
+	initialTheme: string | null;
+}> = ({children, initialTheme}) => {
+	const getTheme = useCallback(() => {
+		const theme = allThemes.find((a) => a.name === initialTheme);
+
+		return theme ?? DEFAULT_THEME;
+	}, [initialTheme]);
+
+	const [theme, setTheme] = useState(() => getTheme());
 
 	const data = useMemo(() => {
 		return {
 			theme,
-			setTheme,
+			setTheme: (t: Theme) => {
+				persistTheme(t);
+				setTheme(t);
+			},
 		};
 	}, [theme]);
 
 	return <ThemeContext.Provider value={data}>{children}</ThemeContext.Provider>;
+};
+
+export const persistTheme = (theme: Theme) => {
+	setCookie('theme', theme.name);
 };
