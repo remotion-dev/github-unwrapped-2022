@@ -57,6 +57,7 @@ const Download: React.FC<{
 		const renderRequest: RenderRequest = {
 			username,
 			compactStats: stats,
+			theme: theme.name,
 		};
 		const res = await fetch('/api/render', {
 			method: 'POST',
@@ -64,7 +65,7 @@ const Download: React.FC<{
 		});
 		const prog = (await res.json()) as RenderProgressOrFinality;
 		setDownloadProgress(prog);
-	}, [stats, username]);
+	}, [stats, theme, username]);
 
 	const type = downloadProgress?.type ?? null;
 

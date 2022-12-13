@@ -10,6 +10,10 @@ export default async function handler(
 ) {
 	const body = JSON.parse(req.body) as RenderRequest;
 	await saveCache({username: body.username, stats: body.compactStats});
-	const prog = await getRenderOrMake(body.username, body.compactStats);
+	const prog = await getRenderOrMake({
+		username: body.username,
+		stats: body.compactStats,
+		theme: body.theme,
+	});
 	res.status(200).json(prog);
 }

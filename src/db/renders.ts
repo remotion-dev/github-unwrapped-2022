@@ -1,5 +1,6 @@
 import {AwsRegion} from '@remotion/lambda';
 import {WithId} from 'mongodb';
+import {ThemeId} from '../../remotion/theme';
 import {mongoClient} from './mongo';
 
 export type Finality =
@@ -17,6 +18,7 @@ export type Render = {
 	renderId: string | null;
 	region: AwsRegion;
 	username: string;
+	theme: ThemeId;
 	bucketName: string | null;
 	finality: Finality | null;
 	functionName: string;
@@ -28,12 +30,19 @@ export const rendersCollection = async () => {
 	return client.db('wrapped2022').collection<Render>('renders');
 };
 
-export const lockRender = async (
-	region: AwsRegion,
-	username: string,
-	account: number,
-	functionName: string
-) => {
+export const lockRender = async ({
+	region,
+	username,
+	account,
+	functionName,
+	theme,
+}: {
+	region: AwsRegion;
+	username: string;
+	account: number;
+	functionName: string;
+	theme: ThemeId;
+}) => {
 	const coll = await rendersCollection();
 	await coll.insertOne({
 		region,
@@ -41,8 +50,9 @@ export const lockRender = async (
 		bucketName: null,
 		finality: null,
 		renderId: null,
-		account: account,
+		account,
 		functionName,
+		theme,
 	});
 };
 

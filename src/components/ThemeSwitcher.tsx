@@ -33,7 +33,7 @@ export const ThemeSwitcher: React.FC = () => {
 		<RoughBox seed={2} containerClassName="mobile-full-width" style={container}>
 			<div>
 				<div style={themeTitle}>Theme</div>
-				<div style={themeName}>{activeTheme.name}</div>
+				<div style={themeName}>{activeTheme.displayName}</div>
 			</div>
 			<div className="mobile-flex" style={spacer}></div>
 			{allThemes.map((theme, i) => {

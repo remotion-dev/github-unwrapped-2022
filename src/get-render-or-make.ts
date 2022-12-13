@@ -6,6 +6,7 @@ import {
 } from '@remotion/lambda';
 import {RenderProgressOrFinality} from '../pages/api/progress';
 import {CompactStats} from '../remotion/map-response-to-stats';
+import {ThemeId} from '../remotion/theme';
 import {COMP_NAME, SITE_ID} from './config';
 import {
 	Finality,
@@ -19,10 +20,15 @@ import {getRenderProgressWithFinality} from './get-render-progress-with-finality
 import {getRandomRegion} from './regions';
 import {setEnvForKey} from './set-env-for-key';
 
-export const getRenderOrMake = async (
-	username: string,
-	stats: CompactStats
-): Promise<RenderProgressOrFinality> => {
+export const getRenderOrMake = async ({
+	username,
+	stats,
+	theme,
+}: {
+	username: string;
+	stats: CompactStats;
+	theme: ThemeId;
+}): Promise<RenderProgressOrFinality> => {
 	const cache = await getRender(username);
 	let _renderId: string | null = cache?.renderId ?? null;
 	let _region: AwsRegion | null = cache?.region ?? null;
@@ -42,7 +48,13 @@ export const getRenderOrMake = async (
 			region,
 		});
 		console.log(`Username=${username} Account=${account} Region=${region}`);
-		await lockRender(region, username, account, first.functionName);
+		await lockRender({
+			region,
+			username,
+			account,
+			functionName: first.functionName,
+			theme,
+		});
 
 		const {renderId, bucketName} = await renderMediaOnLambda({
 			region: region,

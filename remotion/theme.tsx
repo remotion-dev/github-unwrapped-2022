@@ -6,36 +6,44 @@ import React, {
 	useState,
 } from 'react';
 import {setCookie} from 'cookies-next';
+
+export type ThemeId = 'red' | 'golden' | 'blue' | 'green';
+
 export type Theme = {
-	name: string;
+	name: ThemeId;
+	displayName: string;
 	mainColor: string;
 	accentColor: string;
 	background: string;
 };
 
 export const redTheme: Theme = {
-	name: 'Candy Dream',
+	name: 'red',
+	displayName: 'Candy Dream',
 	mainColor: '#e74b3c',
 	accentColor: '#900',
 	background: '#FFE3CA',
 };
 
 export const goldenTheme: Theme = {
-	name: 'Bespoke Golden',
+	name: 'golden',
+	displayName: 'Bespoke Golden',
 	mainColor: '#DAA520',
 	accentColor: '#C97723',
 	background: '#f7f1de',
 };
 
 export const blueTheme: Theme = {
-	name: 'Icy Winter',
+	name: 'blue',
+	displayName: 'Icy Winter',
 	mainColor: '#4185de',
 	accentColor: '#233DC9',
 	background: '#e0f2fc',
 };
 
 export const greenTheme: Theme = {
-	name: 'Pure Fir',
+	name: 'green',
+	displayName: 'Pure Fir',
 	mainColor: '#25822b',
 	accentColor: '#ff2e1f',
 	background: '#d8ffdf',
