@@ -29,7 +29,6 @@ a {
 
 .github-username:focus {
 	outline: none;
-	border: 3px solid red;
 }
 
 .mobile-row {
