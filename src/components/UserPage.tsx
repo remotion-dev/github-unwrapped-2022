@@ -183,9 +183,8 @@ export const UserPage: React.FC<{
 									>
 										{playing ? null : (
 											<div
+												className="play-button"
 												style={{
-													width: 200,
-													height: 200,
 													backgroundColor: 'white',
 													borderRadius: '50%',
 													display: 'flex',
@@ -195,8 +194,8 @@ export const UserPage: React.FC<{
 												}}
 											>
 												<svg
+													className="play-button-icon"
 													style={{
-														height: 60,
 														transform: `translateX(3px)`,
 													}}
 													viewBox="0 0 448 512"
