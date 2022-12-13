@@ -11,11 +11,10 @@ const downloadButton = (theme: Theme): React.CSSProperties => {
 	return {
 		...button(theme),
 		width: '100%',
-		paddingTop: 20,
-		paddingBottom: 20,
 		display: 'flex',
 		flexDirection: 'row',
 		alignItems: 'center',
+		height: 80,
 	};
 };
 
@@ -96,8 +95,15 @@ const Download: React.FC<{
 		<div>
 			{downloadProgress === null ? (
 				<div>
-					<button style={downloadButton(theme)} type="button">
-						Initializing render...
+					<button
+						style={{...downloadButton(theme), opacity: 0.5}}
+						disabled
+						type="button"
+					>
+						<div style={{flex: 1}}>
+							Initializing
+							<div style={sizeLabel}></div>
+						</div>{' '}
 					</button>
 				</div>
 			) : downloadProgress.type == 'finality' &&
@@ -134,10 +140,16 @@ const Download: React.FC<{
 					back tomorrow and it should be fixed!
 				</div>
 			) : downloadProgress.type === 'progress' ? (
-				<button style={downloadButton(theme)} type="button">
-					{'Rendering... ' +
-						Math.round(downloadProgress.progress.percent * 100) +
-						'%'}
+				<button
+					style={{
+						...downloadButton(theme),
+						opacity: 0.5,
+						textAlign: 'center',
+						justifyContent: 'center',
+					}}
+					type="button"
+				>
+					{Math.round(downloadProgress.progress.percent * 100) + '%'}
 				</button>
 			) : null}
 		</div>
