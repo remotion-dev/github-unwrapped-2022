@@ -232,7 +232,7 @@ export const IssuesOpened: React.FC<{
 					fontWeight: 700,
 				}}
 			>
-				Issues opened
+				{issuesOpen + issuesClosed === 1 ? 'Issue' : 'Issues'} opened
 			</AbsoluteFill>
 			<AbsoluteFill
 				style={{
@@ -246,7 +246,7 @@ export const IssuesOpened: React.FC<{
 					fontWeight: 700,
 				}}
 			>
-				Issues still open
+				{issuesOpen === 1 ? 'Issue' : 'Issues'} still open
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);
