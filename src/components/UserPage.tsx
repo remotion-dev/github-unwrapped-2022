@@ -7,11 +7,14 @@ import {Main} from '../../remotion/Main';
 import {CompactStats} from '../../remotion/map-response-to-stats';
 import {useTheme} from '../../remotion/theme';
 import {DURATION} from '../config';
+import {Bird} from './Bird';
 import {backButton} from './button';
 import Download from './Download';
 import {Footer, FOOTER_HEIGHT} from './Footer';
 import {Gingerman} from './Gingerman';
+import {LinkedIn} from './LinkedIn';
 import {PlayButton} from './Play';
+import {QuestionMark} from './Question';
 import {RoughBox} from './RoughBox';
 import {ThemeSwitcher} from './ThemeSwitcher';
 
@@ -261,6 +264,52 @@ export const UserPage: React.FC<{
 									</div>
 									<div
 										style={{
+											height: 20,
+										}}
+									></div>
+									<Link
+										target={'_blank'}
+										href={
+											'https://twitter.com/intent/tweet?text=' +
+											encodeURIComponent(
+												'This is my #GitHubUnwrapped! Get your own: https://www.githubunwrapped.com'
+											)
+										}
+										passHref
+									>
+										<div style={backButton}>
+											<Bird
+												theme={theme}
+												style={{width: 45, marginRight: 10}}
+											></Bird>{' '}
+											<div>Tweet #GitHubUnwrapped</div>
+										</div>
+									</Link>
+									<div
+										style={{
+											height: 20,
+										}}
+									></div>
+									<Link
+										target={'_blank'}
+										href={
+											'https://twitter.com/intent/tweet?text=' +
+											encodeURIComponent(
+												'This is my #GitHubUnwrapped! Get your own: https://www.githubunwrapped.com'
+											)
+										}
+										passHref
+									>
+										<div style={backButton}>
+											<LinkedIn
+												theme={theme}
+												style={{width: 45, marginRight: 10, flexShrink: 0}}
+											></LinkedIn>{' '}
+											<div>Share to your network</div>
+										</div>
+									</Link>
+									<div
+										style={{
 											flex: 1,
 											flexBasis: 20,
 										}}
@@ -281,11 +330,11 @@ export const UserPage: React.FC<{
 									></div>
 									<Link href="/about" passHref>
 										<div style={backButton}>
-											<PlayButton
+											<QuestionMark
 												theme={theme}
 												style={{width: 45, marginRight: 10}}
-											></PlayButton>{' '}
-											<div>How we made GitHub Unwrapped</div>
+											></QuestionMark>{' '}
+											<div>How we made Unwrapped</div>
 										</div>
 									</Link>
 								</div>
