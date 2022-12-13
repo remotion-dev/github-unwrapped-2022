@@ -30,15 +30,15 @@ export const getRenderOrMake = async ({
 	stats: CompactStats;
 	themeId: ThemeId;
 }): Promise<RenderProgressOrFinality> => {
-	const cache = await getRender(username);
+	const cache = await getRender({username, theme: themeId});
 	let _renderId: string | null = cache?.renderId ?? null;
 	let _region: AwsRegion | null = cache?.region ?? null;
 	try {
 		if (cache) {
-			const progress = await getRenderProgressWithFinality(
-				cache,
-				cache.account
-			);
+			const progress = await getRenderProgressWithFinality({
+				render: cache,
+				assume0Progress: false,
+			});
 			return progress;
 		}
 		const region = getRandomRegion();
@@ -92,12 +92,21 @@ export const getRenderOrMake = async ({
 			bucketName,
 			renderId,
 			username,
+			theme: themeId,
 		});
-		const render = await getRender(username);
-		if (!render) {
-			throw new Error(`Didn't have error for ${username}`);
-		}
-		const progress = await getRenderProgressWithFinality(render, account);
+		const progress = await getRenderProgressWithFinality({
+			render: {
+				renderId,
+				account,
+				bucketName,
+				finality: null,
+				functionName: first.functionName,
+				region,
+				theme: themeId,
+				username,
+			},
+			assume0Progress: true,
+		});
 		return progress;
 	} catch (err) {
 		console.log(`Failed to render video for ${username}`, (err as Error).stack);

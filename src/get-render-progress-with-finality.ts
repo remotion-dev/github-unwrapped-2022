@@ -1,15 +1,17 @@
 import {getRenderProgress} from '@remotion/lambda';
-import {WithId} from 'mongodb';
 import {RenderProgressOrFinality} from '../pages/api/progress';
 import {Render, updateRenderWithFinality} from './db/renders';
 import {getFinality} from './get-render-or-make';
 import {setEnvForKey} from './set-env-for-key';
 
-export const getRenderProgressWithFinality = async (
-	render: WithId<Render>,
-	accountNumber: number
-): Promise<RenderProgressOrFinality> => {
-	setEnvForKey(accountNumber);
+export const getRenderProgressWithFinality = async ({
+	render,
+	assume0Progress,
+}: {
+	render: Render;
+	assume0Progress: boolean;
+}): Promise<RenderProgressOrFinality> => {
+	setEnvForKey(render.account);
 
 	if (render.finality) {
 		return {
@@ -27,14 +29,16 @@ export const getRenderProgressWithFinality = async (
 		};
 	}
 
-	const progress = await getRenderProgress({
-		renderId: render.renderId,
-		bucketName: render.bucketName,
-		functionName: render.functionName,
-		region: render.region,
-	});
+	const progress = assume0Progress
+		? null
+		: await getRenderProgress({
+				renderId: render.renderId,
+				bucketName: render.bucketName,
+				functionName: render.functionName,
+				region: render.region,
+		  });
 
-	const finality = getFinality(progress);
+	const finality = progress === null ? null : getFinality(progress);
 
 	if (finality) {
 		await updateRenderWithFinality({
@@ -53,7 +57,7 @@ export const getRenderProgressWithFinality = async (
 	return {
 		type: 'progress',
 		progress: {
-			percent: progress.overallProgress,
+			percent: progress === null ? 0 : progress.overallProgress,
 		},
 	};
 };

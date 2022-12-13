@@ -61,20 +61,24 @@ export const saveRender = async ({
 	username,
 	renderId,
 	bucketName,
+	theme,
 }: {
 	region: AwsRegion;
 	username: string;
 	renderId: string;
 	bucketName: string;
+	theme: ThemeId;
 }) => {
 	const coll = await rendersCollection();
 	await coll.updateOne(
 		{
 			region,
 			username: username.toLowerCase(),
+			theme,
 		},
 		{
 			$set: {
+				theme,
 				renderId,
 				bucketName,
 				finality: null,
@@ -113,12 +117,17 @@ export const updateRenderWithFinality = async ({
 	);
 };
 
-export const getRender = async (
-	username: string
-): Promise<WithId<Render> | null> => {
+export const getRender = async ({
+	username,
+	theme,
+}: {
+	username: string;
+	theme: ThemeId;
+}): Promise<WithId<Render> | null> => {
 	const coll = await rendersCollection();
 	const render = await coll.findOne({
 		username: username.toLowerCase(),
+		theme,
 	});
 
 	return render ?? null;
