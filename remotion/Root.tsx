@@ -54,6 +54,7 @@ import {Loader} from './Loader';
 import {blueTheme, goldenTheme, redTheme} from './theme';
 import {LanguageToSocks} from './LanguageToSocks';
 import {EndCard} from './EndCard';
+import React from 'react';
 
 export const Root: React.FC = () => {
 	return (
@@ -386,6 +387,22 @@ export const Root: React.FC = () => {
 					id="sass"
 				></Composition>
 			</Folder>
+			<Composition
+				component={IssuesOpened}
+				height={1080}
+				width={1080}
+				durationInFrames={250}
+				fps={30}
+				id="NoIssues"
+				defaultProps={{
+					noBackground: false,
+					issues: {
+						closed: 0,
+						open: 0,
+					},
+					theme: redTheme,
+				}}
+			></Composition>
 			<Composition
 				component={IssuesOpened}
 				height={1080}
