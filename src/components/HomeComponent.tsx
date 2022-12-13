@@ -105,9 +105,8 @@ export function HomeComponent() {
 				<title>#GitHubUnwrapped 2022</title>
 				<meta
 					name="description"
-					content="Get your personalized video review of your coding 2022."
+					content="Unwrap your GitHub Year In Review video."
 				/>
-				<link rel="icon" href="/fav.png" />
 			</Head>
 			<div style={abs}>
 				<div style={container}>

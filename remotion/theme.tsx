@@ -6,6 +6,7 @@ import React, {
 	useState,
 } from 'react';
 import {setCookie} from 'cookies-next';
+import Head from 'next/head';
 
 export type ThemeId = 'red' | 'golden' | 'blue' | 'green';
 
@@ -92,7 +93,15 @@ export const ThemeProvider: React.FC<{
 		};
 	}, [theme]);
 
-	return <ThemeContext.Provider value={data}>{children}</ThemeContext.Provider>;
+	return (
+		<ThemeContext.Provider value={data}>
+			<Head>
+				<meta name="theme-color" content={theme.background} />
+				<link rel="icon" href={`/favicons/${theme.name}.png`} />
+			</Head>
+			{children}
+		</ThemeContext.Provider>
+	);
 };
 
 export const persistTheme = (theme: Theme) => {

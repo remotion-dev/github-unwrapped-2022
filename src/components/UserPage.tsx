@@ -103,7 +103,7 @@ export const UserPage: React.FC<{
 			fontFamily: 'MonaSans',
 			textAlign: 'center',
 			color: theme.mainColor,
-			marginBottom: 0,
+			marginBottom: 14,
 			fontSize: 36,
 			marginTop: 0,
 			fontWeight: 700,
@@ -128,7 +128,6 @@ export const UserPage: React.FC<{
 					name="description"
 					content={`My coding 2022 in review. Get your own personalized video as well!`}
 				/>
-				<link rel="icon" href="/fav.png" />
 			</Head>
 			<div style={abs}>
 				<div style={container}>
