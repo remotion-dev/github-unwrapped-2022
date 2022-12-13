@@ -32,8 +32,7 @@ export type LangMapping = {
 	Component: React.FC<SVGProps<SVGSVGElement>>;
 };
 
-// TODO: Use it
-// const NotLanguages = ['Markdown', 'Dockerfile'];
+export const NotLanguages = ['Markdown', 'Dockerfile', 'Roff'];
 
 export const languageList: LangMapping[] = [
 	{

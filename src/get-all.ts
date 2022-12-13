@@ -1,4 +1,5 @@
 import {all} from '../remotion/all';
+import {NotLanguages} from '../remotion/language-list';
 import {BackendStats, getIssues} from '../remotion/map-response-to-stats';
 import {truthy} from './truthy';
 
@@ -111,6 +112,10 @@ export const getTopLanguages = (
 
 	// Count the number of times each language is used
 	for (const lang of languages) {
+		if (NotLanguages.includes(lang.node.name)) {
+			continue;
+		}
+
 		if (!langs[lang.node.name]) {
 			langs[lang.node.name] = 0;
 		}
