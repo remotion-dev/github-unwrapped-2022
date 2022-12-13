@@ -1,13 +1,9 @@
-import {
-	AwsRegion,
-	getFunctions,
-	renderMediaOnLambda,
-	RenderProgress,
-} from '@remotion/lambda';
+import {AwsRegion, renderMediaOnLambda, RenderProgress} from '@remotion/lambda';
+import {VERSION} from 'remotion/version';
 import {RenderProgressOrFinality} from '../pages/api/progress';
 import {CompactStats} from '../remotion/map-response-to-stats';
 import {allThemes, ThemeId} from '../remotion/theme';
-import {COMP_NAME, SITE_ID} from './config';
+import {COMP_NAME, DISK, RAM, SITE_ID, TIMEOUT} from './config';
 import {
 	Finality,
 	getRender,
@@ -44,16 +40,16 @@ export const getRenderOrMake = async ({
 		const region = getRandomRegion();
 		const account = getRandomAwsAccount();
 		setEnvForKey(account);
-		const [first] = await getFunctions({
-			compatibleOnly: true,
-			region,
-		});
+		const functionName = `remotion-render-${VERSION.replace(
+			/\./g,
+			'-'
+		)}-mem${RAM}mb-disk${DISK}mb-${TIMEOUT}sec`;
 		console.log(`Username=${username} Account=${account} Region=${region}`);
-		await lockRender({
+		const lockRenderPromise = lockRender({
 			region,
 			username,
 			account,
-			functionName: first.functionName,
+			functionName,
 			theme: themeId,
 		});
 
@@ -69,10 +65,9 @@ export const getRenderOrMake = async ({
 			stats,
 			theme,
 		};
-
 		const {renderId, bucketName} = await renderMediaOnLambda({
 			region: region,
-			functionName: first.functionName,
+			functionName,
 			serveUrl: SITE_ID,
 			composition: COMP_NAME,
 			inputProps,
@@ -85,10 +80,11 @@ export const getRenderOrMake = async ({
 				fileName: `${username}'s - GitHubUnwrapped.mp4`,
 			},
 		});
+		await lockRenderPromise;
 		_renderId = renderId;
 		_region = region;
 		await saveRender({
-			region: region,
+			region,
 			bucketName,
 			renderId,
 			username,
@@ -100,13 +96,14 @@ export const getRenderOrMake = async ({
 				account,
 				bucketName,
 				finality: null,
-				functionName: first.functionName,
+				functionName,
 				region,
 				theme: themeId,
 				username,
 			},
 			assume0Progress: true,
 		});
+
 		return progress;
 	} catch (err) {
 		console.log(`Failed to render video for ${username}`, (err as Error).stack);

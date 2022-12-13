@@ -134,6 +134,7 @@ const Download: React.FC<{
 					style={{
 						fontFamily: 'MonaSans',
 						color: 'red',
+						lineHeight: 1.2,
 					}}
 				>
 					Oops, sorry the render failed! We will fix all render bugs, so come

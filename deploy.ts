@@ -6,7 +6,7 @@ import {
 } from '@remotion/lambda';
 import dotenv from 'dotenv';
 import path from 'path';
-import {SITE_ID} from './src/config';
+import {RAM, SITE_ID, TIMEOUT} from './src/config';
 import {getAccountCount} from './src/get-account-count';
 import {setEnvForKey} from './src/set-env-for-key';
 dotenv.config();
@@ -21,8 +21,8 @@ const execute = async () => {
 			const {functionName, alreadyExisted} = await deployFunction({
 				architecture: 'arm64',
 				createCloudWatchLogGroup: true,
-				memorySizeInMb: 2048,
-				timeoutInSeconds: 240,
+				memorySizeInMb: RAM,
+				timeoutInSeconds: TIMEOUT,
 				region,
 			});
 			console.log(

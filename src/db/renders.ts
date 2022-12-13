@@ -78,7 +78,6 @@ export const saveRender = async ({
 		},
 		{
 			$set: {
-				theme,
 				renderId,
 				bucketName,
 				finality: null,
@@ -130,7 +129,7 @@ export const getRender = async ({
 		theme,
 	});
 
-	return render ?? null;
+	return render;
 };
 
 export const deleteRender = async (render: WithId<Render>) => {

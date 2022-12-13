@@ -9,11 +9,15 @@ export default async function handler(
 	res: NextApiResponse<RenderProgressOrFinality>
 ) {
 	const body = JSON.parse(req.body) as RenderRequest;
-	await saveCache({username: body.username, stats: body.compactStats});
+	const saveCacheProm = saveCache({
+		username: body.username,
+		stats: body.compactStats,
+	});
 	const prog = await getRenderOrMake({
 		username: body.username,
 		stats: body.compactStats,
 		themeId: body.theme,
 	});
+	await saveCacheProm;
 	res.status(200).json(prog);
 }
