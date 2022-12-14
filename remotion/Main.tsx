@@ -12,7 +12,7 @@ import {Title} from './Title2022';
 import {TopWeekdays2022} from './TopWeekdays';
 
 export const Main: React.FC<CompProps> = ({stats, theme}) => {
-	const duration = [130, 240, 150, 180, 100, 150, 200];
+	const duration = [130, 240, 150, 180, 100, 180, 200];
 	const accumulatedFrom = (i: number) =>
 		duration.slice(0, i).reduce((a, b) => a + b);
 	const windPushes = duration
