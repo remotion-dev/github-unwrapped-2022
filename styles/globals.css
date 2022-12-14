@@ -35,7 +35,14 @@ a {
 	flex-direction: row;
 }
 
+.play-button {
+	height: 200px;
+	width: 200px;
+}
 
+.play-button-icon {
+	height: 60px;
+}
 
 @media screen and (max-width: 1000px) {
 	.mobile-row {
@@ -46,5 +53,14 @@ a {
 	}
 	.mobile-flex {
 		flex: 1
-	}	
+	}
+	.play-button {
+		height: 150px;
+		width: 150px;
+	}
+	.play-button-icon {
+		height: 40px;
+	}
+	
 }
+

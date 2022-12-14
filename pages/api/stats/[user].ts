@@ -6,6 +6,7 @@ import {
 	getAll,
 	NOT_FOUND_TOKEN,
 } from '../../../src/get-all';
+import {hasEnoughBackendData} from '../../../src/has-enough-data';
 
 if (!process.env.GITHUB_TOKEN) {
 	throw new Error('GITHUB_TOKEN is not set');
@@ -36,10 +37,12 @@ export default async function handler(
 	try {
 		const backendStats = backendResponseToBackendStats(response);
 
-		(await backendStatsCollection()).insertOne({
-			backendStats,
-			username,
-		});
+		if (hasEnoughBackendData(backendStats)) {
+			(await backendStatsCollection()).insertOne({
+				backendStats,
+				username,
+			});
+		}
 
 		return res.status(200).json({type: 'found', backendStats});
 	} catch (err) {

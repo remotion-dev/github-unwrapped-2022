@@ -1,6 +1,7 @@
 import {PlayerRef, CallbackListener, Player} from '@remotion/player';
 import Head from 'next/head';
 import Link from 'next/link';
+import React from 'react';
 import {useEffect, useMemo, useRef, useState} from 'react';
 import {AbsoluteFill} from 'remotion';
 import {Main} from '../../remotion/Main';
@@ -107,9 +108,10 @@ export const UserPage: React.FC<{
 			textAlign: 'center',
 			color: theme.mainColor,
 			marginBottom: 14,
-			fontSize: 36,
+			fontSize: 34,
 			marginTop: 0,
 			fontWeight: 700,
+			lineHeight: 1.3,
 		}),
 		[theme.mainColor]
 	);
@@ -181,9 +183,8 @@ export const UserPage: React.FC<{
 									>
 										{playing ? null : (
 											<div
+												className="play-button"
 												style={{
-													width: 200,
-													height: 200,
 													backgroundColor: 'white',
 													borderRadius: '50%',
 													display: 'flex',
@@ -193,8 +194,8 @@ export const UserPage: React.FC<{
 												}}
 											>
 												<svg
+													className="play-button-icon"
 													style={{
-														height: 60,
 														transform: `translateX(3px)`,
 													}}
 													viewBox="0 0 448 512"

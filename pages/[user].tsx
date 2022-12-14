@@ -16,6 +16,7 @@ import {getCookie} from 'cookies-next';
 import {getRenderProgressWithFinality} from '../src/get-render-progress-with-finality';
 import {getRender} from '../src/db/renders';
 import {RenderProgressOrFinality} from '../src/types';
+import {hasEnoughData} from '../src/has-enough-data';
 
 type Props = {
 	user: CompactStats | null;
@@ -157,6 +158,7 @@ export default function User(props: Props) {
 			</ThemeProvider>
 		);
 	}
+
 	if (state.type === 'not-found') {
 		return (
 			<ThemeProvider initialTheme={props.initialTheme}>
@@ -164,10 +166,21 @@ export default function User(props: Props) {
 			</ThemeProvider>
 		);
 	}
+
 	if (state.type === 'rate-limit') {
 		return (
 			<ThemeProvider initialTheme={props.initialTheme}>
 				<ErrorHandler reason="rate-limit" username={username}></ErrorHandler>
+			</ThemeProvider>
+		);
+	}
+	if (!hasEnoughData(state.stats)) {
+		return (
+			<ThemeProvider initialTheme={props.initialTheme}>
+				<ErrorHandler
+					reason="not-enough-data"
+					username={username}
+				></ErrorHandler>
 			</ThemeProvider>
 		);
 	}

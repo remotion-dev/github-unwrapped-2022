@@ -15,6 +15,7 @@ import {
 } from './tree/indices-to-close';
 import {Issues} from './map-response-to-stats';
 import {Theme} from './theme';
+import {NoIssues} from './NoIssues';
 
 const getColor = (
 	indicesToClose: number[],
@@ -113,6 +114,18 @@ export const IssuesOpened: React.FC<{
 			totalIssues,
 		});
 	}, [avgRotsPerRow, dotsPerRow, issuesClosed, rows, totalIssues]);
+
+	if (totalIssues === 0) {
+		return (
+			<AbsoluteFill
+				style={{
+					backgroundColor: noBackground ? undefined : theme.background,
+				}}
+			>
+				<NoIssues theme={theme}></NoIssues>
+			</AbsoluteFill>
+		);
+	}
 
 	return (
 		<AbsoluteFill
@@ -219,7 +232,7 @@ export const IssuesOpened: React.FC<{
 					fontWeight: 700,
 				}}
 			>
-				Issues opened
+				{issuesOpen + issuesClosed === 1 ? 'Issue' : 'Issues'} opened
 			</AbsoluteFill>
 			<AbsoluteFill
 				style={{
@@ -233,7 +246,7 @@ export const IssuesOpened: React.FC<{
 					fontWeight: 700,
 				}}
 			>
-				Issues still open
+				{issuesOpen === 1 ? 'Issue' : 'Issues'} still open
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);
