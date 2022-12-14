@@ -1,6 +1,6 @@
 import React from 'react';
 import {AbsoluteFill, Img} from 'remotion';
-import {GithubIcon} from '../../src/components/Github';
+import {GitHubSquare} from '../../src/components/GithubSquare';
 import {Theme} from '../theme';
 import {StaticRoughPath} from './StaticRoughPath';
 
@@ -120,10 +120,10 @@ export const StillAvatarFrame: React.FC<{
 								src={avatar}
 							></Img>
 						) : (
-							<GithubIcon
+							<GitHubSquare
 								theme={theme}
 								style={{height: 329, marginTop: 108, marginRight: 6}}
-							></GithubIcon>
+							></GitHubSquare>
 						)}
 					</AbsoluteFill>
 					<AbsoluteFill
