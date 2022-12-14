@@ -7,7 +7,7 @@ import {AbsoluteFill} from 'remotion';
 import {Main} from '../../remotion/Main';
 import {CompactStats} from '../../remotion/map-response-to-stats';
 import {ThemeId, useTheme} from '../../remotion/theme';
-import {DURATION} from '../config';
+import {DOMAIN, DURATION} from '../config';
 import {RenderProgressOrFinality} from '../types';
 import {ArrowLeft} from './ArrowLeft';
 import {Bird} from './Bird';
@@ -127,11 +127,9 @@ export const UserPage: React.FC<{
 					content={`${stats.username}'s #GitHubUnwrapped`}
 					key="title"
 				/>
-
-				<meta
-					name="description"
-					content={`My coding 2022 in review. Get your own personalized video as well!`}
-				/>
+				<meta name="description" content="Let's reflect on an eventful 2022!" />
+				<meta name="og:image" content={DOMAIN + '/api/og/' + username} />
+				<meta property="og:image" content={DOMAIN + '/api/og/' + username} />
 			</Head>
 			<div style={abs}>
 				<div style={container}>
