@@ -10,7 +10,7 @@ export const Grill: React.FC = () => {
 			fill: 'black',
 			seed: 3,
 			maxRandomnessOffset: 4,
-			hachureGap: 8,
+			hachureGap: 4,
 			strokeWidth: 3,
 			bowing: 1,
 		});
