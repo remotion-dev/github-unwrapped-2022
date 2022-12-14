@@ -271,7 +271,7 @@ export const UserPage: React.FC<{
 											height: 20,
 										}}
 									></div>
-									<Link
+									<a
 										target={'_blank'}
 										href={
 											'https://twitter.com/intent/tweet?text=' +
@@ -279,7 +279,7 @@ export const UserPage: React.FC<{
 												'This is my #GitHubUnwrapped! Get your own: https://www.githubunwrapped.com'
 											)
 										}
-										passHref
+										rel="noreferrer"
 									>
 										<div style={backButton}>
 											<Bird
@@ -288,18 +288,18 @@ export const UserPage: React.FC<{
 											></Bird>{' '}
 											<div>Tweet #GitHubUnwrapped</div>
 										</div>
-									</Link>
+									</a>
 									<div
 										style={{
 											height: 20,
 										}}
 									></div>
-									<Link
+									<a
 										target={'_blank'}
 										href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-											`https://www.githubunwrapped.com/${username}`
+											`${DOMAIN}/${username}`
 										)}`}
-										passHref
+										rel="noreferrer"
 									>
 										<div style={backButton}>
 											<LinkedIn
@@ -308,7 +308,7 @@ export const UserPage: React.FC<{
 											></LinkedIn>{' '}
 											<div>Share to your network</div>
 										</div>
-									</Link>
+									</a>
 									<div
 										style={{
 											flex: 1,
