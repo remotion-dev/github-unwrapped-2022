@@ -94,7 +94,7 @@ export const StillTitleCard: React.FC<{
 									fontWeight: 700,
 								}}
 							>
-								Your year in review
+								Your 2022 in review
 							</span>
 						</span>
 						<br />
