@@ -1,4 +1,5 @@
 import chunk from 'lodash.chunk';
+import {interpolate} from 'remotion';
 const {random} = require('remotion');
 
 const padding = 30;
@@ -8,7 +9,7 @@ export const getIndicesToClose = ({
 	totalIssues,
 	dotsPerRow,
 	rows,
-	avgDotsPerRow: avgRotsPerRow,
+	avgDotsPerRow: avgDotsPerRow,
 }: {
 	totalIssues: number;
 	dotsPerRow: number;
@@ -22,11 +23,11 @@ export const getIndicesToClose = ({
 			row === rows - 1
 				? totalIssues % Math.floor((rows - 1) * dotsPerRow)
 				: dotsPerRow;
-		const threshold = Math.round(avgRotsPerRow / 2) + 1;
 
-		const adjustedDotsPerRow = Math.round(
-			Math.max(0, avgRotsPerRow - threshold / 2 + (row % threshold))
-		);
+		const adjustedDotsPerRow =
+			rows === 1
+				? avgDotsPerRow
+				: Math.round(interpolate(row, [0, rows - 1], [0, avgDotsPerRow * 2]));
 
 		const column = i % dotsPerRow;
 
@@ -53,10 +54,10 @@ export const makeIndicesAccurate = ({
 		return indices;
 	}
 	if (diff > 0) {
-		const indicesToAdd = [];
+		const indicesToAdd: number[] = [];
 		for (let i = 0; i < diff; i++) {
 			const index = Math.floor(random(i) * totalIssues);
-			if (!indices.includes(index)) {
+			if (!indicesToAdd.includes(index) && !indices.includes(index)) {
 				indicesToAdd.push(index);
 			} else {
 				diff++;
@@ -110,15 +111,16 @@ export const getTreeMath = ({
 	);
 
 	const openRatio = issuesOpen / totalIssues;
-	const avgRotsPerRow = openRatio * dotsPerRow;
+	const avgDotsPerRow = openRatio * dotsPerRow;
 	const rows = Math.ceil(totalIssues / dotsPerRow);
 
 	return {
-		avgRotsPerRow,
+		avgDotsPerRow: avgDotsPerRow,
 		dotPadding,
 		chunks,
 		dotsPerRow,
 		dotSize,
 		rows,
+		totalHeight,
 	};
 };

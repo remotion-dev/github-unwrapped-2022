@@ -6,17 +6,25 @@ const style: React.CSSProperties = {
 	backgroundColor: 'white',
 };
 
-const content: React.CSSProperties = {
-	padding: 20,
-};
-
 export const RoughBox: React.FC<{
 	children: React.ReactNode;
 	seed: number;
 	style: React.CSSProperties;
 	className?: string;
 	containerClassName?: string;
-}> = ({children, seed, containerClassName, className, style: passedStyle}) => {
+	padding?: number;
+	roughness?: number;
+	strokeWidth?: number;
+}> = ({
+	children,
+	seed,
+	containerClassName,
+	padding,
+	className,
+	roughness,
+	strokeWidth,
+	style: passedStyle,
+}) => {
 	const ref = useRef<HTMLDivElement>(null);
 
 	const elementSize = PlayerInternals.useElementSize(ref, {
@@ -33,16 +41,22 @@ export const RoughBox: React.FC<{
 	const paths = useMemo(() => {
 		const path = getRough().generator();
 		const drawable = path.path(d, {
-			roughness: 0.7,
+			roughness: roughness ?? 0.7,
 			seed: seed,
 			maxRandomnessOffset: 4,
-			strokeWidth: 5,
+			strokeWidth: strokeWidth ?? 5,
 			stroke: 'black',
 			bowing: 1,
 		});
 
 		return path.toPaths(drawable);
-	}, [d, seed]);
+	}, [d, roughness, seed, strokeWidth]);
+
+	const content: React.CSSProperties = useMemo(() => {
+		return {
+			padding: padding ?? 20,
+		};
+	}, [padding]);
 
 	return (
 		<div className={containerClassName} style={style} ref={ref}>

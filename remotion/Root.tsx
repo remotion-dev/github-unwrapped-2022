@@ -426,6 +426,22 @@ export const Root: React.FC = () => {
 				width={1080}
 				durationInFrames={250}
 				fps={30}
+				id="AllClosed"
+				defaultProps={{
+					noBackground: false,
+					issues: {
+						closed: 6,
+						open: 0,
+					},
+					theme: redTheme,
+				}}
+			></Composition>
+			<Composition
+				component={IssuesOpened}
+				height={1080}
+				width={1080}
+				durationInFrames={250}
+				fps={30}
 				id="50Issues"
 				defaultProps={{
 					noBackground: false,
@@ -503,6 +519,28 @@ export const Root: React.FC = () => {
 				}}
 			></Composition>
 			<Composition
+				component={Socks}
+				height={1080}
+				width={1080}
+				durationInFrames={250}
+				fps={30}
+				id="SocksTwo"
+				defaultProps={{
+					theme: redTheme,
+					noBackground: false,
+					topLanguages: [
+						{
+							color: 'red',
+							name: 'CSS',
+						},
+						{
+							color: 'red',
+							name: 'Bash',
+						},
+					],
+				}}
+			></Composition>
+			<Composition
 				component={OG}
 				height={630}
 				width={1200}
@@ -516,6 +554,24 @@ export const Root: React.FC = () => {
 						mapApiResponseToCommits(commits)
 					),
 					isGeneric: false,
+				}}
+			/>
+			<Composition
+				component={Socks}
+				height={1080}
+				width={1080}
+				durationInFrames={250}
+				fps={30}
+				id="SocksOne"
+				defaultProps={{
+					theme: redTheme,
+					noBackground: false,
+					topLanguages: [
+						{
+							color: 'red',
+							name: 'CSS',
+						},
+					],
 				}}
 			></Composition>
 			<Composition
