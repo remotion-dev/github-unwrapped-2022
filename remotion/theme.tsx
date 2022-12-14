@@ -50,7 +50,7 @@ export const greenTheme: Theme = {
 	background: '#d8ffdf',
 };
 
-export const allThemes = [redTheme, goldenTheme, blueTheme, greenTheme];
+export const allThemes = [redTheme, goldenTheme, blueTheme];
 
 type Context = {
 	theme: Theme;
