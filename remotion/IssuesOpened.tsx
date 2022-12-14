@@ -164,13 +164,17 @@ export const IssuesOpened: React.FC<{
 								const actualIndex = j * dotsPerRow + i;
 								const scale = interpolate(
 									dotsShown,
-									[actualIndex - Math.min(10, totalIssues), actualIndex],
+									[actualIndex - Math.min(10, totalIssues - 1), actualIndex],
 									[0, 1],
 									{
 										extrapolateLeft: 'clamp',
 										extrapolateRight: 'clamp',
 									}
 								);
+								console.log([
+									actualIndex - Math.min(10, totalIssues - 1),
+									actualIndex,
+								]);
 								const color = getColor(
 									indicesToClose,
 									actualIndex,
