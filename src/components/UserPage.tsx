@@ -58,7 +58,8 @@ export const UserPage: React.FC<{
 	initialRenderProgress: RenderProgressOrFinality | null;
 	initialTheme: ThemeId | null;
 	username: string;
-}> = ({stats, username, initialRenderProgress, initialTheme}) => {
+	ogImage: string;
+}> = ({stats, username, initialRenderProgress, ogImage, initialTheme}) => {
 	const [theme] = useTheme();
 	const [playing, setPlaying] = useState(false);
 	const player = useRef<PlayerRef>(null);
@@ -128,8 +129,8 @@ export const UserPage: React.FC<{
 					key="title"
 				/>
 				<meta name="description" content="Let's reflect on an eventful 2022!" />
-				<meta name="og:image" content={DOMAIN + '/api/og/' + username} />
-				<meta property="og:image" content={DOMAIN + '/api/og/' + username} />
+				<meta name="og:image" content={ogImage} />
+				<meta property="og:image" content={ogImage} />
 			</Head>
 			<div style={abs}>
 				<div style={container}>

@@ -18,13 +18,16 @@ import {GetServerSideProps} from 'next';
 import {getCookie} from 'cookies-next';
 import {getRenderProgressWithFinality} from '../../src/get-render-progress-with-finality';
 import {getRender} from '../../src/db/renders';
+import {getOgImage} from '../../src/db/cache';
 import {RenderProgressOrFinality} from '../../src/types';
 import {hasEnoughData} from '../../src/has-enough-data';
+import {DOMAIN} from '../../src/config';
 
 type Props = {
 	user: CompactStats | null;
 	initialTheme: ThemeId | null;
 	initialRenderProgress: RenderProgressOrFinality | null;
+	ogImage: string;
 };
 
 export const getServerSideProps: GetServerSideProps<
@@ -47,7 +50,10 @@ export const getServerSideProps: GetServerSideProps<
 		null) as ThemeId | null;
 
 	try {
-		const compact = await getAllStatsFromCache(user);
+		const [compact, ogImage] = await Promise.all([
+			getAllStatsFromCache(user),
+			getOgImage({username: user}),
+		]);
 		const render = initialTheme
 			? await getRender({
 					username: params.user,
@@ -58,12 +64,15 @@ export const getServerSideProps: GetServerSideProps<
 			? await getRenderProgressWithFinality({assume0Progress: false, render})
 			: null;
 
+		const defaultOgImg = `${DOMAIN}/flash.png`;
+
 		if (!compact) {
 			return {
 				props: {
 					user: null,
 					initialTheme,
 					initialRenderProgress: null,
+					ogImage: ogImage?.image ?? defaultOgImg,
 				},
 			};
 		}
@@ -73,6 +82,7 @@ export const getServerSideProps: GetServerSideProps<
 				user: compact,
 				initialTheme,
 				initialRenderProgress: finality,
+				ogImage: ogImage?.image ?? defaultOgImg,
 			},
 		};
 	} catch (error) {
@@ -194,6 +204,7 @@ export default function User(props: Props) {
 				initialRenderProgress={props.initialRenderProgress}
 				username={username}
 				stats={state.stats}
+				ogImage={props.ogImage}
 			></UserPage>
 		</ThemeProvider>
 	);
