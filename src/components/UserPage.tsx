@@ -20,7 +20,6 @@ import {RoughBox} from './RoughBox';
 import {ThemeSwitcher} from './ThemeSwitcher';
 
 const outer: React.CSSProperties = {
-	maxWidth: 1000,
 	margin: 'auto',
 	paddingLeft: 20,
 	paddingRight: 20,
@@ -142,7 +141,7 @@ export const UserPage: React.FC<{
 					<h2 style={subtitle}>@{stats.username}</h2>
 					<br></br>
 					<br></br>
-					<div style={outer}>
+					<div style={outer} className="container-1000">
 						<RoughBox className="mobile-row" seed={6} style={style}>
 							<div>
 								<div

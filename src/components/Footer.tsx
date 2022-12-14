@@ -15,8 +15,6 @@ const container: React.CSSProperties = {
 	paddingTop: 40,
 	paddingBottom: 40,
 	justifyContent: 'center',
-	maxWidth: 1000,
-	margin: 'auto',
 	fontSize: 14,
 	textAlign: 'center',
 	fontWeight: 500,
@@ -33,7 +31,6 @@ const item: React.CSSProperties = {
 	display: 'flex',
 	flexDirection: 'row',
 	alignItems: 'center',
-	justifyContent: 'center',
 	paddingTop: 5,
 	paddingBottom: 5,
 };
@@ -50,14 +47,14 @@ export const Footer: React.FC<{
 
 	return (
 		<div style={outer} className="footer">
-			<div style={container} className="mobile-row">
+			<div style={container} className="mobile-row container-1000">
 				<a
 					href="https://remotion.dev"
 					target={'_blank'}
 					style={link}
 					rel="noreferrer"
 				>
-					<div style={item}>
+					<div style={item} className="footer-item">
 						<PlayButton
 							theme={theme}
 							style={{height: 30, marginRight: 12}}
@@ -71,7 +68,7 @@ export const Footer: React.FC<{
 					target="_blank"
 					rel="noreferrer"
 				>
-					<div style={item}>
+					<div style={item} className="footer-item">
 						<GithubIcon
 							theme={theme}
 							style={{height: 30, marginRight: 12}}
@@ -81,7 +78,7 @@ export const Footer: React.FC<{
 				</a>
 				<Link href="/about" passHref>
 					<div style={link}>
-						<div style={item}>
+						<div style={item} className="footer-item">
 							<Bauble
 								theme={theme}
 								style={{height: 35, marginTop: -5, marginRight: 6}}

@@ -56,6 +56,16 @@ a {
 	align-items: center;
 }
 
+.footer-item {
+	justify-content: center;
+}
+
+.container-1000 {
+	max-width: 1000px;
+	padding-left: 20px;
+	padding-right: 20px;
+	margin: auto;
+}
 
 @media screen and (max-width: 1000px) {
 	.mobile-row {
@@ -84,5 +94,14 @@ a {
 	.header-style {
 		align-items: flex-start;
 	}	
+	.footer-item {
+		justify-content: flex-start;
+	}
+	.container-1000 {
+		max-width: 500px;
+		padding-left: 20px;
+		padding-right: 20px;
+		margin: auto;
+	}
 }
 

@@ -15,7 +15,6 @@ const container: React.CSSProperties = {
 };
 
 const headerStyle: React.CSSProperties = {
-	maxWidth: 1000,
 	paddingLeft: 20,
 	paddingRight: 20,
 	margin: 'auto',
@@ -119,7 +118,10 @@ export function HomeComponent() {
 			</Head>
 			<div style={abs}>
 				<div style={container}>
-					<header style={headerStyle} className="mobile-row header-style">
+					<header
+						style={headerStyle}
+						className="mobile-row header-style container-1000"
+					>
 						<div>
 							<div style={h1}>Your coding year in review</div>
 							<p style={paragraph}>
