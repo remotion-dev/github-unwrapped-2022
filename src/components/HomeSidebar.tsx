@@ -31,14 +31,20 @@ export const HomeSidebar: React.FC = () => {
 					theme={theme}
 				></Bonbon>
 				<div style={spacer}></div>
-				<div>A whimsical video made just for you</div>
+				<div>
+					A whimsical video<br></br>made just for you
+				</div>
 			</div>
 			<div style={vSpacer}></div>
 			<div>
 				<div style={row}>
 					<Contribs></Contribs>
 					<div style={spacer}></div>
-					<div>Interesting statistics about yourself</div>
+					<div>
+						Your coding statistics,
+						<br />
+						animated
+					</div>
 				</div>
 			</div>
 			<div style={vSpacer}></div>
@@ -51,7 +57,9 @@ export const HomeSidebar: React.FC = () => {
 						theme={theme}
 					></CameraIcon>
 					<div style={spacer}></div>
-					<div>An MP4 video that you can post</div>
+					<div>
+						An MP4 video<br></br>that you can post
+					</div>
 				</div>
 			</div>
 		</div>
