@@ -1,8 +1,7 @@
 import {AwsRegion, renderMediaOnLambda, RenderProgress} from '@remotion/lambda';
-import {VERSION} from 'remotion/version';
 import {CompactStats} from '../remotion/map-response-to-stats';
 import {allThemes, ThemeId} from '../remotion/theme';
-import {COMP_NAME, DISK, RAM, SITE_ID, TIMEOUT} from './config';
+import {COMP_NAME, SITE_ID} from './config';
 import {
 	Finality,
 	getRender,
@@ -14,6 +13,7 @@ import {getRandomAwsAccount} from './get-random-aws-account';
 import {getRenderProgressWithFinality} from './get-render-progress-with-finality';
 import {getRandomRegion} from './regions';
 import {setEnvForKey} from './set-env-for-key';
+import {speculateFunctionName} from './speculate-function-name';
 import {CompProps, RenderProgressOrFinality} from './types';
 
 export const getRenderOrMake = async ({
@@ -39,11 +39,10 @@ export const getRenderOrMake = async ({
 		const region = getRandomRegion();
 		const account = getRandomAwsAccount();
 		setEnvForKey(account);
-		const functionName = `remotion-render-${VERSION.replace(
-			/\./g,
-			'-'
-		)}-mem${RAM}mb-disk${DISK}mb-${TIMEOUT}sec`;
-		console.log(`Username=${username} Account=${account} Region=${region}`);
+		const functionName = speculateFunctionName();
+		console.log(
+			`Username=${username} Account=${account} Region=${region} Theme=${themeId}`
+		);
 		const lockRenderPromise = lockRender({
 			region,
 			username,

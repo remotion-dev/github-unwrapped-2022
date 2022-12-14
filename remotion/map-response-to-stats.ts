@@ -17,18 +17,6 @@ export type BackendStats = {
 	commitCount: number;
 };
 
-export type BackendStatsResponse =
-	| {
-			type: 'found';
-			backendStats: BackendStats;
-	  }
-	| {
-			type: 'not-found';
-	  }
-	| {
-			type: 'too-little-data';
-	  };
-
 export type CompactStats = BackendStats & {
 	weekdays: Weekdays;
 	bestCommits: Commit[];

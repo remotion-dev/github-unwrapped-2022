@@ -1,5 +1,5 @@
 import {Composition, Folder, Still} from 'remotion';
-import {COMP_NAME, DURATION} from '../src/config';
+import {COMP_NAME, DURATION, OG_COMP_NAME} from '../src/config';
 import {all} from './all';
 import {Flashcard} from './Flashcard';
 import {Main} from './Main';
@@ -546,7 +546,7 @@ export const Root: React.FC = () => {
 				width={1200}
 				durationInFrames={1}
 				fps={30}
-				id="OG"
+				id={OG_COMP_NAME}
 				defaultProps={{
 					theme: redTheme,
 					userStats: mapResponseToStats(

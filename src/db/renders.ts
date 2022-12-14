@@ -1,6 +1,7 @@
 import {AwsRegion} from '@remotion/lambda';
 import {WithId} from 'mongodb';
 import {ThemeId} from '../../remotion/theme';
+import {DB} from '../config';
 import {mongoClient} from './mongo';
 
 export type Finality =
@@ -27,7 +28,7 @@ export type Render = {
 
 export const rendersCollection = async () => {
 	const client = await mongoClient;
-	return client.db('wrapped2022').collection<Render>('renders');
+	return client.db(DB).collection<Render>('renders');
 };
 
 export const lockRender = async ({

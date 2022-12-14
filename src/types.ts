@@ -1,4 +1,4 @@
-import {CompactStats} from '../remotion/map-response-to-stats';
+import {BackendStats, CompactStats} from '../remotion/map-response-to-stats';
 import {Theme, ThemeId} from '../remotion/theme';
 import {Finality} from './db/renders';
 
@@ -29,3 +29,9 @@ export type RenderProgressOrFinality =
 			type: 'finality';
 			finality: Finality;
 	  };
+
+export type OgCompProps = {
+	userStats: BackendStats;
+	theme: Theme;
+	isGeneric: boolean;
+};

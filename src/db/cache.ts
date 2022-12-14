@@ -1,4 +1,6 @@
 import {BackendStats, CompactStats} from '../../remotion/map-response-to-stats';
+import {ThemeId} from '../../remotion/theme';
+import {DB} from '../config';
 import {mongoClient} from './mongo';
 
 type CacheCollection = {
@@ -11,16 +13,59 @@ type BackendStatsCollection = {
 	backendStats: BackendStats;
 };
 
+type OgImageCollection = {
+	username: string;
+	image: string;
+	theme: ThemeId;
+};
+
 export const allStatscollection = async () => {
 	const client = await mongoClient;
-	return client.db('wrapped2022').collection<CacheCollection>('wrapped');
+	return client.db(DB).collection<CacheCollection>('wrapped');
 };
 
 export const backendStatsCollection = async () => {
 	const client = await mongoClient;
-	return client
-		.db('wrapped2022')
-		.collection<BackendStatsCollection>('backendstats');
+	return client.db(DB).collection<BackendStatsCollection>('backendstats');
+};
+
+export const dbImageCollection = async () => {
+	const client = await mongoClient;
+	return client.db(DB).collection<OgImageCollection>('og');
+};
+
+export const saveOgImage = async ({
+	username,
+	image,
+	theme,
+}: {
+	username: string;
+	image: string;
+	theme: ThemeId;
+}) => {
+	const collection = await dbImageCollection();
+	await collection.updateOne(
+		{
+			username: username.toLowerCase(),
+		},
+		{
+			$set: {
+				username: username.toLowerCase(),
+				image,
+				theme,
+			},
+		},
+		{
+			upsert: true,
+		}
+	);
+};
+
+export const getOgImage = async ({username}: {username: string}) => {
+	const collection = await dbImageCollection();
+	return collection.findOne({
+		username: username.toLowerCase(),
+	});
 };
 
 export const saveCache = async ({

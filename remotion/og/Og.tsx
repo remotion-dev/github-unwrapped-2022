@@ -1,18 +1,13 @@
 import React from 'react';
 import {AbsoluteFill, Sequence} from 'remotion';
-import {CompactStats} from '../map-response-to-stats';
 import {StillTitleCard} from './StillTitleCard';
-import {Theme} from '../theme';
 import {StillWallHanger} from './StillWallHanger';
 import {StillAvatarFrame} from './StillAvatarFrame';
 import {StaticSnow} from './StaticSnow';
 import {StaticTree} from './StaticTree';
+import {OgCompProps} from '../../src/types';
 
-export const OG: React.FC<{
-	userStats: CompactStats;
-	theme: Theme;
-	isGeneric: boolean;
-}> = ({userStats, theme, isGeneric}) => {
+export const OG: React.FC<OgCompProps> = ({userStats, theme, isGeneric}) => {
 	const wallHangerPos = 360;
 	const avatarFramePos = -360;
 
