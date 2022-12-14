@@ -1,8 +1,8 @@
 import React from 'react';
 import {AbsoluteFill, Img} from 'remotion';
 import {GithubIcon} from '../../src/components/Github';
-import {RoughPath} from '../RoughPath';
 import {Theme} from '../theme';
+import {StaticRoughPath} from './StaticRoughPath';
 
 export const StillAvatarFrame: React.FC<{
 	avatar: string;
@@ -58,12 +58,12 @@ export const StillAvatarFrame: React.FC<{
 								overflow: 'visible',
 							}}
 						>
-							<RoughPath
+							<StaticRoughPath
 								d={`M 0 100 L 50 0 L 100 100`}
 								fill="none"
 								stroke="black"
 								strokeWidth={5}
-							></RoughPath>
+							></StaticRoughPath>
 						</svg>
 					</div>
 				</AbsoluteFill>
@@ -86,13 +86,13 @@ export const StillAvatarFrame: React.FC<{
 								overflow: 'visible',
 							}}
 						>
-							<RoughPath
+							<StaticRoughPath
 								d={`M 0 0 L 400 0 L 400 400 L 0 400 z`}
 								fill="white"
 								stroke="black"
 								strokeWidth={15}
 								roughness={3}
-							></RoughPath>
+							></StaticRoughPath>
 						</svg>
 					</div>
 				</AbsoluteFill>
@@ -140,12 +140,12 @@ export const StillAvatarFrame: React.FC<{
 								marginTop: 100,
 							}}
 						>
-							<RoughPath
+							<StaticRoughPath
 								d={`M 0 0 L 340 0 L 340 340 L 0 340 z`}
 								stroke="black"
 								strokeWidth={20}
 								roughness={2}
-							></RoughPath>
+							></StaticRoughPath>
 						</svg>
 					</AbsoluteFill>
 				</AbsoluteFill>

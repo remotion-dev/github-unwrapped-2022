@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
-import {RoughPath} from '../RoughPath';
 import {Theme} from '../theme';
+import {StaticRoughPath} from './StaticRoughPath';
 
 const titleStyle: React.CSSProperties = {
 	color: 'black',
@@ -37,14 +37,14 @@ export const StillTitleCard: React.FC<{
 					}}
 					viewBox="0 0 800 250"
 				>
-					<RoughPath
+					<StaticRoughPath
 						stroke="black"
 						strokeWidth={12}
 						fill="#fff"
 						roughness={1}
 						d={`M 0 0 L 800 0 L 800 250 L 0 250 z`}
 						freeze
-					></RoughPath>
+					></StaticRoughPath>
 				</svg>
 			</AbsoluteFill>{' '}
 			<AbsoluteFill

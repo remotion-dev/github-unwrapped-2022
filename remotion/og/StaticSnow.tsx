@@ -12,7 +12,7 @@ export const StaticSnow: React.FC<{
 	windPushes?: number[];
 }> = ({windPushes = [100, 200, 300, 400, 500, 600]}) => {
 	const {width, height, fps} = useVideoConfig();
-	const frame = useCurrentFrame();
+	const frame = 50;
 
 	const wind = windPushes
 		.map((delay) => {

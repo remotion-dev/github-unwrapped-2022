@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, useVideoConfig} from 'remotion';
-import {RoughPath} from '../RoughPath';
 import {roundSvg} from '../round-svg';
+import {StaticRoughPath} from './StaticRoughPath';
 
 const color = [
 	'#40c463',
@@ -70,12 +70,12 @@ export const StillWallHanger: React.FC<{commitCount: number}> = ({
 								overflow: 'visible',
 							}}
 						>
-							<RoughPath
+							<StaticRoughPath
 								d={`M 0 100 L 50 0 L 100 100`}
 								fill="none"
 								stroke="black"
 								strokeWidth={5}
-							></RoughPath>
+							></StaticRoughPath>
 						</svg>
 					</div>
 				</AbsoluteFill>
@@ -146,14 +146,14 @@ export const StillWallHanger: React.FC<{commitCount: number}> = ({
 									}}
 									key={i}
 								>
-									<RoughPath
+									<StaticRoughPath
 										d={roundSvg(`M 0 0 L 100 0 L 100 100 L 0 100 z`, 4)}
 										strokeWidth={12}
 										fill={color[i]}
 										roughness={1}
 										stroke="black"
 										seed={i}
-									></RoughPath>
+									></StaticRoughPath>
 								</svg>
 							);
 						})}

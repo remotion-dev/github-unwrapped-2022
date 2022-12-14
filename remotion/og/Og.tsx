@@ -1,12 +1,12 @@
 import React from 'react';
 import {AbsoluteFill, Sequence} from 'remotion';
-import {Tree} from '../Icons/Tree';
 import {CompactStats} from '../map-response-to-stats';
 import {StillTitleCard} from './StillTitleCard';
 import {Theme} from '../theme';
 import {StillWallHanger} from './StillWallHanger';
 import {StillAvatarFrame} from './StillAvatarFrame';
 import {StaticSnow} from './StaticSnow';
+import {StaticTree} from './StaticTree';
 
 export const OG: React.FC<{
 	userStats: CompactStats;
@@ -26,7 +26,7 @@ export const OG: React.FC<{
 					marginTop: 0,
 				}}
 			>
-				<Tree theme={theme} style={{transform: 'scale(1)'}}></Tree>
+				<StaticTree theme={theme} style={{transform: 'scale(1)'}}></StaticTree>
 			</AbsoluteFill>
 			<Sequence
 				style={{
