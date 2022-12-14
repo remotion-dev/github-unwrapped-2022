@@ -30,6 +30,7 @@ export const getOgImageOrMake = async ({username}: {username: string}) => {
 		userStats: stat,
 	};
 
+	console.log('Generating image for', username, 'with props', props);
 	const {url} = await renderStillOnLambda({
 		functionName: speculateFunctionName(),
 		composition: OG_COMP_NAME,

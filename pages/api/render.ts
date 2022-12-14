@@ -1,6 +1,7 @@
 import {NextApiRequest, NextApiResponse} from 'next';
 import {saveCache} from '../../src/db/cache';
 import {getRenderOrMake} from '../../src/get-render-or-make';
+import {getOgImageOrMake} from '../../src/og-images';
 import {RenderProgressOrFinality, RenderRequest} from '../../src/types';
 
 export default async function handler(
@@ -17,6 +18,10 @@ export default async function handler(
 		stats: body.compactStats,
 		themeId: body.theme,
 	});
+
+	// Trigger og:image render for later
+	getOgImageOrMake({username: body.username});
+
 	await saveCacheProm;
 	res.status(200).json(prog);
 }
