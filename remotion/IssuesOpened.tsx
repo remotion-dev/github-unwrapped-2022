@@ -115,7 +115,7 @@ export const IssuesOpened: React.FC<{
 	const indicesToClose = useMemo(() => {
 		return makeIndicesAccurate({
 			indices: getIndicesToClose({
-				avgDotsPerRow: avgDotsPerRow,
+				avgDotsPerRow,
 				dotsPerRow,
 				rows,
 				totalIssues,

@@ -1,4 +1,5 @@
 import chunk from 'lodash.chunk';
+import {interpolate} from 'remotion';
 const {random} = require('remotion');
 
 const padding = 30;
@@ -8,7 +9,7 @@ export const getIndicesToClose = ({
 	totalIssues,
 	dotsPerRow,
 	rows,
-	avgDotsPerRow: avgRotsPerRow,
+	avgDotsPerRow: avgDotsPerRow,
 }: {
 	totalIssues: number;
 	dotsPerRow: number;
@@ -22,11 +23,11 @@ export const getIndicesToClose = ({
 			row === rows - 1
 				? totalIssues % Math.floor((rows - 1) * dotsPerRow)
 				: dotsPerRow;
-		const threshold = Math.round(avgRotsPerRow / 2) + 1;
 
-		const adjustedDotsPerRow = Math.round(
-			Math.max(0, avgRotsPerRow - threshold / 2 + (row % threshold))
-		);
+		const adjustedDotsPerRow =
+			rows === 1
+				? avgDotsPerRow
+				: Math.round(interpolate(row, [0, rows - 1], [0, avgDotsPerRow * 2]));
 
 		const column = i % dotsPerRow;
 
