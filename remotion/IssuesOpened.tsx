@@ -91,21 +91,31 @@ export const IssuesOpened: React.FC<{
 
 	const canAffordRoughJs = totalIssues < 30;
 
-	const {avgRotsPerRow, dotPadding, dotsPerRow, chunks, dotSize, rows} =
-		useMemo(() => {
-			return getTreeMath({
-				height,
-				issuesClosed,
-				issuesOpen,
-				width,
-			});
-		}, [height, issuesClosed, issuesOpen, width]);
+	const {
+		avgDotsPerRow,
+		dotPadding,
+		dotsPerRow,
+		chunks,
+		dotSize,
+		rows,
+		totalHeight,
+	} = useMemo(() => {
+		return getTreeMath({
+			height,
+			issuesClosed,
+			issuesOpen,
+			width,
+		});
+	}, [height, issuesClosed, issuesOpen, width]);
+
+	const totalSize = rows * dotSize;
+	const marginTop = (totalHeight - totalSize) / 2;
 
 	// first to close from left: 0,
 	const indicesToClose = useMemo(() => {
 		return makeIndicesAccurate({
 			indices: getIndicesToClose({
-				avgDotsPerRow: avgRotsPerRow,
+				avgDotsPerRow: avgDotsPerRow,
 				dotsPerRow,
 				rows,
 				totalIssues,
@@ -113,7 +123,7 @@ export const IssuesOpened: React.FC<{
 			expectedIndices: issuesClosed,
 			totalIssues,
 		});
-	}, [avgRotsPerRow, dotsPerRow, issuesClosed, rows, totalIssues]);
+	}, [avgDotsPerRow, dotsPerRow, issuesClosed, rows, totalIssues]);
 
 	if (totalIssues === 0) {
 		return (
@@ -137,6 +147,7 @@ export const IssuesOpened: React.FC<{
 				style={{
 					padding: 30,
 					display: 'block',
+					marginTop,
 				}}
 			>
 				{chunks.map((ch, j) => {

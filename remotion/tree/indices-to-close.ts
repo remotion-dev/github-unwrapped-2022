@@ -48,7 +48,6 @@ export const makeIndicesAccurate = ({
 	expectedIndices: number;
 	totalIssues: number;
 }): number[] => {
-	console.log({indices});
 	let diff = expectedIndices - indices.length;
 	if (diff === 0) {
 		return indices;
@@ -111,15 +110,16 @@ export const getTreeMath = ({
 	);
 
 	const openRatio = issuesOpen / totalIssues;
-	const avgRotsPerRow = openRatio * dotsPerRow;
+	const avgDotsPerRow = openRatio * dotsPerRow;
 	const rows = Math.ceil(totalIssues / dotsPerRow);
 
 	return {
-		avgRotsPerRow,
+		avgDotsPerRow: avgDotsPerRow,
 		dotPadding,
 		chunks,
 		dotsPerRow,
 		dotSize,
 		rows,
+		totalHeight,
 	};
 };

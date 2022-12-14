@@ -6,7 +6,11 @@ import {
 } from '../remotion/tree/indices-to-close';
 
 test('Should calculate tree correctly', () => {
-	const {avgRotsPerRow, dotsPerRow, rows} = getTreeMath({
+	const {
+		avgDotsPerRow: avgRotsPerRow,
+		dotsPerRow,
+		rows,
+	} = getTreeMath({
 		height: 1080,
 		issuesClosed: 0,
 		issuesOpen: 2,
