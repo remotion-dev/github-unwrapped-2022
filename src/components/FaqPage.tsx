@@ -1,6 +1,8 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import React from 'react';
 import {useTheme} from '../../remotion/theme';
+import {DOMAIN} from '../config';
 import {button} from './button';
 import {RoughBox} from './RoughBox';
 
@@ -45,6 +47,14 @@ export const FaqPage: React.FC = () => {
 				lineHeight: 1.5,
 			}}
 		>
+			<Head>
+				<title>About #GitHubUnwrapped 2022</title>
+				<meta
+					name="description"
+					content="How we created a video for every GitHub user"
+				/>
+				<meta property="og:image" content={`${DOMAIN}/flash.png`} />
+			</Head>
 			<section
 				style={{
 					maxWidth: 800,

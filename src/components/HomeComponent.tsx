@@ -2,6 +2,7 @@ import Head from 'next/head';
 import {useRouter} from 'next/router';
 import React, {useCallback, useMemo, useState} from 'react';
 import {Theme, useTheme} from '../../remotion/theme';
+import {DOMAIN} from '../config';
 import {button} from './button';
 import {Footer, FOOTER_HEIGHT} from './Footer';
 import {HomeSidebar} from './HomeSidebar';
@@ -115,6 +116,7 @@ export function HomeComponent() {
 					name="description"
 					content="Unwrap your GitHub Year In Review video."
 				/>
+				<meta property="og:image" content={`${DOMAIN}/flash.png`} />
 			</Head>
 			<div style={abs}>
 				<div style={container}>
