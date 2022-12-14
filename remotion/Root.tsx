@@ -54,6 +54,7 @@ import {Loader} from './Loader';
 import {blueTheme, goldenTheme, redTheme} from './theme';
 import {LanguageToSocks} from './LanguageToSocks';
 import {EndCard} from './EndCard';
+import {OG} from './og/Og';
 import React from 'react';
 
 export const Root: React.FC = () => {
@@ -539,6 +540,22 @@ export const Root: React.FC = () => {
 					],
 				}}
 			></Composition>
+			<Composition
+				component={OG}
+				height={630}
+				width={1200}
+				durationInFrames={1}
+				fps={30}
+				id="OG"
+				defaultProps={{
+					theme: redTheme,
+					userStats: mapResponseToStats(
+						backendResponseToBackendStats(all),
+						mapApiResponseToCommits(commits)
+					),
+					isGeneric: false,
+				}}
+			/>
 			<Composition
 				component={Socks}
 				height={1080}
