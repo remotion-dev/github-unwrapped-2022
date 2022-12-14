@@ -31,7 +31,8 @@ export const StillTitleCard: React.FC<{username: string; theme: Theme}> = ({
 			>
 				<svg
 					style={{
-						width: 1000,
+						width: 900,
+						height: 270,
 						overflow: 'visible',
 					}}
 					viewBox="0 0 800 250"
