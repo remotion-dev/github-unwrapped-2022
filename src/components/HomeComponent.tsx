@@ -131,7 +131,7 @@ export function HomeComponent() {
 							<br />
 
 							<form onSubmit={onSubmit}>
-								<div style={{width: 400}}>
+								<div style={{maxWidth: 400}}>
 									<RoughBox padding={0} style={{}} seed={4}>
 										<div>
 											<input
