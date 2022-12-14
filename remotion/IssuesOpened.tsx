@@ -164,7 +164,7 @@ export const IssuesOpened: React.FC<{
 								const actualIndex = j * dotsPerRow + i;
 								const scale = interpolate(
 									dotsShown,
-									[actualIndex - 10, actualIndex],
+									[actualIndex - Math.min(10, totalIssues), actualIndex],
 									[0, 1],
 									{
 										extrapolateLeft: 'clamp',
