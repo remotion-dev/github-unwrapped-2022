@@ -9,11 +9,11 @@ import {CompactStats} from '../../remotion/map-response-to-stats';
 import {ThemeId, useTheme} from '../../remotion/theme';
 import {DURATION} from '../config';
 import {RenderProgressOrFinality} from '../types';
+import {ArrowLeft} from './ArrowLeft';
 import {Bird} from './Bird';
 import {backButton} from './button';
 import Download from './Download';
 import {Footer, FOOTER_HEIGHT} from './Footer';
-import {Gingerman} from './Gingerman';
 import {LinkedIn} from './LinkedIn';
 import {QuestionMark} from './Question';
 import {RoughBox} from './RoughBox';
@@ -319,10 +319,10 @@ export const UserPage: React.FC<{
 									></div>
 									<Link href="/" passHref>
 										<div style={backButton}>
-											<Gingerman
+											<ArrowLeft
 												theme={theme}
 												style={{width: 45, marginRight: 10}}
-											></Gingerman>{' '}
+											></ArrowLeft>{' '}
 											<div>View for another user</div>
 										</div>
 									</Link>
