@@ -26,7 +26,10 @@ export const OG: React.FC<{
 					marginTop: 0,
 				}}
 			>
-				<StaticTree theme={theme} style={{transform: 'scale(1)'}}></StaticTree>
+				<StaticTree
+					theme={theme}
+					style={{transform: 'scale(0.76) translateY(-80px)'}}
+				></StaticTree>
 			</AbsoluteFill>
 			<Sequence
 				style={{

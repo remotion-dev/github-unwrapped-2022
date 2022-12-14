@@ -20,8 +20,8 @@ export const StillTitleCard: React.FC<{
 	return (
 		<AbsoluteFill
 			style={{
-				marginTop: 132,
-				scale: '0.7',
+				marginTop: 172,
+				scale: '0.9',
 			}}
 		>
 			<AbsoluteFill
@@ -32,17 +32,17 @@ export const StillTitleCard: React.FC<{
 			>
 				<svg
 					style={{
-						width: 900,
+						width: 950,
 						overflow: 'visible',
 					}}
-					viewBox="0 0 800 250"
+					viewBox="0 0 950 250"
 				>
 					<StaticRoughPath
 						stroke="black"
 						strokeWidth={12}
 						fill="#fff"
 						roughness={1}
-						d={`M 0 0 L 800 0 L 800 250 L 0 250 z`}
+						d={`M 0 0 L 950 0 L 950 250 L 0 250 z`}
 						freeze
 					></StaticRoughPath>
 				</svg>
@@ -61,13 +61,13 @@ export const StillTitleCard: React.FC<{
 								fontWeight: 500,
 							}}
 						>
-							This is my{' '}
 							<span
 								style={{
 									fontWeight: 700,
 								}}
 							>
-								#GitHubUnwrapped
+								{username}
+								{"'s"}
 							</span>
 						</span>
 						<br />
@@ -78,7 +78,7 @@ export const StillTitleCard: React.FC<{
 								color: theme.mainColor,
 							}}
 						>
-							{username}
+							#GitHubUnwrapped
 						</span>
 					</div>
 				) : (
@@ -89,12 +89,13 @@ export const StillTitleCard: React.FC<{
 								fontWeight: 500,
 							}}
 						>
-							Get your personalized{' '}
 							<span
 								style={{
 									fontWeight: 700,
 								}}
-							></span>
+							>
+								Your year in review
+							</span>
 						</span>
 						<br />
 						<span

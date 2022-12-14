@@ -557,6 +557,22 @@ export const Root: React.FC = () => {
 				}}
 			/>
 			<Composition
+				component={OG}
+				height={630}
+				width={1200}
+				durationInFrames={1}
+				fps={30}
+				id="OGGeneric"
+				defaultProps={{
+					theme: redTheme,
+					userStats: mapResponseToStats(
+						backendResponseToBackendStats(all),
+						mapApiResponseToCommits(commits)
+					),
+					isGeneric: true,
+				}}
+			/>
+			<Composition
 				component={Socks}
 				height={1080}
 				width={1080}
