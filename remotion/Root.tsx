@@ -506,7 +506,7 @@ export const Root: React.FC = () => {
 				component={OG}
 				height={630}
 				width={1200}
-				durationInFrames={250}
+				durationInFrames={1}
 				fps={30}
 				id="OG"
 				defaultProps={{
@@ -515,7 +515,7 @@ export const Root: React.FC = () => {
 						backendResponseToBackendStats(all),
 						mapApiResponseToCommits(commits)
 					),
-					isGeneric: true,
+					isGeneric: false,
 				}}
 			></Composition>
 			<Composition
