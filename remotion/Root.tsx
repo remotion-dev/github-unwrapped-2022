@@ -425,6 +425,22 @@ export const Root: React.FC = () => {
 				width={1080}
 				durationInFrames={250}
 				fps={30}
+				id="AllClosed"
+				defaultProps={{
+					noBackground: false,
+					issues: {
+						closed: 6,
+						open: 0,
+					},
+					theme: redTheme,
+				}}
+			></Composition>
+			<Composition
+				component={IssuesOpened}
+				height={1080}
+				width={1080}
+				durationInFrames={250}
+				fps={30}
 				id="50Issues"
 				defaultProps={{
 					noBackground: false,

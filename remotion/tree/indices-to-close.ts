@@ -48,15 +48,16 @@ export const makeIndicesAccurate = ({
 	expectedIndices: number;
 	totalIssues: number;
 }): number[] => {
+	console.log({indices});
 	let diff = expectedIndices - indices.length;
 	if (diff === 0) {
 		return indices;
 	}
 	if (diff > 0) {
-		const indicesToAdd = [];
+		const indicesToAdd: number[] = [];
 		for (let i = 0; i < diff; i++) {
 			const index = Math.floor(random(i) * totalIssues);
-			if (!indices.includes(index)) {
+			if (!indicesToAdd.includes(index) && !indices.includes(index)) {
 				indicesToAdd.push(index);
 			} else {
 				diff++;
