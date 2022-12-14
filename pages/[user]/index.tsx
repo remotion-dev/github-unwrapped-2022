@@ -1,22 +1,25 @@
 import {useRouter} from 'next/router';
 import React, {useCallback, useEffect, useState} from 'react';
-import {getALotOfGithubCommits, RATE_LIMIT_TOKEN} from '../remotion/github-api';
-import {LoadingPage} from '../remotion/LoadingPage';
+import {
+	getALotOfGithubCommits,
+	RATE_LIMIT_TOKEN,
+} from '../../remotion/github-api';
+import {LoadingPage} from '../../remotion/LoadingPage';
 import {
 	BackendStatsResponse,
 	CompactStats,
 	mapResponseToStats,
-} from '../remotion/map-response-to-stats';
-import {getAllStatsFromCache} from '../src/db/cache';
-import ErrorHandler from '../src/components/Error';
-import {UserPage} from '../src/components/UserPage';
-import {ThemeId, ThemeProvider} from '../remotion/theme';
+} from '../../remotion/map-response-to-stats';
+import {getAllStatsFromCache} from '../../src/db/cache';
+import ErrorHandler from '../../src/components/Error';
+import {UserPage} from '../../src/components/UserPage';
+import {ThemeId, ThemeProvider} from '../../remotion/theme';
 import {GetServerSideProps} from 'next';
 import {getCookie} from 'cookies-next';
-import {getRenderProgressWithFinality} from '../src/get-render-progress-with-finality';
-import {getRender} from '../src/db/renders';
-import {RenderProgressOrFinality} from '../src/types';
-import {hasEnoughData} from '../src/has-enough-data';
+import {getRenderProgressWithFinality} from '../../src/get-render-progress-with-finality';
+import {getRender} from '../../src/db/renders';
+import {RenderProgressOrFinality} from '../../src/types';
+import {hasEnoughData} from '../../src/has-enough-data';
 
 type Props = {
 	user: CompactStats | null;
