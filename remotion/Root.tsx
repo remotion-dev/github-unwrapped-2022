@@ -517,7 +517,46 @@ export const Root: React.FC = () => {
 					],
 				}}
 			></Composition>
-
+			<Composition
+				component={Socks}
+				height={1080}
+				width={1080}
+				durationInFrames={250}
+				fps={30}
+				id="SocksTwo"
+				defaultProps={{
+					theme: redTheme,
+					noBackground: false,
+					topLanguages: [
+						{
+							color: 'red',
+							name: 'CSS',
+						},
+						{
+							color: 'red',
+							name: 'Bash',
+						},
+					],
+				}}
+			></Composition>
+			<Composition
+				component={Socks}
+				height={1080}
+				width={1080}
+				durationInFrames={250}
+				fps={30}
+				id="SocksOne"
+				defaultProps={{
+					theme: redTheme,
+					noBackground: false,
+					topLanguages: [
+						{
+							color: 'red',
+							name: 'CSS',
+						},
+					],
+				}}
+			></Composition>
 			<Composition
 				component={WallHanger}
 				height={1080}

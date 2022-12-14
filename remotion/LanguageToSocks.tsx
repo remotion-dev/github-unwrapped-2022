@@ -36,7 +36,7 @@ export const LanguageToSocks: React.FC<{
 					transform: `translateX(${translateX}px)`,
 				}}
 			>
-				<TopLanguages></TopLanguages>
+				<TopLanguages languages={topLanguages}></TopLanguages>
 			</AbsoluteFill>
 			<AbsoluteFill
 				style={{

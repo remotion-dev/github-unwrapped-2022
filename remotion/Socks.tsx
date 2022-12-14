@@ -15,19 +15,24 @@ export const Socks: React.FC<{
 	const {width, fps} = useVideoConfig();
 	const top3Languages = topLanguages.slice(0, 3).reverse();
 	const frame = useCurrentFrame();
-	const offset = new Array(top3Languages.length - 1)
-		.fill(true)
-		.map((_, i) => {
-			return spring({
-				fps,
-				frame:
-					frame - (i + 1) * (i === top3Languages.length - 2 ? 40 : 40) - delay,
-				config: {
-					damping: 200,
-				},
-			});
-		})
-		.reduce((a, b) => a + b);
+	const offset =
+		top3Languages.length === 1
+			? 0
+			: new Array(top3Languages.length - 1)
+					.fill(true)
+					.map((_, i) => {
+						return spring({
+							fps,
+							frame:
+								frame -
+								(i + 1) * (i === top3Languages.length - 2 ? 40 : 40) -
+								delay,
+							config: {
+								damping: 200,
+							},
+						});
+					})
+					.reduce((a, b) => a + b);
 
 	return (
 		<AbsoluteFill

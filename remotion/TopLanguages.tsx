@@ -1,7 +1,10 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
+import {TopLanguage} from '../src/get-all';
 
-export const TopLanguages: React.FC = () => {
+export const TopLanguages: React.FC<{
+	languages: TopLanguage[];
+}> = ({languages}) => {
 	return (
 		<AbsoluteFill
 			style={{
@@ -14,7 +17,7 @@ export const TopLanguages: React.FC = () => {
 				lineHeight: 1.4,
 			}}
 		>
-			My top languages of 2022
+			My top {languages.length === 1 ? 'language' : 'languages'} of 2022
 		</AbsoluteFill>
 	);
 };
