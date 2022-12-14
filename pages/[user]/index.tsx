@@ -177,13 +177,12 @@ export default function User(props: Props) {
 			</ThemeProvider>
 		);
 	}
-	if (!hasEnoughData(state.stats)) {
+
+	const enoughData = hasEnoughData(state.stats);
+	if (enoughData !== 'enough-data') {
 		return (
 			<ThemeProvider initialTheme={props.initialTheme}>
-				<ErrorHandler
-					reason="not-enough-data"
-					username={username}
-				></ErrorHandler>
+				<ErrorHandler reason={enoughData} username={username}></ErrorHandler>
 			</ThemeProvider>
 		);
 	}

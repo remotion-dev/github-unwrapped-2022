@@ -1,27 +1,30 @@
 import {BackendStats, CompactStats} from '../remotion/map-response-to-stats';
 
-export const hasEnoughData = (stats: CompactStats): boolean => {
+type State =
+	| 'enough-data'
+	| 'no-contributions'
+	| 'no-public-contributions'
+	| 'no-weekdays'
+	| 'no-best-commits';
+
+export const hasEnoughData = (stats: CompactStats): State => {
 	if (stats.bestCommits.length === 0) {
-		return false;
+		return 'no-best-commits';
 	}
 	if (stats.weekdays.mostCount === 0) {
-		return false;
+		return 'no-weekdays';
 	}
 
-	if (!hasEnoughBackendData(stats)) {
-		return false;
-	}
-
-	return true;
+	return hasEnoughBackendData(stats);
 };
 
-export const hasEnoughBackendData = (stats: BackendStats) => {
-	if (stats.repositoriesContributedTo.length === 0) {
-		return false;
-	}
+export const hasEnoughBackendData = (stats: BackendStats): State => {
 	if (stats.contributionCount === 0) {
-		return false;
+		return 'no-contributions';
+	}
+	if (stats.repositoriesContributedTo.length === 0) {
+		return 'no-public-contributions';
 	}
 
-	return true;
+	return 'enough-data';
 };

@@ -12,17 +12,65 @@ type ErrorMessage = {
 	subtitle: string;
 };
 
-type ErrorReason = 'not-enough-data' | 'not-found' | 'rate-limit';
+type ErrorReason =
+	| 'no-contributions'
+	| 'no-public-contributions'
+	| 'no-weekdays'
+	| 'no-best-commits'
+	| 'not-found'
+	| 'rate-limit';
 
 const getErrorMessage = (
 	reason: ErrorReason,
 	username: string
 ): ErrorMessage => {
-	if (reason === 'not-enough-data') {
+	const isNextYear = Date.now() > new Date('2023-01-01').getTime();
+	if (reason === 'no-best-commits') {
+		const cta = isNextYear
+			? 'Come back at the end of 2023 to get your video!'
+			: "It's not too late, do some commits and come back!";
 		return {
-			title: 'Not enough activity',
-			subtitle:
-				'Unfortunately, there is not enough data on your GitHub profile to make an interesting video out of it. Have you opted into showing your private commits in your activity graph?',
+			title: 'Not enough public commit',
+			subtitle: [
+				'Unfortunately, there are not enough public commits to make an interesting video.',
+				cta,
+			].join(' '),
+		};
+	}
+	if (reason === 'no-contributions') {
+		const cta = isNextYear
+			? 'Come back at the end of 2023 to get your video!'
+			: "It's not too late, get coding and then come back!";
+		return {
+			title: 'Not enough contributions',
+			subtitle: [
+				'Unfortunately, there are not enough contributions to make an interesting video.',
+				cta,
+			].join(' '),
+		};
+	}
+	if (reason === 'no-public-contributions') {
+		const cta = isNextYear
+			? 'Come back at the end of 2023 to get your video!'
+			: 'Make some public and come back!';
+		return {
+			title: 'Not enough public contributions',
+			subtitle: [
+				'Unfortunately, there are not enough public contributions to make an interesting video.',
+				cta,
+			].join(' '),
+		};
+	}
+	if (reason === 'no-weekdays') {
+		const cta = isNextYear
+			? 'Come back at the end of 2023 to get your video!'
+			: "It's not too late, get coding and come back later!";
+		return {
+			title: 'No enough data',
+			subtitle: [
+				'Unfortunately, there is not enough public activity to give you interesting statistics.',
+				cta,
+			].join(' '),
 		};
 	}
 
