@@ -1,10 +1,14 @@
 import React from 'react';
-import {AbsoluteFill, Img, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Img} from 'remotion';
+import {GithubIcon} from '../../src/components/Github';
 import {RoughPath} from '../RoughPath';
+import {Theme} from '../theme';
 
-export const StillAvatarFrame: React.FC<{avatar: string}> = ({avatar}) => {
-	const {height} = useVideoConfig();
-
+export const StillAvatarFrame: React.FC<{
+	avatar: string;
+	isGeneric: boolean;
+	theme: Theme;
+}> = ({avatar, isGeneric, theme}) => {
 	return (
 		<AbsoluteFill>
 			<AbsoluteFill
@@ -35,11 +39,7 @@ export const StillAvatarFrame: React.FC<{avatar: string}> = ({avatar}) => {
 					</svg>
 				</div>
 			</AbsoluteFill>
-			<AbsoluteFill
-				style={{
-					transformOrigin: 'center ' + (height / 2 - 350) + 'px',
-				}}
-			>
+			<AbsoluteFill style={{}}>
 				<AbsoluteFill
 					style={{
 						justifyContent: 'center',
@@ -109,15 +109,22 @@ export const StillAvatarFrame: React.FC<{avatar: string}> = ({avatar}) => {
 							alignItems: 'center',
 						}}
 					>
-						<Img
-							style={{
-								height: 340,
-								width: 340,
-								borderRadius: 20,
-								marginTop: 100,
-							}}
-							src={avatar}
-						></Img>
+						{!isGeneric ? (
+							<Img
+								style={{
+									height: 340,
+									width: 340,
+									borderRadius: 20,
+									marginTop: 100,
+								}}
+								src={avatar}
+							></Img>
+						) : (
+							<GithubIcon
+								theme={theme}
+								style={{height: 329, marginTop: 108, marginRight: 6}}
+							></GithubIcon>
+						)}
 					</AbsoluteFill>
 					<AbsoluteFill
 						style={{

@@ -6,28 +6,31 @@ import {StillTitleCard} from './StillTitleCard';
 import {Theme} from '../theme';
 import {StillWallHanger} from './StillWallHanger';
 import {StillAvatarFrame} from './StillAvatarFrame';
+import {StaticSnow} from './StaticSnow';
 
-export const OG: React.FC<{userStats: CompactStats; theme: Theme}> = ({
-	userStats,
-	theme,
-}) => {
+export const OG: React.FC<{
+	userStats: CompactStats;
+	theme: Theme;
+	isGeneric: boolean;
+}> = ({userStats, theme, isGeneric}) => {
 	const wallHangerPos = 360;
 	const avatarFramePos = -360;
 
 	return (
 		<div style={{width: 1200, height: 630, backgroundColor: theme.background}}>
+			<StaticSnow></StaticSnow>
 			<AbsoluteFill
 				style={{
 					justifyContent: 'center',
 					alignItems: 'center',
-					marginTop: -105,
+					marginTop: 0,
 				}}
 			>
-				<Tree theme={theme} style={{transform: 'scale(0.6)'}}></Tree>
+				<Tree theme={theme} style={{transform: 'scale(1)'}}></Tree>
 			</AbsoluteFill>
 			<Sequence
 				style={{
-					top: -100,
+					top: -110,
 					left: wallHangerPos,
 					scale: '0.4',
 				}}
@@ -38,17 +41,22 @@ export const OG: React.FC<{userStats: CompactStats; theme: Theme}> = ({
 			</Sequence>
 			<Sequence
 				style={{
-					top: -100,
+					top: -110,
 					left: avatarFramePos,
 					scale: '0.4',
 				}}
 			>
-				<StillAvatarFrame avatar={userStats.avatar}></StillAvatarFrame>
+				<StillAvatarFrame
+					avatar={userStats.avatar}
+					isGeneric={isGeneric}
+					theme={theme}
+				></StillAvatarFrame>
 			</Sequence>
 			<Sequence>
 				<StillTitleCard
 					theme={theme}
 					username={userStats.username}
+					isGeneric={isGeneric}
 				></StillTitleCard>
 			</Sequence>
 		</div>

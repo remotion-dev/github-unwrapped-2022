@@ -12,14 +12,15 @@ const titleStyle: React.CSSProperties = {
 	lineHeight: 1.1,
 };
 
-export const StillTitleCard: React.FC<{username: string; theme: Theme}> = ({
-	username,
-	theme,
-}) => {
+export const StillTitleCard: React.FC<{
+	username: string;
+	theme: Theme;
+	isGeneric: boolean;
+}> = ({username, theme, isGeneric}) => {
 	return (
 		<AbsoluteFill
 			style={{
-				marginTop: 182,
+				marginTop: 132,
 				scale: '0.7',
 			}}
 		>
@@ -32,7 +33,6 @@ export const StillTitleCard: React.FC<{username: string; theme: Theme}> = ({
 				<svg
 					style={{
 						width: 900,
-						height: 270,
 						overflow: 'visible',
 					}}
 					viewBox="0 0 800 250"
@@ -53,33 +53,61 @@ export const StillTitleCard: React.FC<{username: string; theme: Theme}> = ({
 					alignItems: 'center',
 				}}
 			>
-				<div style={titleStyle}>
-					<span
-						style={{
-							fontSize: '0.7em',
-							fontWeight: 500,
-						}}
-					>
-						This is my{' '}
+				{!isGeneric ? (
+					<div style={titleStyle}>
 						<span
 							style={{
+								fontSize: '0.7em',
+								fontWeight: 500,
+							}}
+						>
+							This is my{' '}
+							<span
+								style={{
+									fontWeight: 700,
+								}}
+							>
+								#GitHubUnwrapped
+							</span>
+						</span>
+						<br />
+						<span
+							style={{
+								fontSize: '1.1em',
 								fontWeight: 700,
+								color: theme.mainColor,
+							}}
+						>
+							{username}
+						</span>
+					</div>
+				) : (
+					<div style={titleStyle}>
+						<span
+							style={{
+								fontSize: '0.7em',
+								fontWeight: 500,
+							}}
+						>
+							Get your personalized{' '}
+							<span
+								style={{
+									fontWeight: 700,
+								}}
+							></span>
+						</span>
+						<br />
+						<span
+							style={{
+								fontSize: '1.1em',
+								fontWeight: 700,
+								color: theme.mainColor,
 							}}
 						>
 							#GitHubUnwrapped
 						</span>
-					</span>
-					<br />
-					<span
-						style={{
-							fontSize: '1.1em',
-							fontWeight: 700,
-							color: theme.mainColor,
-						}}
-					>
-						{username}
-					</span>
-				</div>
+					</div>
+				)}
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);

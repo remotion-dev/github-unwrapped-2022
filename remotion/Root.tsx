@@ -515,6 +515,7 @@ export const Root: React.FC = () => {
 						backendResponseToBackendStats(all),
 						mapApiResponseToCommits(commits)
 					),
+					isGeneric: true,
 				}}
 			></Composition>
 			<Composition
