@@ -4,6 +4,8 @@ import React, {useCallback, useMemo, useState} from 'react';
 import {Theme, useTheme} from '../../remotion/theme';
 import {button} from './button';
 import {Footer, FOOTER_HEIGHT} from './Footer';
+import {HomeSidebar} from './HomeSidebar';
+import {RoughBox} from './RoughBox';
 
 const container: React.CSSProperties = {
 	height: '100%',
@@ -13,11 +15,15 @@ const container: React.CSSProperties = {
 };
 
 const headerStyle: React.CSSProperties = {
-	maxWidth: 800,
+	maxWidth: 1000,
 	paddingLeft: 20,
 	paddingRight: 20,
-	textAlign: 'center',
 	margin: 'auto',
+	display: 'flex',
+};
+
+const rightContainer: React.CSSProperties = {
+	fontFamily: 'MonaSans',
 };
 
 const paragraph: React.CSSProperties = {
@@ -67,16 +73,19 @@ export function HomeComponent() {
 
 	const input: React.CSSProperties = useMemo(
 		() => ({
-			padding: 14,
+			padding: 20,
 			borderRadius: 8,
 			fontSize: 22,
 			fontFamily: 'MonaSans',
-			textAlign: 'center',
+			textAlign: 'left',
 			background: 'white',
-			border: `3px solid ${theme.mainColor}`,
+			border: 'none',
 			fontWeight: 700,
+			width: '100%',
+			paddingTop: 24,
+			paddingBottom: 24,
 		}),
-		[theme.mainColor]
+		[]
 	);
 
 	const onSubmit: React.FormEventHandler = useCallback(
@@ -110,35 +119,46 @@ export function HomeComponent() {
 			</Head>
 			<div style={abs}>
 				<div style={container}>
-					<header style={headerStyle}>
-						<div style={h1}>Your coding year in review</div>
-						<p style={paragraph}>
-							Get a personalized video of your GitHub activity in 2022.
-							<br /> Type your username to get started!
-						</p>
-						<br />
+					<header style={headerStyle} className="mobile-row header-style">
+						<div>
+							<div style={h1}>Your coding year in review</div>
+							<p style={paragraph}>
+								Get a personalized video of your GitHub activity in 2022.
+								<br /> Type your username to get started!
+							</p>
+							<br />
 
-						<form onSubmit={onSubmit}>
-							<input
-								value={username}
-								onChange={onChange}
-								type={'text'}
-								disabled={loading}
-								autoComplete="none"
-								style={input}
-								className="github-username"
-								placeholder="GitHub username"
-							></input>
-							<br />
-							<br />
-							<input
-								style={buttonStyle(loading, theme)}
-								type="submit"
-								value={
-									loading ? 'Getting your Unwrapped...' : 'Get your Unwrapped'
-								}
-							/>
-						</form>
+							<form onSubmit={onSubmit}>
+								<div style={{width: 400}}>
+									<RoughBox padding={0} style={{}} seed={4}>
+										<div>
+											<input
+												value={username}
+												onChange={onChange}
+												type={'text'}
+												disabled={loading}
+												autoComplete="none"
+												style={input}
+												className="github-username"
+												placeholder="GitHub username"
+											></input>
+										</div>
+									</RoughBox>
+								</div>
+								<br />
+								<br />
+								<input
+									style={buttonStyle(loading, theme)}
+									type="submit"
+									value={
+										loading ? 'Getting your Unwrapped...' : 'Get your Unwrapped'
+									}
+								/>
+							</form>
+						</div>
+						<div style={rightContainer} className="right-container">
+							<HomeSidebar></HomeSidebar>
+						</div>
 					</header>
 				</div>
 			</div>

@@ -4,7 +4,7 @@ import {Theme} from '../../remotion/theme';
 export const button = (theme: Theme): React.CSSProperties => ({
 	appearance: 'none',
 	WebkitAppearance: 'none',
-	padding: '14px 20px',
+	padding: '20px 28px',
 	border: 0,
 	color: 'white',
 	backgroundColor: theme.mainColor,

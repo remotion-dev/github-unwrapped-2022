@@ -10,7 +10,6 @@ export const FOOTER_HEIGHT = 200;
 const container: React.CSSProperties = {
 	minHeight: FOOTER_HEIGHT,
 	fontFamily: 'MonaSans',
-	alignItems: 'center',
 	paddingLeft: 20,
 	paddingRight: 20,
 	paddingTop: 40,
@@ -50,7 +49,7 @@ export const Footer: React.FC<{
 	);
 
 	return (
-		<div style={outer}>
+		<div style={outer} className="footer">
 			<div style={container} className="mobile-row">
 				<a
 					href="https://remotion.dev"
@@ -80,13 +79,15 @@ export const Footer: React.FC<{
 						Source Code
 					</div>
 				</a>
-				<Link href="/about" passHref style={link}>
-					<div style={item}>
-						<Bauble
-							theme={theme}
-							style={{height: 35, marginTop: -5, marginRight: 6}}
-						></Bauble>
-						About this site
+				<Link href="/about" passHref>
+					<div style={link}>
+						<div style={item}>
+							<Bauble
+								theme={theme}
+								style={{height: 35, marginTop: -5, marginRight: 6}}
+							></Bauble>
+							About this site
+						</div>
 					</div>
 				</Link>
 			</div>

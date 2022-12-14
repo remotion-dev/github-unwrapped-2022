@@ -44,6 +44,19 @@ a {
 	height: 60px;
 }
 
+.footer {
+	align-items: center;
+}
+
+.right-container {
+	margin-left: 80px;
+}
+
+.header-style {
+	align-items: center;
+}
+
+
 @media screen and (max-width: 1000px) {
 	.mobile-row {
 		flex-direction: column;
@@ -61,6 +74,15 @@ a {
 	.play-button-icon {
 		height: 40px;
 	}
-	
+	.footer {
+		align-items: flex-start;
+	}	
+	.right-container {
+		margin-left: 0;
+		margin-top: 70px;
+	}	
+	.header-style {
+		align-items: flex-start;
+	}	
 }
 
