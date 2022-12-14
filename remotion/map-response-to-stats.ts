@@ -22,6 +22,18 @@ export type CompactStats = BackendStats & {
 	bestCommits: Commit[];
 };
 
+export type BackendStatsResponse =
+	| {
+			type: 'found';
+			backendStats: BackendStats;
+	  }
+	| {
+			type: 'not-found';
+	  }
+	| {
+			type: 'too-little-data';
+	  };
+
 export const getIssues = (response: BackendResponse): Issues => {
 	return {
 		closed: response.data.user.closedIssues.totalCount,
