@@ -6,3 +6,5 @@ export const DURATION = 1120;
 export const RAM = 2048;
 export const DISK = 2048;
 export const TIMEOUT = 240;
+
+export const DOMAIN = 'https://2022.githubunwrapped.com';
