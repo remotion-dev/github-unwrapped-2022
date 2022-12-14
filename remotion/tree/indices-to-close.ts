@@ -8,12 +8,12 @@ export const getIndicesToClose = ({
 	totalIssues,
 	dotsPerRow,
 	rows,
-	avgRotsPerRow,
+	avgDotsPerRow: avgRotsPerRow,
 }: {
 	totalIssues: number;
 	dotsPerRow: number;
 	rows: number;
-	avgRotsPerRow: number;
+	avgDotsPerRow: number;
 }): number[] => {
 	let indices: number[] = [];
 	for (let i = 0; i < totalIssues; i++) {

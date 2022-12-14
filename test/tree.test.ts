@@ -14,7 +14,7 @@ test('Should calculate tree correctly', () => {
 	});
 	const indices = makeIndicesAccurate({
 		indices: getIndicesToClose({
-			avgRotsPerRow,
+			avgDotsPerRow: avgRotsPerRow,
 			dotsPerRow,
 			rows,
 			totalIssues: 2,
