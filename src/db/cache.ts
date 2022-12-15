@@ -47,17 +47,24 @@ export const saveEmailAdress = async (email: string) => {
 	const collection = await dbEmailCollection();
 	await collection.updateOne(
 		{
-			username: email.toLowerCase(),
+			email: email.toLowerCase(),
 		},
 		{
 			$set: {
-				username: email.toLowerCase(),
+				email: email.toLowerCase(),
 			},
 		},
 		{
 			upsert: true,
 		}
 	);
+};
+
+export const getEmailFromDb = async (email: string) => {
+	const collection = await dbEmailCollection();
+	return collection.findOne({
+		email: email.toLowerCase(),
+	});
 };
 
 export const saveOgImage = async ({

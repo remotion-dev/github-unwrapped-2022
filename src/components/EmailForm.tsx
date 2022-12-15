@@ -28,6 +28,7 @@ const buttonStyle = (disabled: boolean, theme: Theme): React.CSSProperties =>
 		: button(theme);
 
 export const EmailForm: React.FC<{}> = () => {
+	const [successMessage, setSuccessMessage] = useState<string | null>(null);
 	const [email, setEmail] = useState<string>('');
 	const [error, setError] = useState<string | null>(null);
 	const [theme] = useTheme();
@@ -49,6 +50,8 @@ export const EmailForm: React.FC<{}> = () => {
 				});
 				if (res.status == 201) {
 					setIsSaved(true);
+					setSuccessMessage(res.statusText);
+					console.log(res);
 					setError(null);
 				} else {
 					setError(res.statusText);
@@ -136,10 +139,7 @@ export const EmailForm: React.FC<{}> = () => {
 			{error ? <p style={{color: 'red', marginBottom: -8}}> {error}</p> : null}
 
 			{isSaved ? (
-				<p style={{color: 'green', marginBottom: -8}}>
-					{' '}
-					Your email has been saved{' '}
-				</p>
+				<p style={{color: 'green', marginBottom: -8}}>{successMessage}</p>
 			) : null}
 		</RoughBox>
 	);
