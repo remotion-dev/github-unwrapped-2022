@@ -33,7 +33,7 @@ export const redTheme: Theme = {
 
 export const goldenTheme: Theme = {
 	name: 'golden',
-	displayName: 'Bespoke Golden',
+	displayName: 'Funky Gold',
 	mainColor: '#DAA520',
 	accentColor: '#C97723',
 	background: '#f7f1de',
