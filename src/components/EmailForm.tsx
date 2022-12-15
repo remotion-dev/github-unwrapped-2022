@@ -1,6 +1,5 @@
 import {useCallback, useMemo, useState} from 'react';
 import {Theme, useTheme} from '../../remotion/theme';
-import {saveEmailAdress} from '../db/cache';
 import {button} from './button';
 import {RoughBox} from './RoughBox';
 
@@ -33,12 +32,14 @@ export const EmailForm: React.FC<{}> = () => {
 	const [error, setError] = useState<string | null>(null);
 	const [theme] = useTheme();
 	const [loading, setLoading] = useState(false);
-
+	const [isSaved, setIsSaved] = useState<boolean>(false);
 	const isValidEmail = (inputMail: string) =>
 		/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(inputMail);
 
 	const onSubmit: React.FormEventHandler = useCallback(
 		async (e) => {
+			setIsSaved(false);
+			setError(null);
 			e.preventDefault();
 			if (isValidEmail(email)) {
 				const res = await fetch('/api/email', {
@@ -46,8 +47,14 @@ export const EmailForm: React.FC<{}> = () => {
 					body: JSON.stringify({email}),
 					headers: {'content-type': 'application/json'},
 				});
+				if (res.status == 201) {
+					setIsSaved(true);
+					setError(null);
+				} else {
+					setError(res.statusText);
+				}
 			} else {
-				setError('Invalid Email');
+				setError('Invalid email provided. Please try again');
 				console.log(error);
 			}
 		},
@@ -126,6 +133,14 @@ export const EmailForm: React.FC<{}> = () => {
 					value={loading ? 'Sending...' : 'Submit'}
 				/>
 			</form>
+			{error ? <p style={{color: 'red', marginBottom: -8}}> {error}</p> : null}
+
+			{isSaved ? (
+				<p style={{color: 'green', marginBottom: -8}}>
+					{' '}
+					Your email has been saved{' '}
+				</p>
+			) : null}
 		</RoughBox>
 	);
 };
