@@ -35,3 +35,13 @@ export type OgCompProps = {
 	theme: Theme;
 	isGeneric: boolean;
 };
+
+export type EmailResponse =
+	| {
+			type: 'success';
+			message: string;
+	  }
+	| {
+			type: 'error';
+			error: string;
+	  };

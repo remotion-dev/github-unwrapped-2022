@@ -19,6 +19,10 @@ type OgImageCollection = {
 	theme: ThemeId;
 };
 
+type EmailCollection = {
+	email: string;
+};
+
 export const allStatscollection = async () => {
 	const client = await mongoClient;
 	return client.db(DB).collection<CacheCollection>('wrapped');
@@ -32,6 +36,35 @@ export const backendStatsCollection = async () => {
 export const dbImageCollection = async () => {
 	const client = await mongoClient;
 	return client.db(DB).collection<OgImageCollection>('og');
+};
+
+export const dbEmailCollection = async () => {
+	const client = await mongoClient;
+	return client.db(DB).collection<EmailCollection>('email');
+};
+
+export const saveEmailAdress = async (email: string) => {
+	const collection = await dbEmailCollection();
+	await collection.updateOne(
+		{
+			email: email.toLowerCase(),
+		},
+		{
+			$set: {
+				email: email.toLowerCase(),
+			},
+		},
+		{
+			upsert: true,
+		}
+	);
+};
+
+export const getEmailFromDb = async (email: string) => {
+	const collection = await dbEmailCollection();
+	return collection.findOne({
+		email: email.toLowerCase(),
+	});
 };
 
 export const saveOgImage = async ({

@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import React from 'react';
+import React, {useMemo} from 'react';
 import {useTheme} from '../../remotion/theme';
 import {DOMAIN} from '../config';
 import {button} from './button';
+import {EmailForm} from './EmailForm';
 import {RoughBox} from './RoughBox';
 
 const bigTitle: React.CSSProperties = {
@@ -35,6 +36,15 @@ const box: React.CSSProperties = {
 export const FaqPage: React.FC = () => {
 	const [theme] = useTheme();
 
+	const link: React.CSSProperties = useMemo(
+		() => ({
+			color: theme.mainColor,
+			textDecoration: 'none',
+			fontWeight: 500,
+			borderBottom: '1px solid' + theme.mainColor,
+		}),
+		[theme]
+	);
 	return (
 		<div
 			style={{
@@ -79,20 +89,28 @@ export const FaqPage: React.FC = () => {
 				<RoughBox seed={3} style={box}>
 					<h2 style={title}>Is the project open source?</h2>
 					<p style={para}>
-						Yes, the source code is available on{' '}
+						The source code of the video is open source.{' '}
 						<a
-							style={{
-								color: 'black',
-							}}
 							target={'_blank'}
-							href="https://github.com/remotion-dev/github-unwrapped"
+							style={link}
+							href="https://github.com/remotion-dev/github-unwrapped-2022"
 							rel="noreferrer"
 						>
-							GitHub
+							View source
 						</a>
-						! The source code of the video is {'"'}open source{'"'}, while
-						Remotion, the framework for making videos is {'"'}source-available
-						{'"'} and requires companies to obtain a license to use it.
+						<br></br> Remotion, the framework for making videos programmatically
+						is required as a dependency and is {'"'}
+						source-available
+						{'"'} and requires{' '}
+						<a
+							target={'_blank'}
+							style={link}
+							href="https://remotion.dev/license"
+							rel="noreferrer"
+						>
+							companies to obtain a license to use it
+						</a>
+						.
 					</p>
 				</RoughBox>
 
@@ -101,11 +119,9 @@ export const FaqPage: React.FC = () => {
 					<p style={para}>
 						This project was implemented by{' '}
 						<a
-							style={{
-								color: 'black',
-							}}
+							style={link}
 							target="_blank"
-							href="https://twitter.com/JNYBGR"
+							href="https://remotion.dev"
 							rel="noreferrer"
 						>
 							Remotion
@@ -113,16 +129,18 @@ export const FaqPage: React.FC = () => {
 						with support from GitHub.
 					</p>
 				</RoughBox>
+				<EmailForm></EmailForm>
 				<RoughBox seed={10} style={box}>
 					<h2 style={title}>Credits</h2>
 					<p style={para}>
 						<div>Music: </div>
-						<div>Icons: Tal Revivo (Icon 54) and mehwishumar (Fiverr)</div>
+						<div>Programming language icons: Tal Revivo (Icon 54)</div>
+						<div>Christmas icons: mehwishumar (Fiverr)</div>
 						<div>Font: Mona Sans</div>
 						<div>Libraries used: Next.JS, Rough.JS</div>
 					</p>
 				</RoughBox>
-				<RoughBox seed={5} style={box}>
+				<RoughBox seed={12} style={box}>
 					<h2 style={title}>Contact</h2>
 					<p style={para}>
 						<a
@@ -137,6 +155,7 @@ export const FaqPage: React.FC = () => {
 						</a>
 					</p>
 				</RoughBox>
+
 				<br></br>
 				<br></br>
 				<Link href="/" passHref>
