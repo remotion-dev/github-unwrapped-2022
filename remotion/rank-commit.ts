@@ -13,6 +13,9 @@ const interestingWords = [
 	'allow',
 	'simplify',
 	'damn',
+	'feat',
+	'implement',
+	'new',
 ];
 
 const notInteresting = ['release', 'merge', 'update', 'minor'];
