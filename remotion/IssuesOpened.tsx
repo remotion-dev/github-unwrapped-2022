@@ -171,10 +171,6 @@ export const IssuesOpened: React.FC<{
 										extrapolateRight: 'clamp',
 									}
 								);
-								console.log([
-									actualIndex - Math.min(10, totalIssues - 1),
-									actualIndex,
-								]);
 								const color = getColor(
 									indicesToClose,
 									actualIndex,

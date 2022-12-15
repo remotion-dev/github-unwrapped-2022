@@ -4,56 +4,13 @@ import {TopLanguage} from '../src/get-all';
 import {LangPlaceholder} from './LangPlaceholder';
 import {languageList} from './language-list';
 import {LanguageIcon} from './Languages/LanguageIcon';
-import {CompactStats} from './map-response-to-stats';
 import {Theme} from './theme';
 import {TopLangTitle} from './TopLangTitle';
 
-function getLanguageIcons(
-	languages: {color: string | null; name: string}[],
-	icons: {name: string; Component: any}[]
-) {
-	const result: Record<string, React.FC | string | null> = {};
-
-	// Create an object with the language name as the key and the corresponding icon or color as the value
-	for (const language of languages) {
-		const matchingIcon = icons.find((icon) => icon.name === language.name);
-		if (matchingIcon) {
-			result[language.name] = matchingIcon.Component;
-		} else {
-			result[language.name] = language.color;
-		}
-	}
-
-	// Sort the languages so that those with icons come first
-	const sortedLanguages = languages.sort((a, b) => {
-		const aHasIcon = icons.some((icon) => icon.name === a.name);
-		const bHasIcon = icons.some((icon) => icon.name === b.name);
-		if (aHasIcon && !bHasIcon) {
-			return -1;
-		}
-		if (!aHasIcon && bHasIcon) {
-			return 1;
-		}
-		return 0;
-	});
-
-	// Return the corresponding icons or colors along with the language names
-	return sortedLanguages.map((language) => ({
-		name: language.name,
-		icon: result[language.name],
-	}));
-}
-
 export const TopLang: React.FC<{
-	stats: CompactStats;
+	topLanguages: TopLanguage[];
 	theme: Theme;
-}> = ({stats, theme}) => {
-	if (!stats.topLanguages) {
-		// TODO
-		return null;
-	}
-	const list = getLanguageIcons(stats.topLanguages, languageList);
-	console.log({list});
+}> = ({topLanguages, theme}) => {
 	return (
 		<AbsoluteFill
 			style={{
@@ -72,7 +29,7 @@ export const TopLang: React.FC<{
 					marginTop: 200,
 				}}
 			>
-				{stats.topLanguages.map((l) => {
+				{topLanguages.map((l) => {
 					return <Lang key={l.name} lang={l}></Lang>;
 				})}
 			</AbsoluteFill>

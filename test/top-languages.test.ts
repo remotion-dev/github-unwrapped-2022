@@ -332,7 +332,7 @@ test.only('jakopako test case', () => {
 		},
 	]);
 
-	expect(res?.[0].name).toBe('Go');
-	expect(res?.[1].name).toBe('TypeScript');
-	expect(res?.[2].name).toBe('Roff');
+	expect(res?.[0].name).toBe('TypeScript');
+	expect(res?.[1].name).toBe('Shell');
+	expect(res?.[2].name).toBe('Go');
 });

@@ -104,10 +104,12 @@ export const getTopLanguages = (
 	// Get the languages used in the repositories
 	const languages = response
 		.map((r) => {
-			return r.repository;
+			const repo = r.repository;
+			const topLanguages = repo.languages.edges.map((edge, i) => {
+				return {node: edge.node, rank: Math.max(3 - i, 0)};
+			});
+			return topLanguages;
 		})
-		.filter((n) => n.languages.edges?.[0])
-		.map((n) => n.languages.edges)
 		.flat(1);
 
 	// Count the number of times each language is used
@@ -119,7 +121,7 @@ export const getTopLanguages = (
 		if (!langs[lang.node.name]) {
 			langs[lang.node.name] = 0;
 		}
-		langs[lang.node.name] += lang.size;
+		langs[lang.node.name] += lang.rank;
 	}
 
 	// Sort the languages by their counts in descending order
