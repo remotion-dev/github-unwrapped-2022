@@ -174,9 +174,7 @@ export function HomeComponent() {
 								<input
 									style={buttonStyle(loading, theme)}
 									type="submit"
-									value={
-										loading ? 'Getting your Unwrapped...' : 'Get your Unwrapped'
-									}
+									value={loading ? 'Wrapping...' : 'Get your Unwrapped'}
 								/>
 							</form>
 						</div>
