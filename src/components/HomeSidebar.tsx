@@ -59,7 +59,7 @@ export const HomeSidebar: React.FC = () => {
 					></CameraIcon>
 					<div style={spacer}></div>
 					<div>
-						An MP4 video<br></br>that you can post
+						An MP4 video<br></br>that you can share
 					</div>
 				</div>
 			</div>
