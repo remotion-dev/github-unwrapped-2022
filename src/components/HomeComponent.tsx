@@ -7,12 +7,13 @@ import {button} from './button';
 import {Footer, FOOTER_HEIGHT} from './Footer';
 import {HomeSidebar} from './HomeSidebar';
 import {RoughBox} from './RoughBox';
+import {UnwrappedTitle} from './Unwrapped';
 
 const container: React.CSSProperties = {
-	height: '100%',
-	width: '100%',
 	display: 'flex',
 	flexDirection: 'column',
+	marginLeft: 20,
+	marginRight: 20,
 };
 
 const headerStyle: React.CSSProperties = {
@@ -117,6 +118,7 @@ export function HomeComponent() {
 				<meta property="og:image" content={`${DOMAIN}/flash.png`} />
 			</Head>
 			<div style={abs}>
+				<UnwrappedTitle />
 				<div style={container}>
 					<RoughBox
 						seed={1}
