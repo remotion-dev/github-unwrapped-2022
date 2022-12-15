@@ -107,6 +107,16 @@ export function HomeComponent() {
 		[]
 	);
 
+	const [focused, setFocused] = useState(false);
+
+	const onFocus: React.FocusEventHandler = useCallback(() => {
+		setFocused(true);
+	}, []);
+
+	const onBlur: React.FocusEventHandler = useCallback(() => {
+		setFocused(false);
+	}, []);
+
 	return (
 		<>
 			<Head>
@@ -137,9 +147,16 @@ export function HomeComponent() {
 
 							<form onSubmit={onSubmit}>
 								<div style={{maxWidth: 400}}>
-									<RoughBox padding={0} style={{}} seed={4}>
+									<RoughBox
+										padding={0}
+										stroke={focused ? theme.mainColor : 'black'}
+										style={{}}
+										seed={focused ? 8 : 4}
+									>
 										<div>
 											<input
+												onFocus={onFocus}
+												onBlur={onBlur}
 												value={username}
 												onChange={onChange}
 												type={'text'}

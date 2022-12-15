@@ -15,6 +15,7 @@ export const RoughBox: React.FC<{
 	padding?: number;
 	roughness?: number;
 	strokeWidth?: number;
+	stroke?: string;
 }> = ({
 	children,
 	seed,
@@ -23,6 +24,7 @@ export const RoughBox: React.FC<{
 	className,
 	roughness,
 	strokeWidth,
+	stroke,
 	style: passedStyle,
 }) => {
 	const ref = useRef<HTMLDivElement>(null);
@@ -45,12 +47,12 @@ export const RoughBox: React.FC<{
 			seed: seed,
 			maxRandomnessOffset: 4,
 			strokeWidth: strokeWidth ?? 5,
-			stroke: 'black',
+			stroke: stroke ?? 'black',
 			bowing: 1,
 		});
 
 		return path.toPaths(drawable);
-	}, [d, roughness, seed, strokeWidth]);
+	}, [d, roughness, seed, stroke, strokeWidth]);
 
 	const content: React.CSSProperties = useMemo(() => {
 		return {
