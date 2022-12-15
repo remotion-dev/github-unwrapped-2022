@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import {setCookie} from 'cookies-next';
 import Head from 'next/head';
+import {staticFile} from 'remotion';
 
 export type ThemeId = 'red' | 'golden' | 'blue' | 'green';
 
@@ -16,6 +17,8 @@ export type Theme = {
 	mainColor: string;
 	accentColor: string;
 	background: string;
+	musicPreview: string;
+	musicRendering: string;
 };
 
 export const redTheme: Theme = {
@@ -24,6 +27,8 @@ export const redTheme: Theme = {
 	mainColor: '#e74b3c',
 	accentColor: '#900',
 	background: '#FFE3CA',
+	musicPreview: staticFile('music/track-1.mp3'),
+	musicRendering: staticFile('music/track-1.wav'),
 };
 
 export const goldenTheme: Theme = {
@@ -32,6 +37,8 @@ export const goldenTheme: Theme = {
 	mainColor: '#DAA520',
 	accentColor: '#C97723',
 	background: '#f7f1de',
+	musicPreview: staticFile('music/track-2.mp3'),
+	musicRendering: staticFile('music/track-2.wav'),
 };
 
 export const blueTheme: Theme = {
@@ -40,14 +47,8 @@ export const blueTheme: Theme = {
 	mainColor: '#4185de',
 	accentColor: '#233DC9',
 	background: '#e0f2fc',
-};
-
-export const greenTheme: Theme = {
-	name: 'green',
-	displayName: 'Pure Fir',
-	mainColor: '#25822b',
-	accentColor: '#ff2e1f',
-	background: '#d8ffdf',
+	musicPreview: staticFile('music/track-3.mp3'),
+	musicRendering: staticFile('music/track-3.wav'),
 };
 
 export const allThemes = [redTheme, goldenTheme, blueTheme];

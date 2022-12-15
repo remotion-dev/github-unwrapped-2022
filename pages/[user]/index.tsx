@@ -13,7 +13,7 @@ import {
 import {getAllStatsFromCache} from '../../src/db/cache';
 import ErrorHandler from '../../src/components/Error';
 import {UserPage} from '../../src/components/UserPage';
-import {ThemeId, ThemeProvider} from '../../remotion/theme';
+import {allThemes, ThemeId, ThemeProvider} from '../../remotion/theme';
 import {GetServerSideProps} from 'next';
 import {getCookie} from 'cookies-next';
 import {getRenderProgressWithFinality} from '../../src/get-render-progress-with-finality';
@@ -22,6 +22,7 @@ import {getOgImage} from '../../src/db/cache';
 import {RenderProgressOrFinality} from '../../src/types';
 import {hasEnoughData} from '../../src/has-enough-data';
 import {DOMAIN} from '../../src/config';
+import {prefetch} from 'remotion';
 
 type Props = {
 	user: CompactStats | null;
@@ -127,6 +128,16 @@ export default function User(props: Props) {
 	const getFrontendStats = useCallback(() => {
 		return getALotOfGithubCommits(username);
 	}, [username]);
+
+	useEffect(() => {
+		const prefetches = allThemes.map((theme) => {
+			return prefetch(theme.musicPreview);
+		});
+
+		return () => {
+			prefetches.forEach((p) => p.free());
+		};
+	}, []);
 
 	useEffect(() => {
 		if (!username) {
