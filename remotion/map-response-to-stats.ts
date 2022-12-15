@@ -1,4 +1,6 @@
 import {BackendResponse, TopLanguage} from '../src/get-all';
+import {getTimesOfDay} from '../src/get-times-of-day';
+import {Hour} from './AvgCommitsTitle';
 import {Commit, FrontendStats, Weekday, Weekdays} from './frontend-stats';
 import {getRandomCommits} from './rank-commit';
 
@@ -20,6 +22,7 @@ export type BackendStats = {
 export type CompactStats = BackendStats & {
 	weekdays: Weekdays;
 	bestCommits: Commit[];
+	bestHours: {[key in Hour]: number};
 };
 
 export type BackendStatsResponse =
@@ -115,5 +118,6 @@ export const mapResponseToStats = (
 			numCommits: 4,
 			repositoriesContributedTo: response.repositoriesContributedTo,
 		}),
+		bestHours: getTimesOfDay(commits),
 	};
 };

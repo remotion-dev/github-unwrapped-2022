@@ -61,7 +61,11 @@ export const Main: React.FC<CompProps> = ({stats, theme}) => {
 			>
 				<SlideOut>
 					<SlideIn>
-						<AvgCommits theme={theme} noBackground={true}></AvgCommits>
+						<AvgCommits
+							bestHours={stats.bestHours}
+							theme={theme}
+							noBackground={true}
+						></AvgCommits>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>

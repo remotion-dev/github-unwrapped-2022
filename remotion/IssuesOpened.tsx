@@ -26,10 +26,13 @@ const getColor = (
 	if (indexOfIndex === -1) {
 		return '#2da44e';
 	}
-	const position = indexOfIndex / Math.max(1, indicesToClose.length - 1);
+
 	return interpolateColors(
 		progress,
-		[Math.max(0.0001, position - 0.1), position + 0.0002],
+		[
+			(indexOfIndex * 1) / indicesToClose.length,
+			((indexOfIndex + 1) * 1) / indicesToClose.length,
+		],
 		['#2da44e', '#986ee2']
 	);
 };
@@ -43,10 +46,12 @@ const getScale = (
 	if (indexOfIndex === -1) {
 		return 1;
 	}
-	const position = indexOfIndex / Math.max(1, indicesToClose.length - 1);
 	return interpolate(
 		progress,
-		[Math.max(0.0001, position - 0.1), position + 0.0002],
+		[
+			(indexOfIndex * 1) / indicesToClose.length,
+			((indexOfIndex + 1) * 1) / indicesToClose.length,
+		],
 		[1, 0.75],
 		{
 			extrapolateLeft: 'clamp',

@@ -56,6 +56,7 @@ import {LanguageToSocks} from './LanguageToSocks';
 import {EndCard} from './EndCard';
 import {OG} from './og/Og';
 import React from 'react';
+import {getTimesOfDay} from '../src/get-times-of-day';
 
 export const Root: React.FC = () => {
 	return (
@@ -143,6 +144,7 @@ export const Root: React.FC = () => {
 				defaultProps={{
 					theme: goldenTheme,
 					noBackground: false,
+					bestHours: getTimesOfDay(mapApiResponseToCommits(commits)),
 				}}
 			></Composition>
 			<Composition
