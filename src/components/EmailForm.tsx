@@ -50,8 +50,8 @@ export const EmailForm: React.FC<{}> = () => {
 				});
 				if (res.status == 201) {
 					setIsSaved(true);
+					//TODO: find correct res. ?
 					setSuccessMessage(res.statusText);
-					console.log(res);
 					setError(null);
 				} else {
 					setError(res.statusText);

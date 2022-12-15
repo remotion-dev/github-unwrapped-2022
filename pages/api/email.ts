@@ -16,7 +16,6 @@ export default async function handler(
 	}
 	try {
 		const existingEmail = await getEmailFromDb(email);
-		console.log(existingEmail);
 		if (existingEmail) {
 			return res
 				.status(201)
