@@ -95,7 +95,6 @@ export const EmailForm: React.FC<{}> = () => {
 			border: 'none',
 			fontWeight: 700,
 			width: '100%',
-			minWidth: '400px',
 			paddingTop: 24,
 			paddingBottom: 24,
 		}),
@@ -135,10 +134,10 @@ export const EmailForm: React.FC<{}> = () => {
 			</p>
 			<br></br>
 			<form
+				className="mobile-row"
 				onSubmit={onSubmit}
 				style={{
 					display: 'flex',
-					maxHeight: 90,
 					alignContent: 'center',
 				}}
 			>
@@ -156,13 +155,13 @@ export const EmailForm: React.FC<{}> = () => {
 								type={'email'}
 								autoComplete="none"
 								style={input}
-								className="email-adress"
+								className="email-adress input-style"
 								placeholder="Your email adress"
 							></input>
 						</div>
 					</RoughBox>
 				</div>
-				<div style={{width: 20}}></div>
+				<div style={{width: 20, height: 20}}></div>
 				<input
 					style={buttonStyle(loading, theme)}
 					type="submit"

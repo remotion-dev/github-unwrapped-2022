@@ -2,7 +2,6 @@ import React from 'react';
 import {useTheme} from '../../remotion/theme';
 import {GithubIcon} from './Github';
 
-const width = 500;
 const height = 60;
 
 export const UnwrappedTitle: React.FC = () => {
@@ -11,7 +10,6 @@ export const UnwrappedTitle: React.FC = () => {
 		<div
 			className="unwrapped-title"
 			style={{
-				width: width,
 				height: height,
 				display: 'flex',
 				justifyContent: 'center',

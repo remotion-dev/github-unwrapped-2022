@@ -72,6 +72,11 @@ a {
 
 .unwrapped-title {
 	font-size: 30px;
+	width: 500px;
+}
+
+.input-style {
+	min-width: 400px;
 }
 
 @media screen and (max-width: 1000px) {
@@ -110,6 +115,10 @@ a {
 	}
 	.unwrapped-title {
 		font-size: 20px;
+		width: 100%;
 	}
+	.input-style {
+		min-width: 100%;
+	}	
 }
 
