@@ -1,5 +1,6 @@
 import {useCallback, useMemo, useState} from 'react';
 import {Theme, useTheme} from '../../remotion/theme';
+import {EmailResponse} from '../types';
 import {button} from './button';
 import {RoughBox} from './RoughBox';
 
@@ -37,25 +38,37 @@ export const EmailForm: React.FC<{}> = () => {
 	const isValidEmail = (inputMail: string) =>
 		/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(inputMail);
 
+	const link: React.CSSProperties = useMemo(
+		() => ({
+			color: theme.mainColor,
+			textDecoration: 'none',
+			fontWeight: 500,
+			borderBottom: '1px solid' + theme.mainColor,
+		}),
+		[theme]
+	);
+
 	const onSubmit: React.FormEventHandler = useCallback(
 		async (e) => {
+			e.preventDefault();
 			setIsSaved(false);
 			setError(null);
-			e.preventDefault();
 			if (isValidEmail(email)) {
+				setLoading(true);
 				const res = await fetch('/api/email', {
 					method: 'post',
 					body: JSON.stringify({email}),
 					headers: {'content-type': 'application/json'},
 				});
-				if (res.status == 201) {
+				const json = (await res.json()) as EmailResponse;
+				if (json.type === 'success') {
 					setIsSaved(true);
-					//TODO: find correct res. ?
-					setSuccessMessage(res.statusText);
+					setSuccessMessage(json.message);
 					setError(null);
 				} else {
 					setError(res.statusText);
 				}
+				setLoading(false);
 			} else {
 				setError('Invalid email provided. Please try again');
 				console.log(error);
@@ -91,26 +104,47 @@ export const EmailForm: React.FC<{}> = () => {
 
 	return (
 		<RoughBox seed={5} style={box}>
-			<h2 style={title}>Want a year in review for your company in 2023?</h2>
+			<h2 style={title}>You can make your own Year in Review!</h2>
 			<p style={para}>
-				{' '}
-				Leave us your email adress and we will get back to you next year!
+				Want to give your users their personalized video at the end of 2023?
+			</p>
+			<div style={{height: 20}}></div>
+			<p style={para}>
+				Developers: Check out{' '}
+				<a
+					style={link}
+					target={'_blank'}
+					href="https://remotion.dev"
+					rel="noreferrer"
+				>
+					Remotion
+				</a>{' '}
+				and the source code{' '}
+				<a
+					target={'_blank'}
+					href="https://github.com/remotion-dev/github-unwrapped-2022"
+					style={link}
+					rel="noreferrer"
+				>
+					of this project!
+				</a>
+			</p>
+			<p style={para}>
+				Non-developers: Drop your email and {"we'll"} contact you in September
+				2023 for a free consultation!
 			</p>
 			<br></br>
 			<form
 				onSubmit={onSubmit}
 				style={{
 					display: 'flex',
-					justifyContent: 'space-between',
 					maxHeight: 90,
 					alignContent: 'center',
 				}}
 			>
 				<div
 					style={{
-						maxWidth: 400,
 						display: 'flex',
-						alignContent: 'center',
 					}}
 				>
 					<br></br>
@@ -119,7 +153,7 @@ export const EmailForm: React.FC<{}> = () => {
 							<input
 								value={email}
 								onChange={onChange}
-								type={'text'}
+								type={'email'}
 								autoComplete="none"
 								style={input}
 								className="email-adress"
@@ -128,8 +162,7 @@ export const EmailForm: React.FC<{}> = () => {
 						</div>
 					</RoughBox>
 				</div>
-				<br />
-				<br />
+				<div style={{width: 20}}></div>
 				<input
 					style={buttonStyle(loading, theme)}
 					type="submit"
