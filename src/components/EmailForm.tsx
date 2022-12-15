@@ -1,5 +1,6 @@
 import {useCallback, useMemo, useState} from 'react';
 import {Theme, useTheme} from '../../remotion/theme';
+import {saveEmailAdress} from '../db/cache';
 import {button} from './button';
 import {RoughBox} from './RoughBox';
 
@@ -28,16 +29,33 @@ const buttonStyle = (disabled: boolean, theme: Theme): React.CSSProperties =>
 		: button(theme);
 
 export const EmailForm: React.FC<{}> = () => {
-	const [email, setEmail] = useState('');
+	const [email, setEmail] = useState<string>('');
+	const [error, setError] = useState<string | null>(null);
 	const [theme] = useTheme();
 	const [loading, setLoading] = useState(false);
-	const onSubmit: React.FormEventHandler = useCallback(() => {
-		//do something
-	}, []);
+
+	const isValidEmail = (inputMail: string) =>
+		/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(inputMail);
+
+	const onSubmit: React.FormEventHandler = useCallback(
+		async (e) => {
+			e.preventDefault();
+			if (isValidEmail(email)) {
+				const res = await fetch('/api/email', {
+					method: 'post',
+					body: JSON.stringify({email}),
+					headers: {'content-type': 'application/json'},
+				});
+			} else {
+				setError('Invalid Email');
+				console.log(error);
+			}
+		},
+		[email, error]
+	);
 
 	const onChange: React.ChangeEventHandler<HTMLInputElement> = useCallback(
 		(e) => {
-			e.preventDefault();
 			setEmail(e.target.value);
 		},
 		[]
@@ -66,7 +84,7 @@ export const EmailForm: React.FC<{}> = () => {
 			<h2 style={title}>Want a year in review for your company in 2023?</h2>
 			<p style={para}>
 				{' '}
-				Leave us your email and we will get back to you next year!
+				Leave us your email adress and we will get back to you next year!
 			</p>
 			<br></br>
 			<form
@@ -95,7 +113,7 @@ export const EmailForm: React.FC<{}> = () => {
 								autoComplete="none"
 								style={input}
 								className="email-adress"
-								placeholder="Your email"
+								placeholder="Your email adress"
 							></input>
 						</div>
 					</RoughBox>
