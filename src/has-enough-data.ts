@@ -25,6 +25,9 @@ export const hasEnoughBackendData = (stats: BackendStats): State => {
 	if (stats.repositoriesContributedTo.length === 0) {
 		return 'no-public-contributions';
 	}
+	if (!stats.topLanguages || stats.topLanguages.length === 0) {
+		return 'no-public-contributions';
+	}
 
 	return 'enough-data';
 };

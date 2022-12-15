@@ -52,11 +52,11 @@ const getErrorMessage = (
 	if (reason === 'no-public-contributions') {
 		const cta = isNextYear
 			? 'Come back at the end of 2023 to get your video!'
-			: 'Make some public and come back!';
+			: "It's not too late - make some public and come back!";
 		return {
 			title: 'Not enough public contributions',
 			subtitle: [
-				'Unfortunately, there are not enough public contributions to make an interesting video.',
+				'Unfortunately, there are not enough public contributions to make an interesting video. Either they are set to private or your commits are not connected to your GitHub account.',
 				cta,
 			].join(' '),
 		};
