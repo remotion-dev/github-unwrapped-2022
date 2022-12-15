@@ -3,6 +3,7 @@ import {Contribs} from '../../remotion/Contribs';
 import {Bonbon} from '../../remotion/Icons/Bonbon';
 import {useTheme} from '../../remotion/theme';
 import {CameraIcon} from './Camera';
+import {ThemeSwitcherContent} from './ThemeSwitcherContent';
 
 const row: React.CSSProperties = {
 	display: 'flex',
@@ -61,6 +62,16 @@ export const HomeSidebar: React.FC = () => {
 						An MP4 video<br></br>that you can post
 					</div>
 				</div>
+			</div>
+			<div style={vSpacer}></div>
+			<div style={vSpacer}></div>
+			<div
+				style={{
+					display: 'flex',
+					alignItems: 'center',
+				}}
+			>
+				<ThemeSwitcherContent></ThemeSwitcherContent>
 			</div>
 		</div>
 	);

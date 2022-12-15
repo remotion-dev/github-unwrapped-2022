@@ -9,6 +9,7 @@ const themeTitle: React.CSSProperties = {
 
 const themeName: React.CSSProperties = {
 	fontWeight: 'bold',
+	width: 130,
 };
 
 const spacer: React.CSSProperties = {
