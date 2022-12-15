@@ -16,8 +16,6 @@ const container: React.CSSProperties = {
 };
 
 const headerStyle: React.CSSProperties = {
-	paddingLeft: 20,
-	paddingRight: 20,
 	margin: 'auto',
 	display: 'flex',
 };
@@ -120,9 +118,12 @@ export function HomeComponent() {
 			</Head>
 			<div style={abs}>
 				<div style={container}>
-					<header
+					<RoughBox
+						seed={1}
 						style={headerStyle}
-						className="mobile-row header-style container-1000"
+						className="mobile-row header-style"
+						padding={40}
+						containerClassName="container-1000"
 					>
 						<div>
 							<div style={h1}>Your coding year in review</div>
@@ -163,7 +164,7 @@ export function HomeComponent() {
 						<div style={rightContainer} className="right-container">
 							<HomeSidebar></HomeSidebar>
 						</div>
-					</header>
+					</RoughBox>
 				</div>
 			</div>
 			<Footer theme={theme}></Footer>

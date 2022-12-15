@@ -62,9 +62,13 @@ a {
 
 .container-1000 {
 	max-width: 1000px;
+	margin: auto;
+}
+
+.pad {
+
 	padding-left: 20px;
 	padding-right: 20px;
-	margin: auto;
 }
 
 @media screen and (max-width: 1000px) {
@@ -99,8 +103,6 @@ a {
 	}
 	.container-1000 {
 		max-width: 500px;
-		padding-left: 20px;
-		padding-right: 20px;
 		margin: auto;
 	}
 }

@@ -47,7 +47,7 @@ export const Footer: React.FC<{
 
 	return (
 		<div style={outer} className="footer">
-			<div style={container} className="mobile-row container-1000">
+			<div style={container} className="mobile-row container-1000 pad">
 				<a
 					href="https://remotion.dev"
 					target={'_blank'}

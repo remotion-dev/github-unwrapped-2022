@@ -140,7 +140,7 @@ export const UserPage: React.FC<{
 					<h2 style={subtitle}>@{stats.username}</h2>
 					<br></br>
 					<br></br>
-					<div style={outer} className="container-1000">
+					<div style={outer} className="pad container-1000">
 						<RoughBox className="mobile-row" seed={6} style={style}>
 							<div>
 								<div
