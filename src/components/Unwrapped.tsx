@@ -9,11 +9,11 @@ export const UnwrappedTitle: React.FC = () => {
 	const [theme] = useTheme();
 	return (
 		<div
+			className="unwrapped-title"
 			style={{
 				width: width,
 				height: height,
 				display: 'flex',
-				fontSize: 30,
 				justifyContent: 'center',
 				alignItems: 'center',
 				color: 'black',

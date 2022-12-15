@@ -70,6 +70,10 @@ a {
 	padding-right: 20px;
 }
 
+.unwrapped-title {
+	font-size: 30px;
+}
+
 @media screen and (max-width: 1000px) {
 	.mobile-row {
 		flex-direction: column;
@@ -103,6 +107,9 @@ a {
 	.container-1000 {
 		max-width: 500px;
 		margin: auto;
+	}
+	.unwrapped-title {
+		font-size: 20px;
 	}
 }
 
