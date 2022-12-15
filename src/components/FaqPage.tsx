@@ -129,16 +129,17 @@ export const FaqPage: React.FC = () => {
 						with support from GitHub.
 					</p>
 				</RoughBox>
+				<EmailForm></EmailForm>
 				<RoughBox seed={10} style={box}>
 					<h2 style={title}>Credits</h2>
 					<p style={para}>
 						<div>Music: </div>
-						<div>Icons: Tal Revivo (Icon 54) and mehwishumar (Fiverr)</div>
+						<div>Programming language icons: Tal Revivo (Icon 54)</div>
+						<div>Christmas icons: mehwishumar (Fiverr)</div>
 						<div>Font: Mona Sans</div>
 						<div>Libraries used: Next.JS, Rough.JS</div>
 					</p>
 				</RoughBox>
-				<EmailForm></EmailForm>
 				<RoughBox seed={12} style={box}>
 					<h2 style={title}>Contact</h2>
 					<p style={para}>

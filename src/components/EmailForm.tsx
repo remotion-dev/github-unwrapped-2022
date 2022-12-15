@@ -104,7 +104,7 @@ export const EmailForm: React.FC<{}> = () => {
 
 	return (
 		<RoughBox seed={5} style={box}>
-			<h2 style={title}>You can make your own Year in Review!</h2>
+			<h2 style={title}>You can host a Year in Review for your users!</h2>
 			<p style={para}>
 				Want to give your users their personalized video at the end of 2023?
 			</p>
