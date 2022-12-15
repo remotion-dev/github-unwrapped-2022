@@ -8,7 +8,6 @@ import {
 } from 'remotion';
 import {Weekday} from './frontend-stats';
 import {CompactStats} from './map-response-to-stats';
-import {StrokedText} from './StrokedText';
 import {Theme} from './theme';
 import {WeekdayBar} from './WeekdayBar';
 
@@ -84,28 +83,26 @@ export const TopWeekdays2022: React.FC<{
 				backgroundColor: noBackground ? undefined : theme.background,
 			}}
 		>
-			<StrokedText>
-				<AbsoluteFill
+			<AbsoluteFill
+				style={{
+					justifyContent: 'center',
+					alignItems: 'center',
+					marginTop: -380,
+				}}
+			>
+				<div
 					style={{
-						justifyContent: 'center',
-						alignItems: 'center',
-						marginTop: -380,
+						...bigTitle,
+						transform: `translateY(${interpolate(
+							appearIn,
+							[0, 1],
+							[-200, 0]
+						)}px)`,
 					}}
 				>
-					<div
-						style={{
-							...bigTitle,
-							transform: `translateY(${interpolate(
-								appearIn,
-								[0, 1],
-								[-200, 0]
-							)}px)`,
-						}}
-					>
-						{weekdayToName(stats.weekdays.most)}
-					</div>
-				</AbsoluteFill>
-			</StrokedText>
+					{weekdayToName(stats.weekdays.most)}
+				</div>
+			</AbsoluteFill>
 			<AbsoluteFill
 				style={{
 					justifyContent: 'center',
