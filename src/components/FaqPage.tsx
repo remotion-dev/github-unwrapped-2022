@@ -4,6 +4,7 @@ import React from 'react';
 import {useTheme} from '../../remotion/theme';
 import {DOMAIN} from '../config';
 import {button} from './button';
+import {EmailForm} from './EmailForm';
 import {RoughBox} from './RoughBox';
 
 const bigTitle: React.CSSProperties = {
@@ -122,7 +123,8 @@ export const FaqPage: React.FC = () => {
 						<div>Libraries used: Next.JS, Rough.JS</div>
 					</p>
 				</RoughBox>
-				<RoughBox seed={5} style={box}>
+				<EmailForm></EmailForm>
+				<RoughBox seed={12} style={box}>
 					<h2 style={title}>Contact</h2>
 					<p style={para}>
 						<a
@@ -137,6 +139,7 @@ export const FaqPage: React.FC = () => {
 						</a>
 					</p>
 				</RoughBox>
+
 				<br></br>
 				<br></br>
 				<Link href="/" passHref>
