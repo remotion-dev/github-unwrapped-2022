@@ -1,6 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, interpolate} from 'remotion';
 import {Sun} from '../src/components/Sun';
+import {iosSafari} from './ios-safari';
 import {Moon} from './Moon';
 import {Theme} from './theme';
 
@@ -17,6 +18,8 @@ export const SunMoon: React.FC<{
 			extrapolateRight: 'clamp',
 		}
 	);
+
+	const rotationPrimitive = progress > 0.25 && progress < 0.75;
 
 	return (
 		<AbsoluteFill
@@ -42,13 +45,19 @@ export const SunMoon: React.FC<{
 					style={{
 						justifyContent: 'center',
 						alignItems: 'center',
-						WebkitPerspective: 0,
-						transform: `rotateY(${rotation}rad)`,
-						transformStyle: 'preserve-3d',
-						WebkitTransformStyle: 'preserve-3d',
-						visibility: 'visible',
-						backfaceVisibility: 'hidden',
-						WebkitBackfaceVisibility: 'hidden',
+						...(iosSafari()
+							? {
+									opacity: rotationPrimitive ? 0 : 1,
+							  }
+							: {
+									WebkitPerspective: 0,
+									transform: `rotateY(${rotation}rad)`,
+									transformStyle: 'preserve-3d',
+									WebkitTransformStyle: 'preserve-3d',
+									visibility: 'visible',
+									backfaceVisibility: 'hidden',
+									WebkitBackfaceVisibility: 'hidden',
+							  }),
 						position: 'absolute',
 						height: 60,
 						width: 60,
@@ -68,12 +77,18 @@ export const SunMoon: React.FC<{
 						justifyContent: 'center',
 						alignItems: 'center',
 						WebkitPerspective: 0,
-						transform: `rotateY(${rotation + Math.PI}rad)`,
-						visibility: 'visible',
-						backfaceVisibility: 'hidden',
-						WebkitBackfaceVisibility: 'hidden',
-						transformStyle: 'preserve-3d',
-						WebkitTransformStyle: 'preserve-3d',
+						...(iosSafari()
+							? {
+									opacity: rotationPrimitive ? 1 : 0,
+							  }
+							: {
+									transform: `rotateY(${rotation + Math.PI}rad)`,
+									visibility: 'visible',
+									backfaceVisibility: 'hidden',
+									WebkitBackfaceVisibility: 'hidden',
+									transformStyle: 'preserve-3d',
+									WebkitTransformStyle: 'preserve-3d',
+							  }),
 						position: 'absolute',
 						height: 60,
 						width: 60,
