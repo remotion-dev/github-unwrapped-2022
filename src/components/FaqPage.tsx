@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import React, {useMemo} from 'react';
-import {useTheme} from '../../remotion/theme';
+import {allThemes, useTheme} from '../../remotion/theme';
 import {DOMAIN} from '../config';
 import {button} from './button';
 import {EmailForm} from './EmailForm';
@@ -115,7 +115,7 @@ export const FaqPage: React.FC = () => {
 				</RoughBox>
 
 				<RoughBox seed={7} style={box}>
-					<h2 style={title}>Who is behind GitHub Unwrapped?</h2>
+					<h2 style={title}>Who is behind #GitHubUnwrapped?</h2>
 					<p style={para}>
 						This project was implemented by{' '}
 						<a
@@ -133,10 +133,20 @@ export const FaqPage: React.FC = () => {
 				<RoughBox seed={10} style={box}>
 					<h2 style={title}>Credits</h2>
 					<p style={para}>
-						<div>Music: </div>
+						<div>
+							Music ({allThemes[0].displayName}): Winter Holiday by Alec Koff
+						</div>
+						<div>
+							Music ({allThemes[1].displayName}): Electro Swinging Charleston by
+							CueTracks
+						</div>
+						<div>
+							Music ({allThemes[2].displayName}): Christmas Chill by Roo Walker
+						</div>
+						<div style={{height: 8}}></div>
 						<div>Programming language icons: Tal Revivo (Icon 54)</div>
 						<div>Christmas icons: mehwishumar (Fiverr)</div>
-						<div>Font: Mona Sans</div>
+						<div>Font: Mona Sans by GitHub</div>
 						<div>Libraries used: Next.JS, Rough.JS</div>
 					</p>
 				</RoughBox>
