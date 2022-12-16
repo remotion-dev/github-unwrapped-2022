@@ -18,10 +18,11 @@ const titleStyle: React.CSSProperties = {
 	lineHeight: 1.1,
 };
 
-export const TitleCard: React.FC<{username: string; theme: Theme}> = ({
-	username,
-	theme,
-}) => {
+export const TitleCard: React.FC<{
+	theme: Theme;
+	smallTitle: React.ReactNode;
+	bigTitle: React.ReactNode;
+}> = ({theme, smallTitle, bigTitle}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
@@ -72,30 +73,16 @@ export const TitleCard: React.FC<{username: string; theme: Theme}> = ({
 				}}
 			>
 				<div style={titleStyle}>
-					<span
-						style={{
-							fontSize: '0.7em',
-							fontWeight: 500,
-						}}
-					>
-						This is my{' '}
-						<span
-							style={{
-								fontWeight: 700,
-							}}
-						>
-							#GitHubUnwrapped
-						</span>
-					</span>
+					{smallTitle}
 					<br />
 					<span
 						style={{
 							fontSize: '1.1em',
-							fontWeight: 700,
+							fontWeight: 900,
 							color: theme.mainColor,
 						}}
 					>
-						{username}
+						{bigTitle}
 					</span>
 				</div>
 			</AbsoluteFill>

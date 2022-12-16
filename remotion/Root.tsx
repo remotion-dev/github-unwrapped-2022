@@ -57,6 +57,7 @@ import {EndCard} from './EndCard';
 import {OG} from './og/Og';
 import React from 'react';
 import {getTimesOfDay} from '../src/get-times-of-day';
+import {GithubPromo} from './GithubPromo';
 
 export const Root: React.FC = () => {
 	return (
@@ -107,6 +108,21 @@ export const Root: React.FC = () => {
 				}}
 			></Composition>
 			<Composition
+				component={GithubPromo}
+				durationInFrames={450}
+				fps={30}
+				height={1080}
+				width={1920}
+				id={'github-promo'}
+				defaultProps={{
+					stats: mapResponseToStats(
+						backendResponseToBackendStats(all),
+						mapApiResponseToCommits(commits)
+					),
+					theme: redTheme,
+				}}
+			></Composition>
+			<Composition
 				component={TitleCard}
 				durationInFrames={300}
 				fps={30}
@@ -114,8 +130,9 @@ export const Root: React.FC = () => {
 				width={1080}
 				id="title-card"
 				defaultProps={{
-					username: 'JonnyBurger',
 					theme: redTheme,
+					bigTitle: '#GitHubUnwrapped',
+					smallTitle: 'This is my ',
 				}}
 			></Composition>
 			<Composition

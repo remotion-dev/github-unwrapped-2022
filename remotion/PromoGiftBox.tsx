@@ -9,17 +9,15 @@ import {
 } from 'remotion';
 import {AvatarFrame} from './AvatarFrame';
 import {Tree} from './Icons/Tree';
-import {CompactStats} from './map-response-to-stats';
 import {Squeeze} from './Squeeze';
 import {Theme} from './theme';
 import {TitleCard} from './TitleCard';
 import {Unwrap} from './Unwrap';
 import {WallHanger} from './WallHanger';
 
-export const GiftBox: React.FC<{userStats: CompactStats; theme: Theme}> = ({
-	userStats,
-	theme,
-}) => {
+export const PromoGiftBox: React.FC<{
+	theme: Theme;
+}> = ({theme}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
@@ -34,11 +32,11 @@ export const GiftBox: React.FC<{userStats: CompactStats; theme: Theme}> = ({
 		config: {damping: 200},
 	});
 
-	const scale = interpolate(moveAndScaleDown, [0, 1], [0, 0.8]);
-	const translateY = interpolate(moveAndScaleDown, [0, 1], [300, -100]);
+	const scale = interpolate(moveAndScaleDown, [0, 1], [0, 1]);
+	const translateY = interpolate(moveAndScaleDown, [0, 1], [300, 0]);
 
-	const wallHangerPos = interpolate(wallHangerComeIn, [0, 1], [750, 360]);
-	const avatarFramePos = interpolate(wallHangerComeIn, [0, 1], [-750, -360]);
+	const wallHangerPos = interpolate(wallHangerComeIn, [0, 1], [1200, 750]);
+	const avatarFramePos = interpolate(wallHangerComeIn, [0, 1], [-1200, -750]);
 
 	return (
 		<AbsoluteFill>
@@ -54,48 +52,41 @@ export const GiftBox: React.FC<{userStats: CompactStats; theme: Theme}> = ({
 					<Tree theme={theme}></Tree>
 				</AbsoluteFill>
 			</Sequence>
-			<Sequence
-				from={60}
-				style={{
-					top: -100,
-					left: wallHangerPos,
-					scale: '0.4',
-				}}
-			>
-				<WallHanger commitCount={userStats.contributionCount}></WallHanger>
-			</Sequence>
-			<Sequence
-				from={60}
-				style={{
-					top: -100,
-					left: avatarFramePos,
-					scale: '0.4',
-				}}
-			>
-				<AvatarFrame avatar={userStats.avatar}></AvatarFrame>
-			</Sequence>
+
 			<Sequence from={70}>
-				<TitleCard
-					smallTitle={
-						<span
-							style={{
-								fontSize: '0.7em',
-								fontWeight: 500,
-							}}
-						>
-							This is my{' '}
-							<span
-								style={{
-									fontWeight: 700,
-								}}
-							>
-								#GitHubUnwrapped
-							</span>
-						</span>
-					}
-					bigTitle={userStats.username}
-					theme={theme}
-				></TitleCard>
+				<AbsoluteFill
+					style={{
+						transform: 'scale(1.3) translateY(-300px)',
+					}}
+				>
+					<TitleCard
+						smallTitle={
+							<span style={{fontSize: '0.8em'}}>Get your personalized</span>
+						}
+						theme={theme}
+						bigTitle={'#GithubUnwrapped'}
+					></TitleCard>
+				</AbsoluteFill>
+			</Sequence>
+			<Sequence
+				from={60}
+				style={{
+					top: -50,
+					left: avatarFramePos,
+					scale: '0.7',
+				}}
+			>
+				<AvatarFrame avatar={'generic'}></AvatarFrame>
+			</Sequence>
+			<Sequence
+				from={60}
+				style={{
+					top: -50,
+					left: wallHangerPos,
+					scale: '0.7',
+				}}
+			>
+				<WallHanger commitCount={678}></WallHanger>
 			</Sequence>
 			<Sequence
 				durationInFrames={71}

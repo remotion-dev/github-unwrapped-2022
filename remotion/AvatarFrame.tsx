@@ -7,7 +7,9 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
+import {GitHubSquare} from '../src/components/GithubSquare';
 import {RoughPath} from './RoughPath';
+import {redTheme} from './theme';
 
 export const AvatarFrame: React.FC<{avatar: string}> = ({avatar}) => {
 	const {height, fps} = useVideoConfig();
@@ -129,15 +131,22 @@ export const AvatarFrame: React.FC<{avatar: string}> = ({avatar}) => {
 							alignItems: 'center',
 						}}
 					>
-						<Img
-							style={{
-								height: 340,
-								width: 340,
-								borderRadius: 20,
-								marginTop: 100,
-							}}
-							src={avatar}
-						></Img>
+						{avatar === 'generic' ? (
+							<GitHubSquare
+								theme={redTheme}
+								style={{height: 329, marginTop: 108, marginRight: 6}}
+							></GitHubSquare>
+						) : (
+							<Img
+								style={{
+									height: 340,
+									width: 340,
+									borderRadius: 20,
+									marginTop: 100,
+								}}
+								src={avatar}
+							></Img>
+						)}
 					</AbsoluteFill>
 					<AbsoluteFill
 						style={{
