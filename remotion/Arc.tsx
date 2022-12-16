@@ -30,7 +30,7 @@ export const Arc: React.FC<{
 	const paths = useMemo(() => {
 		return roughenPath({
 			strokeWidth: 6,
-			roughness: 4,
+			roughness: null,
 			stroke: 'white',
 			seed: 2,
 			bowing: null,
