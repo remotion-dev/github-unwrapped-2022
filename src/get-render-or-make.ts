@@ -9,6 +9,7 @@ import {
 	saveRender,
 	updateRenderWithFinality,
 } from './db/renders';
+import {sendDiscordMessage} from './discord-monitoring';
 import {getRandomAwsAccount} from './get-random-aws-account';
 import {getRenderProgressWithFinality} from './get-render-progress-with-finality';
 import {getRandomRegion} from './regions';
@@ -40,8 +41,9 @@ export const getRenderOrMake = async ({
 		const account = getRandomAwsAccount();
 		setEnvForKey(account);
 		const functionName = speculateFunctionName();
-		console.log(
-			`Username=${username} Account=${account} Region=${region} Theme=${themeId}`
+
+		sendDiscordMessage(
+			`Starting render... Username=${username} Account=${account} Region=${region} Theme=${themeId}`
 		);
 		const lockRenderPromise = lockRender({
 			region,
@@ -106,7 +108,10 @@ export const getRenderOrMake = async ({
 
 		return progress;
 	} catch (err) {
-		console.log(`Failed to render video for ${username}`, (err as Error).stack);
+		sendDiscordMessage(
+			`Failed to render video for ${username}: ` + (err as Error).stack
+		);
+
 		if (_renderId && _region) {
 			await updateRenderWithFinality({
 				renderId: _renderId,

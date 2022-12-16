@@ -1,5 +1,6 @@
 import {getRenderProgress} from '@remotion/lambda';
 import {Render, updateRenderWithFinality} from './db/renders';
+import {sendDiscordMessage} from './discord-monitoring';
 import {getFinality} from './get-render-or-make';
 import {setEnvForKey} from './set-env-for-key';
 import {RenderProgressOrFinality} from './types';
@@ -48,7 +49,9 @@ export const getRenderProgressWithFinality = async ({
 			finality,
 			theme: render.theme,
 		});
-		console.log(`Updated ${render.renderId} with finality`, finality);
+		sendDiscordMessage(
+			`Updated ${render.renderId} with finality: ${JSON.stringify(finality)}}`
+		);
 		return {
 			type: 'finality',
 			finality,

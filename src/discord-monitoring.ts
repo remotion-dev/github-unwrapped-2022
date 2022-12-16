@@ -1,0 +1,31 @@
+export const sendDiscordMessage = async (message: string) => {
+	const channel = process.env.DISCORD_CHANNEL;
+	const token = process.env.DISCORD_TOKEN;
+	if (!channel) {
+		console.warn('no DISCORD_CHANNEL env variable set.');
+		return;
+	}
+	if (!token) {
+		console.warn('no DISCORD_TOKEN env variable set.');
+		return;
+	}
+
+	console.log(message);
+	try {
+		await fetch(`https://discord.com/api/channels/${channel}/messages`, {
+			method: 'post',
+			body: JSON.stringify({
+				content: message,
+				allowed_mentions: {},
+				flags: 1 << 2,
+			}),
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bot ${token}`,
+			},
+		});
+	} catch (err) {
+		console.log('failed to send discord message');
+		console.log(err);
+	}
+};

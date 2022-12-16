@@ -3,6 +3,7 @@ import {random} from 'remotion';
 import {allThemes} from '../remotion/theme';
 import {OG_COMP_NAME, SITE_ID} from './config';
 import {backendStatsCollection, getOgImage, saveOgImage} from './db/cache';
+import {sendDiscordMessage} from './discord-monitoring';
 import {backendResponseToBackendStats, getAll} from './get-all';
 import {getRandomAwsAccount} from './get-random-aws-account';
 import {hasEnoughBackendData} from './has-enough-data';
@@ -30,12 +31,7 @@ export const getOgImageOrMake = async ({username}: {username: string}) => {
 		userStats: stat,
 	};
 
-	console.log(
-		'Generating image for',
-		username,
-		'with props',
-		JSON.stringify(props)
-	);
+	const time = Date.now();
 	const {url} = await renderStillOnLambda({
 		functionName: speculateFunctionName(),
 		composition: OG_COMP_NAME,
@@ -51,6 +47,12 @@ export const getOgImageOrMake = async ({username}: {username: string}) => {
 		theme: theme.name,
 		username,
 	});
+
+	sendDiscordMessage(
+		`Generated image for ${username} with props ${JSON.stringify(props)} in ${
+			Date.now() - time
+		}`
+	);
 
 	return url;
 };
