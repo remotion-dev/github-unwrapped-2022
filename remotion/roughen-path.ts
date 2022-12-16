@@ -22,6 +22,22 @@ export const roughenPath = ({
 	stroke: string | null;
 	bowing: number | null;
 }) => {
+	const key = [
+		d,
+		roughness,
+		fill,
+		seed,
+		hachureGap,
+		freeze,
+		strokeWidth,
+		stroke,
+		bowing,
+	].join('-');
+
+	if (cache[key]) {
+		return cache[key];
+	}
+
 	const path = getRoughGenerator();
 	const drawable = path.path(d, {
 		roughness: roughness ?? 0.3,
@@ -37,5 +53,8 @@ export const roughenPath = ({
 		bowing: bowing ?? 1,
 	});
 
-	return path.toPaths(drawable);
+	const paths = path.toPaths(drawable);
+	cache[key] = paths;
+
+	return paths;
 };
