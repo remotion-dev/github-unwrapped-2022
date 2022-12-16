@@ -1,6 +1,5 @@
-import React from 'react';
-import {getRoughGenerator} from './get-rough';
-import {roundSvg} from './round-svg';
+import React, {useMemo} from 'react';
+import {roughenPath} from './roughen-path';
 import {Theme} from './theme';
 
 export const CommitBar: React.FC<{
@@ -16,17 +15,19 @@ export const CommitBar: React.FC<{
 
 	const d = `M 0 0 L 0 ${actualHeight} L ${width} ${actualHeight} L ${width} 0 z`;
 
-	const path = getRoughGenerator();
-	const drawable = path.path(roundSvg(d, 5), {
-		roughness: 0.4,
-		stroke: 'transparent',
-		seed: Number(hour),
-		maxRandomnessOffset: 5,
-		fill: most ? theme.mainColor : 'white',
-		fillStyle: 'solid',
-	});
-
-	const paths = path.toPaths(drawable);
+	const paths = useMemo(() => {
+		return roughenPath({
+			bowing: null,
+			d,
+			fill: most ? theme.mainColor : 'white',
+			roughness: 0.4,
+			freeze: false,
+			hachureGap: null,
+			seed: Number(hour),
+			stroke: 'transparent',
+			strokeWidth: null,
+		});
+	}, [d, hour, most, theme.mainColor]);
 
 	return (
 		<div

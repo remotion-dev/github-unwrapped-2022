@@ -1,6 +1,6 @@
 import React, {SVGProps, useMemo} from 'react';
-import {random, useCurrentFrame} from 'remotion';
-import {getRoughGenerator} from './get-rough';
+import {useCurrentFrame} from 'remotion';
+import {roughenPath} from './roughen-path';
 
 export const RoughPath: React.FC<
 	SVGProps<SVGPathElement> & {
@@ -15,25 +15,22 @@ export const RoughPath: React.FC<
 	const currentFrame = useCurrentFrame();
 	const frame = freeze ? 0 : Math.floor(currentFrame / 3);
 
-	const paths = useMemo(() => {
-		const path = getRoughGenerator();
-		const drawable = path.path(props.d as string, {
-			roughness: roughness ?? 0.3,
-			fill: props.fill,
-			seed: seed ?? frame,
-			maxRandomnessOffset: 4,
-			hachureGap: hachureGap ?? 1,
-			hachureAngle: freeze
-				? random(seed ?? '') * 360
-				: random(seed ?? props.d ?? '') * 360,
-			strokeWidth: strokeWidth ?? 2,
-			stroke: props.stroke ?? undefined,
-			bowing: props.bowing ?? 1,
-		});
+	const actualSeed = seed ?? frame;
 
-		return path.toPaths(drawable);
+	const paths = useMemo(() => {
+		return roughenPath({
+			bowing: props.bowing ?? null,
+			d: props.d as string,
+			fill: props.fill ?? null,
+			roughness: roughness ?? null,
+			seed: actualSeed,
+			freeze: freeze ?? false,
+			hachureGap: hachureGap ?? null,
+			stroke: props.stroke ?? null,
+			strokeWidth: strokeWidth ?? null,
+		});
 	}, [
-		frame,
+		actualSeed,
 		freeze,
 		hachureGap,
 		props.bowing,
@@ -41,7 +38,6 @@ export const RoughPath: React.FC<
 		props.fill,
 		props.stroke,
 		roughness,
-		seed,
 		strokeWidth,
 	]);
 	return (

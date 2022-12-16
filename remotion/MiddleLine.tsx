@@ -1,5 +1,5 @@
-import React from 'react';
-import {getRoughGenerator} from './get-rough';
+import React, {useMemo} from 'react';
+import {roughenPath} from './roughen-path';
 import {Theme} from './theme';
 
 export const MiddleLine: React.FC<{
@@ -7,16 +7,19 @@ export const MiddleLine: React.FC<{
 }> = ({theme}) => {
 	const d = 'M 0 5 L 1000 5';
 
-	const path = getRoughGenerator();
-	const drawable = path.path(d, {
-		strokeWidth: 5,
-		roughness: 0.9,
-		stroke: theme.mainColor,
-		seed: 5,
-		maxRandomnessOffset: 4,
-	});
-
-	const paths = path.toPaths(drawable);
+	const paths = useMemo(() => {
+		return roughenPath({
+			strokeWidth: 5,
+			roughness: 0.9,
+			stroke: theme.mainColor,
+			seed: 5,
+			bowing: null,
+			d,
+			fill: null,
+			freeze: false,
+			hachureGap: null,
+		});
+	}, [theme.mainColor]);
 
 	return (
 		<svg

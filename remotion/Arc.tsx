@@ -1,7 +1,7 @@
 import {evolvePath, getLength} from '@remotion/paths';
-import React from 'react';
+import React, {useMemo} from 'react';
 import {AbsoluteFill, Easing, interpolate, useCurrentFrame} from 'remotion';
-import {getRoughGenerator} from './get-rough';
+import {roughenPath} from './roughen-path';
 
 import {SunMoon} from './SunMoon';
 import {Theme} from './theme';
@@ -10,14 +10,6 @@ export const Arc: React.FC<{
 	theme: Theme;
 }> = ({theme}) => {
 	const d = 'M 0 540 C 0 -200 1080 -200 1080 540';
-
-	const path = getRoughGenerator();
-	const drawable = path.path(d, {
-		strokeWidth: 6,
-		roughness: 4,
-		stroke: 'white',
-		seed: 2,
-	});
 
 	const frame = useCurrentFrame();
 
@@ -35,7 +27,19 @@ export const Arc: React.FC<{
 	const x = pathElement.getPointAtLength(progress * getLength(d)).x;
 	const y = pathElement.getPointAtLength(progress * getLength(d)).y;
 
-	const paths = path.toPaths(drawable);
+	const paths = useMemo(() => {
+		return roughenPath({
+			strokeWidth: 6,
+			roughness: 4,
+			stroke: 'white',
+			seed: 2,
+			bowing: null,
+			d,
+			fill: null,
+			freeze: false,
+			hachureGap: null,
+		});
+	}, []);
 
 	return (
 		<AbsoluteFill
