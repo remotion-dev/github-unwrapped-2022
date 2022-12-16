@@ -8,14 +8,14 @@ import {
 	useVideoConfig,
 } from 'remotion';
 import {IssueCircle} from './IssueCircle';
+import {Issues} from './map-response-to-stats';
+import {NoIssues} from './NoIssues';
+import {Theme} from './theme';
 import {
 	getIndicesToClose,
 	getTreeMath,
 	makeIndicesAccurate,
 } from './tree/indices-to-close';
-import {Issues} from './map-response-to-stats';
-import {Theme} from './theme';
-import {NoIssues} from './NoIssues';
 
 const getColor = (
 	indicesToClose: number[],
@@ -137,7 +137,7 @@ export const IssuesOpened: React.FC<{
 			}
 			return 'Issue still open';
 		}
-		if (issuesClosed === 0 && issuesOpen === 1) {
+		if (issuesClosed === 1 && issuesOpen === 0) {
 			return 'It was closed.';
 		}
 		return `Issues still open`;

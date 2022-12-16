@@ -49,9 +49,7 @@ export const getOgImageOrMake = async ({username}: {username: string}) => {
 	});
 
 	sendDiscordMessage(
-		`Generated image for ${username} with props ${JSON.stringify(props)} in ${
-			Date.now() - time
-		}`
+		`Generated image for ${username} with props in ${Date.now() - time}`
 	);
 
 	return url;
