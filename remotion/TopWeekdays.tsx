@@ -93,11 +93,7 @@ export const TopWeekdays2022: React.FC<{
 				<div
 					style={{
 						...bigTitle,
-						transform: `translateY(${interpolate(
-							appearIn,
-							[0, 1],
-							[-200, 0]
-						)}px)`,
+						marginTop: interpolate(appearIn, [0, 1], [-200, -0]),
 					}}
 				>
 					{weekdayToName(stats.weekdays.most)}
