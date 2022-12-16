@@ -47,7 +47,11 @@ To deploy, connect your repository to Vercel or Heroku.
 
 Don't forget to also set the environment variables there too.
 
+## Music copyright disclaimer
+
+The music was licensed for GitHubUnwrapped.com specifically. If you create a derivative project, you may not use it.
+
 ## License
 
 The code in this repository: Licensed under MIT.  
-The Remotion library: Notice that for some entities a company license is needed. Read the terms [here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md#company-license).
+The Remotion framework (a dependency of this project): Companies need to obtain a paid license. Read the terms [here](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md#company-license).
