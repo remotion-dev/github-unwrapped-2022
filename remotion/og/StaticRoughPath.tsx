@@ -1,6 +1,6 @@
 import React, {SVGProps, useMemo} from 'react';
 import {random} from 'remotion';
-import {getRough} from '../get-rough';
+import {getRoughGenerator} from '../get-rough';
 
 export const StaticRoughPath: React.FC<
 	SVGProps<SVGPathElement> & {
@@ -16,7 +16,7 @@ export const StaticRoughPath: React.FC<
 	const frame = freeze ? 0 : Math.floor(currentFrame / 3);
 
 	const paths = useMemo(() => {
-		const path = getRough().generator();
+		const path = getRoughGenerator();
 		const drawable = path.path(props.d as string, {
 			roughness: roughness ?? 0.3,
 			fill: props.fill,

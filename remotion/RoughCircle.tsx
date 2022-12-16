@@ -1,6 +1,6 @@
 import React, {SVGProps, useMemo} from 'react';
 import {useCurrentFrame} from 'remotion';
-import {getRough} from './get-rough';
+import {getRoughGenerator} from './get-rough';
 
 import {useNoiseTranslate} from './use-noise-translate';
 
@@ -10,7 +10,7 @@ export const RoughCircle: React.FC<SVGProps<SVGCircleElement>> = (props) => {
 	const [noiseX, noiseY] = useNoiseTranslate(String(props.cx) + props.cy);
 
 	const paths = useMemo(() => {
-		const path = getRough().generator();
+		const path = getRoughGenerator();
 		const drawable = path.circle(
 			Number(props.cx),
 			Number(props.cy),

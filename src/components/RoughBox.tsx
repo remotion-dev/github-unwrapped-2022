@@ -1,6 +1,6 @@
 import {PlayerInternals} from '@remotion/player';
 import React, {useMemo, useRef} from 'react';
-import {getRough} from '../../remotion/get-rough';
+import {getRoughGenerator} from '../../remotion/get-rough';
 
 const style: React.CSSProperties = {
 	backgroundColor: 'white',
@@ -41,7 +41,7 @@ export const RoughBox: React.FC<{
 		: `M 0 0 `;
 
 	const paths = useMemo(() => {
-		const path = getRough().generator();
+		const path = getRoughGenerator();
 		const drawable = path.path(d, {
 			roughness: roughness ?? 0.7,
 			seed: seed,

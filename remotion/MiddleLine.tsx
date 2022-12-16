@@ -1,5 +1,5 @@
 import React from 'react';
-import {getRough} from './get-rough';
+import {getRoughGenerator} from './get-rough';
 import {Theme} from './theme';
 
 export const MiddleLine: React.FC<{
@@ -7,7 +7,7 @@ export const MiddleLine: React.FC<{
 }> = ({theme}) => {
 	const d = 'M 0 5 L 1000 5';
 
-	const path = getRough().generator();
+	const path = getRoughGenerator();
 	const drawable = path.path(d, {
 		strokeWidth: 5,
 		roughness: 0.9,

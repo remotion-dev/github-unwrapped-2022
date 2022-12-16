@@ -3,14 +3,14 @@ import React from 'react';
 import {AbsoluteFill} from 'remotion';
 import {transparentize} from 'polished';
 import {useNoiseTranslate} from './use-noise-translate';
-import {getRough} from './get-rough';
+import {getRoughGenerator} from './get-rough';
 
 export const LangPlaceholder: React.FC<{
 	name: string;
 	color: string | null;
 }> = ({name, color}) => {
 	const frame = Math.round(useCurrentFrame() / 4);
-	const path = getRough().generator();
+	const path = getRoughGenerator();
 	const drawable = path.circle(50, 50, 100, {
 		roughness: 1,
 		fill: transparentize(0.3, color ?? '#ffe577'),

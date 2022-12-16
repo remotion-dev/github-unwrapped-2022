@@ -1,10 +1,10 @@
 import React, {useMemo} from 'react';
-import {getRough} from '../../remotion/get-rough';
+import {getRoughGenerator} from '../../remotion/get-rough';
 
 export const Grill: React.FC = () => {
 	const d = `M 0 0 L 100 0 L 100 100 L 0 100 Z`;
 	const paths = useMemo(() => {
-		const path = getRough().generator();
+		const path = getRoughGenerator();
 		const drawable = path.path(d, {
 			roughness: 0.3,
 			fill: 'black',

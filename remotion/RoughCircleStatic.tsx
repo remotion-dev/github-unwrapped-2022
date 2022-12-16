@@ -1,5 +1,5 @@
 import React, {SVGProps, useMemo} from 'react';
-import {getRough} from './get-rough';
+import {getRoughGenerator} from './get-rough';
 
 export const RoughCircleStatic: React.FC<
 	SVGProps<SVGCircleElement> & {
@@ -7,7 +7,7 @@ export const RoughCircleStatic: React.FC<
 	}
 > = ({seed, ...props}) => {
 	const paths = useMemo(() => {
-		const path = getRough().generator();
+		const path = getRoughGenerator();
 		const drawable = path.circle(
 			Number(props.cx),
 			Number(props.cy),
