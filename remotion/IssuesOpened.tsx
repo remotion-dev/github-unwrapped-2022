@@ -130,6 +130,19 @@ export const IssuesOpened: React.FC<{
 		});
 	}, [avgDotsPerRow, dotsPerRow, issuesClosed, rows, totalIssues]);
 
+	const issueOpenLabel = useMemo(() => {
+		if (issuesOpen === 1) {
+			if (issuesClosed === 0) {
+				return 'It is still open.';
+			}
+			return 'Issue still open';
+		}
+		if (issuesClosed === 0 && issuesOpen === 1) {
+			return 'It was closed.';
+		}
+		return `Issues still open`;
+	}, [issuesClosed, issuesOpen]);
+
 	if (totalIssues === 0) {
 		return (
 			<AbsoluteFill
@@ -167,9 +180,10 @@ export const IssuesOpened: React.FC<{
 						>
 							{ch.map((_, i) => {
 								const actualIndex = j * dotsPerRow + i;
+								const lowerBound = actualIndex - Math.min(10, totalIssues - 1);
 								const scale = interpolate(
 									dotsShown,
-									[actualIndex - Math.min(10, totalIssues - 1), actualIndex],
+									[lowerBound, Math.max(lowerBound + 1, actualIndex)],
 									[0, 1],
 									{
 										extrapolateLeft: 'clamp',
@@ -262,7 +276,7 @@ export const IssuesOpened: React.FC<{
 					fontWeight: 700,
 				}}
 			>
-				{issuesOpen === 1 ? 'Issue' : 'Issues'} still open
+				{issueOpenLabel}
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);
