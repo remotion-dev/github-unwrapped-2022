@@ -52,7 +52,9 @@ export const RoughPath: React.FC<
 						stroke={stroke}
 						strokeWidth={strokeWidth}
 						fill={fill}
-						vectorEffect="non-scaling-stroke"
+						vectorEffect={
+							typeof scaleY === 'undefined' ? undefined : 'non-scaling-stroke'
+						}
 						style={
 							scaleY !== undefined
 								? {
