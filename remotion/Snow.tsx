@@ -51,9 +51,7 @@ export const Snow: React.FC<{
 
 				const progress = interpolate(frame - delay, [0, 100], [0, 1]);
 				const down = interpolate(progress, [0, 1], [0, speed]);
-				const x =
-					interpolate(progress, [0, 1], [-wind, -wind]) +
-					Math.sin(frame / 20 + delay) * 100;
+				const x = -wind + Math.sin(frame / 20 + delay) * 100;
 
 				return (
 					<div

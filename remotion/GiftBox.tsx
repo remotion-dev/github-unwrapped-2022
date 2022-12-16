@@ -42,7 +42,8 @@ export const GiftBox: React.FC<{userStats: CompactStats; theme: Theme}> = ({
 
 	return (
 		<AbsoluteFill>
-			<AbsoluteFill
+			<Sequence
+				from={66}
 				style={{
 					justifyContent: 'center',
 					alignItems: 'center',
@@ -51,7 +52,7 @@ export const GiftBox: React.FC<{userStats: CompactStats; theme: Theme}> = ({
 				}}
 			>
 				<Tree theme={theme}></Tree>
-			</AbsoluteFill>
+			</Sequence>
 			<Sequence
 				from={60}
 				style={{
@@ -75,7 +76,8 @@ export const GiftBox: React.FC<{userStats: CompactStats; theme: Theme}> = ({
 			<Sequence from={70}>
 				<TitleCard theme={theme} username={userStats.username}></TitleCard>
 			</Sequence>
-			<AbsoluteFill
+			<Sequence
+				durationInFrames={71}
 				style={{
 					transform: `scale(${interpolate(
 						moveAndScaleDown,
@@ -89,7 +91,7 @@ export const GiftBox: React.FC<{userStats: CompactStats; theme: Theme}> = ({
 						<Unwrap theme={theme}></Unwrap>
 					</Squeeze>
 				</Squeeze>
-			</AbsoluteFill>
+			</Sequence>
 		</AbsoluteFill>
 	);
 };

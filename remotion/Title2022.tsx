@@ -13,7 +13,6 @@ export const Title: React.FC<{
 		<AbsoluteFill
 			style={{
 				backgroundColor: noBackground ? 'transparent' : theme.background,
-				perspective: 1000,
 			}}
 		>
 			<AbsoluteFill>
