@@ -5,11 +5,11 @@ import {RoughPath} from './RoughPath';
 import {Theme} from './theme';
 
 export const WeekdayBar: React.FC<{
-	lower: number;
+	height: number;
 	isMostProductive: boolean;
 	index: number;
 	theme: Theme;
-}> = ({lower, isMostProductive, index, theme}) => {
+}> = ({height, isMostProductive, index, theme}) => {
 	const ref = useRef<SVGSVGElement>(null);
 	const frame = useCurrentFrame();
 
@@ -22,16 +22,15 @@ export const WeekdayBar: React.FC<{
 		},
 	});
 
-	const actualHeight = Math.round(lower * progress * 20) / 20;
 	const width = 90;
 
 	const d = useMemo(() => {
 		const parsed = parsePath(
-			`M 0 0 L 0 ${actualHeight} L ${width} ${actualHeight} L ${width} 0 z`
+			`M 0 0 L 0 ${height} L ${width} ${height} L ${width} 0 z`
 		);
 
 		return roundCommands(parsed, 15).path;
-	}, [actualHeight]);
+	}, [height]);
 
 	return (
 		<>
@@ -39,9 +38,9 @@ export const WeekdayBar: React.FC<{
 				style={{
 					overflow: 'visible',
 					width: 90,
-					height: actualHeight,
+					height: height,
 				}}
-				viewBox={`0 0 90 ${actualHeight}`}
+				viewBox={`0 0 90 ${height}`}
 				ref={ref}
 			>
 				<RoughPath
@@ -52,6 +51,7 @@ export const WeekdayBar: React.FC<{
 					strokeWidth={5}
 					seed={index}
 					freeze
+					scaleY={progress}
 				></RoughPath>
 			</svg>
 		</>

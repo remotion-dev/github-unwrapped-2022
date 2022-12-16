@@ -10,8 +10,9 @@ export const RoughPath: React.FC<
 		seed?: number;
 		bowing?: number;
 		freeze?: boolean;
+		scaleY?: number;
 	}
-> = ({roughness, freeze, strokeWidth, seed, hachureGap, ...props}) => {
+> = ({roughness, scaleY, freeze, strokeWidth, seed, hachureGap, ...props}) => {
 	const currentFrame = useCurrentFrame();
 	const frame = freeze ? 0 : Math.floor(currentFrame / 3);
 
@@ -51,6 +52,16 @@ export const RoughPath: React.FC<
 						stroke={stroke}
 						strokeWidth={strokeWidth}
 						fill={fill}
+						vectorEffect="non-scaling-stroke"
+						style={
+							scaleY
+								? {
+										transformBox: 'fill-box',
+										transformOrigin: 'center bottom',
+										transform: `scaleY(${scaleY})`,
+								  }
+								: {}
+						}
 					></path>
 				);
 			})}
