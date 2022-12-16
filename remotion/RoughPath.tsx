@@ -54,7 +54,7 @@ export const RoughPath: React.FC<
 						fill={fill}
 						vectorEffect="non-scaling-stroke"
 						style={
-							scaleY
+							scaleY !== undefined
 								? {
 										transformBox: 'fill-box',
 										transformOrigin: 'center bottom',
