@@ -84,7 +84,6 @@ export const AvatarFrame: React.FC<{avatar: string}> = ({avatar}) => {
 								fill="none"
 								stroke="black"
 								strokeWidth={5}
-								freeze
 							></RoughPath>
 						</svg>
 					</div>
@@ -113,7 +112,6 @@ export const AvatarFrame: React.FC<{avatar: string}> = ({avatar}) => {
 								fill="white"
 								stroke="black"
 								strokeWidth={15}
-								freeze
 							></RoughPath>
 						</svg>
 					</div>
@@ -159,7 +157,6 @@ export const AvatarFrame: React.FC<{avatar: string}> = ({avatar}) => {
 								d={`M 0 0 L 340 0 L 340 340 L 0 340 z`}
 								stroke="black"
 								strokeWidth={20}
-								freeze
 							></RoughPath>
 						</svg>
 					</AbsoluteFill>
