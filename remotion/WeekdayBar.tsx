@@ -1,4 +1,4 @@
-import React, {useMemo, useRef} from 'react';
+import React, {useMemo} from 'react';
 import {spring, useCurrentFrame, useVideoConfig} from 'remotion';
 import {parsePath, roundCommands} from 'svg-round-corners';
 import {RoughPath} from './RoughPath';
@@ -10,7 +10,6 @@ export const WeekdayBar: React.FC<{
 	index: number;
 	theme: Theme;
 }> = ({height, isMostProductive, index, theme}) => {
-	const ref = useRef<SVGSVGElement>(null);
 	const frame = useCurrentFrame();
 
 	const {fps} = useVideoConfig();
@@ -41,18 +40,31 @@ export const WeekdayBar: React.FC<{
 					height: height,
 				}}
 				viewBox={`0 0 90 ${height}`}
-				ref={ref}
 			>
-				<RoughPath
-					stroke={isMostProductive ? 'black' : '#fff'}
-					bowing={isMostProductive ? 5 : 0}
-					fill={isMostProductive ? theme.mainColor : '#fff'}
-					d={d}
-					strokeWidth={5}
-					seed={index}
-					freeze
-					scaleY={progress}
-				></RoughPath>
+				{isMostProductive ? (
+					<RoughPath
+						stroke={isMostProductive ? 'black' : '#fff'}
+						fill={isMostProductive ? theme.mainColor : '#fff'}
+						d={d}
+						strokeWidth={5}
+						seed={index}
+						bowing={5}
+						scaleY={progress}
+					></RoughPath>
+				) : (
+					<path
+						stroke={isMostProductive ? 'black' : '#fff'}
+						fill={isMostProductive ? theme.mainColor : '#fff'}
+						d={d}
+						strokeWidth={5}
+						seed={index}
+						style={{
+							transformBox: 'fill-box',
+							transformOrigin: 'center bottom',
+							transform: `scaleY(${progress})`,
+						}}
+					></path>
+				)}
 			</svg>
 		</>
 	);

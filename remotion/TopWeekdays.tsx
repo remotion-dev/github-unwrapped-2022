@@ -143,7 +143,7 @@ export const TopWeekdays2022: React.FC<{
 										<WeekdayBar
 											isMostProductive={isMostProductive}
 											height={lower}
-											index={i}
+											index={i + 1}
 											theme={theme}
 										></WeekdayBar>
 										<div
