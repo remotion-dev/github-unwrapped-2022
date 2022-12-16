@@ -42,16 +42,17 @@ export const GiftBox: React.FC<{userStats: CompactStats; theme: Theme}> = ({
 
 	return (
 		<AbsoluteFill>
-			<Sequence
-				from={66}
-				style={{
-					justifyContent: 'center',
-					alignItems: 'center',
-					scale: String(scale),
-					translate: `0 ${translateY}px`,
-				}}
-			>
-				<Tree theme={theme}></Tree>
+			<Sequence from={66}>
+				<AbsoluteFill
+					style={{
+						justifyContent: 'center',
+						alignItems: 'center',
+						scale: String(scale),
+						translate: `0 ${translateY}px`,
+					}}
+				>
+					<Tree theme={theme}></Tree>
+				</AbsoluteFill>
 			</Sequence>
 			<Sequence
 				from={60}
