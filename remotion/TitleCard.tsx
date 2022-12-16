@@ -60,8 +60,8 @@ export const TitleCard: React.FC<{username: string; theme: Theme}> = ({
 						strokeWidth={12}
 						fill="#fff"
 						roughness={1}
-						d={`M 0 0 L 800 0 L 800 250 L 0 250 z`}
 						freeze
+						d={`M 0 0 L 800 0 L 800 250 L 0 250 z`}
 					></RoughPath>
 				</svg>
 			</AbsoluteFill>{' '}

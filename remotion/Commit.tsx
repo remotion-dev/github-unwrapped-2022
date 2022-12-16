@@ -116,6 +116,7 @@ export const Commit: React.FC<CommitProps> = ({
 						bowing={15}
 						seed={index + 1}
 						d={`M 0 0 L 900 0 L 900 170 L 0 170 z`}
+						freeze
 					></RoughPath>
 				</svg>
 			</AbsoluteFill>

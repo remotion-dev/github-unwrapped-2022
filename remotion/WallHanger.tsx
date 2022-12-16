@@ -93,6 +93,7 @@ export const WallHanger: React.FC<{commitCount: number}> = ({commitCount}) => {
 								fill="none"
 								stroke="black"
 								strokeWidth={5}
+								freeze
 							></RoughPath>
 						</svg>
 					</div>
@@ -171,6 +172,7 @@ export const WallHanger: React.FC<{commitCount: number}> = ({commitCount}) => {
 										roughness={1}
 										stroke="black"
 										seed={i}
+										freeze
 									></RoughPath>
 								</svg>
 							);
