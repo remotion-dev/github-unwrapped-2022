@@ -63,7 +63,7 @@ export const Socks: React.FC<{
 								<SockComp
 									theme={theme}
 									lastLanguage={lastLanguage}
-									delay={i * 40 + delay + (lastLanguage ? 0 : 0)}
+									delay={i * 40 + delay}
 								>
 									<Lang lang={language}></Lang>
 								</SockComp>
