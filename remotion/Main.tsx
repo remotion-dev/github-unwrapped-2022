@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {AbsoluteFill, Audio, Internals, Sequence} from 'remotion';
+import {AbsoluteFill, Audio, Internals, Sequence, staticFile} from 'remotion';
 import {CompProps} from '../src/types';
 import {AvgCommits} from './AvgCommits';
 import {BestCommits} from './BestCommits';
@@ -35,11 +35,11 @@ export const Main: React.FC<CompProps> = ({stats, theme}) => {
 			}}
 		>
 			<Audio
-				src={
+				src={staticFile(
 					typeof window !== 'undefined' && !window.remotion_isPlayer
 						? theme.musicRendering
 						: theme.musicPreview
-				}
+				)}
 			></Audio>
 			<Snow windPushes={windPushes}></Snow>
 			<Sequence durationInFrames={duration[0] + transitionDuration}>
