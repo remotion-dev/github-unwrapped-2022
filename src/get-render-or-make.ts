@@ -77,6 +77,7 @@ export const getRenderOrMake = async ({
 				type: 'download',
 				fileName: `${username}'s - GitHubUnwrapped.mp4`,
 			},
+			framesPerLambda: 13,
 		});
 		await lockRenderPromise;
 		_renderId = renderId;
