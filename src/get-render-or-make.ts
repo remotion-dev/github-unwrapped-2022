@@ -88,6 +88,7 @@ export const getRenderOrMake = async ({
 			username,
 			theme: themeId,
 		});
+
 		const progress = await getRenderProgressWithFinality({
 			render: {
 				renderId,
@@ -114,6 +115,7 @@ export const getRenderOrMake = async ({
 					type: 'error',
 					errors: (err as Error).stack as string,
 				},
+				theme: themeId,
 			});
 		}
 		return {

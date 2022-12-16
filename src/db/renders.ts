@@ -82,6 +82,7 @@ export const saveRender = async ({
 				renderId,
 				bucketName,
 				finality: null,
+				region,
 			},
 		}
 	);
@@ -92,11 +93,13 @@ export const updateRenderWithFinality = async ({
 	username,
 	region,
 	finality,
+	theme,
 }: {
 	renderId: string;
 	username: string;
 	region: AwsRegion;
 	finality: Finality;
+	theme: ThemeId;
 }) => {
 	if (finality && finality.type === 'success') {
 		console.log(`Successfully rendered video for ${username}.`);
@@ -108,6 +111,7 @@ export const updateRenderWithFinality = async ({
 		{
 			renderId,
 			region,
+			theme,
 		},
 		{
 			$set: {
