@@ -93,6 +93,7 @@ export const WallHanger: React.FC<{commitCount: number}> = ({commitCount}) => {
 								fill="none"
 								stroke="black"
 								strokeWidth={5}
+								seed={3}
 							></RoughPath>
 						</svg>
 					</div>
@@ -164,14 +165,13 @@ export const WallHanger: React.FC<{commitCount: number}> = ({commitCount}) => {
 									}}
 									key={i}
 								>
-									<RoughPath
+									<path
 										d={roundSvg(`M 0 0 L 100 0 L 100 100 L 0 100 z`, 4)}
 										strokeWidth={12}
 										fill={color[i]}
-										roughness={1}
 										stroke="black"
 										seed={i}
-									></RoughPath>
+									></path>
 								</svg>
 							);
 						})}
