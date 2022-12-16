@@ -1,5 +1,8 @@
 import {random} from 'remotion';
+import {PathInfo} from 'roughjs/bin/core';
 import {getRoughGenerator} from './get-rough';
+
+const cache: Record<string, PathInfo[]> = {};
 
 export const roughenPath = ({
 	d,
