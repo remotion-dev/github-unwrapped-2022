@@ -1,6 +1,7 @@
 import {all} from '../remotion/all';
 import {NotLanguages} from '../remotion/language-list';
 import {BackendStats, getIssues} from '../remotion/map-response-to-stats';
+import {sendDiscordMessage} from './discord-monitoring';
 import {truthy} from './truthy';
 
 export type BackendResponse = typeof all;
@@ -72,7 +73,7 @@ export const getAll = async (
 	});
 	const rateLimit = res.headers.get('x-ratelimit-remaining');
 	if (Math.random() < 0.1) {
-		console.log('Rate limit remaining: ', rateLimit);
+		sendDiscordMessage(`Rate limit remaining: ${rateLimit}`);
 	}
 	return res.json();
 };
