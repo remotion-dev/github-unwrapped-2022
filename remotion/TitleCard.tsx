@@ -63,6 +63,7 @@ export const TitleCard: React.FC<{
 						roughness={1}
 						d={`M 0 0 L 800 0 L 800 250 L 0 250 z`}
 						freeze
+						seed={3}
 					></RoughPath>
 				</svg>
 			</AbsoluteFill>{' '}

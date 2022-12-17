@@ -70,6 +70,7 @@ export const Root: React.FC = () => {
 				width={1080}
 				id={COMP_NAME}
 				defaultProps={{
+					type: 'landscape' as const,
 					stats: mapResponseToStats(
 						backendResponseToBackendStats(all),
 						mapApiResponseToCommits(commits)
@@ -85,6 +86,8 @@ export const Root: React.FC = () => {
 				width={1080}
 				id={`${COMP_NAME}-blue`}
 				defaultProps={{
+					type: 'landscape' as const,
+
 					stats: mapResponseToStats(
 						backendResponseToBackendStats(all),
 						mapApiResponseToCommits(commits)
@@ -100,6 +103,7 @@ export const Root: React.FC = () => {
 				width={1080}
 				id={`${COMP_NAME}-gold`}
 				defaultProps={{
+					type: 'landscape' as const,
 					stats: mapResponseToStats(
 						backendResponseToBackendStats(all),
 						mapApiResponseToCommits(commits)
@@ -109,12 +113,45 @@ export const Root: React.FC = () => {
 			></Composition>
 			<Composition
 				component={GithubPromo}
-				durationInFrames={450}
+				durationInFrames={600}
 				fps={30}
 				height={1080}
 				width={1920}
 				id={'github-promo'}
 				defaultProps={{
+					type: 'landscape' as const,
+					stats: mapResponseToStats(
+						backendResponseToBackendStats(all),
+						mapApiResponseToCommits(commits)
+					),
+					theme: redTheme,
+				}}
+			></Composition>
+			<Composition
+				component={GithubPromo}
+				durationInFrames={600}
+				fps={30}
+				height={1920}
+				width={1920}
+				id={'github-promo-square'}
+				defaultProps={{
+					type: 'square' as const,
+					stats: mapResponseToStats(
+						backendResponseToBackendStats(all),
+						mapApiResponseToCommits(commits)
+					),
+					theme: redTheme,
+				}}
+			></Composition>
+			<Composition
+				component={GithubPromo}
+				durationInFrames={600}
+				fps={30}
+				height={1920}
+				width={1080}
+				id={'github-promo-portrait'}
+				defaultProps={{
+					type: 'portrait' as const,
 					stats: mapResponseToStats(
 						backendResponseToBackendStats(all),
 						mapApiResponseToCommits(commits)

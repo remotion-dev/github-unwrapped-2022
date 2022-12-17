@@ -7,6 +7,7 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
+import {CompProps} from '../src/types';
 import {AvatarFrame} from './AvatarFrame';
 import {Tree} from './Icons/Tree';
 import {Squeeze} from './Squeeze';
@@ -17,7 +18,8 @@ import {WallHanger} from './WallHanger';
 
 export const PromoGiftBox: React.FC<{
 	theme: Theme;
-}> = ({theme}) => {
+	type: CompProps['type'];
+}> = ({theme, type}) => {
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
@@ -35,8 +37,16 @@ export const PromoGiftBox: React.FC<{
 	const scale = interpolate(moveAndScaleDown, [0, 1], [0, 1]);
 	const translateY = interpolate(moveAndScaleDown, [0, 1], [300, 0]);
 
-	const wallHangerPos = interpolate(wallHangerComeIn, [0, 1], [1200, 750]);
-	const avatarFramePos = interpolate(wallHangerComeIn, [0, 1], [-1200, -750]);
+	const wallHangerPos = interpolate(
+		wallHangerComeIn,
+		[0, 1],
+		type === 'portrait' ? [900, 370] : [1200, 750]
+	);
+	const avatarFramePos = -interpolate(
+		wallHangerComeIn,
+		[0, 1],
+		type === 'portrait' ? [900, 370] : [1200, 750]
+	);
 
 	return (
 		<AbsoluteFill>
@@ -56,7 +66,9 @@ export const PromoGiftBox: React.FC<{
 			<Sequence from={70}>
 				<AbsoluteFill
 					style={{
-						transform: 'scale(1.3) translateY(-300px)',
+						transform: `scale(${type === 'square' ? 1.8 : 1.3}) translateY(${
+							type === 'portrait' ? 200 : type === 'square' ? 0 : '-300'
+						}px)`,
 					}}
 				>
 					<TitleCard
@@ -64,7 +76,7 @@ export const PromoGiftBox: React.FC<{
 							<span style={{fontSize: '0.8em'}}>Get your personalized</span>
 						}
 						theme={theme}
-						bigTitle={'#GithubUnwrapped'}
+						bigTitle={'#GitHubUnwrapped'}
 					></TitleCard>
 				</AbsoluteFill>
 			</Sequence>

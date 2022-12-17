@@ -11,8 +11,11 @@ import {Laptop} from '../src/components/Laptop';
 import {redTheme} from './theme';
 import {Bauble} from '../src/components/Bauble';
 import {GithubIcon} from '../src/components/Github';
+import {CompProps} from '../src/types';
 
-export const FeatureList: React.FC = () => {
+export const FeatureList: React.FC<{
+	type: CompProps['type'];
+}> = ({type}) => {
 	const {fps, height, width} = useVideoConfig();
 	const frame = useCurrentFrame();
 
@@ -32,14 +35,17 @@ export const FeatureList: React.FC = () => {
 		},
 	});
 
-	const rotateStuff = spring({
-		fps,
-		frame: frame - 180,
-		config: {
-			damping: 200,
-		},
-		durationInFrames: 60,
-	});
+	const rotateStuff =
+		type === 'portrait'
+			? 0
+			: spring({
+					fps,
+					frame: frame - 180,
+					config: {
+						damping: 200,
+					},
+					durationInFrames: 60,
+			  });
 
 	const rotation = interpolate(rotateStuff, [0, 1], [140, -140]);
 
@@ -47,18 +53,22 @@ export const FeatureList: React.FC = () => {
 	const pos2 = interpolate(push1 + push2, [0, 2], [height, -height]);
 	const pos3 = interpolate(push2, [0, 1], [height, 0]);
 
+	const direction = type === 'portrait' ? 'column' : ('row' as const);
+
 	return (
 		<AbsoluteFill>
 			<AbsoluteFill
 				style={{
 					justifyContent: 'center',
 					alignItems: 'center',
-					flexDirection: 'row',
+					flexDirection: direction,
 					fontFamily: 'MonaSans',
-					fontSize: 80,
+					fontSize: type === 'square' ? 105 : 80,
 					fontWeight: 700,
 					lineHeight: 1.2,
 					marginTop: pos1,
+					gap: 30,
+					textAlign: type === 'portrait' ? 'center' : 'left',
 				}}
 			>
 				<div style={{height: 300, width: 300}}>
@@ -72,15 +82,22 @@ export const FeatureList: React.FC = () => {
 				style={{
 					justifyContent: 'center',
 					alignItems: 'center',
-					flexDirection: 'row',
+					flexDirection: direction,
 					fontFamily: 'MonaSans',
-					fontSize: 80,
+					fontSize: type === 'square' ? 105 : 80,
 					fontWeight: 700,
 					lineHeight: 1.2,
 					marginTop: pos2,
+					textAlign: type === 'portrait' ? 'center' : 'left',
 				}}
 			>
-				<div style={{height: 300, width: 300, marginRight: 70}}>
+				<div
+					style={{
+						height: 300,
+						width: 300,
+						marginRight: type === 'portrait' ? 0 : 70,
+					}}
+				>
 					<Laptop theme={redTheme}></Laptop>
 				</div>
 				Your coding highlights <br />
@@ -98,7 +115,7 @@ export const FeatureList: React.FC = () => {
 					position: 'absolute',
 					overflow: 'hidden',
 					fontFamily: 'MonaSans',
-					fontSize: 80,
+					fontSize: type === 'square' ? 105 : 80,
 					fontWeight: 700,
 					marginTop: pos3,
 				}}
@@ -109,11 +126,18 @@ export const FeatureList: React.FC = () => {
 						height,
 						justifyContent: 'center',
 						alignItems: 'center',
-						flexDirection: 'row',
+						flexDirection: direction,
 						left: undefined,
+						textAlign: type === 'portrait' ? 'center' : 'left',
 					}}
 				>
-					<div style={{height: 300, width: 300, marginRight: 70}}>
+					<div
+						style={{
+							height: 300,
+							width: 300,
+							marginRight: direction === 'column' ? 0 : 70,
+						}}
+					>
 						<svg
 							viewBox="0 0 512 512"
 							fill="none"
@@ -364,9 +388,9 @@ export const FeatureList: React.FC = () => {
 				style={{
 					justifyContent: 'center',
 					alignItems: 'center',
-					flexDirection: 'row',
+					flexDirection: direction,
 					fontFamily: 'MonaSans',
-					fontSize: 80,
+					fontSize: type === 'square' ? 105 : 80,
 					fontWeight: 700,
 					lineHeight: 1.2,
 					marginTop: pos3,
@@ -385,29 +409,31 @@ export const FeatureList: React.FC = () => {
 						height,
 						justifyContent: 'center',
 						alignItems: 'center',
-						flexDirection: 'row',
+						flexDirection: direction,
+						gap: 40,
 					}}
 				>
 					<GithubIcon
 						style={{
 							height: 160,
-							marginRight: 40,
 						}}
 						theme={redTheme}
 					></GithubIcon>
 					GitHubUnwrapped.com
 				</AbsoluteFill>
 			</AbsoluteFill>
-			<AbsoluteFill>
-				<Bauble
-					style={{
-						height: height * 0.8,
-						transformOrigin: 'center top',
-						rotate: rotation + 'deg',
-					}}
-					theme={redTheme}
-				></Bauble>
-			</AbsoluteFill>
+			{type === 'portrait' ? null : (
+				<AbsoluteFill>
+					<Bauble
+						style={{
+							height: width * 0.8,
+							transformOrigin: 'center top',
+							rotate: rotation + 'deg',
+						}}
+						theme={redTheme}
+					></Bauble>
+				</AbsoluteFill>
+			)}
 		</AbsoluteFill>
 	);
 };

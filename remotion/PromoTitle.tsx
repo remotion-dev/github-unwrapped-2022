@@ -1,5 +1,6 @@
 import React from 'react';
 import {AbsoluteFill} from 'remotion';
+import {CompProps} from '../src/types';
 import {CompactStats} from './map-response-to-stats';
 import {PromoGiftBox} from './PromoGiftBox';
 import {Theme} from './theme';
@@ -8,7 +9,8 @@ export const PromoTitle: React.FC<{
 	noBackground: boolean;
 	userStats: CompactStats;
 	theme: Theme;
-}> = ({noBackground, theme}) => {
+	type: CompProps['type'];
+}> = ({noBackground, theme, type}) => {
 	return (
 		<AbsoluteFill
 			style={{
@@ -16,7 +18,7 @@ export const PromoTitle: React.FC<{
 			}}
 		>
 			<AbsoluteFill>
-				<PromoGiftBox theme={theme}></PromoGiftBox>
+				<PromoGiftBox type={type} theme={theme}></PromoGiftBox>
 			</AbsoluteFill>
 		</AbsoluteFill>
 	);

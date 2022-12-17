@@ -11,6 +11,7 @@ export type RenderRequest = {
 export type CompProps = {
 	stats: CompactStats;
 	theme: Theme;
+	type: 'portrait' | 'square' | 'landscape';
 };
 
 export type ProgressData = {
