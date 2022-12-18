@@ -1,18 +1,16 @@
 <img src="public/promo1.png">
 <img src="public/promo2.png">
-<img src="public/promo3.png">
 
-**Try it out live:** https://githubunwrapped.com
+**Try it out live:** [GitHubUnwrapped.com](https://www.githubunwrapped.com)
 
 A platform that generates a year in review video for each GitHub user. Built with Next.JS, Remotion and AWS Lambda.
 
-## Scaling strategy
+## Make your own
 
-To allow hundreds of people to render their video at the same time, we applied multiple strategies for scaling:
+Want to make your own year in review for your users?
 
-- Caching the video whenever possible. Before each render, a database lock is created to avoid multiple renders for the same GitHub user to be accidentally created.
-- A random region will be selected for each render to distribute renders to avoid hitting the [concurrency limit](https://www.remotion.dev/docs/lambda/troubleshooting/rate-limit).
-- Two AWS sub-accounts are used for rendering which each have their own concurrency limit of 1000 functions in parallel per region. In hindsight, it would have been easier to ask AWS for an increase.
+- **Developers**: Feel free to fork use this repository as a template! Note the legal disclaimers at the bottom of this README.
+- **Non-developers**: Reach out to [hi@remotion.dev](mailto:hi@remotion.dev) and we'll reach out to you in Fall 2023 for a free consultation!
 
 ## Setup
 
@@ -24,10 +22,11 @@ To allow hundreds of people to render their video at the same time, we applied m
    - In `src/set-env-for-key.ts`, we rotate the environment variables.
 4. Deploy the functions into your AWS account(s):
    ```
-   npm deploy-functions
+   npx ts-node deploy.ts
    ```
-5. For caching the videos and GitHub API responses, set up a MongoDB (I use a free MongoDB Atlas Cloud instance) to save the videos. Set the connection string as `MONGO_URL`
+5. For caching the videos and GitHub API responses, set up a MongoDB (We use a free MongoDB Atlas Cloud instance) to save the videos. Set the connection string as `MONGO_URL`
 6. For fetching data from GitHub, create a personal access token in your user settings and set it as `GITHUB_TOKEN`.
+7. Optionally, provide `DISCORD_CHANNEL` and `DISCORD_TOKEN` values to send monitoring logs to Discord.
 
 You now have all environment variables.
 
@@ -43,9 +42,20 @@ Edit the template in the Remotion preview:
 npm run preview
 ```
 
-To deploy, connect your repository to Vercel or Heroku.
+To deploy, connect your repository to Vercel.
 
 Don't forget to also set the environment variables there too.
+
+## Scaling strategy
+
+To allow thousands of people to render their video at the same time, we applied multiple strategies for scaling:
+
+- Caching the video whenever possible. Before each render, a MongoDB database lock is created to avoid multiple renders for the same GitHub user to be accidentally created.
+- Renders are distributed across an array of AWS regions and accounts to avoid hitting the [concurrency limit](https://www.remotion.dev/docs/lambda/troubleshooting/rate-limit).
+
+## Credits
+
+We thank GitHub for their support in realization and promotion of this project.
 
 ## Music copyright disclaimer
 

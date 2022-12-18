@@ -101,7 +101,7 @@ export const StillTitleCard: React.FC<{
 						<span
 							style={{
 								fontSize: '1.1em',
-								fontWeight: 700,
+								fontWeight: 900,
 								color: theme.mainColor,
 							}}
 						>
