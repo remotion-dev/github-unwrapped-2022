@@ -1,6 +1,7 @@
 export const sendDiscordMessage = async (message: string) => {
 	const channel = process.env.DISCORD_CHANNEL;
 	const token = process.env.DISCORD_TOKEN;
+	console.log(message);
 	if (!channel) {
 		console.warn('no DISCORD_CHANNEL env variable set.');
 		return;
@@ -10,7 +11,6 @@ export const sendDiscordMessage = async (message: string) => {
 		return;
 	}
 
-	console.log(message);
 	try {
 		await fetch(`https://discord.com/api/channels/${channel}/messages`, {
 			method: 'post',
