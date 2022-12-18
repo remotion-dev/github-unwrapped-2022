@@ -13,7 +13,7 @@ export const UnwrappedEnd: React.FC = () => {
 				gap: 40,
 				fontFamily: 'MonaSans',
 				fontSize: 80,
-				fontWeight: 700,
+				fontWeight: 800,
 			}}
 		>
 			<GithubIcon

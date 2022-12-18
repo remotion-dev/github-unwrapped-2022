@@ -1,17 +1,20 @@
-import {backendResponseToBackendStats, getTopLanguages} from '../src/get-all';
 import {expect, test} from 'vitest';
 import {all} from '../remotion/all';
+import {backendResponseToBackendStats, getTopLanguages} from '../src/get-all';
 
 test('Should get top languages right', () => {
 	const res = backendResponseToBackendStats(all);
 	expect(res.topLanguages?.[0].name).toBe('TypeScript');
-	expect(res.topLanguages?.[1].name).toBe('JavaScript');
-	expect(res.topLanguages?.[2].name).toBe('CSS');
+	expect(res.topLanguages?.[1].name).toBe('C++');
+	expect(res.topLanguages?.[2].name).toBe('JavaScript');
 });
 
-test.only('jakopako test case', () => {
+test('jakopako test case', () => {
 	const res = getTopLanguages([
 		{
+			contributions: {
+				totalCount: 192,
+			},
 			repository: {
 				name: 'goskyr',
 				owner: {
@@ -32,6 +35,9 @@ test.only('jakopako test case', () => {
 			},
 		},
 		{
+			contributions: {
+				totalCount: 127,
+			},
 			repository: {
 				name: 'croncert-config',
 				owner: {
@@ -43,6 +49,9 @@ test.only('jakopako test case', () => {
 			},
 		},
 		{
+			contributions: {
+				totalCount: 38,
+			},
 			repository: {
 				name: 'croncert-web',
 				owner: {
@@ -79,6 +88,9 @@ test.only('jakopako test case', () => {
 			},
 		},
 		{
+			contributions: {
+				totalCount: 13,
+			},
 			repository: {
 				name: 'event-api',
 				owner: {
@@ -115,6 +127,9 @@ test.only('jakopako test case', () => {
 			},
 		},
 		{
+			contributions: {
+				totalCount: 10,
+			},
 			repository: {
 				name: 'graph-rapid7',
 				owner: {
@@ -151,6 +166,9 @@ test.only('jakopako test case', () => {
 			},
 		},
 		{
+			contributions: {
+				totalCount: 9,
+			},
 			repository: {
 				name: 'graph-nessus',
 				owner: {
@@ -159,7 +177,7 @@ test.only('jakopako test case', () => {
 				languages: {
 					edges: [
 						{
-							size: 27261,
+							size: 27275,
 							node: {
 								color: '#3178c6',
 								name: 'TypeScript',
@@ -187,6 +205,9 @@ test.only('jakopako test case', () => {
 			},
 		},
 		{
+			contributions: {
+				totalCount: 8,
+			},
 			repository: {
 				name: 'graph-orion',
 				owner: {
@@ -223,6 +244,9 @@ test.only('jakopako test case', () => {
 			},
 		},
 		{
+			contributions: {
+				totalCount: 2,
+			},
 			repository: {
 				name: 'docker-openvpn-client',
 				owner: {
@@ -259,6 +283,9 @@ test.only('jakopako test case', () => {
 			},
 		},
 		{
+			contributions: {
+				totalCount: 1,
+			},
 			repository: {
 				name: 'graph-crowdstrike',
 				owner: {
@@ -295,6 +322,9 @@ test.only('jakopako test case', () => {
 			},
 		},
 		{
+			contributions: {
+				totalCount: 1,
+			},
 			repository: {
 				name: 'goquery',
 				owner: {
@@ -332,7 +362,7 @@ test.only('jakopako test case', () => {
 		},
 	]);
 
-	expect(res?.[0].name).toBe('TypeScript');
-	expect(res?.[1].name).toBe('Shell');
-	expect(res?.[2].name).toBe('Go');
+	expect(res?.[0].name).toBe('Go');
+	expect(res?.[1].name).toBe('TypeScript');
+	expect(res?.[2].name).toBe('CSS');
 });

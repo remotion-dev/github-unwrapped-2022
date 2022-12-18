@@ -47,7 +47,7 @@ export const TopWeekdays2022: React.FC<{
 			fontSize: 80,
 			fontFamily: 'MonaSans',
 			textAlign: 'center',
-			fontWeight: 700,
+			fontWeight: 900,
 		}),
 		[theme.mainColor]
 	);

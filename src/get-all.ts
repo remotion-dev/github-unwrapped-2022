@@ -32,6 +32,9 @@ const query = (username: string) =>
           totalContributions
         }
         commitContributionsByRepository {
+					contributions {
+            totalCount
+          }
           repository {
             name
             owner {
@@ -79,6 +82,9 @@ export const getAll = async (
 };
 
 type CommitContributions = {
+	contributions: {
+		totalCount: number;
+	};
 	repository: {
 		name: string;
 		owner: {
@@ -107,7 +113,11 @@ export const getTopLanguages = (
 		.map((r) => {
 			const repo = r.repository;
 			const topLanguages = repo.languages.edges.map((edge, i) => {
-				return {node: edge.node, rank: Math.max(3 - i, 0)};
+				return {
+					node: edge.node,
+					rank: Math.max(3 - i, 0),
+					multiplier: r.contributions.totalCount * edge.size,
+				};
 			});
 			return topLanguages;
 		})
@@ -122,7 +132,7 @@ export const getTopLanguages = (
 		if (!langs[lang.node.name]) {
 			langs[lang.node.name] = 0;
 		}
-		langs[lang.node.name] += lang.rank;
+		langs[lang.node.name] += lang.rank * lang.multiplier;
 	}
 
 	// Sort the languages by their counts in descending order

@@ -32,16 +32,17 @@ export const EndCard: React.FC<{
 
 	const rotation = interpolate(rotateStuff, [0, 1], [140, -140]);
 
+	const secondText = frame < 28;
 	const endCardStyle: React.CSSProperties = useMemo(() => {
 		return {
-			color: theme.mainColor,
+			color: secondText ? 'black' : theme.mainColor,
 			fontFamily: 'MonaSans',
 			fontSize: 65,
 			textAlign: 'center',
 			marginTop: 20,
-			fontWeight: 700,
+			fontWeight: 900,
 		};
-	}, [theme.mainColor]);
+	}, [secondText, theme.mainColor]);
 
 	return (
 		<AbsoluteFill
@@ -75,7 +76,7 @@ export const EndCard: React.FC<{
 					}}
 				>
 					<div style={endCardStyle}>
-						{frame < 28
+						{secondText
 							? `Want to know your own stats?`
 							: 'Get your #GitHubUnwrapped'}
 					</div>
