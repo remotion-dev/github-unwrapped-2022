@@ -1,63 +1,64 @@
+import React from 'react';
 import {Composition, Folder, Still} from 'remotion';
 import {COMP_NAME, DURATION, OG_COMP_NAME} from '../src/config';
+import {backendResponseToBackendStats} from '../src/get-all';
+import {getTimesOfDay} from '../src/get-times-of-day';
 import {all} from './all';
-import {Flashcard} from './Flashcard';
-import {Main} from './Main';
-import {mapResponseToStats} from './map-response-to-stats';
-import {TopWeekdays2022} from './TopWeekdays';
-import {TitleCard} from './TitleCard';
-import {Snow} from './Snow';
-import {Title} from './Title2022';
+import {AvatarFrame} from './AvatarFrame';
 import {AvgCommits} from './AvgCommits';
-import {TypeScript} from './Languages/Typescript';
-import {JavaScript} from './Languages/JavaScript';
-import {Java} from './Languages/Java';
+import {BestCommits} from './BestCommits';
+import {Commit} from './Commit';
+import {commits} from './commits';
+import {EndCard} from './EndCard';
+import {Flashcard} from './Flashcard';
+import {GithubComp} from './GithubComp';
+import {GithubPromo} from './GithubPromo';
+import {Logo} from './Icons/Logo';
+import {IssuesOpened} from './IssuesOpened';
 import {Clojure} from './Languages/Clojure';
 import {CMake} from './Languages/CMake';
-import {Vue} from './Languages/Vue';
 import {CoffeeScript} from './Languages/CoffeeScript';
-import {Kotlin} from './Languages/Kotlin';
 import {CPlusPlus} from './Languages/CPlusPlus';
-import {Solidity} from './Languages/Solidity';
-import {Flutter} from './Languages/Flutter';
-import {SQL} from './Languages/SQL';
-import {Haskell} from './Languages/Haskell';
-import {Lua} from './Languages/Lua';
-import {Python} from './Languages/Python';
-import {PowerShell} from './Languages/PowerShell';
-import {Ruby} from './Languages/Ruby';
-import {Html} from './Languages/HTML';
-import {Scala} from './Languages/Scala';
-import {Php} from './Languages/Php';
-import {Swift} from './Languages/Swift';
 import {Css} from './Languages/Css';
+import {Flutter} from './Languages/Flutter';
 import {GraphQL} from './Languages/GraphQl';
+import {Haskell} from './Languages/Haskell';
+import {Html} from './Languages/HTML';
+import {Java} from './Languages/Java';
+import {JavaScript} from './Languages/JavaScript';
+import {Kotlin} from './Languages/Kotlin';
+import {Lua} from './Languages/Lua';
+import {Php} from './Languages/Php';
+import {PowerShell} from './Languages/PowerShell';
+import {Python} from './Languages/Python';
 import {RLang} from './Languages/RLang';
+import {Ruby} from './Languages/Ruby';
 import {Rust} from './Languages/Rust';
 import {Sass} from './Languages/Sass';
-import {IssuesOpened} from './IssuesOpened';
-import {TreeComp} from './TreeComp';
-import {LogoComp} from './LogoComp';
-import {GithubComp} from './GithubComp';
-import {TreeGithub} from './TreeGithub';
+import {Scala} from './Languages/Scala';
+import {Solidity} from './Languages/Solidity';
+import {SQL} from './Languages/SQL';
+import {Swift} from './Languages/Swift';
+import {TypeScript} from './Languages/Typescript';
+import {Vue} from './Languages/Vue';
+import {LanguageToSocks} from './LanguageToSocks';
+import {Loader} from './Loader';
+import {Main} from './Main';
+import {mapApiResponseToCommits} from './map-api-response-to-commits';
+import {mapResponseToStats} from './map-response-to-stats';
+import {OG} from './og/Og';
+import {Snow} from './Snow';
 import {SockComp} from './SockComp';
 import {Socks} from './Socks';
-import {WallHanger} from './WallHanger';
-import {AvatarFrame} from './AvatarFrame';
-import {Unwrap} from './Unwrap';
-import {Commit} from './Commit';
-import {BestCommits} from './BestCommits';
-import {mapApiResponseToCommits} from './map-api-response-to-commits';
-import {commits} from './commits';
-import {backendResponseToBackendStats} from '../src/get-all';
-import {Loader} from './Loader';
+import {Teaser} from './Teaser';
 import {blueTheme, goldenTheme, redTheme} from './theme';
-import {LanguageToSocks} from './LanguageToSocks';
-import {EndCard} from './EndCard';
-import {OG} from './og/Og';
-import React from 'react';
-import {getTimesOfDay} from '../src/get-times-of-day';
-import {GithubPromo} from './GithubPromo';
+import {Title} from './Title2022';
+import {TitleCard} from './TitleCard';
+import {TopWeekdays2022} from './TopWeekdays';
+import {TreeComp} from './TreeComp';
+import {TreeGithub} from './TreeGithub';
+import {Unwrap} from './Unwrap';
+import {WallHanger} from './WallHanger';
 
 export const Root: React.FC = () => {
 	return (
@@ -134,6 +135,22 @@ export const Root: React.FC = () => {
 				height={1920}
 				width={1920}
 				id={'github-promo-square'}
+				defaultProps={{
+					type: 'square' as const,
+					stats: mapResponseToStats(
+						backendResponseToBackendStats(all),
+						mapApiResponseToCommits(commits)
+					),
+					theme: redTheme,
+				}}
+			></Composition>
+			<Composition
+				component={Teaser}
+				durationInFrames={600}
+				fps={30}
+				height={1920}
+				width={1920}
+				id={'github-teaser-square'}
 				defaultProps={{
 					type: 'square' as const,
 					stats: mapResponseToStats(
@@ -533,12 +550,15 @@ export const Root: React.FC = () => {
 				id="Tree"
 			></Composition>
 			<Composition
-				component={LogoComp}
+				component={Logo}
 				height={1080}
 				width={1080}
 				durationInFrames={250}
 				fps={30}
 				id="Logo"
+				defaultProps={{
+					theme: redTheme,
+				}}
 			></Composition>
 			<Composition
 				component={GithubComp}
