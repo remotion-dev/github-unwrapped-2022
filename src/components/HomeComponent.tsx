@@ -66,7 +66,7 @@ export function HomeComponent() {
 			fontSize: 40,
 			color: theme.mainColor,
 			fontFamily: 'MonaSans',
-			fontWeight: 700,
+			fontWeight: 800,
 		};
 	}, [theme.mainColor]);
 

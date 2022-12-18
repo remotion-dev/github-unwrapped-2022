@@ -42,7 +42,7 @@ const subtitle: React.CSSProperties = {
 	fontSize: 24,
 	marginTop: 4,
 	marginBottom: 0,
-	fontWeight: 500,
+	fontWeight: 700,
 };
 
 const layout: React.CSSProperties = {
@@ -109,7 +109,7 @@ export const UserPage: React.FC<{
 			marginBottom: 14,
 			fontSize: 34,
 			marginTop: 0,
-			fontWeight: 700,
+			fontWeight: 800,
 			lineHeight: 1.3,
 		}),
 		[theme.mainColor]
