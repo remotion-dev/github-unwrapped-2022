@@ -3,6 +3,7 @@ import {useRouter} from 'next/router';
 import React, {useCallback, useMemo, useState} from 'react';
 import {Theme, useTheme} from '../../remotion/theme';
 import {DOMAIN} from '../config';
+import {AnimatedRoughBox} from './AnimatedRoughBox';
 import {button} from './button';
 import {Footer, FOOTER_HEIGHT} from './Footer';
 import {HomeSidebar} from './HomeSidebar';
@@ -147,7 +148,7 @@ export function HomeComponent() {
 
 							<form onSubmit={onSubmit}>
 								<div style={{maxWidth: 400}}>
-									<RoughBox
+									<AnimatedRoughBox
 										padding={0}
 										stroke={focused ? theme.mainColor : 'black'}
 										style={{}}
@@ -167,7 +168,7 @@ export function HomeComponent() {
 												placeholder="GitHub username"
 											></input>
 										</div>
-									</RoughBox>
+									</AnimatedRoughBox>
 								</div>
 								<br />
 								<br />

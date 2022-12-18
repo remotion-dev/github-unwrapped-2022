@@ -6,7 +6,7 @@ const style: React.CSSProperties = {
 	backgroundColor: 'white',
 };
 
-export const RoughBox: React.FC<{
+export type RoughBoxProps = {
 	children: React.ReactNode;
 	seed: number;
 	style: React.CSSProperties;
@@ -16,7 +16,9 @@ export const RoughBox: React.FC<{
 	roughness?: number;
 	strokeWidth?: number;
 	stroke?: string;
-}> = ({
+};
+
+export const RoughBox: React.FC<RoughBoxProps> = ({
 	children,
 	seed,
 	containerClassName,
