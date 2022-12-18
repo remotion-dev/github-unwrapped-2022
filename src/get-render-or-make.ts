@@ -64,6 +64,7 @@ export const getRenderOrMake = async ({
 		const inputProps: CompProps = {
 			stats,
 			theme,
+			type: 'square',
 		};
 		const {renderId, bucketName} = await renderMediaOnLambda({
 			region: region,
