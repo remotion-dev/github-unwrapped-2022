@@ -89,17 +89,17 @@ export const saveRender = async ({
 };
 
 export const updateRenderWithFinality = async ({
-	renderId,
 	username,
 	region,
 	finality,
 	theme,
+	renderId,
 }: {
-	renderId: string;
 	username: string;
 	region: AwsRegion;
 	finality: Finality;
 	theme: ThemeId;
+	renderId: string | null;
 }) => {
 	if (finality && finality.type === 'success') {
 		console.log(`Successfully rendered video for ${username}.`);
@@ -109,13 +109,14 @@ export const updateRenderWithFinality = async ({
 	const coll = await rendersCollection();
 	return coll.updateOne(
 		{
-			renderId,
-			region,
 			theme,
+			username,
 		},
 		{
 			$set: {
 				finality: finality,
+				renderId,
+				region,
 			},
 		}
 	);

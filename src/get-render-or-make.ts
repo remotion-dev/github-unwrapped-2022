@@ -113,9 +113,8 @@ export const getRenderOrMake = async ({
 			`Failed to render video for ${username}: ` + (err as Error).stack
 		);
 
-		if (_renderId && _region) {
+		if (_region) {
 			await updateRenderWithFinality({
-				renderId: _renderId,
 				username,
 				region: _region,
 				finality: {
@@ -123,6 +122,7 @@ export const getRenderOrMake = async ({
 					errors: (err as Error).stack as string,
 				},
 				theme: themeId,
+				renderId: _renderId,
 			});
 		}
 		return {
@@ -153,3 +153,14 @@ export const getFinality = (
 	}
 	return null;
 };
+
+export const randomHash = (_options?: {randomInTests: boolean}): string => {
+	return new Array(10)
+		.fill(1)
+		.map(() => {
+			return alphabet[Math.floor(Math.random() * alphabet.length)];
+		})
+		.join('');
+};
+
+const alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789';
