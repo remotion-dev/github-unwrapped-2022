@@ -10,6 +10,12 @@
 	font-weight: 700;
 }
 
+@font-face {
+	font-family: 'MonaSans';
+	src: url(/Mona-Sans-ExtraBold.otf);
+	font-weight: 900;
+}
+
 html,
 body {
 	padding: 0;
