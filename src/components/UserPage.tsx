@@ -1,8 +1,7 @@
-import {PlayerRef, CallbackListener, Player} from '@remotion/player';
+import {CallbackListener, Player, PlayerRef} from '@remotion/player';
 import Head from 'next/head';
 import Link from 'next/link';
-import React from 'react';
-import {useEffect, useMemo, useRef, useState} from 'react';
+import React, {useEffect, useMemo, useRef, useState} from 'react';
 import {AbsoluteFill} from 'remotion';
 import {Main} from '../../remotion/Main';
 import {CompactStats} from '../../remotion/map-response-to-stats';
@@ -165,6 +164,7 @@ export const UserPage: React.FC<{
 										inputProps={{
 											stats: stats,
 											theme: theme,
+											type: 'square' as const,
 										}}
 									></Player>
 									<AbsoluteFill
