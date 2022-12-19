@@ -48,7 +48,7 @@ const Dashboard = () => {
 					color: redTheme.mainColor,
 				}}
 			>
-				Videos rendered
+				Road to a 100k rendered videos
 			</div>
 			<div>{data.renders}</div>
 		</AbsoluteFill>
