@@ -113,7 +113,7 @@ export const updateRenderWithFinality = async ({
 	return coll.updateOne(
 		{
 			theme,
-			username,
+			username: username.toLowerCase(),
 		},
 		{
 			$set: {
