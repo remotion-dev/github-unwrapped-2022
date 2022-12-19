@@ -6,11 +6,8 @@ import {
 	getAll,
 	NOT_FOUND_TOKEN,
 } from '../../../src/get-all';
+import {getRandomGithubToken} from '../../../src/get-random-github-token';
 import {hasEnoughBackendData} from '../../../src/has-enough-data';
-
-if (!process.env.GITHUB_TOKEN) {
-	throw new Error('GITHUB_TOKEN is not set');
-}
 
 export default async function handler(
 	req: NextApiRequest,
@@ -32,7 +29,7 @@ export default async function handler(
 			.json({type: 'found', backendStats: entry.backendStats});
 	}
 
-	const response = await getAll(username, process.env.GITHUB_TOKEN as string);
+	const response = await getAll(username, getRandomGithubToken());
 
 	try {
 		const backendStats = backendResponseToBackendStats(response);

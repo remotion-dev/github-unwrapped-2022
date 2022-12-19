@@ -6,6 +6,7 @@ import {backendStatsCollection, getOgImage, saveOgImage} from './db/cache';
 import {sendDiscordMessage} from './discord-monitoring';
 import {backendResponseToBackendStats, getAll} from './get-all';
 import {getRandomAwsAccount} from './get-random-aws-account';
+import {getRandomGithubToken} from './get-random-github-token';
 import {hasEnoughBackendData} from './has-enough-data';
 import {getRandomRegion} from './regions';
 import {setEnvForKey} from './set-env-for-key';
@@ -66,7 +67,7 @@ const getStats = async (username: string) => {
 		return entry.backendStats;
 	}
 
-	const response = await getAll(username, process.env.GITHUB_TOKEN as string);
+	const response = await getAll(username, getRandomGithubToken());
 
 	const backendStats = backendResponseToBackendStats(response);
 

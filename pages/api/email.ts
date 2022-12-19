@@ -4,10 +4,6 @@ import {sendDiscordMessage} from '../../src/discord-monitoring';
 import {NOT_FOUND_TOKEN} from '../../src/get-all';
 import {EmailResponse} from '../../src/types';
 
-if (!process.env.GITHUB_TOKEN) {
-	throw new Error('GITHUB_TOKEN is not set');
-}
-
 export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse<EmailResponse>
