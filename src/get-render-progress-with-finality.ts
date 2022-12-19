@@ -48,6 +48,7 @@ export const getRenderProgressWithFinality = async ({
 			region: render.region,
 			finality,
 			theme: render.theme,
+			account: render.account,
 		});
 		sendDiscordMessage(
 			`Updated ${render.renderId} with finality: ${JSON.stringify(finality)}}`

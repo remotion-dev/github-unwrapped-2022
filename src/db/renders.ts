@@ -97,12 +97,14 @@ export const updateRenderWithFinality = async ({
 	finality,
 	theme,
 	renderId,
+	account,
 }: {
 	username: string;
 	region: AwsRegion;
 	finality: Finality;
 	theme: ThemeId;
 	renderId: string | null;
+	account: number;
 }) => {
 	if (finality && finality.type === 'success') {
 		console.log(`Successfully rendered video for ${username}.`);
@@ -113,6 +115,7 @@ export const updateRenderWithFinality = async ({
 	return coll.updateOne(
 		{
 			theme,
+			account,
 			username: username.toLowerCase(),
 		},
 		{

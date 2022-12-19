@@ -29,6 +29,7 @@ export const getRenderOrMake = async ({
 	const cache = await getRender({username, theme: themeId});
 	let _renderId: string | null = cache?.renderId ?? null;
 	let _region: AwsRegion | null = cache?.region ?? null;
+	const account = getRandomAwsAccount();
 	try {
 		if (cache) {
 			const progress = await getRenderProgressWithFinality({
@@ -38,8 +39,6 @@ export const getRenderOrMake = async ({
 			return progress;
 		}
 		const region = getRandomRegion();
-		const account = getRandomAwsAccount();
-		setEnvForKey(account);
 		const functionName = speculateFunctionName();
 
 		sendDiscordMessage(
@@ -126,6 +125,7 @@ export const getRenderOrMake = async ({
 				},
 				theme: themeId,
 				renderId: _renderId,
+				account,
 			});
 		}
 		return {
