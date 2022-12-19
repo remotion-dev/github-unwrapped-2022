@@ -20,6 +20,8 @@ const Dashboard = () => {
 		};
 	}, [data]);
 
+	const percentage = `${(data.renders / 100000) * 100}%`;
+
 	return (
 		<AbsoluteFill
 			style={{
@@ -29,7 +31,7 @@ const Dashboard = () => {
 				fontSize: 100,
 				lineHeight: 1,
 				fontWeight: 'bold',
-				backgroundColor: redTheme.background,
+				backgroundImage: `linear-gradient(to right, #d1ffdf 0%, #d1ffdf ${percentage}, ${redTheme.background} ${percentage}, ${redTheme.background} 100%`,
 			}}
 		>
 			<GithubIcon
