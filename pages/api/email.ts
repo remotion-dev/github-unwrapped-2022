@@ -1,6 +1,7 @@
 import {NextApiRequest, NextApiResponse} from 'next';
-import {NOT_FOUND_TOKEN} from '../../src/get-all';
 import {getEmailFromDb, saveEmailAdress} from '../../src/db/cache';
+import {sendDiscordMessage} from '../../src/discord-monitoring';
+import {NOT_FOUND_TOKEN} from '../../src/get-all';
 import {EmailResponse} from '../../src/types';
 
 if (!process.env.GITHUB_TOKEN) {
@@ -23,6 +24,7 @@ export default async function handler(
 				message: 'Your email has already been provided.',
 			});
 		}
+		sendDiscordMessage(`New email submitted: ${email}`);
 		await saveEmailAdress(email);
 		return res
 			.status(201)
