@@ -66,6 +66,8 @@ export const getRenderOrMake = async ({
 			theme,
 			type: 'square',
 		};
+
+		setEnvForKey(account);
 		const {renderId, bucketName} = await renderMediaOnLambda({
 			region: region,
 			functionName,
@@ -78,7 +80,7 @@ export const getRenderOrMake = async ({
 			privacy: 'public',
 			downloadBehavior: {
 				type: 'download',
-				fileName: `${username}'s - GitHubUnwrapped.mp4`,
+				fileName: `${username}'s GitHubUnwrapped.mp4`,
 			},
 			framesPerLambda: 13,
 		});
