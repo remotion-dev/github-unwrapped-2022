@@ -277,7 +277,7 @@ export const UserPage: React.FC<{
 										href={
 											'https://twitter.com/intent/tweet?text=' +
 											encodeURIComponent(
-												'This is my #GitHubUnwrapped! Get your own: https://www.githubunwrapped.com'
+												'This is my #GitHubUnwrapped! Get your own: https://www.githubunwrapped.com [Download and drag your MP4 video in here]'
 											)
 										}
 										rel="noreferrer"
