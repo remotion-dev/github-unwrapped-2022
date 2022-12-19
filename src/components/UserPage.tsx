@@ -132,8 +132,14 @@ export const UserPage: React.FC<{
 				<meta property="og:image" content={ogImage} />
 				<meta name="twitter:card" content="summary_large_image" />
 				<meta name="twitter:creator" content="@JNYBGR" />
-				<meta name="twitter:title" content="{`${stats.username}'s #GitHubUnwrapped`}" />
-				<meta name="twitter:description" content="Let's reflect on an eventful 2022!" />
+				<meta
+					name="twitter:title"
+					content="{`${stats.username}'s #GitHubUnwrapped`}"
+				/>
+				<meta
+					name="twitter:description"
+					content="Let's reflect on an eventful 2022!"
+				/>
 				<meta name="twitter:image" content="{ogImage}" />
 			</Head>
 			<div style={abs}>
@@ -246,7 +252,7 @@ export const UserPage: React.FC<{
 											marginBottom: 10,
 										}}
 									>
-										Download your video as an MP4:
+										1. Download your video as an MP4:
 									</div>
 									<Download
 										initialTheme={initialTheme}
@@ -262,7 +268,7 @@ export const UserPage: React.FC<{
 											marginTop: 10,
 										}}
 									>
-										Share your video on social media using{' '}
+										2. Share your video on social media using{' '}
 										<span
 											style={{
 												color: theme.mainColor,
@@ -279,12 +285,9 @@ export const UserPage: React.FC<{
 									></div>
 									<a
 										target={'_blank'}
-										href={
-											'https://twitter.com/intent/tweet?text=' +
-											encodeURIComponent(
-												'This is my #GitHubUnwrapped! Get your own: https://www.githubunwrapped.com [Download and drag your MP4 video in here]'
-											)
-										}
+										href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+											'This is my #GitHubUnwrapped! Get your own: https://www.githubunwrapped.com\n\n[Delete this placeholder, download and drag your MP4 video in here]'
+										)}`}
 										rel="noreferrer"
 									>
 										<div style={backButton}>
