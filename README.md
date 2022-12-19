@@ -10,7 +10,7 @@ A platform that generates a year in review video for each GitHub user. Built wit
 Want to make your own year in review for your users?
 
 - **Developers**: Feel free to fork use this repository as a template! Note the legal disclaimers at the bottom of this README.
-- **Non-developers**: Reach out to [hi@remotion.dev](mailto:hi@remotion.dev) and we'll reach out to you in Fall 2023 for a free consultation!
+- **Non-developers**: Write to [hi@remotion.dev](mailto:hi@remotion.dev) for a free consultation in Fall 2023!
 
 ## Setup
 
@@ -24,8 +24,8 @@ Want to make your own year in review for your users?
    ```
    npx ts-node deploy.ts
    ```
-5. For caching the videos and GitHub API responses, set up a MongoDB (We use a free MongoDB Atlas Cloud instance) to save the videos. Set the connection string as `MONGO_URL`
-6. For fetching data from GitHub, create a personal access token in your user settings and set it as `GITHUB_TOKEN`.
+5. For caching the videos and GitHub API responses, set up a MongoDB (We use a free MongoDB Atlas Cloud instance) to save the videos. Set the connection string as `MONGO_URL`.
+6. For fetching data from GitHub, create a personal access token in your user settings (no need to grant any scopes) and set it as `GITHUB_TOKEN_1`. Adding more tokens `GITHUB_TOKEN_2` etc. will rotate the personal access tokens.
 7. Optionally, provide `DISCORD_CHANNEL` and `DISCORD_TOKEN` values to send monitoring logs to Discord.
 
 You now have all environment variables.
