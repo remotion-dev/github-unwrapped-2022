@@ -6,7 +6,7 @@ import {AbsoluteFill} from 'remotion';
 import {Main} from '../../remotion/Main';
 import {CompactStats} from '../../remotion/map-response-to-stats';
 import {ThemeId, useTheme} from '../../remotion/theme';
-import {DOMAIN, DURATION} from '../config';
+import {DURATION} from '../config';
 import {RenderProgressOrFinality} from '../types';
 import {ArrowLeft} from './ArrowLeft';
 import {Bird} from './Bird';
@@ -305,9 +305,7 @@ export const UserPage: React.FC<{
 									></div>
 									<a
 										target={'_blank'}
-										href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-											`${DOMAIN}/${username}`
-										)}`}
+										href={`https://www.linkedin.com`}
 										rel="noreferrer"
 									>
 										<div style={backButton}>
