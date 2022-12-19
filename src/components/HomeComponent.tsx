@@ -129,6 +129,11 @@ export function HomeComponent() {
 				<meta property="og:image" content={`${DOMAIN}/flash.png`} />
 				<meta property="og:title" content="Your coding year in review - #GitHubUnwrapped 2022" />
 				<meta property="og:description" content="Get a personalized video of your GitHub activity in 2022. Type your username to get started!" />
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:creator" content="@JNYBGR" />
+				<meta name="twitter:title" content="Your coding year in review - #GitHubUnwrapped 2022" />
+				<meta name="twitter:description" content="Get a personalized video of your GitHub activity in 2022. Type your username to get started!" />
+				<meta name="twitter:image" content="{`${DOMAIN}/flash.png`}" />
 			</Head>
 			<div style={abs}>
 				<UnwrappedTitle />
