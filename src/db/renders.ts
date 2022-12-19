@@ -63,12 +63,14 @@ export const saveRender = async ({
 	renderId,
 	bucketName,
 	theme,
+	account,
 }: {
 	region: AwsRegion;
 	username: string;
 	renderId: string;
 	bucketName: string;
 	theme: ThemeId;
+	account: number;
 }) => {
 	const coll = await rendersCollection();
 	await coll.updateOne(
@@ -83,6 +85,7 @@ export const saveRender = async ({
 				bucketName,
 				finality: null,
 				region,
+				account,
 			},
 		}
 	);

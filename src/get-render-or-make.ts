@@ -91,6 +91,7 @@ export const getRenderOrMake = async ({
 			renderId,
 			username,
 			theme: themeId,
+			account,
 		});
 
 		const progress = await getRenderProgressWithFinality({
