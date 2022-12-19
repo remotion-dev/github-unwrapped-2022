@@ -2,7 +2,6 @@ import {random} from 'remotion';
 import {Commit} from './frontend-stats';
 
 const interestingWords = [
-	'fix',
 	'wrong',
 	'revert',
 	'!!!',
