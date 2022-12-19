@@ -8,5 +8,5 @@ export const RAM = 2048;
 export const DISK = 2048;
 export const TIMEOUT = 240;
 
-export const DOMAIN = 'https://2022.githubunwrapped.com';
+export const DOMAIN = 'https://www.githubunwrapped.com';
 export const DB = 'wrapped2022';
