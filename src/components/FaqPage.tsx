@@ -129,6 +129,21 @@ export const FaqPage: React.FC = () => {
 						with support from GitHub.
 					</p>
 				</RoughBox>
+				<RoughBox seed={7} style={box}>
+					<h2 style={title}>How are my top languages calculated?</h2>
+					<p style={para}>
+						Your top languages are not exactly calculated in a scientific way
+						but are estimated according to the following formula:
+					</p>
+					<div style={{height: 8}}></div>
+					<p style={para}>
+						The list of repositories that you contributed to are fetched. A
+						ranking is assigned to the top 3 languages (top language = 3 points,
+						second = 2 points, third = 1 point) and they are multiplied by the
+						contribution count and the amount of lines of that language in that
+						repository.
+					</p>
+				</RoughBox>
 				<EmailForm></EmailForm>
 				<RoughBox seed={10} style={box}>
 					<h2 style={title}>Credits</h2>
