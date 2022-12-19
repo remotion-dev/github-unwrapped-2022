@@ -130,6 +130,11 @@ export const UserPage: React.FC<{
 				<meta name="description" content="Let's reflect on an eventful 2022!" />
 				<meta name="og:image" content={ogImage} />
 				<meta property="og:image" content={ogImage} />
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:creator" content="@JNYBGR" />
+				<meta name="twitter:title" content="{`${stats.username}'s #GitHubUnwrapped`}" />
+				<meta name="twitter:description" content="Let's reflect on an eventful 2022!" />
+				<meta name="twitter:image" content="{ogImage}" />
 			</Head>
 			<div style={abs}>
 				<div style={container}>
