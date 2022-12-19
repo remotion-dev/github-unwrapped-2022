@@ -1,4 +1,3 @@
-import {Internals} from 'remotion';
 import {commits} from './commits';
 import {Commit} from './frontend-stats';
 
@@ -19,5 +18,5 @@ export const mapApiResponseToCommits = (
 				repo: commit.repository.owner.login + '/' + commit.repository.name,
 			};
 		})
-		.filter(Internals.truthy);
+		.filter(Boolean) as Commit[];
 };
