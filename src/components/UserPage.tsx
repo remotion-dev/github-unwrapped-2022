@@ -134,7 +134,7 @@ export const UserPage: React.FC<{
 				<meta name="twitter:creator" content="@JNYBGR" />
 				<meta
 					name="twitter:title"
-					content="{`${stats.username}'s #GitHubUnwrapped`}"
+					content={`${stats.username}'s #GitHubUnwrapped`}
 				/>
 				<meta
 					name="twitter:description"
