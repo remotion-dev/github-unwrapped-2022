@@ -58,9 +58,10 @@ export const RoughPath: React.FC<
 						style={
 							scaleY !== undefined
 								? {
+										opacity: scaleY === 0 ? 0 : 1,
 										transformBox: 'fill-box',
 										transformOrigin: 'center bottom',
-										transform: `scaleY(${scaleY})`,
+										transform: `scaleY(${Math.max(0.001, scaleY)})`,
 								  }
 								: {}
 						}

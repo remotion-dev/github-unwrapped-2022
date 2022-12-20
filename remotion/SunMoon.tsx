@@ -1,7 +1,7 @@
 import React from 'react';
 import {AbsoluteFill, interpolate} from 'remotion';
 import {Sun} from '../src/components/Sun';
-import {iosSafari} from './ios-safari';
+import {iosSafariOrFirefox} from './ios-safari';
 import {Moon} from './Moon';
 import {Theme} from './theme';
 
@@ -45,7 +45,7 @@ export const SunMoon: React.FC<{
 					style={{
 						justifyContent: 'center',
 						alignItems: 'center',
-						...(iosSafari()
+						...(iosSafariOrFirefox()
 							? {
 									opacity: rotationPrimitive ? 0 : 1,
 							  }
@@ -68,7 +68,7 @@ export const SunMoon: React.FC<{
 						theme={theme}
 						style={{
 							height: 150,
-							transform: 'scale(1.5)',
+							transform: 'translateZ(1px) scale(1.5)',
 						}}
 					></Moon>
 				</div>
@@ -77,7 +77,7 @@ export const SunMoon: React.FC<{
 						justifyContent: 'center',
 						alignItems: 'center',
 						WebkitPerspective: 0,
-						...(iosSafari()
+						...(iosSafariOrFirefox()
 							? {
 									opacity: rotationPrimitive ? 1 : 0,
 							  }
