@@ -42,9 +42,9 @@ const getErrorMessage = (
 			? 'Come back at the end of 2023 to get your video!'
 			: "It's not too late, get coding and then come back!";
 		return {
-			title: 'Not enough contributions',
+			title: 'Not enough public contributions',
 			subtitle: [
-				'Unfortunately, there are not enough contributions to make an interesting video.',
+				'Unfortunately, there are not enough public contributions to make an interesting video. Make sure your GitHub profile is public.',
 				cta,
 			].join(' '),
 		};
