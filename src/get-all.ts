@@ -4,6 +4,8 @@ import {BackendStats, getIssues} from '../remotion/map-response-to-stats';
 import {sendDiscordMessage} from './discord-monitoring';
 import {truthy} from './truthy';
 
+const {interpolate} = require('remotion');
+
 export type BackendResponse = typeof all;
 
 const query = (username: string) =>
@@ -116,7 +118,12 @@ export const getTopLanguages = (
 				return {
 					node: edge.node,
 					rank: Math.max(3 - i, 0),
-					multiplier: r.contributions.totalCount * edge.size,
+					multiplier:
+						r.contributions.totalCount *
+						interpolate(edge.size, [0, 3000000], [1, 10], {
+							extrapolateLeft: 'clamp',
+							extrapolateRight: 'clamp',
+						}),
 				};
 			});
 			return topLanguages;
