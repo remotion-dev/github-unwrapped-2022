@@ -1,3 +1,4 @@
+import {interpolate} from 'remotion';
 import {all} from '../remotion/all';
 import {NotLanguages} from '../remotion/language-list';
 import {BackendStats, getIssues} from '../remotion/map-response-to-stats';
@@ -116,7 +117,12 @@ export const getTopLanguages = (
 				return {
 					node: edge.node,
 					rank: Math.max(3 - i, 0),
-					multiplier: r.contributions.totalCount * edge.size,
+					multiplier:
+						r.contributions.totalCount *
+						interpolate(edge.size, [0, 3000000], [1, 10], {
+							extrapolateLeft: 'clamp',
+							extrapolateRight: 'clamp',
+						}),
 				};
 			});
 			return topLanguages;
