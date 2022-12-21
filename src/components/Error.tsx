@@ -44,7 +44,7 @@ const getErrorMessage = (
 		return {
 			title: 'Not enough contributions',
 			subtitle: [
-				'Unfortunately, there are not enough contributions to make an interesting video.',
+				'Unfortunately, there are not enough contributions to make an interesting video. Make sure your GitHub profile is public.',
 				cta,
 			].join(' '),
 		};
