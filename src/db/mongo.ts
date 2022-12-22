@@ -11,9 +11,8 @@ let clientPromise: Promise<MongoClient>;
 declare global {
 	var _mongoClientPromise: Promise<MongoClient>;
 }
-
 if (!process.env.MONGO_URL) {
-	throw new Error('Please add your Mongo URI to .env.local');
+	throw new Error('Please add your Mongo URI to .env');
 }
 
 if (process.env.NODE_ENV === 'development') {
