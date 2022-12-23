@@ -246,6 +246,8 @@ export const backendResponseToBackendStats = (
 		commitCount:
 			response.data.user.contributionsCollection.totalCommitContributions +
 			response.data.user.contributionsCollection.restrictedContributionsCount,
+		pullRequestCount:
+			response.data.user.contributionsCollection.totalPullRequestContributions,
 		mostRecentPullRequest,
 		mostPopularPullRequest,
 	};

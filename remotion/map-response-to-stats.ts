@@ -17,6 +17,7 @@ export type BackendStats = {
 	topLanguages: TopLanguage[] | null;
 	issues: Issues;
 	commitCount: number;
+	pullRequestCount: number;
 	mostRecentPullRequest: PullRequest | null;
 	mostPopularPullRequest: PullRequest | null;
 };
