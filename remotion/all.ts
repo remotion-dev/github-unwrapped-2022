@@ -6,24 +6,158 @@ export const all = {
 				totalCount: 11,
 			},
 			closedIssues: {
-				totalCount: 55,
+				totalCount: 58,
 			},
 			avatarUrl: 'https://avatars.githubusercontent.com/u/306134?v=4',
 			login: 'wcandillon',
 			contributionsCollection: {
-				totalCommitContributions: 868,
-				restrictedContributionsCount: 393,
-				totalIssueContributions: 50,
+				pullRequestContributionsByRepository: [
+					{
+						repository: {
+							name: 'react-native-skia',
+							owner: {
+								login: 'Shopify',
+							},
+						},
+						contributions: {
+							totalCount: 349,
+						},
+					},
+					{
+						repository: {
+							name: 'react-native-redash',
+							owner: {
+								login: 'wcandillon',
+							},
+						},
+						contributions: {
+							totalCount: 5,
+						},
+					},
+					{
+						repository: {
+							name: 'eslint-plugin-reanimated',
+							owner: {
+								login: 'wcandillon',
+							},
+						},
+						contributions: {
+							totalCount: 4,
+						},
+					},
+					{
+						repository: {
+							name: 'eslint-config-react-native-wcandillon',
+							owner: {
+								login: 'wcandillon',
+							},
+						},
+						contributions: {
+							totalCount: 4,
+						},
+					},
+					{
+						repository: {
+							name: 'remotion',
+							owner: {
+								login: 'remotion-dev',
+							},
+						},
+						contributions: {
+							totalCount: 2,
+						},
+					},
+					{
+						repository: {
+							name: 'template-skia',
+							owner: {
+								login: 'remotion-dev',
+							},
+						},
+						contributions: {
+							totalCount: 2,
+						},
+					},
+					{
+						repository: {
+							name: 'remotion-fireship',
+							owner: {
+								login: 'wcandillon',
+							},
+						},
+						contributions: {
+							totalCount: 2,
+						},
+					},
+					{
+						repository: {
+							name: 'react-native-skia',
+							owner: {
+								login: 'wcandillon',
+							},
+						},
+						contributions: {
+							totalCount: 1,
+						},
+					},
+					{
+						repository: {
+							name: 'SkiaPlayground',
+							owner: {
+								login: 'colinta',
+							},
+						},
+						contributions: {
+							totalCount: 1,
+						},
+					},
+					{
+						repository: {
+							name: 'react-native',
+							owner: {
+								login: 'facebook',
+							},
+						},
+						contributions: {
+							totalCount: 1,
+						},
+					},
+					{
+						repository: {
+							name: 'editly',
+							owner: {
+								login: 'mifi',
+							},
+						},
+						contributions: {
+							totalCount: 1,
+						},
+					},
+					{
+						repository: {
+							name: 'awesome-react-renderer',
+							owner: {
+								login: 'chentsulin',
+							},
+						},
+						contributions: {
+							totalCount: 1,
+						},
+					},
+				],
+				totalCommitContributions: 870,
+				restrictedContributionsCount: 397,
+				totalIssueContributions: 51,
 				totalRepositoryContributions: 6,
-				totalPullRequestContributions: 368,
+				totalPullRequestContributions: 373,
 				totalPullRequestReviewContributions: 195,
 				contributionCalendar: {
-					totalContributions: 1902,
+					totalContributions: 1913,
 				},
 				commitContributionsByRepository: [
 					{
 						contributions: {
-							totalCount: 643,
+							totalCount: 646,
 						},
 						repository: {
 							name: 'react-native-skia',
@@ -33,7 +167,7 @@ export const all = {
 							languages: {
 								edges: [
 									{
-										size: 877203,
+										size: 877610,
 										node: {
 											color: '#3178c6',
 											name: 'TypeScript',
@@ -382,7 +516,7 @@ export const all = {
 							languages: {
 								edges: [
 									{
-										size: 3406633,
+										size: 3417066,
 										node: {
 											color: '#3178c6',
 											name: 'TypeScript',
@@ -390,7 +524,7 @@ export const all = {
 										},
 									},
 									{
-										size: 71195,
+										size: 77718,
 										node: {
 											color: '#f1e05a',
 											name: 'JavaScript',
@@ -398,7 +532,7 @@ export const all = {
 										},
 									},
 									{
-										size: 23316,
+										size: 30232,
 										node: {
 											color: '#563d7c',
 											name: 'CSS',
@@ -484,37 +618,6 @@ export const all = {
 							totalCount: 1,
 						},
 						repository: {
-							name: 'react-native-gestures-and-animations-2',
-							owner: {
-								login: 'wcandillon',
-							},
-							languages: {
-								edges: [
-									{
-										size: 135932,
-										node: {
-											color: '#3178c6',
-											name: 'TypeScript',
-											id: 'MDg6TGFuZ3VhZ2UyODc=',
-										},
-									},
-									{
-										size: 188,
-										node: {
-											color: '#f1e05a',
-											name: 'JavaScript',
-											id: 'MDg6TGFuZ3VhZ2UxNDA=',
-										},
-									},
-								],
-							},
-						},
-					},
-					{
-						contributions: {
-							totalCount: 1,
-						},
-						repository: {
 							name: 'react-native',
 							owner: {
 								login: 'facebook',
@@ -522,7 +625,7 @@ export const all = {
 							languages: {
 								edges: [
 									{
-										size: 6880151,
+										size: 6884033,
 										node: {
 											color: '#f1e05a',
 											name: 'JavaScript',
@@ -530,7 +633,7 @@ export const all = {
 										},
 									},
 									{
-										size: 3718774,
+										size: 3717822,
 										node: {
 											color: '#b07219',
 											name: 'Java',
@@ -538,7 +641,7 @@ export const all = {
 										},
 									},
 									{
-										size: 3432577,
+										size: 3428520,
 										node: {
 											color: '#f34b7d',
 											name: 'C++',

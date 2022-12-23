@@ -5,6 +5,7 @@ import {AvgCommits} from './AvgCommits';
 import {BestCommits} from './BestCommits';
 import {EndCard} from './EndCard';
 import {IssuesOpened} from './IssuesOpened';
+import {PullRequestsOpened} from './PullRequestsOpened';
 import {LanguageToSocks} from './LanguageToSocks';
 import {SlideIn, SlideOut, transitionDuration} from './SlideIn';
 import {Snow} from './Snow';
@@ -95,11 +96,11 @@ export const Main: React.FC<CompProps> = ({stats, theme}) => {
 			>
 				<SlideOut>
 					<SlideIn>
-						<TopWeekdays2022
+						<PullRequestsOpened
 							theme={theme}
 							noBackground={true}
-							stats={stats}
-						></TopWeekdays2022>
+							pullRequests={stats.pullRequestsContributed}
+						></PullRequestsOpened>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>
@@ -109,13 +110,27 @@ export const Main: React.FC<CompProps> = ({stats, theme}) => {
 			>
 				<SlideOut>
 					<SlideIn>
-						<BestCommits noBackground theme={theme} stats={stats}></BestCommits>
+						<TopWeekdays2022
+							theme={theme}
+							noBackground={true}
+							stats={stats}
+						></TopWeekdays2022>
 					</SlideIn>
 				</SlideOut>
 			</Sequence>
 			<Sequence
 				durationInFrames={duration[6] + transitionDuration}
 				from={accumulatedFrom(6)}
+			>
+				<SlideOut>
+					<SlideIn>
+						<BestCommits noBackground theme={theme} stats={stats}></BestCommits>
+					</SlideIn>
+				</SlideOut>
+			</Sequence>
+			<Sequence
+				durationInFrames={duration[7] + transitionDuration}
+				from={accumulatedFrom(7)}
 			>
 				<SlideIn>
 					<EndCard theme={theme} noBackground={true}></EndCard>
