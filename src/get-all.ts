@@ -54,17 +54,6 @@ const query = (username: string) =>
             }
           }
         }
-        pullRequestContributionsByRepository {
-          repository {
-            name
-            owner {
-              login
-            }
-          }
-          contributions {
-            totalCount
-          }
-        }
         contributionCalendar {
           totalContributions
         }
@@ -97,12 +86,6 @@ const query = (username: string) =>
 export type TopLanguage = {
 	color: string | null;
 	name: string;
-};
-
-export type TopPullRequest = {
-	name: string;
-	organization: string;
-	count: number;
 };
 
 export const getAll = async (
@@ -214,38 +197,6 @@ export const getTopLanguages = (
 	);
 };
 
-type PullRequestContributions = {
-	contributions: {
-		totalCount: number;
-	};
-	repository: {
-		name: string;
-		owner: {
-			login: string;
-		};
-	};
-}[];
-
-export const getTopPullRequests = (
-	response: PullRequestContributions
-): TopPullRequest[] => {
-	// Sort the languages by their counts in descending order
-	const topEntries = response.sort(
-		(a, b) => b.contributions.totalCount - a.contributions.totalCount
-	);
-
-	return topEntries
-		.slice(0, 3)
-		// Create an object for each language with its color and name
-		.map((entry) => {
-			return {
-				name: entry.repository.name,
-				organization: entry.repository.owner.login,
-				count: entry.contributions.totalCount
-			};
-		});
-};
-
 export const NOT_FOUND_TOKEN = 'Not found';
 
 export const backendResponseToBackendStats = (
@@ -297,6 +248,5 @@ export const backendResponseToBackendStats = (
 			response.data.user.contributionsCollection.restrictedContributionsCount,
 		mostRecentPullRequest,
 		mostPopularPullRequest,
-		pullRequestsContributed: getTopPullRequests(response.data.user.contributionsCollection.pullRequestContributionsByRepository)
 	};
 };

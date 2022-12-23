@@ -1,4 +1,4 @@
-import {BackendResponse, TopLanguage, TopPullRequest} from '../src/get-all';
+import {BackendResponse, TopLanguage} from '../src/get-all';
 import {getTimesOfDay} from '../src/get-times-of-day';
 import {Hour} from './AvgCommitsTitle';
 import {Commit, FrontendStats, PullRequest, Weekday, Weekdays} from './frontend-stats';
@@ -19,7 +19,6 @@ export type BackendStats = {
 	commitCount: number;
 	mostRecentPullRequest: PullRequest | null;
 	mostPopularPullRequest: PullRequest | null;
-	pullRequestsContributed: TopPullRequest[] | null
 };
 
 export type CompactStats = BackendStats & {

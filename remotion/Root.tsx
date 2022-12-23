@@ -15,7 +15,6 @@ import {GithubComp} from './GithubComp';
 import {GithubPromo} from './GithubPromo';
 import {Logo} from './Icons/Logo';
 import {IssuesOpened} from './IssuesOpened';
-import {PullRequestsOpened} from './PullRequestsOpened';
 import {Clojure} from './Languages/Clojure';
 import {CMake} from './Languages/CMake';
 import {CoffeeScript} from './Languages/CoffeeScript';
@@ -539,48 +538,6 @@ export const Root: React.FC = () => {
 						closed: 54,
 						open: 11,
 					},
-					theme: redTheme,
-				}}
-			></Composition>
-			<Composition
-				component={PullRequestsOpened}
-				height={1080}
-				width={1080}
-				durationInFrames={250}
-				fps={30}
-				id="3PullRequests"
-				defaultProps={{
-					noBackground: false,
-					pullRequests: [
-						{
-							name: 'oktokittens',
-							organization: 'octocat',
-							count: 17
-						},
-						{
-							name: 'php-src',
-							organization: 'php',
-							count: 10
-						},
-						{
-							name: 'docs',
-							organization: 'octocat',
-							count: 1
-						}
-					],
-					theme: redTheme,
-				}}
-			></Composition>
-			<Composition
-				component={PullRequestsOpened}
-				height={1080}
-				width={1080}
-				durationInFrames={250}
-				fps={30}
-				id="NoPullRequests"
-				defaultProps={{
-					noBackground: false,
-					pullRequests: [],
 					theme: redTheme,
 				}}
 			></Composition>
