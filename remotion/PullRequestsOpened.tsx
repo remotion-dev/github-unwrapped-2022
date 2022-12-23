@@ -6,10 +6,9 @@ import {
 	useCurrentFrame,
 	useVideoConfig,
 } from 'remotion';
-import {NoPullRequests} from './NoPullRequests';
+import {TopPullRequest} from '../src/get-all';
+import {AnimatedTopPullRequest} from './AnimatedTopPullRequest';
 import {Theme} from './theme';
-import {TopPullRequest} from "../src/get-all";
-import {AnimatedTopPullRequest} from "./AnimatedTopPullRequest";
 
 export const PullRequestsOpened: React.FC<{
 	noBackground: boolean;
@@ -19,18 +18,6 @@ export const PullRequestsOpened: React.FC<{
 	const {fps} = useVideoConfig();
 	const frame = useCurrentFrame();
 
-	if (pullRequests.length === 0) {
-		return (
-			<AbsoluteFill
-				style={{
-					backgroundColor: noBackground ? undefined : theme.background,
-				}}
-			>
-				<NoPullRequests theme={theme}></NoPullRequests>
-			</AbsoluteFill>
-		);
-	}
-
 	const moveUp = spring({
 		fps,
 		frame: frame - 75,
@@ -39,7 +26,9 @@ export const PullRequestsOpened: React.FC<{
 		},
 	});
 
-	const pullRequestsCount = pullRequests.map((pr) => pr.count).reduce((a, b) => a + b, 0);
+	const pullRequestsCount = pullRequests
+		.map((pr) => pr.count)
+		.reduce((a, b) => a + b, 0);
 	let quantifier = 'a few';
 
 	if (pullRequestsCount > 10) {
@@ -72,7 +61,8 @@ export const PullRequestsOpened: React.FC<{
 						marginTop: interpolate(moveUp, [0, 1], [0, -790]),
 					}}
 				>
-					I prepared {quantifier} pull requests<br></br>for my loved ones:<br></br>
+					I prepared {quantifier} pull requests<br></br>for my loved ones:
+					<br></br>
 				</h1>
 			</AbsoluteFill>
 			{pullRequests.map((repository, i) => {
