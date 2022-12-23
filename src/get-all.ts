@@ -42,6 +42,18 @@ const query = (username: string) =>
         totalRepositoryContributions
         totalPullRequestContributions
         totalPullRequestReviewContributions
+        popularPullRequestContribution {
+          pullRequest {
+            id
+            title
+            repository {
+              name
+              owner {
+                login
+              }
+            }
+          }
+        }
         pullRequestContributionsByRepository {
           repository {
             name
@@ -57,7 +69,7 @@ const query = (username: string) =>
           totalContributions
         }
         commitContributionsByRepository {
-					contributions {
+          contributions {
             totalCount
           }
           repository {
@@ -258,6 +270,17 @@ export const backendResponseToBackendStats = (
 		};
 	}
 
+	let mostPopularPullRequest : (PullRequest | null) = null;
+
+	if (response.data.user.contributionsCollection && response.data.user.contributionsCollection.popularPullRequestContribution) {
+		mostPopularPullRequest = {
+			title: response.data.user.contributionsCollection.popularPullRequestContribution.pullRequest.title,
+			repository: response.data.user.contributionsCollection.popularPullRequestContribution.pullRequest.repository.name,
+			organization: response.data.user.contributionsCollection.popularPullRequestContribution.pullRequest.repository.owner.login,
+			uniqueId: response.data.user.contributionsCollection.popularPullRequestContribution.pullRequest.id
+		};
+	}
+
 	return {
 		avatar: response.data.user.avatarUrl,
 		contributionCount:
@@ -273,6 +296,7 @@ export const backendResponseToBackendStats = (
 			response.data.user.contributionsCollection.totalCommitContributions +
 			response.data.user.contributionsCollection.restrictedContributionsCount,
 		mostRecentPullRequest,
+		mostPopularPullRequest,
 		pullRequestsContributed: getTopPullRequests(response.data.user.contributionsCollection.pullRequestContributionsByRepository)
 	};
 };

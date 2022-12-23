@@ -18,6 +18,7 @@ export type BackendStats = {
 	issues: Issues;
 	commitCount: number;
 	mostRecentPullRequest: PullRequest | null;
+	mostPopularPullRequest: PullRequest | null;
 	pullRequestsContributed: TopPullRequest[] | null
 };
 
@@ -117,6 +118,7 @@ export const mapResponseToStats = (
 		bestCommits: getRandomCommits({
 			commits: commits,
 			mostRecentPullRequest: response.mostRecentPullRequest,
+			mostPopularPullRequest: response.mostPopularPullRequest,
 			seed: '0',
 			numCommits: 4,
 			repositoriesContributedTo: response.repositoriesContributedTo,

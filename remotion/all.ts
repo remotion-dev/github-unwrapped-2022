@@ -159,6 +159,19 @@ export const all = {
 						},
 					},
 				],
+				popularPullRequestContribution: {
+					pullRequest: {
+						id: 'PR_kwDOGWHiTc49lnY0',
+						title: 'Deprecate usePicture in favor of createPicture',
+						repository: {
+							name: 'react-native-skia',
+							owner: {
+								login: 'Shopify',
+							},
+						},
+						totalCommentsCount: 12,
+					},
+				},
 				totalCommitContributions: 870,
 				restrictedContributionsCount: 397,
 				totalIssueContributions: 51,
