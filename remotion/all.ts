@@ -10,6 +10,20 @@ export const all = {
 			},
 			avatarUrl: 'https://avatars.githubusercontent.com/u/306134?v=4',
 			login: 'wcandillon',
+			mostRecentPullRequest: {
+				nodes: [
+					{
+						id: 'PR_kwDOGWHiTc5GBMYq',
+						title: 'Fix SkewX and SkewY transform',
+						repository: {
+							name: 'react-native-skia',
+							owner: {
+								login: 'Shopify',
+							},
+						},
+					},
+				],
+			},
 			contributionsCollection: {
 				pullRequestContributionsByRepository: [
 					{

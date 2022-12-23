@@ -5,6 +5,13 @@ export type Commit = {
 	date: number;
 };
 
+export type PullRequest = {
+	uniqueId: string;
+	title: string;
+	organization: string;
+	repository: string;
+};
+
 export type Weekday = '0' | '1' | '2' | '3' | '4' | '5' | '6';
 
 export type Weekdays = {
