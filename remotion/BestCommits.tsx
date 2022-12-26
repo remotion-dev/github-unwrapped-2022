@@ -49,10 +49,10 @@ export const BestCommits: React.FC<{
 						marginTop: interpolate(moveUp, [0, 1], [0, -790]),
 					}}
 				>
-					{(stats.pullRequestCount > 0) ?
-					(
+					{(stats.pullRequestCount ?? 0) > 0 ? (
 						<span>
-							I crafted {stats.commitCount} commits<br></br>and {stats.pullRequestCount} pull requests. <br></br>
+							I crafted {stats.commitCount} commits<br></br>and{' '}
+							{stats.pullRequestCount} pull requests. <br></br>
 						</span>
 					) : (
 						<span>

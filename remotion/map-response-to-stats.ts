@@ -1,7 +1,13 @@
 import {BackendResponse, TopLanguage} from '../src/get-all';
 import {getTimesOfDay} from '../src/get-times-of-day';
 import {Hour} from './AvgCommitsTitle';
-import {Commit, FrontendStats, PullRequest, Weekday, Weekdays} from './frontend-stats';
+import {
+	Commit,
+	FrontendStats,
+	PullRequest,
+	Weekday,
+	Weekdays,
+} from './frontend-stats';
 import {getRandomCommits} from './rank-commit';
 
 export type Issues = {
@@ -17,9 +23,9 @@ export type BackendStats = {
 	topLanguages: TopLanguage[] | null;
 	issues: Issues;
 	commitCount: number;
-	pullRequestCount: number;
-	mostRecentPullRequest: PullRequest | null;
-	mostPopularPullRequest: PullRequest | null;
+	pullRequestCount?: number;
+	mostRecentPullRequest?: PullRequest | null;
+	mostPopularPullRequest?: PullRequest | null;
 };
 
 export type CompactStats = BackendStats & {
@@ -117,8 +123,8 @@ export const mapResponseToStats = (
 		weekdays: getMostProductive(commits),
 		bestCommits: getRandomCommits({
 			commits: commits,
-			mostRecentPullRequest: response.mostRecentPullRequest,
-			mostPopularPullRequest: response.mostPopularPullRequest,
+			mostRecentPullRequest: response.mostRecentPullRequest ?? null,
+			mostPopularPullRequest: response.mostPopularPullRequest ?? null,
 			seed: '0',
 			numCommits: 4,
 			repositoriesContributedTo: response.repositoriesContributedTo,
