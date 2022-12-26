@@ -49,7 +49,20 @@ export const BestCommits: React.FC<{
 						marginTop: interpolate(moveUp, [0, 1], [0, -790]),
 					}}
 				>
-					I crafted {stats.commitCount} commits. <br></br>
+					{(stats.pullRequestCount ?? 0) > 0 ? (
+						<span>
+							I crafted {stats.commitCount}{' '}
+							{stats.commitCount === 1 ? 'commit' : 'commits'}
+							<br></br>and {stats.pullRequestCount}{' '}
+							{stats.pullRequestCount === 1 ? 'pull request ' : 'pull requests'}
+							. <br></br>
+						</span>
+					) : (
+						<span>
+							I crafted {stats.commitCount}{' '}
+							{stats.commitCount === 1 ? 'commit' : 'commits'}. <br></br>
+						</span>
+					)}
 					<span style={{opacity}}>Here are some sweet ones.</span>
 				</h1>
 			</AbsoluteFill>

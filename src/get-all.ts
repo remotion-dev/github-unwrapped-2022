@@ -3,6 +3,7 @@ import {NotLanguages} from '../remotion/language-list';
 import {BackendStats, getIssues} from '../remotion/map-response-to-stats';
 import {sendDiscordMessage} from './discord-monitoring';
 import {truthy} from './truthy';
+import {PullRequest} from '../remotion/frontend-stats';
 
 const {interpolate} = require('remotion');
 
@@ -22,7 +23,18 @@ const query = (username: string) =>
       }
       avatarUrl
       login
-      contributionsCollection(from: "2022-01-01T00:00:00.000Z") {
+        mostRecentPullRequest: pullRequests(first: 1, orderBy: { field: CREATED_AT, direction: DESC }) {
+          nodes {
+            title
+            repository {
+              name
+              owner {
+                login
+              }
+            }          
+          }
+        }
+        contributionsCollection(from: "2022-01-01T00:00:00.000Z") {
         totalCommitContributions
         restrictedContributionsCount
         totalIssueContributions
@@ -30,11 +42,23 @@ const query = (username: string) =>
         totalRepositoryContributions
         totalPullRequestContributions
         totalPullRequestReviewContributions
+        popularPullRequestContribution {
+          pullRequest {
+            id
+            title
+            repository {
+              name
+              owner {
+                login
+              }
+            }
+          }
+        }
         contributionCalendar {
           totalContributions
         }
         commitContributionsByRepository {
-					contributions {
+          contributions {
             totalCount
           }
           repository {
@@ -186,6 +210,28 @@ export const backendResponseToBackendStats = (
 		response.data.user.contributionsCollection.commitContributionsByRepository.map(
 			(r) => r.repository.owner.login + '/' + r.repository.name
 		);
+	let mostRecentPullRequest : (PullRequest | null) = null;
+
+	if (response.data.user.mostRecentPullRequest && response.data.user.mostRecentPullRequest.nodes.length) {
+		mostRecentPullRequest = {
+			title: response.data.user.mostRecentPullRequest.nodes[0].title,
+			repository: response.data.user.mostRecentPullRequest.nodes[0].repository.name,
+			organization: response.data.user.mostRecentPullRequest.nodes[0].repository.owner.login,
+			uniqueId: response.data.user.mostRecentPullRequest.nodes[0].id
+		};
+	}
+
+	let mostPopularPullRequest : (PullRequest | null) = null;
+
+	if (response.data.user.contributionsCollection && response.data.user.contributionsCollection.popularPullRequestContribution) {
+		mostPopularPullRequest = {
+			title: response.data.user.contributionsCollection.popularPullRequestContribution.pullRequest.title,
+			repository: response.data.user.contributionsCollection.popularPullRequestContribution.pullRequest.repository.name,
+			organization: response.data.user.contributionsCollection.popularPullRequestContribution.pullRequest.repository.owner.login,
+			uniqueId: response.data.user.contributionsCollection.popularPullRequestContribution.pullRequest.id
+		};
+	}
+
 	return {
 		avatar: response.data.user.avatarUrl,
 		contributionCount:
@@ -200,5 +246,9 @@ export const backendResponseToBackendStats = (
 		commitCount:
 			response.data.user.contributionsCollection.totalCommitContributions +
 			response.data.user.contributionsCollection.restrictedContributionsCount,
+		pullRequestCount:
+			response.data.user.contributionsCollection.totalPullRequestContributions,
+		mostRecentPullRequest,
+		mostPopularPullRequest,
 	};
 };

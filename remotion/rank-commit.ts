@@ -1,5 +1,5 @@
 import {random} from 'remotion';
-import {Commit} from './frontend-stats';
+import {Commit, PullRequest} from './frontend-stats';
 
 const interestingWords = [
 	'wrong',
@@ -92,11 +92,15 @@ function prioritizeCommitsAsContributor(
 
 export function getRandomCommits({
 	commits,
+	mostRecentPullRequest,
+	mostPopularPullRequest,
 	seed,
 	numCommits = 4,
 	repositoriesContributedTo,
 }: {
 	commits: Commit[];
+	mostRecentPullRequest: PullRequest | null
+	mostPopularPullRequest: PullRequest | null
 	seed: number | string;
 	numCommits: number;
 	repositoriesContributedTo: string[];
@@ -112,6 +116,25 @@ export function getRandomCommits({
 
 	// Select the desired number of random commits
 	const chosenCommits = [];
+
+	if (mostRecentPullRequest) {
+		chosenCommits.push({
+			message: mostRecentPullRequest.title,
+			author: mostRecentPullRequest.organization,
+			repo: mostRecentPullRequest.organization + '/' + mostRecentPullRequest.repository,
+			date: 0,
+		})
+	}
+
+	if (mostPopularPullRequest && mostPopularPullRequest.uniqueId !== mostRecentPullRequest?.uniqueId) {
+		chosenCommits.push({
+			message: mostPopularPullRequest.title,
+			author: mostPopularPullRequest.organization,
+			repo: mostPopularPullRequest.organization + '/' + mostPopularPullRequest.repository,
+			date: 0,
+		})
+	}
+
 	while (chosenCommits.length < numCommits && remainingCommits.length > 0) {
 		const index = 0;
 		const commit = remainingCommits[index];
