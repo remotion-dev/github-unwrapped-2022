@@ -51,12 +51,16 @@ export const BestCommits: React.FC<{
 				>
 					{(stats.pullRequestCount ?? 0) > 0 ? (
 						<span>
-							I crafted {stats.commitCount} commits<br></br>and{' '}
-							{stats.pullRequestCount} pull requests. <br></br>
+							I crafted {stats.commitCount}{' '}
+							{stats.commitCount === 1 ? 'commit' : 'commits'}
+							<br></br>and {stats.pullRequestCount}{' '}
+							{stats.pullRequestCount === 1 ? 'pull request ' : 'pull requests'}
+							. <br></br>
 						</span>
 					) : (
 						<span>
-							I crafted {stats.commitCount} commits. <br></br>
+							I crafted {stats.commitCount}{' '}
+							{stats.commitCount === 1 ? 'commit' : 'commits'}. <br></br>
 						</span>
 					)}
 					<span style={{opacity}}>Here are some sweet ones.</span>
