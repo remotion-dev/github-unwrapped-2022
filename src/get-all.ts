@@ -23,7 +23,7 @@ const query = (username: string) =>
       }
       avatarUrl
       login
-        mostRecentPullRequest: pullRequests(first: 1, orderBy: { field: CREATED_AT, direction: DESC }) {
+        mostRecentPullRequest: pullRequests(first: 1, filterBy: {since: "2022-01-01T00:00:00.000Z"}, orderBy: { field: CREATED_AT, direction: DESC }) {
           nodes {
             title
             repository {
