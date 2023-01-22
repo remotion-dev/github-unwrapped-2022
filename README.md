@@ -24,6 +24,8 @@ Want to make your own year in review for your users?
    ```
    npx ts-node deploy.ts
    ```
+   
+   Note that some AWS regions are disabled by default. [If you get an error, enable them or limit yourself to only default ones.](https://remotion.dev/docs/lambda/troubleshooting/security-token)
 5. For caching the videos and GitHub API responses, set up a MongoDB (We use a free MongoDB Atlas Cloud instance) to save the videos. Set the connection string as `MONGO_URL`.
 6. For fetching data from GitHub, create a personal access token in your user settings (no need to grant any scopes, the GraphQL API needs to be authenticated to get public information) and set it as `GITHUB_TOKEN_1`. Adding more tokens `GITHUB_TOKEN_2` etc. will rotate the personal access tokens.
 7. Optionally, provide `DISCORD_CHANNEL` and `DISCORD_TOKEN` values to send monitoring logs to Discord.
