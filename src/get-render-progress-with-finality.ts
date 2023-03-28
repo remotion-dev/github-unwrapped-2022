@@ -1,4 +1,4 @@
-import {getRenderProgress} from '@remotion/lambda';
+import {getRenderProgress} from '@remotion/lambda/client';
 import {Render, updateRenderWithFinality} from './db/renders';
 import {sendDiscordMessage} from './discord-monitoring';
 import {getFinality} from './get-render-or-make';

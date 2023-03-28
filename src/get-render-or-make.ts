@@ -1,4 +1,8 @@
-import {AwsRegion, renderMediaOnLambda, RenderProgress} from '@remotion/lambda';
+import {
+	AwsRegion,
+	renderMediaOnLambda,
+	RenderProgress,
+} from '@remotion/lambda/client';
 import {CompactStats} from '../remotion/map-response-to-stats';
 import {allThemes, ThemeId} from '../remotion/theme';
 import {COMP_NAME, SITE_ID} from './config';
