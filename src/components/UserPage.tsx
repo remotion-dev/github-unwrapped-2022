@@ -118,10 +118,7 @@ export const UserPage: React.FC<{
 	return (
 		<div>
 			<Head>
-				<title>
-					{stats.username}
-					{"'"}s #GitHubUnwrapped
-				</title>
+				<title>{`${stats.username}'s #GitHubUnwrapped`}</title>
 				<meta
 					property="og:title"
 					content={`${stats.username}'s #GitHubUnwrapped`}
@@ -169,7 +166,7 @@ export const UserPage: React.FC<{
 											...layout,
 											borderRadius: 10,
 											overflow: 'hidden',
-											maxWidth: 600,
+											width: 600,
 											aspectRatio: '1 / 1',
 										}}
 										inputProps={{
