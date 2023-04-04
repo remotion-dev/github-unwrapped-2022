@@ -1,7 +1,10 @@
-import {renderStillOnLambda} from '@remotion/lambda';
+import {
+	renderStillOnLambda,
+	speculateFunctionName,
+} from '@remotion/lambda/client';
 import {random} from 'remotion';
 import {allThemes} from '../remotion/theme';
-import {OG_COMP_NAME, SITE_ID} from './config';
+import {DISK, OG_COMP_NAME, RAM, SITE_ID, TIMEOUT} from './config';
 import {backendStatsCollection, getOgImage, saveOgImage} from './db/cache';
 import {sendDiscordMessage} from './discord-monitoring';
 import {backendResponseToBackendStats, getAll} from './get-all';
@@ -10,7 +13,6 @@ import {getRandomGithubToken} from './get-random-github-token';
 import {hasEnoughBackendData} from './has-enough-data';
 import {getRandomRegion} from './regions';
 import {setEnvForKey} from './set-env-for-key';
-import {speculateFunctionName} from './speculate-function-name';
 import {OgCompProps} from './types';
 
 export const getOgImageOrMake = async ({username}: {username: string}) => {
@@ -34,7 +36,11 @@ export const getOgImageOrMake = async ({username}: {username: string}) => {
 
 	const time = Date.now();
 	const {url} = await renderStillOnLambda({
-		functionName: speculateFunctionName(),
+		functionName: speculateFunctionName({
+			diskSizeInMb: DISK,
+			memorySizeInMb: RAM,
+			timeoutInSeconds: TIMEOUT,
+		}),
 		composition: OG_COMP_NAME,
 		imageFormat: 'png',
 		inputProps: props,
